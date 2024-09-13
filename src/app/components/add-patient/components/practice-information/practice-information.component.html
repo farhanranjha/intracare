@@ -1,0 +1,31 @@
+<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+  <h4 class="text-primary">Practice Information</h4>
+  <div class="w-full flex flex-row justify-start items-start gap-3">
+    <div class="flex flex-col gap-2 w-1/2">
+      <label for="firstName">Practice Name</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Enter Practice Name" />
+    </div>
+    <div class="flex flex-col gap-2 w-1/4">
+      <label for="firstName">Primary Care Physician</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Select Physician" />
+    </div>
+    <div class="flex flex-col gap-2 w-1/4">
+      <label for="firstName">Office Number</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Office Number" />
+    </div>
+  </div>
+  <div class="w-full flex flex-row justify-start items-center gap-3">
+    <div class="flex flex-row gap-2 w-1/2 items-center justify-start">
+      <p-checkbox [(ngModel)]="checked" [binary]="true" inputId="binary" />
+      <label for="firstName">Primary Care Physician</label>
+    </div>
+    <div class="flex flex-col gap-2 w-1/4">
+      <label for="firstName">Office Number</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Office Number" />
+    </div>
+    <div class="flex flex-col gap-2 w-1/4">
+      <label for="firstName">Office Number</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Office Number" />
+    </div>
+  </div>
+</div>
