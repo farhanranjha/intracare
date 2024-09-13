@@ -20,15 +20,12 @@
   <div #topbarmenu class="layout-topbar-menu">
     <button class="p-link layout-topbar-button" (click)="changeTheme()">
       <i class="pi pi-moon"></i>
-      <span>Profile</span>
+      <span>Dark Mode</span>
     </button>
-    <button class="p-link layout-topbar-button">
-      <i class="pi pi-user"></i>
-      <span>Profile</span>
+    <p-menu #menu [model]="items" [popup]="true"></p-menu>
+    <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
+      <i class="pi pi-ellipsis-v"></i>
     </button>
-    <button class="p-link layout-topbar-button">
-      <i class="pi pi-cog"></i>
-      <span>Settings</span>
-    </button>
+
   </div>
 </div>
