@@ -4,7 +4,7 @@
     <button pButton pRipple icon="pi pi-cloud-upload" label="Upload CSV" class="p-3 font-medium"></button>
   </div>
   <div class="w-full flex flex-row items-start justify-start gap-[14px]">
-    <div class="w-[192px] h-[calc(100vh-13.7rem)] bg-white rounded-xl shadow-full p-[1.5rem] flex flex-col gap-2">
+    <div class="w-1/5 h-[calc(100vh-13.7rem)] bg-white rounded-xl shadow-full p-[1.5rem] flex flex-col gap-2">
       <p
         *ngFor="let category of categories; let i = index"
         (click)="scrollToComponent(i)"
@@ -15,10 +15,7 @@
       </p>
     </div>
 
-    <div
-      class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll p-4"
-      #componentContainer
-    >
+    <div class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll" #componentContainer>
       <div id="patientInformation">
         <app-patient-information></app-patient-information>
       </div>
