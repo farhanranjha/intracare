@@ -1,7 +1,7 @@
 <div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Insurance Information</h4>
-    <p>{{ name }}</p>
+    <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
   </div>
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">

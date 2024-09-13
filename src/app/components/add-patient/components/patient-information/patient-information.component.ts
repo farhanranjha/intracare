@@ -1,3 +1,4 @@
+import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
@@ -5,7 +6,7 @@ import { InputTextModule } from "primeng/inputtext";
 @Component({
   selector: "app-patient-information",
   standalone: true,
-  imports: [InputTextModule, FormsModule],
+  imports: [InputTextModule, FormsModule, CommonModule],
   templateUrl: "./patient-information.component.html",
   styleUrl: "./patient-information.component.scss",
 })

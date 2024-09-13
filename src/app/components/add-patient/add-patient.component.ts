@@ -27,6 +27,7 @@ import { InsuranceInfoComponent } from "./components/insurance-info/insurance-in
   styleUrl: "./add-patient.component.scss",
 })
 export class AddPatientComponent implements AfterViewInit {
+  name: string = "Farhan Ranjha";
   categories: string[] = [
     "Patient Information",
     "Diagnosis",
@@ -69,11 +70,9 @@ export class AddPatientComponent implements AfterViewInit {
     components.forEach((component, index) => {
       if (component) {
         const offset = component.getBoundingClientRect().top - componentContainer.getBoundingClientRect().top;
-
         if (offset >= 0 && offset < smallestOffset) {
           smallestOffset = offset;
           closestComponentIndex = index;
-          console.log("===closestComponentIndex===> ", closestComponentIndex);
         }
       }
     });

@@ -1,7 +1,6 @@
 <section class="w-full flex flex-col items-start justify-start gap-[14px]">
   <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
     <p-button label="Dashboard" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
-    <p class="text-lg font-bold mb-4">{{ currentTopContainer }}</p>
     <button pButton pRipple icon="pi pi-cloud-upload" label="Upload CSV" class="p-3 font-medium"></button>
   </div>
   <div class="w-full flex flex-row items-start justify-start gap-[14px]">
@@ -21,20 +20,22 @@
       #componentContainer
       (scroll)="onScroll()"
     >
-      <div id="patientInformation">
-        <app-patient-information></app-patient-information>
-      </div>
+      <div id="patientInformation"><app-patient-information></app-patient-information></div>
       <div id="diagnosis">
-        <app-diagnosis></app-diagnosis>
+        <app-diagnosis [name]="currentTopContainer === 'Diagnosis' ? name : null"></app-diagnosis>
       </div>
       <div id="attachDevice">
-        <app-attach-device></app-attach-device>
+        <app-attach-device [name]="currentTopContainer === 'Attach a Device' ? name : null"></app-attach-device>
       </div>
       <div id="practiceInformation">
-        <app-practice-information></app-practice-information>
+        <app-practice-information
+          [name]="currentTopContainer === 'Practice Information' ? name : null"
+        ></app-practice-information>
       </div>
       <div id="insuranceInfo">
-        <app-insurance-info></app-insurance-info>
+        <app-insurance-info
+          [name]="currentTopContainer === 'Primary Insurance Info' ? name : null"
+        ></app-insurance-info>
       </div>
     </div>
   </div>

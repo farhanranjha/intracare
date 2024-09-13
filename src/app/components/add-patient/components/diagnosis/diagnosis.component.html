@@ -1,7 +1,7 @@
 <div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Diagnosis</h4>
-    <p>{{ name }}</p>
+    <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
   </div>
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
@@ -57,7 +57,7 @@
       <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Zip Code" />
     </div>
   </div>
-  <h4 class="text-primary">CCM</h4>
+  <!-- <h4 class="text-primary">CCM</h4> -->
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-full">
       <label for="cellPhoneNumber">Program Billing Diagnosis</label>
