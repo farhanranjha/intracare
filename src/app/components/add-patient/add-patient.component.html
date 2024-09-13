@@ -5,16 +5,35 @@
   </div>
   <div class="w-full flex flex-row items-start justify-start gap-[14px]">
     <div class="w-[192px] h-[calc(100vh-13.7rem)] bg-white rounded-xl shadow-full p-[1.5rem] flex flex-col gap-2">
-      <p *ngFor="let category of categories">
+      <p
+        *ngFor="let category of categories; let i = index"
+        (click)="scrollToComponent(i)"
+        class="cursor-pointer"
+        [class.text-primary]="selectedCategory === category"
+      >
         {{ category }}
       </p>
     </div>
-    <div class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll">
-      <app-patient-information />
-      <app-diagnosis />
-      <app-attach-device />
-      <app-practice-information />
-      <app-insurance-info />
+
+    <div
+      class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll p-4"
+      #componentContainer
+    >
+      <div id="patientInformation">
+        <app-patient-information></app-patient-information>
+      </div>
+      <div id="diagnosis">
+        <app-diagnosis></app-diagnosis>
+      </div>
+      <div id="attachDevice">
+        <app-attach-device></app-attach-device>
+      </div>
+      <div id="practiceInformation">
+        <app-practice-information></app-practice-information>
+      </div>
+      <div id="insuranceInfo">
+        <app-insurance-info></app-insurance-info>
+      </div>
     </div>
   </div>
 </section>

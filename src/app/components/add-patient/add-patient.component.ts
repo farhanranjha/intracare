@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, ElementRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
@@ -34,4 +34,18 @@ export class AddPatientComponent {
     "Practice Information",
     "Primary Insurance Info",
   ];
+  selectedCategory: string = this.categories[0];
+
+  @ViewChild("componentContainer") componentContainer!: ElementRef;
+
+  scrollToComponent(index: number) {
+    this.selectedCategory = this.categories[index];
+
+    const componentIds = ["patientInformation", "diagnosis", "attachDevice", "practiceInformation", "insuranceInfo"];
+
+    const element = document.getElementById(componentIds[index]);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }
 }
