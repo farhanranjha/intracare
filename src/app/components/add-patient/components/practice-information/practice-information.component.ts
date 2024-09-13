@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 import { CheckboxModule } from "primeng/checkbox";
@@ -11,6 +11,7 @@ import { CheckboxModule } from "primeng/checkbox";
   styleUrl: "./practice-information.component.scss",
 })
 export class PracticeInformationComponent {
+  @Input() name?: string;
   value: string;
   checked: boolean = true;
 }

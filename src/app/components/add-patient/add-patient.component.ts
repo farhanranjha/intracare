@@ -1,4 +1,4 @@
-import { Component, ElementRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
@@ -26,7 +26,7 @@ import { InsuranceInfoComponent } from "./components/insurance-info/insurance-in
   templateUrl: "./add-patient.component.html",
   styleUrl: "./add-patient.component.scss",
 })
-export class AddPatientComponent {
+export class AddPatientComponent implements AfterViewInit {
   categories: string[] = [
     "Patient Information",
     "Diagnosis",
@@ -35,8 +35,12 @@ export class AddPatientComponent {
     "Primary Insurance Info",
   ];
   selectedCategory: string = this.categories[0];
-
+  currentTopContainer: string = this.categories[0];
   @ViewChild("componentContainer") componentContainer!: ElementRef;
+
+  ngAfterViewInit(): void {
+    this.onScroll();
+  }
 
   scrollToComponent(index: number) {
     this.selectedCategory = this.categories[index];
@@ -47,5 +51,33 @@ export class AddPatientComponent {
     if (element) {
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
+  }
+
+  onScroll() {
+    const componentContainer = this.componentContainer.nativeElement;
+    const components = [
+      document.getElementById("patientInformation"),
+      document.getElementById("diagnosis"),
+      document.getElementById("attachDevice"),
+      document.getElementById("practiceInformation"),
+      document.getElementById("insuranceInfo"),
+    ];
+
+    let closestComponentIndex = 0;
+    let smallestOffset = Infinity;
+
+    components.forEach((component, index) => {
+      if (component) {
+        const offset = component.getBoundingClientRect().top - componentContainer.getBoundingClientRect().top;
+
+        if (offset >= 0 && offset < smallestOffset) {
+          smallestOffset = offset;
+          closestComponentIndex = index;
+          console.log("===closestComponentIndex===> ", closestComponentIndex);
+        }
+      }
+    });
+
+    this.currentTopContainer = this.categories[closestComponentIndex];
   }
 }

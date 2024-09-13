@@ -1,6 +1,7 @@
 <section class="w-full flex flex-col items-start justify-start gap-[14px]">
   <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
     <p-button label="Dashboard" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
+    <p class="text-lg font-bold mb-4">{{ currentTopContainer }}</p>
     <button pButton pRipple icon="pi pi-cloud-upload" label="Upload CSV" class="p-3 font-medium"></button>
   </div>
   <div class="w-full flex flex-row items-start justify-start gap-[14px]">
@@ -15,7 +16,11 @@
       </p>
     </div>
 
-    <div class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll" #componentContainer>
+    <div
+      class="w-full bg-white rounded-md shadow-full h-[calc(100vh-13.7rem)] overflow-y-scroll"
+      #componentContainer
+      (scroll)="onScroll()"
+    >
       <div id="patientInformation">
         <app-patient-information></app-patient-information>
       </div>

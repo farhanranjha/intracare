@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { InputTextModule } from "primeng/inputtext";
 
@@ -10,5 +10,6 @@ import { InputTextModule } from "primeng/inputtext";
   styleUrl: "./insurance-info.component.scss",
 })
 export class InsuranceInfoComponent {
+  @Input() name?: string;
   value: string;
 }
