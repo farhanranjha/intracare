@@ -14,38 +14,17 @@ export class AppMenuComponent implements OnInit {
   ngOnInit() {
     this.model = [
       {
-        label: "Section 1",
+        label: "Home",
         items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", routerLink: ["/"] }],
       },
       {
-        label: "Section 2",
+        label: "Features",
         icon: "pi pi-fw pi-briefcase",
         items: [
           {
-            label: "Auth",
+            label: "Add Patient",
             icon: "pi pi-fw pi-user",
-            items: [
-              {
-                label: "Login",
-                icon: "pi pi-fw pi-sign-in",
-                routerLink: ["/auth/login"],
-              },
-              {
-                label: "Error",
-                icon: "pi pi-fw pi-times-circle",
-                routerLink: ["/auth/error"],
-              },
-              {
-                label: "Access Denied",
-                icon: "pi pi-fw pi-lock",
-                routerLink: ["/auth/access"],
-              },
-            ],
-          },
-          {
-            label: "Not Found",
-            icon: "pi pi-fw pi-exclamation-circle",
-            routerLink: ["/notfound"],
+            routerLink: ["/add-patient"],
           },
         ],
       },
