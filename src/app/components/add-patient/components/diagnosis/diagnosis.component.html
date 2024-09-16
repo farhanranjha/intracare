@@ -1,4 +1,4 @@
-<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+<div [formGroup]="patientInfoForm" class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Diagnosis</h4>
     <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
@@ -6,28 +6,22 @@
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="firstName">Diagnosis</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Diagnosis" />
+      <input type="text" formControlName="diagnosis" pInputText class="w-full h-[32px]" placeholder="Diagnosis" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="lastName">Last Name</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Last Name" />
+      <label for="gender">EHR ID</label>
+      <input formControlName="ehrId" type="text" pInputText class="w-full h-[32px]" placeholder="EHR ID" />
     </div>
-    <div class="flex flex-row gap-3 w-[24%]">
-      <div class="flex flex-col gap-2 w-1/2">
-        <label for="gender">EHR ID</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="EHR ID" />
-      </div>
-      <div class="flex flex-col gap-2 w-1/2">
-        <label for="dob">Program Type</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Type" />
-      </div>
+    <div class="flex flex-col gap-3 w-[24%]">
+      <label for="dob">Program Type</label>
+      <input formControlName="programType" type="text" pInputText class="w-full h-[32px]" placeholder="Type" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="ethnicity">Emergency Contact Person</label>
       <input
+        formControlName="emergencyContact"
         type="text"
         pInputText
-        [(ngModel)]="value"
         class="w-full h-[32px]"
         placeholder="Emergency Contact Person"
       />
@@ -37,24 +31,30 @@
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="mailingAddress">Emergency Contact Number</label>
       <input
+        formControlName="emergencyContactNumber"
         type="text"
         pInputText
-        [(ngModel)]="value"
         class="w-full h-[32px]"
         placeholder="Emergency Contact Number"
       />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="email">Care Type</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Care Type" />
+      <input type="text" formControlName="careType" pInputText class="w-full h-[32px]" placeholder="Care Type" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="city">Monitoring Device Required</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="City" />
+      <input
+        formControlName="monitoringDeviceRequired"
+        type="text"
+        pInputText
+        class="w-full h-[32px]"
+        placeholder="City"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="zipCode">Text/SMS Consent</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Zip Code" />
+      <input formControlName="textSmsConsent" type="text" pInputText class="w-full h-[32px]" placeholder="Zip Code" />
     </div>
   </div>
   <!-- <h4 class="text-primary">CCM</h4> -->
@@ -62,9 +62,9 @@
     <div class="flex flex-col gap-2 w-full">
       <label for="cellPhoneNumber">Program Billing Diagnosis</label>
       <input
+        formControlName="programBillingDiagnosis"
         type="text"
         pInputText
-        [(ngModel)]="value"
         class="w-full h-[32px]"
         placeholder="Program Billing Diagnosis"
       />
