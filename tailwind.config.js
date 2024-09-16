@@ -5,7 +5,11 @@ module.exports = {
   },
   content: ["./src/**/*.{html,ts,scss}"],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        skyLight: '#DCEFFF',
+      },
+    },
   },
   plugins: [],
 };
