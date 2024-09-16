@@ -15,7 +15,7 @@ export class AppMenuComponent implements OnInit {
     this.model = [
       {
         label: "Home",
-        items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", routerLink: ["/"] }],
+        items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", routerLink: [""] }],
       },
       {
         label: "Features",
@@ -25,6 +25,11 @@ export class AppMenuComponent implements OnInit {
             label: "Add Patient",
             icon: "pi pi-fw pi-user",
             routerLink: ["/add-patient"],
+          },
+          {
+            label: "Pending Enrollments",
+            icon: "pi pi-th-large",
+            routerLink: ["/pending-enrollments"],
           },
         ],
       },
