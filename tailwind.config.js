@@ -12,6 +12,7 @@ module.exports = {
       },
       colors: {
         primary: "#017BFE",
+        skyLight: "#DCEFFF",
       },
     },
   },
