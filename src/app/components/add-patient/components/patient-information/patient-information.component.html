@@ -35,9 +35,9 @@
         <input type="text" pInputText formControlName="dob" class="w-full h-[32px]" placeholder="DOB" />
       </div>
     </div>
-    <div class="flex flex-col gap-2 w-[24%]">
+    <div class="flex flex-col gap-2 w-[24%] dropdown-container">
       <label for="ethnicity">Ethnicity</label>
-      <input type="text" pInputText formControlName="ethnicity" class="w-full h-[32px]" placeholder="Ethnicity" />
+      <p-dropdown [options]="[]" formControlName="ethnicity" class="w-full h-[32px]" placeholder="Ethnicity" />
     </div>
   </div>
 
@@ -52,9 +52,12 @@
         placeholder="Mailing Address"
       />
     </div>
-    <div class="flex flex-col gap-2 w-[24%]">
+    <div class="flex flex-col gap-2 w-[24%] group-input">
       <label for="email">Email</label>
-      <input type="text" pInputText formControlName="email" class="w-full h-[32px]" placeholder="Email" />
+      <p-inputGroup>
+        <input type="text" pInputText formControlName="email" class="w-full h-[32px]" placeholder="Email" />
+        <p-inputGroupAddon><p-checkbox [binary]="true" /></p-inputGroupAddon>
+      </p-inputGroup>
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="city">City</label>
@@ -89,9 +92,8 @@
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="preferredLanguage">Preferred Language</label>
-      <input
-        type="text"
-        pInputText
+      <p-dropdown
+        [options]="[]"
         formControlName="preferredLanguage"
         class="w-full h-[32px]"
         placeholder="Preferred Language"

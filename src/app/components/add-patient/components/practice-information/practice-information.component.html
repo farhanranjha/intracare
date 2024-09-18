@@ -7,9 +7,8 @@
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-1/2">
       <label for="practiceName">Practice Name</label>
-      <input
-        type="text"
-        pInputText
+      <p-dropdown
+        [options]="[]"
         formControlName="practiceName"
         class="w-full h-[32px]"
         placeholder="Enter Practice Name"
@@ -17,9 +16,8 @@
     </div>
     <div class="flex flex-col gap-2 w-1/4">
       <label for="primaryCarePhysician">Primary Care Physician</label>
-      <input
-        type="text"
-        pInputText
+      <p-dropdown
+        [options]="[]"
         formControlName="primaryCarePhysician"
         class="w-full h-[32px]"
         placeholder="Select Physician"
@@ -43,23 +41,22 @@
       <label for="primaryPhysicianChecked">Primary Care Physician</label>
     </div>
     <div class="flex flex-col gap-2 w-1/4">
-      <label for="officeNumber2">Office Number</label>
-      <input
-        type="text"
-        pInputText
+      <label for="officeNumber2">Home Health Care</label>
+      <p-dropdown
+        [options]="[]"
         formControlName="officeNumber2"
         class="w-full h-[32px]"
-        placeholder="Office Number"
+        placeholder="Home Health Care"
       />
     </div>
     <div class="flex flex-col gap-2 w-1/4">
-      <label for="officeNumber3">Office Number</label>
+      <label for="officeNumber3">Home Health Office Number</label>
       <input
         type="text"
         pInputText
         formControlName="officeNumber3"
         class="w-full h-[32px]"
-        placeholder="Office Number"
+        placeholder="Home Health Office Number"
       />
     </div>
   </div>

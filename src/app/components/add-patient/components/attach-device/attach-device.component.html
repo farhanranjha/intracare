@@ -6,13 +6,7 @@
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-1/2">
       <label for="firstName">Select the Monitoring Device</label>
-      <input
-        type="text"
-        pInputText
-        formControlName="deviceName"
-        class="w-full h-[32px]"
-        placeholder="Monitoring Device"
-      />
+      <p-dropdown [options]="[]" formControlName="deviceName" class="w-full h-[32px]" placeholder="Monitoring Device" />
     </div>
     <div class="flex flex-col gap-2 w-1/2">
       <label for="firstName">Enter Device Serial</label>

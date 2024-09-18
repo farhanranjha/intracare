@@ -12,7 +12,7 @@
       <label for="gender">EHR ID</label>
       <input formControlName="ehrId" type="text" pInputText class="w-full h-[32px]" placeholder="EHR ID" />
     </div>
-    <div class="flex flex-col gap-3 w-[24%]">
+    <div class="flex flex-col gap-2 w-[24%]">
       <label for="dob">Program Type</label>
       <input formControlName="programType" type="text" pInputText class="w-full h-[32px]" placeholder="Type" />
     </div>
@@ -40,17 +40,11 @@
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="email">Care Type</label>
-      <input type="text" formControlName="careType" pInputText class="w-full h-[32px]" placeholder="Care Type" />
+      <p-dropdown [options]="[]" formControlName="careType" placeholder="Care Type" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="city">Monitoring Device Required</label>
-      <input
-        formControlName="monitoringDeviceRequired"
-        type="text"
-        pInputText
-        class="w-full h-[32px]"
-        placeholder="City"
-      />
+      <p-dropdown [options]="[]" formControlName="monitoringDeviceRequired" placeholder="City" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="zipCode">Text/SMS Consent</label>
