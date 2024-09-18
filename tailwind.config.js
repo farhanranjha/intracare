@@ -1,5 +1,4 @@
 /** @type {import('tailwindcss').Config} */
-const colors = require("tailwindcss/colors");
 
 module.exports = {
   corePlugins: {
@@ -12,7 +11,6 @@ module.exports = {
         full: "0px 3px 5px rgba(0, 0, 0, 0.02), 0px 0px 2px rgba(0, 0, 0, 0.05), 0px 1px 4px rgba(0, 0, 0, 0.08)", // Custom box-shadow
       },
       colors: {
-        ...colors,
         primary: "#017BFE",
         skyLight: "#DCEFFF",
       },

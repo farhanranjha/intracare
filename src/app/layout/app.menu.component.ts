@@ -19,7 +19,6 @@ export class AppMenuComponent implements OnInit {
       },
       {
         label: "Features",
-        icon: "pi pi-fw pi-briefcase",
         items: [
           {
             label: "Add Patient",

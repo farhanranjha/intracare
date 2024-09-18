@@ -9,7 +9,6 @@ import { PendingEnrollmentsComponent } from "../pendingenrollments/pendingenroll
     RouterModule.forChild([
       { path: "", component: DashboardComponent },
       { path: "pending-enrollments", component: PendingEnrollmentsComponent },
-      ,
       { path: "add-patient", component: AddPatientComponent },
     ]),
   ],
