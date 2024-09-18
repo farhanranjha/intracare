@@ -1,3 +1,29 @@
 .p-inputtext {
   border-radius: 6px;
 }
+
+:host ::ng-deep .p-dropdown {
+  width: 100% !important;
+  height: 31px;
+  border-radius: 6px;
+}
+:host ::ng-deep .p-placeholder {
+  margin: auto;
+}
+:host ::ng-deep .p-checkbox-box {
+  border-radius: 10px;
+  width: 16px;
+  height: 16px;
+  margin: auto;
+}
+.group-input {
+  .p-inputtext {
+    border-radius: 6px 0px 0px 6px;
+    border-right: none;
+  }
+  .p-inputgroup-addon {
+    border-radius: 0px 6px 6px 0px;
+    height: 32px;
+    background: none;
+  }
+}

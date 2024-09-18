@@ -11,7 +11,6 @@ export class AppMenuComponent implements OnInit {
 
   constructor(public layoutService: LayoutService) {}
 
-
   ngOnInit() {
     this.model = [
       {
@@ -31,8 +30,8 @@ export class AppMenuComponent implements OnInit {
             icon: "pi pi-th-large",
             routerLink: ["/pending-enrollments"],
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ];
   }
 }

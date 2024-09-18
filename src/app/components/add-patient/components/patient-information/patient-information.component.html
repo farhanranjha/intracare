@@ -1,62 +1,103 @@
-<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+<div [formGroup]="patientInfoForm" class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Patient Information</h4>
     <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="firstName">First Name</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="First Name" />
+      <input type="text" pInputText formControlName="firstName" class="w-full h-[32px]" placeholder="First Name" />
+      <small
+        *ngIf="patientInfoForm.get('firstName')?.invalid && patientInfoForm.get('firstName')?.touched"
+        class="text-red-500"
+      >
+        First Name is required.
+      </small>
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="lastName">Last Name</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Last Name" />
+      <input type="text" pInputText formControlName="lastName" class="w-full h-[32px]" placeholder="Last Name" />
+      <small
+        *ngIf="patientInfoForm.get('lastName')?.invalid && patientInfoForm.get('lastName')?.touched"
+        class="text-red-500"
+      >
+        Last Name is required.
+      </small>
     </div>
     <div class="flex flex-row gap-3 w-[24%]">
       <div class="flex flex-col gap-2 w-1/2">
         <label for="gender">Gender</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Gender" />
+        <input type="text" pInputText formControlName="gender" class="w-full h-[32px]" placeholder="Gender" />
       </div>
       <div class="flex flex-col gap-2 w-1/2">
         <label for="dob">DOB</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="DOB" />
+        <input type="text" pInputText formControlName="dob" class="w-full h-[32px]" placeholder="DOB" />
       </div>
     </div>
-    <div class="flex flex-col gap-2 w-[24%]">
+    <div class="flex flex-col gap-2 w-[24%] dropdown-container">
       <label for="ethnicity">Ethnicity</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Ethnicity" />
+      <p-dropdown [options]="[]" formControlName="ethnicity" class="w-full h-[32px]" placeholder="Ethnicity" />
     </div>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="mailingAddress">Mailing Address</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Mailing Address" />
+      <input
+        type="text"
+        pInputText
+        formControlName="mailingAddress"
+        class="w-full h-[32px]"
+        placeholder="Mailing Address"
+      />
     </div>
-    <div class="flex flex-col gap-2 w-[24%]">
+    <div class="flex flex-col gap-2 w-[24%] group-input">
       <label for="email">Email</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Email" />
+      <p-inputGroup>
+        <input type="text" pInputText formControlName="email" class="w-full h-[32px]" placeholder="Email" />
+        <p-inputGroupAddon><p-checkbox [binary]="true" /></p-inputGroupAddon>
+      </p-inputGroup>
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="city">City</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="City" />
+      <input type="text" pInputText formControlName="city" class="w-full h-[32px]" placeholder="City" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="zipCode">Zip Code</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Zip Code" />
+      <input type="text" pInputText formControlName="zipCode" class="w-full h-[32px]" placeholder="Zip Code" />
     </div>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="cellPhoneNumber">Cell Phone Number</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Cell Phone Number" />
+      <input
+        type="text"
+        pInputText
+        formControlName="cellPhoneNumber"
+        class="w-full h-[32px]"
+        placeholder="Cell Phone Number"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="homePhoneNumber">Home Phone Number</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Home Phone Number" />
+      <input
+        type="text"
+        pInputText
+        formControlName="homePhoneNumber"
+        class="w-full h-[32px]"
+        placeholder="Home Phone Number"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="preferredLanguage">Preferred Language</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Preferred Language" />
+      <p-dropdown
+        [options]="[]"
+        formControlName="preferredLanguage"
+        class="w-full h-[32px]"
+        placeholder="Preferred Language"
+      />
     </div>
   </div>
 </div>

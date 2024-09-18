@@ -1,0 +1,12 @@
+.p-inputtext {
+  border-radius: 6px;
+}
+
+:host ::ng-deep .p-dropdown {
+  width: 100% !important;
+  height: 31px;
+  border-radius: 6px;
+}
+:host ::ng-deep .p-placeholder {
+  margin: auto;
+}

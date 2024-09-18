@@ -1,58 +1,102 @@
-<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+<div [formGroup]="patientInfoForm" class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Insurance Information</h4>
     <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="firstName">Insurance Name</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Insurance Name" />
+      <label for="insuranceName">Insurance Name</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="insuranceName"
+        class="w-full h-[32px]"
+        placeholder="Insurance Name"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="lastName">Insurance State</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Insurance State" />
+      <label for="insuranceState">Insurance State</label>
+      <p-dropdown
+        [options]="[]"
+        formControlName="insuranceState"
+        class="w-full h-[32px]"
+        placeholder="Insurance State"
+      />
     </div>
     <div class="flex flex-row gap-3 w-[24%]">
       <div class="flex flex-col gap-2 w-1/2">
-        <label for="gender">Group Number</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Group" />
+        <label for="groupNumber">Group Number</label>
+        <input
+          type="text"
+          pInputText
+          formControlName="groupNumber"
+          class="w-full h-[32px]"
+          placeholder="Group Number"
+        />
       </div>
       <div class="flex flex-col gap-2 w-1/2">
-        <label for="dob">Subscriber DOB</label>
-        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="DOB" />
+        <label for="subscriberDOB">Subscriber DOB</label>
+        <input type="text" pInputText formControlName="subscriberDOB" class="w-full h-[32px]" placeholder="DOB" />
       </div>
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="ethnicity">Policy Number</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Policy Number" />
+      <label for="policyNumber">Policy Number</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="policyNumber"
+        class="w-full h-[32px]"
+        placeholder="Policy Number"
+      />
     </div>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="city">Subscriber Name</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Subscriber Name" />
+      <label for="subscriberName">Subscriber Name</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="subscriberName"
+        class="w-full h-[32px]"
+        placeholder="Subscriber Name"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="zipCode">Subscriber ID</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Subscriber ID" />
+      <label for="subscriberID">Subscriber ID</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="subscriberID"
+        class="w-full h-[32px]"
+        placeholder="Subscriber ID"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="city">City</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="City" />
+      <input type="text" pInputText formControlName="city" class="w-full h-[32px]" placeholder="City" />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
       <label for="zipCode">Zip Code</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Zip Code" />
+      <input type="text" pInputText formControlName="zipCode" class="w-full h-[32px]" placeholder="Zip Code" />
     </div>
   </div>
+
   <div class="w-full flex flex-row justify-start items-start gap-3">
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="cellPhoneNumber">Claim Mailing Address</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Claim Mailing Address" />
+      <label for="claimMailingAddress">Claim Mailing Address</label>
+      <input
+        type="text"
+        pInputText
+        formControlName="claimMailingAddress"
+        class="w-full h-[32px]"
+        placeholder="Claim Mailing Address"
+      />
     </div>
     <div class="flex flex-col gap-2 w-[24%]">
-      <label for="homePhoneNumber">State</label>
-      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="State" />
+      <label for="state">State</label>
+      <input type="text" pInputText formControlName="state" class="w-full h-[32px]" placeholder="State" />
     </div>
   </div>
 </div>

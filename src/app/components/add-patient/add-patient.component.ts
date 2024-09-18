@@ -2,12 +2,14 @@ import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
-import { FormsModule } from "@angular/forms";
+import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PatientInformationComponent } from "./components/patient-information/patient-information.component";
 import { DiagnosisComponent } from "./components/diagnosis/diagnosis.component";
 import { AttachDeviceComponent } from "./components/attach-device/attach-device.component";
 import { PracticeInformationComponent } from "./components/practice-information/practice-information.component";
 import { InsuranceInfoComponent } from "./components/insurance-info/insurance-info.component";
+import { DialogModule } from "primeng/dialog";
+import { Validators } from "@angular/forms";
 
 @Component({
   selector: "app-add-patient",
@@ -22,11 +24,70 @@ import { InsuranceInfoComponent } from "./components/insurance-info/insurance-in
     AttachDeviceComponent,
     PracticeInformationComponent,
     InsuranceInfoComponent,
+    ReactiveFormsModule,
+    DialogModule,
   ],
   templateUrl: "./add-patient.component.html",
   styleUrl: "./add-patient.component.scss",
 })
 export class AddPatientComponent implements AfterViewInit {
+  form: FormGroup;
+  visible: boolean = false;
+  formGroups: any[] = [];
+  constructor(private formBuilder: FormBuilder) {
+    this.form = this.formBuilder.group({
+      patientInfo: this.formBuilder.group({
+        firstName: ["", Validators.required],
+        lastName: ["", Validators.required],
+        gender: [""],
+        dob: [""],
+        ethnicity: [""],
+        mailingAddress: [""],
+        email: [""],
+        city: [""],
+        zipCode: [""],
+        cellPhoneNumber: [""],
+        homePhoneNumber: [""],
+        preferredLanguage: [""],
+      }),
+      diagnosis: this.formBuilder.group({
+        diagnosis: [""],
+        ehrId: [""],
+        emergencyContact: [""],
+        emergencyContactNumber: [""],
+        programType: [""],
+        careType: [""],
+        monitoringDeviceRequired: [""],
+        textSmsConsent: [""],
+        programBillingDiagnosis: [""],
+      }),
+      attachDevice: this.formBuilder.group({
+        deviceName: [""],
+        serialId: [""],
+      }),
+      practiceInfo: this.formBuilder.group({
+        practiceName: [""],
+        primaryCarePhysician: [""],
+        officeNumber: [""],
+        primaryPhysicianChecked: [false],
+        officeNumber2: [""],
+        officeNumber3: [""],
+      }),
+      insuranceInfo: this.formBuilder.group({
+        insuranceName: [""],
+        insuranceState: [""],
+        groupNumber: [""],
+        subscriberDOB: [""],
+        policyNumber: [""],
+        subscriberName: [""],
+        subscriberID: [""],
+        city: [""],
+        zipCode: [""],
+        claimMailingAddress: [""],
+        state: [""],
+      }),
+    });
+  }
   name: string = "Farhan Ranjha";
   categories: string[] = [
     "Patient Information",
@@ -35,6 +96,7 @@ export class AddPatientComponent implements AfterViewInit {
     "Practice Information",
     "Primary Insurance Info",
   ];
+
   selectedCategory: string = this.categories[0];
   currentTopContainer: string = this.categories[0];
   @ViewChild("componentContainer") componentContainer!: ElementRef;
@@ -78,5 +140,21 @@ export class AddPatientComponent implements AfterViewInit {
     });
 
     this.currentTopContainer = this.categories[closestComponentIndex];
+  }
+  showDialog() {
+    this.visible = true;
+
+    const formValues = this.form.getRawValue();
+    this.formGroups = [
+      { title: "Patient Information", fields: this.extractFields(formValues.patientInfo) },
+      { title: "Diagnosis", fields: this.extractFields(formValues.diagnosis) },
+      { title: "Attach Device", fields: this.extractFields(formValues.attachDevice) },
+      { title: "Practice Information", fields: this.extractFields(formValues.practiceInfo) },
+      { title: "Insurance Information", fields: this.extractFields(formValues.insuranceInfo) },
+    ];
+  }
+
+  extractFields(group: any): any[] {
+    return Object.keys(group).map((key) => ({ label: key, value: group[key] }));
   }
 }
