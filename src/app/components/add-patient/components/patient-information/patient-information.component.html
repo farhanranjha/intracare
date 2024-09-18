@@ -1,0 +1,62 @@
+<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+  <div class="flex flex-row items-start justify-start">
+    <h4 class="text-primary">Patient Information</h4>
+    <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
+  </div>
+  <div class="w-full flex flex-row justify-start items-start gap-3">
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="firstName">First Name</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="First Name" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="lastName">Last Name</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Last Name" />
+    </div>
+    <div class="flex flex-row gap-3 w-[24%]">
+      <div class="flex flex-col gap-2 w-1/2">
+        <label for="gender">Gender</label>
+        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Gender" />
+      </div>
+      <div class="flex flex-col gap-2 w-1/2">
+        <label for="dob">DOB</label>
+        <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="DOB" />
+      </div>
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="ethnicity">Ethnicity</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Ethnicity" />
+    </div>
+  </div>
+  <div class="w-full flex flex-row justify-start items-start gap-3">
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="mailingAddress">Mailing Address</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Mailing Address" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="email">Email</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Email" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="city">City</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="City" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="zipCode">Zip Code</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Zip Code" />
+    </div>
+  </div>
+  <div class="w-full flex flex-row justify-start items-start gap-3">
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="cellPhoneNumber">Cell Phone Number</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Cell Phone Number" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="homePhoneNumber">Home Phone Number</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Home Phone Number" />
+    </div>
+    <div class="flex flex-col gap-2 w-[24%]">
+      <label for="preferredLanguage">Preferred Language</label>
+      <input type="text" pInputText [(ngModel)]="value" class="w-full h-[32px]" placeholder="Preferred Language" />
+    </div>
+  </div>
+</div>

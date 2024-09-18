@@ -11,7 +11,7 @@ export class AppMenuComponent implements OnInit {
 
   constructor(public layoutService: LayoutService) {}
 
-  
+
   ngOnInit() {
     this.model = [
       {
@@ -21,6 +21,11 @@ export class AppMenuComponent implements OnInit {
       {
         label: "Features",
         items: [
+          {
+            label: "Add Patient",
+            icon: "pi pi-fw pi-user",
+            routerLink: ["/add-patient"],
+          },
           {
             label: "Pending Enrollments",
             icon: "pi pi-th-large",
