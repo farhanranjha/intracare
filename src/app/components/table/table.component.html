@@ -1,0 +1,93 @@
+<p-table
+  [value]="rowData"
+  dataKey="id"
+  [rows]="10"
+  [rowsPerPageOptions]="rowsPerPage"
+  [loading]="loading"
+  [paginator]="true"
+>
+  <ng-template pTemplate="caption">
+    <div class="flex">
+      <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear($event)" />
+      <span class="p-input-icon-left ml-auto">
+        <i class="pi pi-search"></i>
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="searchValue"
+          (input)="dt1.filterGlobal($event.target.value, 'contains')"
+          placeholder="Search keyword"
+        />
+      </span>
+    </div>
+  </ng-template>
+
+  <ng-template pTemplate="header">
+    <tr>
+      <th *ngFor="let col of columns" [style.min-width]="col.minWidth || '10rem'">
+        <div class="flex align-items-center">
+          {{ col.name }}
+          <ng-container [ngSwitch]="col.filterType">
+            <p-columnFilter *ngSwitchCase="'text'" [field]="col.field" display="menu" type="text"></p-columnFilter>
+            <p-columnFilter *ngSwitchCase="'date'" [field]="col.field" display="menu" type="date"></p-columnFilter>
+            <p-columnFilter
+              *ngSwitchCase="'numeric'"
+              [field]="col.field"
+              display="menu"
+              type="numeric"
+            ></p-columnFilter>
+            <p-columnFilter
+              *ngSwitchCase="'boolean'"
+              [field]="col.field"
+              display="menu"
+              type="boolean"
+            ></p-columnFilter>
+
+            <p-columnFilter
+              *ngSwitchCase="'custom'"
+              [field]="col.field"
+              matchMode="in"
+              display="menu"
+              [showMatchModes]="false"
+              [showOperator]="false"
+              [showAddButton]="false"
+            >
+              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+                <div class="flex flex-col items-start justify-start gap-1">
+                  <p-checkbox
+                    *ngFor="let option of col.options"
+                    [binary]="true"
+                    [label]="option"
+                    [value]="option"
+                    [ngModel]="col.selectedOptions.includes(option)"
+                    (onChange)="onCheckboxChange(col.field, option, $event.checked, filter)"
+                  ></p-checkbox>
+                </div>
+              </ng-template>
+            </p-columnFilter>
+          </ng-container>
+        </div>
+      </th>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="body" let-row>
+    <tr>
+      <td *ngFor="let col of columns">
+        <ng-container *ngIf="col.isCustom; else defaultContent">
+          <ng-container *ngTemplateOutlet="col.template; context: { $implicit: row }"></ng-container>
+        </ng-container>
+
+        <ng-template #defaultContent>
+          {{ getNestedValue(row, col.field) }}
+        </ng-template>
+      </td>
+    </tr>
+  </ng-template>
+
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="{{ columns.length }}">No data found.</td>
+    </tr>
+  </ng-template>
+</p-table>

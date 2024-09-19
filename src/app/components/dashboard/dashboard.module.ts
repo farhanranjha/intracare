@@ -1,9 +1,11 @@
 import { NgModule } from "@angular/core";
-import { DashboardComponent } from "./dashboard.component";
+import { TableComponent } from "../table/table.component";
 import { DashboardsRoutingModule } from "./dashboard-routing.module";
+import { DashboardComponent } from "./dashboard.component";
+import { ButtonModule } from "primeng/button";
 
 @NgModule({
-  imports: [DashboardsRoutingModule],
+  imports: [DashboardsRoutingModule, TableComponent, ButtonModule],
   declarations: [DashboardComponent],
 })
 export class DashboardModule {}
