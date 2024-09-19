@@ -2,7 +2,7 @@
   [value]="rowData"
   dataKey="id"
   [rows]="10"
-  [rowsPerPageOptions]="[10, 25, 50]"
+  [rowsPerPageOptions]="rowsPerPage"
   [loading]="loading"
   [paginator]="true"
 >
@@ -53,8 +53,9 @@
               [showAddButton]="false"
             >
               <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                <div *ngFor="let option of col.options">
+                <div class="flex flex-col items-start justify-start gap-1">
                   <p-checkbox
+                    *ngFor="let option of col.options"
                     [binary]="true"
                     [label]="option"
                     [value]="option"

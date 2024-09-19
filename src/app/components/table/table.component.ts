@@ -41,61 +41,25 @@ export interface FilterConfig {
     CheckboxModule,
   ],
   templateUrl: "./table.component.html",
-  styleUrls: ["./table.component.scss"],
 })
 export class TableComponent {
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
   @Input() filters: FilterConfig[] = [];
+  @Input() rowsPerPage: number;
+  @Input() loading: boolean = false;
 
-  loading: boolean = false;
   searchValue: string | undefined;
-  selectedFields: any[] = [];
-
   clear(table: any) {
     table.clear();
     this.searchValue = "";
   }
-
-  toggleSelection(value: string, func: Function) {
-    const index = this.selectedFields.indexOf(value);
-    if (index > -1) {
-      this.selectedFields.splice(index, 1);
-    } else {
-      this.selectedFields.push(value);
-    }
-    func(this.selectedFields);
-  }
-
-  isSelected(value: string): boolean {
-    return this.selectedFields.includes(value);
-  }
   getNestedValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
   }
-  getSeverity(status: string) {
-    switch (status.toLowerCase()) {
-      case "unqualified":
-        return "danger";
-      case "qualified":
-        return "success";
-      case "new":
-        return "info";
-      case "negotiation":
-        return "warning";
-      default:
-        return "default";
-    }
-  }
-
   onCheckboxChange(field: string, option: any, isChecked: boolean, filterCallback: Function) {
-    console.log("==field=>", field);
-    console.log("==option=>", option);
-    console.log("==isChecked=>", isChecked);
-
     const column = this.columns.find((col) => col.field === field);
     if (!column) return;
-
     if (isChecked) {
       if (!column.selectedOptions.includes(option)) {
         column.selectedOptions.push(option);
@@ -106,9 +70,6 @@ export class TableComponent {
         column.selectedOptions.splice(index, 1);
       }
     }
-
-    console.log("Updated selected options:", column.selectedOptions);
-
     filterCallback(column.selectedOptions);
   }
 }

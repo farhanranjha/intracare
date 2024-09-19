@@ -33,7 +33,7 @@ export class DashboardComponent {
       verified: true,
       activity: 17,
       representative: {
-        name: "Ioni Bowcher",
+        name: "Farhan",
         image: "ionibowcher.png",
       },
       balance: 70663,
