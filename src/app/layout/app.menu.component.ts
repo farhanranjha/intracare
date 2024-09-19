@@ -35,6 +35,11 @@ export class AppMenuComponent implements OnInit {
             icon: "pi pi-user-minus",
             routerLink: ["/pending-readings"],
           },
+          {
+            label: "Readings Not Addressed",
+            icon: "pi pi-book",
+            routerLink: ["/readings-not-addressed"],
+          },
         ],
       },
     ];
