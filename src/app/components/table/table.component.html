@@ -74,7 +74,13 @@
   <ng-template pTemplate="body" let-row>
     <tr>
       <td *ngFor="let col of columns">
-        {{ getNestedValue(row, col.field) }}
+        <ng-container *ngIf="col.isCustom; else defaultContent">
+          <ng-container *ngTemplateOutlet="col.template; context: { $implicit: row }"></ng-container>
+        </ng-container>
+
+        <ng-template #defaultContent>
+          {{ getNestedValue(row, col.field) }}
+        </ng-template>
       </td>
     </tr>
   </ng-template>

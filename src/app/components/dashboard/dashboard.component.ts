@@ -1,24 +1,32 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ColumnConfig } from "./../table/table.component";
 
 @Component({
   templateUrl: "./dashboard.component.html",
 })
-export class DashboardComponent {
-  columns: ColumnConfig[] = [
-    { name: "Name", field: "name", filterType: "none" },
-    { name: "Country", field: "country.name", filterType: "text" },
-    {
-      name: "Representative",
-      field: "representative.name",
-      filterType: "custom",
-      options: ["Ioni Bowcher", "Farhan"],
-      selectedOptions: [],
-    },
-    { name: "Date", field: "date", filterType: "date" },
-    { name: "Balance", field: "balance", filterType: "numeric" },
-  ];
+export class DashboardComponent implements OnInit {
+  @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
 
+  columns: ColumnConfig[] = [];
+  ngOnInit() {
+    this.columns = [
+      { name: "Name", field: "name", filterType: "none" },
+      { name: "Country", field: "country.name", filterType: "text" },
+      {
+        name: "Representative",
+        field: "representative.name",
+        filterType: "custom",
+        options: ["Ioni Bowcher", "Farhan"],
+        selectedOptions: [],
+      },
+      { name: "Date", field: "date", filterType: "date" },
+      { name: "Balance", field: "balance", filterType: "numeric" },
+      { name: "Actions", field: "", isCustom: true, template: this.actionTemplate, filterType: "none" },
+    ];
+  }
+  onActionClick(row: any) {
+    console.log("Button clicked for row:", row);
+  }
   rowData = [
     {
       id: 1000,

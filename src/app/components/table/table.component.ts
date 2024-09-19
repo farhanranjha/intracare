@@ -18,6 +18,8 @@ export interface ColumnConfig {
   [key: string]: any;
   options?: string[];
   selectedOptions?: string[];
+  isCustom?: boolean;
+  template?: any;
 }
 
 export interface FilterConfig {
