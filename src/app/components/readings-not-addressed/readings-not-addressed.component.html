@@ -1,0 +1,141 @@
+<section class="w-full flex flex-col justify-start items-start gap-2 cutom-header-padding">
+    <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
+        <p-button label="Readings Not Addressed" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
+    </div>
+
+    
+
+<div class="rounded-xl mt-4">
+    <p-table
+      #dt1
+      [value]="patientss"
+      dataKey="name"
+      [rows]="5"
+      [loading]="loading"
+      [rowsPerPageOptions]="[5, 15, 30]"
+      [paginator]="true"
+      [globalFilterFields]="['name', 'practice', 'readingType', 'status']"
+    >
+      <ng-template pTemplate="caption">
+        <div class="flex justify-between">
+            <div class="flex justify-between flex-wrap gap-10">
+                <!-- <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" /> -->
+                <input pInputText type="text" (input)="onSearchChange($event.target.value)" placeholder="Search" class="w-[200px] h-[2.3rem]" />
+                <p-calendar [(ngModel)]="dateRange" selectionMode="range" placeholder="Select Date Range" (onSelect)="onDateRangeChange()" [showIcon]="true"></p-calendar>
+              
+              <p-multiSelect [options]="readingTypeOptions" [(ngModel)]="selectedReadingTypes" placeholder="Select Reading Types" (onChange)="onReadingTypeChange()"></p-multiSelect>
+      
+              <p-dropdown [options]="bloodPressureOptions" [(ngModel)]="selectedBloodPressure" placeholder="Select Blood Pressure" (onChange)="onBloodPressureChange()"></p-dropdown>
+      
+              <p-dropdown [options]="bloodGlucoseOptions" [(ngModel)]="selectedBloodGlucose" placeholder="Select Blood Glucose" (onChange)="onBloodGlucoseChange()"></p-dropdown>
+
+            </div>
+
+          <div class="flex gap-2">
+              <p-selectButton 
+                 [options]="viewOptions" 
+                 [(ngModel)]="viewType" 
+                 optionLabel="label" 
+                 optionValue="value" 
+                 [styleClass]="'custom-select-button'" 
+                 (onChange)="toggleView(viewType)" 
+             ></p-selectButton>
+          </div>
+        </div>
+      </ng-template>
+
+      <ng-template pTemplate="header">
+        <tr>
+            <th style="min-width: 9rem; border-right: 1px solid #ccc;" class="p-2.5 rounded-tl-lg">
+                <div class="flex align-items-center justify-between">
+                    Patient
+                    <p-columnFilter class="color-pcolumnfilter" type="text" field="patient" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 8rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Practice
+                    <p-columnFilter style="--filter-icon-color: #DCEFFF;" type="text" field="practice" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Date & Time
+                    <p-columnFilter type="text" field="dateTime" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Reading Type
+                    <p-columnFilter class="text-indigo-500" type="text" field="readingType" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Reading
+                    <p-columnFilter type="text" field="reading" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 15rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Stage
+                    <p-columnFilter type="text" field="stage" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Source
+                    <p-columnFilter type="numeric" field="source" display="menu" />
+                </div>
+            </th>
+            <th style="min-width: 9rem; border-right: 1px solid #ccc;" class="p-2.5">
+                <div class="flex align-items-center justify-between">
+                    Status
+                    <p-columnFilter type="text" field="status" display="menu" />
+                </div>
+            </th>
+        </tr>
+    </ng-template>
+
+      <ng-template pTemplate="body" let-patient>
+        <tr>
+          <td class="" >
+            <div class="flex items-center space-x-2">
+              <img [src]="patient.image" alt="Patient Image" class="w-2 rounded-full" />
+              <div class="flex flex-col">
+                <span class="font-bold">{{ patient.name }}</span>
+                <a href="#" class="text-black">Patient ID:
+                    <span class="text-blue-500 hover:underline">
+                        {{ patient.id }}        
+                    </span>
+                </a>
+              </div>
+            </div>
+          </td>
+          <td class="p-2.5">{{ patient.practice }}</td>
+          <td class="p-2.5">{{ patient.date}}</td>
+          <td class="p-2.5">{{ patient.readingType }}</td>
+          <td class="p-2.5">{{ patient.reading }}</td>
+          <td class="p-2.5">
+            <span class="text-red-400 bg-red-50 rounded-full p-1.5">
+                <i class="pi pi-arrow-up ml-2"></i>
+                {{ patient.stage }}
+            </span>
+          </td>
+          <td class="p-2.5">
+            {{ patient.source }}
+          </td>
+          <td class="p-2.5">
+            <span [class]="patient.status ? 'text-green-500' : 'text-red-500'">{{ patient.status ? 'Active' : 'In Active' }}</span>
+          </td>
+        </tr>
+      </ng-template>
+
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8" class="p-2.5 text-center">No patients found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+</div>
+</section>
