@@ -30,6 +30,11 @@ export class AppMenuComponent implements OnInit {
             icon: "pi pi-th-large",
             routerLink: ["/pending-enrollments"],
           },
+          {
+            label: "Patient Pending Readings",
+            icon: "pi pi-user-minus",
+            routerLink: ["/pending-readings"],
+          },
         ],
       },
     ];
