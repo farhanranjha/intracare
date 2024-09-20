@@ -11,6 +11,7 @@ import { debounceTime, Subject } from "rxjs";
 import { ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
 import { TableComponent } from "../table/table.component";
+import { CustomFilterComponent } from "../table/custom-filter/custom-filter.component";
 
 @Component({
   selector: "app-pending-enrollments",
@@ -25,6 +26,7 @@ import { TableComponent } from "../table/table.component";
     MultiSelectModule,
     DialogModule,
     TableComponent,
+    CustomFilterComponent,
   ],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
@@ -38,6 +40,7 @@ export class PendingEnrollmentsComponent {
   @ViewChild("progressTemplate", { static: true }) progressTemplate: any;
   @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
+  @ViewChild("customFilter", { static: true }) customFilter: any;
 
   searchValue: string = "";
   loading: boolean = false;
@@ -114,9 +117,11 @@ export class PendingEnrollmentsComponent {
       {
         name: "Program Type",
         field: "programType",
-        filterType: "text",
+        filterType: "custom",
         isCustom: true,
         template: this.programTypeTemplate,
+        filterTemplate: this.customFilter,
+        options: ["RPM", "CCM"],
       },
       { name: "Status", field: "status", filterType: "text", isCustom: true, template: this.statusTemplate },
       { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },
@@ -143,5 +148,8 @@ export class PendingEnrollmentsComponent {
   showEditDialog(patient: any) {
     this.selectedPatient = patient;
     this.displayEditDialog = true;
+  }
+  onCheckboxChange(selectedOptions: string[]) {
+    console.log("Selected options: ", selectedOptions);
   }
 }

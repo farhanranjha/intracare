@@ -20,7 +20,6 @@ export class DashboardComponent implements OnInit {
         filterType: "custom",
         filterTemplate: this.customFilter,
         options: ["Ioni Bowcher", "Farhan"],
-        selectedOptions: [],
       },
       { name: "Date", field: "date", filterType: "date" },
       { name: "Balance", field: "balance", filterType: "numeric" },
