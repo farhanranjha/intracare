@@ -13,8 +13,7 @@ export class CustomFilterComponent {
   @Output() filterCallback: EventEmitter<string[]> = new EventEmitter<string[]>();
 
   selectedOptions: string[] = [];
-
-  onCheckboxChange(option: string, isChecked: boolean) {
+  onCheckboxChange(option: string, isChecked: boolean): void {
     if (isChecked) {
       if (!this.selectedOptions.includes(option)) {
         this.selectedOptions.push(option);
@@ -25,8 +24,6 @@ export class CustomFilterComponent {
         this.selectedOptions.splice(index, 1);
       }
     }
-
-    console.log("===selectedOptions===> ", this.selectedOptions);
-    this.filterCallback.emit([...this.selectedOptions]);
+    this.filterCallback.emit(this.selectedOptions);
   }
 }

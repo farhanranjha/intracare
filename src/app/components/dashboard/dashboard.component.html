@@ -1,5 +1,8 @@
-<app-table [columns]="columns" [rowData]="rowData" [rowsPerPage]="[10, 25, 50]">
-  <ng-template #actionTemplate let-row>
-    <button pButton type="button" label="Action" (click)="onActionClick(row)"></button>
-  </ng-template>
-</app-table>
+<app-table [columns]="columns" [rowData]="rowData" [rowsPerPage]="[10, 25, 50]" />
+
+<ng-template #actionTemplate let-row>
+  <button pButton type="button" label="Action" (click)="onActionClick(row)"></button>
+</ng-template>
+<ng-template #customFilter let-field="field" let-options="options" let-filterCallback="filterCallback">
+  <app-custom-filter [options]="options" (filterCallback)="onCheckboxChange($event)" />
+</ng-template>

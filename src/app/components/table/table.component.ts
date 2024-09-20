@@ -21,6 +21,7 @@ export interface ColumnConfig {
   selectedOptions?: string[];
   isCustom?: boolean;
   template?: any;
+  filterTemplate?: any;
 }
 
 export interface FilterConfig {

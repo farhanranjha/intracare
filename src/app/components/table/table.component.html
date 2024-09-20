@@ -53,11 +53,12 @@
               [showAddButton]="false"
             >
               <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-                <app-custom-filter
-                  [options]="col.options"
-                  [selectedOptions]="col.selectedOptions"
-                  (filterCallback)="onCustomFilterChange(col.field, $event)"
-                />
+                <ng-container
+                  *ngTemplateOutlet="
+                    col.filterTemplate;
+                    context: { field: col.field, options: col.options, filterCallback: filterCallback }
+                  "
+                ></ng-container>
               </ng-template>
             </p-columnFilter>
           </ng-container>
