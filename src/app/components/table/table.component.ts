@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { Component, Input } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { DropdownModule } from "primeng/dropdown";
@@ -8,7 +8,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { MultiSelectModule } from "primeng/multiselect";
 import { ProgressBarModule } from "primeng/progressbar";
 import { SliderModule } from "primeng/slider";
-import { TableModule } from "primeng/table";
+import { Table, TableModule } from "primeng/table";
 import { TagModule } from "primeng/tag";
 import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
 export interface ColumnConfig {
@@ -29,7 +29,7 @@ export interface FilterConfig {
   template: any;
 }
 @Component({
-  selector: "app-table",
+  selector: "intracare-table",
   standalone: true,
   imports: [
     TableModule,
@@ -48,11 +48,13 @@ export interface FilterConfig {
   templateUrl: "./table.component.html",
 })
 export class TableComponent {
+  @ViewChild("dt1") dt1!: Table;
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
   @Input() filters: FilterConfig[] = [];
   @Input() rowsPerPage: number;
   @Input() loading: boolean = false;
+  @Input() onSearchChange?: () => void;
 
   searchValue: string | undefined;
   clear(table: any) {

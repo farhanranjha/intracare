@@ -1,4 +1,5 @@
 <p-table
+  #dt1
   [value]="rowData"
   dataKey="id"
   [rows]="10"
@@ -8,7 +9,7 @@
 >
   <ng-template pTemplate="caption">
     <div class="flex">
-      <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear($event)" />
+      <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" />
       <span class="p-input-icon-left ml-auto">
         <i class="pi pi-search"></i>
         <input
@@ -24,9 +25,9 @@
 
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of columns" [style.min-width]="col.minWidth || '10rem'">
+      <th *ngFor="let col of columns" [style.min-width]="col.minWidth || '5rem'" class="border-r-2">
         <div class="flex align-items-center">
-          {{ col.name }}
+          <p class="m-0">{{ col.name }}</p>
           <ng-container [ngSwitch]="col.filterType">
             <p-columnFilter *ngSwitchCase="'text'" [field]="col.field" display="menu" type="text"></p-columnFilter>
             <p-columnFilter *ngSwitchCase="'date'" [field]="col.field" display="menu" type="date"></p-columnFilter>
