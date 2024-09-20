@@ -10,6 +10,7 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { SliderModule } from "primeng/slider";
 import { TableModule } from "primeng/table";
 import { TagModule } from "primeng/tag";
+import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
 export interface ColumnConfig {
   name: string;
   field: string;
@@ -41,6 +42,7 @@ export interface FilterConfig {
     SliderModule,
     ProgressBarModule,
     CheckboxModule,
+    CustomFilterComponent,
   ],
   templateUrl: "./table.component.html",
 })
