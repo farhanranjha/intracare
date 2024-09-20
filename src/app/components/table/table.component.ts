@@ -1,3 +1,4 @@
+import { style } from "@angular/animations";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { Component, Input, ViewChild } from "@angular/core";
@@ -46,6 +47,19 @@ export interface FilterConfig {
     CustomFilterComponent,
   ],
   templateUrl: "./table.component.html",
+  styles: [
+    `
+      ::ng-deep .p-datatable-header {
+        padding: 10px 0;
+      }
+      ::ng-deep .p-datatable-thead > tr > th {
+        background-color: #f9f9f9;
+      }
+      ::ng-deep .p-datatable-tbody > tr {
+        background-color: #fff;
+      }
+    `,
+  ],
 })
 export class TableComponent {
   @ViewChild("dt1") dt1!: Table;

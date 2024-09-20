@@ -107,7 +107,7 @@ export class PendingEnrollmentsComponent {
       { name: "Date", field: "date", filterType: "date" },
       {
         name: "Patient Name",
-        field: "patient.name",
+        field: "name",
         filterType: "text",
         isCustom: true,
         template: this.patientCardTemplate,

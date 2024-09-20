@@ -1,130 +1,29 @@
 <section class="w-full flex flex-col justify-start items-start gap-2 cutom-header-padding">
-    <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
-        <p-button label="Patient Pending Readings" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
-        <button pButton pRipple label="Enroll New Patient" class="p-3 font-medium"></button>
-    </div>
-    <div class="rounded-xl mt-4">
-        <p-table
-        #dt1
-        [value]="patients"
-        dataKey="name"
-        [rows]="5"
-        [loading]="loading"
-        [rowsPerPageOptions]="[5, 15, 30]"
-        [paginator]="true"
-        [globalFilterFields]="['name', 'practice', 'readingType', 'status']"
-        >
-        <ng-template pTemplate="caption">
-            <div class="flex justify-between">
-                  <input pInputText type="text" (input)="onSearchChange($event.target.value)" placeholder="Search" class="p-inputtext-sm" />
-                 <div class="flex gap-2">
-                     <!-- <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" /> -->
-                     <p-selectButton 
-                        [options]="viewOptions" 
-                        [(ngModel)]="viewType" 
-                        optionLabel="label" 
-                        optionValue="value" 
-                        [styleClass]="'custom-select-button'" 
-                        (onChange)="toggleView(viewType)" 
-                    ></p-selectButton>
-                    <button [text]="true" severity="secondary" icon="pi pi-download" class="font-medium text-blue-500 dark:bg-transparent hover:bg-blue-500 hover:text-white border border-blue-500 rounded-lg cursor-pointer m-0" (onClick)="downloadData()" [tooltip]="'Download'" tooltipPosition="top">
-                        <i class="pi pi-download text-base px-2.5"></i>
-                    </button>
-                 </div>
-            </div>
-          </ng-template>
-    
-          <ng-template pTemplate="header">
-            <tr>
-                <th style="min-width: 18rem; border-right: 1px solid #ccc;" class="p-2.5 rounded-tl-lg">
-                    <div class="flex align-items-center justify-between">
-                        Patient
-                        <p-columnFilter class="color-pcolumnfilter" type="text" field="patient" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 12rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Care / Program Type
-                        <p-columnFilter style="--filter-icon-color: #DCEFFF;" type="text" field=" careProgramType" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Practice
-                        <p-columnFilter type="text" field="practice" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Provider
-                        <p-columnFilter class="text-indigo-500" type="text" field="provider" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 11rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Created
-                        <p-columnFilter type="text" field="created" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Tracking Status
-                        <p-columnFilter type="text" field="trackingStatus" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Shipped
-                        <p-columnFilter type="numeric" field="shipped" display="menu" />
-                    </div>
-                </th>
-                <th style="min-width: 9rem; border-right: 1px solid #ccc;" class="p-2.5">
-                    <div class="flex align-items-center justify-between">
-                        Tracking Description
-                    </div>
-                </th>
-            </tr>
-        </ng-template>
-    
-          <ng-template pTemplate="body" let-patient>
-            <tr>
-              <td class="" >
-                <div class="flex items-center space-x-2">
-                  <img [src]="patient.image" alt="Patient Image" class="w-2 rounded-full" />
-                  <div class="flex flex-col">
-                      <span class="font-bold">{{ patient.name }}</span>
-                      <span class="text-sm">{{ patient.dob }}</span>
-                    <a href="#" class="text-black">Patient ID: <span class="text-blue-500 hover:underline">{{ patient.id }}</span></a>
-                  </div>
-                </div>
-              </td>
-              <td class="p-2.5">{{ patient.type }}
-                <div>{{ patient.medicare }}</div>
-              </td>
-              <td class="p-2.5">{{ patient.practice }}</td>
-              <td class="p-2.5">{{ patient.provider }}</td>
-              <td class="p-2.5">{{ patient.date}}</td>
-              <td class="p-2.5">
-                <span class="text-indigo-500 bg-lime-100 px-1 rounded-lg">{{ patient.trackingStatus }}</span>
-              </td>
-              <td class="p-2.5">
-                <span [class]="patient.shipped ? 'text-green-500' : 'text-red-500'">{{ patient.shipped ? 'Shipped' : 'Not Shipped' }}</span>
-              </td>
-              
-              
-              <td class="p-2.5">
-                <span class="rounded-full px-3 py-1 text-sm font-medium">{{ patient.trackingDescription }}</span>
-              </td>
-            </tr>
-          </ng-template>
-    
-          <ng-template pTemplate="emptymessage">
-            <tr>
-              <td colspan="8" class="p-2.5 text-center">No patients found.</td>
-            </tr>
-          </ng-template>
-        </p-table>
-    </div>
+  <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
+    <p-button label="Patient Pending Readings" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
+    <button pButton pRipple label="Enroll New Patient" class="p-3 font-medium"></button>
+  </div>
+
+  <intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />
 </section>
-
-
+<ng-template #patientCardTemplate let-row>
+  <div class="flex items-center space-x-2">
+    <img [src]="row.image" alt="Patient Image" class="w-2 rounded-full" />
+    <div class="flex flex-col">
+      <span class="font-bold">{{ row.name }}</span>
+      <span class="text-sm">{{ row.dob }}</span>
+      <a href="#" class="text-black"
+        >Patient ID: <span class="text-blue-500 hover:underline">{{ row.id }}</span></a
+      >
+    </div>
+  </div>
+</ng-template>
+<ng-template #programTypeTemplate let-row>
+  <p class="font-bold">{{ row.type }}</p>
+</ng-template>
+<ng-template #trackingTemplate let-row>
+  <span class="text-indigo-500 bg-lime-100 px-1 rounded-lg">{{ row.trackingStatus }}</span>
+</ng-template>
+<ng-template #shippingTemplate let-row
+  ><span [class]="row.shipped ? 'text-green-500' : 'text-red-500'">{{ row.shipped ? "Shipped" : "Not Shipped" }}</span>
+</ng-template>
