@@ -1,0 +1,39 @@
+name: Deploy Angular App to EC2
+
+on:
+  push:
+    branches:
+      - development
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build Angular application
+        run: yarn build
+
+      - name: Install SSH key
+        uses: webfactory/ssh-agent@v0.5.3
+        with:
+          ssh-private-key: ${{ secrets.EC2_SSH_KEY }}
+
+      - name: Clean /var/www/html on EC2 except .htaccess
+        run: |
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} "sudo find /var/www/html -mindepth 1 ! -name '.htaccess' -exec sudo rm -rf {} +"
+
+      - name: Deploy to EC2
+        run: |
+          rsync -avz --delete dist/intracare/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_APP_PATH }}
+          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}
