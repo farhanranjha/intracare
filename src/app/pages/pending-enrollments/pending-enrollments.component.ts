@@ -12,6 +12,7 @@ import { ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
 import { TableComponent } from "../../components/table/table.component";
 import { CustomFilterComponent } from "../../components/table/custom-filter/custom-filter.component";
+import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 
 @Component({
   selector: "app-pending-enrollments",
@@ -48,52 +49,7 @@ export class PendingEnrollmentsComponent {
   selectedPatient: any = null;
   columns: any[] = [];
 
-  patients: any[] = [
-    {
-      date: "July 22, 2024",
-      name: "Thomas Blackwood",
-      dob: "10/16/1951",
-      practice: "East Valley Family Physicians",
-      deviceType: "BP",
-      programType: ["RPM, CCM"],
-      status: "First Call",
-      progress: 75,
-      consent: "Yes",
-    },
-    {
-      date: "July 22, 2024",
-      name: "James Huddleson",
-      dob: "06/23/1980",
-      practice: "East Valley Family Physicians",
-      deviceType: "BP",
-      programType: ["RPM, CCM"],
-      status: "Second Call",
-      progress: 45,
-      consent: "Yes",
-    },
-    {
-      date: "July 22, 2024",
-      name: "Jim Carter",
-      dob: "02/26/1980",
-      practice: "East Valley Family Physicians",
-      deviceType: "BP",
-      programType: ["RPM, CCM"],
-      status: "First Call",
-      progress: 25,
-      consent: "Yes",
-    },
-    {
-      date: "July 22, 2024",
-      name: "Chris Hemsworth",
-      dob: "12/03/1987",
-      practice: "East Valley Family Physicians",
-      deviceType: "BP",
-      programType: ["RPM, CCM"],
-      status: "First Call",
-      progress: 100,
-      consent: "No",
-    },
-  ];
+  patients: any[] = pendingEnrollmentsRows;
 
   private searchSubject: Subject<string> = new Subject<string>();
 
