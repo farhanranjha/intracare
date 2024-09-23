@@ -39,5 +39,4 @@ jobs:
 
       - name: Deploy to EC2
         run: |
-          rsync -avz --delete dist/intracare/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_APP_PATH }}
-          ssh ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}
+          rsync -avz --delete --no-perms --omit-dir-times --exclude '.htaccess' dist/intracare/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:${{ secrets.EC2_APP_PATH }}
