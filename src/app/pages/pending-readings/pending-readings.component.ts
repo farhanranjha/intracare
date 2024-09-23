@@ -3,11 +3,12 @@ import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { pendingReadingsRows } from "src/app/utils/constants/mock-data";
 import { ColumnConfig, TableComponent } from "../../components/table/table.component";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: "app-pending-readings",
   standalone: true,
-  imports: [ButtonModule, TableComponent],
+  imports: [ButtonModule, TableComponent, RouterModule],
   templateUrl: "./pending-readings.component.html",
   styleUrl: "./pending-readings.component.scss",
 })
