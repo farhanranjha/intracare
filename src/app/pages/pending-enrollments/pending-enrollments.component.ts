@@ -3,11 +3,16 @@ import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { TableComponent } from "../../components/table/table.component";
+import { DialogModule } from "primeng/dialog";
+import { FormsModule } from "@angular/forms";
+import { CommonModule } from "@angular/common";
+import { InputTextModule } from "primeng/inputtext";
+import { DropdownModule } from "primeng/dropdown";
 
 @Component({
   selector: "app-pending-enrollments",
   standalone: true,
-  imports: [ButtonModule, TableComponent],
+  imports: [ButtonModule, TableComponent, DialogModule, CommonModule, InputTextModule, DropdownModule],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
 })
@@ -24,6 +29,8 @@ export class PendingEnrollmentsComponent {
 
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
+  visibleAddDevice: boolean = true;
+  isEditMode = false;
 
   ngOnInit() {
     this.columns = [
@@ -61,5 +68,16 @@ export class PendingEnrollmentsComponent {
 
   clear(table: any) {
     table.clear();
+  }
+
+  showDialog() {
+    this.visibleAddDevice = true;
+  }
+
+  enableEditMode() {
+    this.isEditMode = true;
+  }
+  disableEditMode() {
+    this.isEditMode = false;
   }
 }

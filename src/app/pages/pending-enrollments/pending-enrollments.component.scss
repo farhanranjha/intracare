@@ -1,5 +1,33 @@
-.custom-progress-bar{
-    ::ng-deep .p-progressbar-value {
-        background-color: #6366F1;
+.custom-progress-bar {
+  ::ng-deep .p-progressbar-value {
+    background-color: #6366f1;
+  }
+}
+
+:host ::ng-deep {
+  .table-icon {
+    .p-button {
+      background: #6366f1;
+      border: #6366f1;
+      height: 32px;
+      width: 32px;
     }
+  }
+  .add-device-form {
+    .p-dropdown {
+      width: 250px !important;
+      height: 31px;
+      border-radius: 6px;
+    }
+    .p-inputtext {
+      width: 250px;
+      border-radius: 6px;
+    }
+  }
+}
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
 }
