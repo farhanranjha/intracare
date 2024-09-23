@@ -10,8 +10,8 @@ import { DialogModule } from "primeng/dialog";
 import { debounceTime, Subject } from "rxjs";
 import { ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
-import { TableComponent } from "../table/table.component";
-import { CustomFilterComponent } from "../table/custom-filter/custom-filter.component";
+import { TableComponent } from "../../components/table/table.component";
+import { CustomFilterComponent } from "../../components/table/custom-filter/custom-filter.component";
 
 @Component({
   selector: "app-pending-enrollments",

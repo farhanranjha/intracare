@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
-import { ColumnConfig } from "./../table/table.component";
+import { ColumnConfig } from "../../components/table/table.component";
 
 @Component({
   templateUrl: "./dashboard.component.html",

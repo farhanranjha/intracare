@@ -11,7 +11,7 @@ import { Table } from "primeng/table";
 import { SelectButtonModule } from "primeng/selectbutton";
 import { CalendarModule } from "primeng/calendar";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { ColumnConfig, TableComponent } from "../table/table.component";
+import { ColumnConfig, TableComponent } from "../../components/table/table.component";
 
 @Component({
   selector: "app-readings-not-addressed",

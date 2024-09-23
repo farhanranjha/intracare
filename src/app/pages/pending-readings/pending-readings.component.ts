@@ -9,7 +9,7 @@ import { debounceTime, Subject } from "rxjs";
 import { ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
 import { SelectButtonModule } from "primeng/selectbutton";
-import { ColumnConfig, TableComponent } from "../table/table.component";
+import { ColumnConfig, TableComponent } from "../../components/table/table.component";
 
 @Component({
   selector: "app-pending-readings",
