@@ -1,52 +1,24 @@
-import { Component, OnInit } from "@angular/core";
-import { TableModule } from "primeng/table";
-import { InputTextModule } from "primeng/inputtext";
-import { DropdownModule } from "primeng/dropdown";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
-import { TagModule } from "primeng/tag";
-import { MultiSelectModule } from "primeng/multiselect";
-import { debounceTime, Subject } from "rxjs";
-import { ViewChild } from "@angular/core";
 import { Table } from "primeng/table";
-import { SelectButtonModule } from "primeng/selectbutton";
-import { ColumnConfig, TableComponent } from "../../components/table/table.component";
 import { pendingReadingsRows } from "src/app/utils/constants/mock-data";
+import { ColumnConfig, TableComponent } from "../../components/table/table.component";
 
 @Component({
   selector: "app-pending-readings",
   standalone: true,
-  imports: [
-    TableModule,
-    InputTextModule,
-    DropdownModule,
-    ButtonModule,
-    TagModule,
-    MultiSelectModule,
-    SelectButtonModule,
-    TableComponent,
-  ],
+  imports: [ButtonModule, TableComponent],
   templateUrl: "./pending-readings.component.html",
   styleUrl: "./pending-readings.component.scss",
 })
 export class PendingReadingsComponent implements OnInit {
   @ViewChild("dt1") dt1!: Table;
-
   @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
   @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: any;
   @ViewChild("trackingTemplate", { static: true }) trackingTemplate: any;
   @ViewChild("shippingTemplate", { static: true }) shippingTemplate: any;
 
-  searchValue: string = "";
-  loading: boolean = false;
-  viewType: string = "grid";
   columns: ColumnConfig[] = [];
-  private searchSubject: Subject<string> = new Subject<string>();
-
-  viewOptions = [
-    { label: "", value: "grid", icon: "pi pi-th-large" },
-    { label: "", value: "list", icon: "pi pi-bars" },
-  ];
-
   patients: any[] = pendingReadingsRows;
 
   ngOnInit() {
@@ -102,16 +74,7 @@ export class PendingReadingsComponent implements OnInit {
     ];
   }
 
-  onSearchChange(value: string) {
-    this.searchSubject.next(value);
-  }
-
   clear(table: any) {
-    this.searchValue = "";
     table.clear();
-  }
-
-  toggleView(view: string) {
-    this.viewType = view;
   }
 }
