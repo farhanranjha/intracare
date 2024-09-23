@@ -22,7 +22,7 @@ jobs:
         run: yarn install --frozen-lockfile
 
       - name: Fetch Env
-        run: yarn run fetch:env
+        run: yarn run env:fetch
         env:
           INFISICAL_URL: ${{ secrets.INFISICAL_URL }}
           INFISICAL_CLIENT_ID: ${{ secrets.INFISICAL_CLIENT_ID }}
