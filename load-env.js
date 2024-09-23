@@ -1,7 +1,7 @@
-const fs = require("fs");
-const Infisical = require("@infisical/sdk").InfisicalSDK;
+import fs from "fs";
+import {InfisicalSDK} from "@infisical/sdk"
 
-const client = new Infisical({
+const client = new InfisicalSDK({
   siteUrl: process.env.INFISICAL_URL,
 });
 
