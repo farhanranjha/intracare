@@ -8,7 +8,7 @@ import { map, take } from "rxjs/operators";
 @Injectable({
   providedIn: "root",
 })
-export class AuthGuard  {
+export class AuthGuard {
   constructor(
     private store: Store,
     private router: Router,
@@ -21,7 +21,7 @@ export class AuthGuard  {
         if (user && user.username) {
           return true;
         } else {
-          this.router.navigate(["/auth/login"]);
+          this.router.navigate(["login"]);
           return false;
         }
       }),

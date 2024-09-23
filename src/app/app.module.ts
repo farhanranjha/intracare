@@ -1,10 +1,10 @@
 import { LocationStrategy, PathLocationStrategy } from "@angular/common";
 import { NgModule } from "@angular/core";
+import { StoreModule } from "@ngrx/store";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { AppLayoutModule } from "./layout/app.layout.module";
-import { StoreModule } from "@ngrx/store";
+import { NotfoundComponent } from "./pages/notfound/notfound.component";
 import { userReducer } from "./store/reducers/user.reducer";
 
 @NgModule({
