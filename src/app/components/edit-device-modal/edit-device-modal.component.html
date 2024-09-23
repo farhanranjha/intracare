@@ -44,9 +44,10 @@
     <device-tile
       class="w-full"
       *ngFor="let device of devicesData"
-      type="{{ device.type }}"
-      serial="{{ device.serial }}"
-      issueDate="{{ device.issueDate }}"
+      [type]="device.type"
+      [serial]="device.serial"
+      [issueDate]="device.issueDate"
+      [active]="device.active"
     ></device-tile>
   </div>
 </p-dialog>
