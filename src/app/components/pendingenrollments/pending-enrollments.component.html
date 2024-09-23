@@ -1,142 +1,40 @@
-
-<section class="w-full flex flex-col justify-start items-start gap-2">
+<section>
   <div class="w-full h-[42px] flex flex-row justify-between items-center">
-      <p-button label="Pending Enrollments" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
+    <p-button label="Pending Enrollments" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
   </div>
-  
-  <div class="rounded-xl mt-4 custom-progress-bar">
-    <p-table
-      #dt1
-      [value]="patients"
-      dataKey="name"
-      [rows]="5"
-      [loading]="loading"
-      [rowsPerPageOptions]="[5, 15, 30]"
-      [paginator]="true"
-      [globalFilterFields]="['name', 'practice', 'deviceType', 'status']"
-    >
-    <ng-template pTemplate="caption">
-      <div class="flex justify-content-between">
-        <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" />
-        <div>
-          <button class="mr-2 p-1 font-medium text-blue-500 dark:bg-transparent hover:bg-blue-500 hover:text-white border border-blue-500 rounded-lg cursor-pointer">
-            <i class="pi pi-cloud-download text-base px-2.5"></i>
-          </button>
-            <input pInputText type="text" [(ngModel)]="searchValue" (input)="onSearchChange($event.target.value)" placeholder="Search" />
-        </div>
-      </div>
-    </ng-template>
-  
-    <ng-template pTemplate="header">
-      <tr>
-          <th style="min-width: 9rem; border-right: 1px solid #ccc;" class="p-2.5 rounded-tl-lg">
-              <div class="flex align-items-center justify-between">
-                  Date
-                  <p-columnFilter class="color-pcolumnfilter" type="text" field="date" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 12rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Patient Name
-                  <p-columnFilter style="--filter-icon-color: #DCEFFF;" type="text" field="name" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Practice
-                  <p-columnFilter type="text" field="practice" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 5rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Device Type
-                  <p-columnFilter class="text-indigo-500" type="text" field="deviceType" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 11rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Program Type
-                  <p-columnFilter type="text" field="programType" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Status
-                  <p-columnFilter type="text" field="status" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Progress
-                  <p-columnFilter type="numeric" field="progress" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 9rem; border-right: 1px solid #ccc;" class="p-2.5">
-              <div class="flex align-items-center justify-between">
-                  Consent
-                  <p-columnFilter type="text" field="consent" display="menu" />
-              </div>
-          </th>
-          <th style="min-width: 10rem; border-right: 1px solid #ccc;" class="p-2.5 rounded-tr-lg">
-              <div class="flex align-items-center">Edit / Update</div>
-          </th>
-      </tr>
-  </ng-template>
-  
-  
-      <ng-template pTemplate="body" let-patient>
-        <tr>
-          <td>{{ patient.date }}</td>
-          <td class="flex flex-col">
-            <p class="font-bold">{{ patient.name }}</p>
-            <p>DOB {{ patient.dob }}</p>
-          </td>
-          <td class="">{{ patient.practice }}</td>
-          <td class="">{{ patient.deviceType }}</td>
-          <td class="flex flex-col ">
-            <p class="font-bold">{{ patient.programType[0] }}</p>
-            <p>{{ patient.programType[1] }}</p>
-          </td>
-          <td>
-            <p class="bg-skyLight text-indigo-500 text-center rounded-full inline-block w-auto px-2.5 py-1">
-              {{ patient.status }}
-            </p>
-          </td>
-          <td class="flex flex-col">
-            <p>{{ patient.progress }}%</p>
-            <p-progressBar class="p-progressbar-value p-progressbar-value-animate progressbar text-skyLight" [value]="patient.progress" [style]="{ height: '4px' }" [showValue]="false"></p-progressBar>
-          </td>
-          <td>
-            <p class="bg-lime-50 text-lime-600 text-center px-[1px] rounded-lg">
-              {{ patient.consent }}
-            </p>
-          </td>
-          <td>
-            <i class="pi pi-eraser mr-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
-            <i class="pi pi-sync ml-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
-          </td>
-        </tr>
-      </ng-template>
-  
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="9">No patients found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
-  
-  <p-dialog
-    header="Edit Patient"
-    [(visible)]="displayEditDialog"
-    [modal]="true"
-    [style]="{ width: '50vw' }"
-    [closable]="true"
-  >
-    <ng-template pTemplate="content">
-      <app-edit-patient [patient]="selectedPatient"></app-edit-patient>
-    </ng-template>
-  </p-dialog>
 
-
+  <intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />
 </section>
+
+<ng-template #patientCardTemplate let-row>
+  <p class="font-bold">{{ row.name }}</p>
+  <p>DOB {{ row.dob }}</p>
+</ng-template>
+<ng-template #programTypeTemplate let-row>
+  <p class="font-bold">{{ row.programType }}</p>
+</ng-template>
+<ng-template #statusTemplate let-row>
+  <p class="bg-skyLight text-indigo-500 text-center rounded-full inline-block w-auto px-2.5 py-1">
+    {{ row.status }}
+  </p>
+</ng-template>
+<ng-template #progressTemplate let-row>
+  <div class="flex flex-col">
+    <p>{{ row.progress }}%</p>
+    <p-progressBar
+      class="p-progressbar-value p-progressbar-value-animate progressbar text-skyLight"
+      [value]="row.progress"
+      [style]="{ height: '4px' }"
+      [showValue]="false"
+    ></p-progressBar>
+  </div>
+</ng-template>
+<ng-template #consentTemplate let-row>
+  <p class="bg-lime-50 text-lime-600 text-center px-[1px] rounded-lg">
+    {{ row.consent }}
+  </p>
+</ng-template>
+<ng-template #editUpdateTemplate let-row>
+  <i class="pi pi-eraser mr-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
+  <i class="pi pi-sync ml-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
+</ng-template>

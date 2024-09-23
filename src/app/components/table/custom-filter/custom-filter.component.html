@@ -1,0 +1,10 @@
+<div class="flex flex-col items-start justify-start gap-1">
+  <p-checkbox
+    *ngFor="let option of options"
+    [binary]="true"
+    [label]="option"
+    [value]="option"
+    [ngModel]="selectedOptions.includes(option)"
+    (onChange)="onCheckboxChange(option, $event.checked)"
+  ></p-checkbox>
+</div>
