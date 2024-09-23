@@ -35,6 +35,12 @@
   </p>
 </ng-template>
 <ng-template #editUpdateTemplate let-row>
-  <i class="pi pi-eraser mr-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
-  <i class="pi pi-sync ml-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
+  <i (click)="openEditModal()" class="pi pi-eraser mr-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
+  <i (click)="openUpdateModal()" class="pi pi-sync ml-4 text-[15px] text-indigo-500 flex-shrink-0"></i>
 </ng-template>
+
+
+
+
+<app-patient-enrollment-edit-modal></app-patient-enrollment-edit-modal>
+<app-patient-enrollment-update-modal></app-patient-enrollment-update-modal>

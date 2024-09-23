@@ -3,11 +3,13 @@ import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { TableComponent } from "../../components/table/table.component";
+import { PatientEnrollmentEditModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-edit-modal/patient-enrollment-edit-modal.component";
+import { PatientEnrollmentUpdateModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-update-modal/patient-enrollment-update-modal.component";
 
 @Component({
   selector: "app-pending-enrollments",
   standalone: true,
-  imports: [ButtonModule, TableComponent],
+  imports: [ButtonModule, TableComponent, PatientEnrollmentEditModalComponent, PatientEnrollmentUpdateModalComponent],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
 })
@@ -21,6 +23,8 @@ export class PendingEnrollmentsComponent {
   @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
   @ViewChild("customFilter", { static: true }) customFilter: any;
+  @ViewChild(PatientEnrollmentEditModalComponent) editModalComponent!: PatientEnrollmentEditModalComponent;
+  @ViewChild(PatientEnrollmentUpdateModalComponent) updateModalComponent!: PatientEnrollmentUpdateModalComponent;
 
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
@@ -57,6 +61,17 @@ export class PendingEnrollmentsComponent {
         filterType: "none",
       },
     ];
+  }
+
+  openEditModal() {
+    if (this.editModalComponent) {
+      this.editModalComponent.openModal(); 
+    }
+  }
+  openUpdateModal() {
+    if (this.updateModalComponent) {
+      this.updateModalComponent.openModal(); 
+    }
   }
 
   clear(table: any) {

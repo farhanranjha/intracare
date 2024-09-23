@@ -10,6 +10,7 @@ import { PracticeInformationComponent } from "./components/practice-information/
 import { InsuranceInfoComponent } from "./components/insurance-info/insurance-info.component";
 import { DialogModule } from "primeng/dialog";
 import { Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-add-patient",
@@ -34,7 +35,7 @@ export class AddPatientComponent implements AfterViewInit {
   form: FormGroup;
   visible: boolean = false;
   formGroups: any[] = [];
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private router: Router) {
     this.form = this.formBuilder.group({
       patientInfo: this.formBuilder.group({
         firstName: ["", Validators.required],
@@ -153,6 +154,12 @@ export class AddPatientComponent implements AfterViewInit {
       { title: "Insurance Information", fields: this.extractFields(formValues.insuranceInfo) },
     ];
   }
+  
+  hideDialogAndNavigate() {
+    this.visible = false;
+    this.router.navigate(['pending-enrollments']);
+  }
+
 
   extractFields(group: any): any[] {
     return Object.keys(group).map((key) => ({ label: key, value: group[key] }));
