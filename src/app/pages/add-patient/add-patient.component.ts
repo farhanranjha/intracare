@@ -62,8 +62,13 @@ export class AddPatientComponent implements AfterViewInit {
         programBillingDiagnosis: [""],
       }),
       attachDevice: this.formBuilder.group({
-        deviceName: [""],
-        serialId: [""],
+        devices: this.formBuilder.array([
+          this.formBuilder.group({
+            deviceName: [""],
+            serialId: [""],
+            isDisabled: [false],
+          }),
+        ]),
       }),
       practiceInfo: this.formBuilder.group({
         practiceName: [""],
@@ -102,7 +107,9 @@ export class AddPatientComponent implements AfterViewInit {
   @ViewChild("componentContainer") componentContainer!: ElementRef;
 
   ngAfterViewInit(): void {
-    this.onScroll();
+    if (this.componentContainer) {
+      this.onScroll();
+    }
   }
 
   scrollToComponent(index: number) {
@@ -117,6 +124,7 @@ export class AddPatientComponent implements AfterViewInit {
   }
 
   onScroll() {
+    if (!this.componentContainer) return;
     const componentContainer = this.componentContainer.nativeElement;
     const components = [
       document.getElementById("patientInformation"),

@@ -1,16 +1,51 @@
-<div [formGroup]="patientInfoForm" class="py-4 px-6 flex flex-col justify-start items-start gap-3">
+<div class="py-4 px-6 flex flex-col justify-start items-start gap-3">
   <div class="flex flex-row items-start justify-start">
     <h4 class="text-primary">Attach a Device</h4>
     <h5 *ngIf="name" class="m-1 font-semibold text-gray-700">&mdash; {{ name }}</h5>
   </div>
-  <div class="w-full flex flex-row justify-start items-start gap-3">
-    <div class="flex flex-col gap-2 w-1/2">
-      <label for="firstName">Select the Monitoring Device</label>
-      <p-dropdown [options]="[]" formControlName="deviceName" class="w-full h-[32px]" placeholder="Monitoring Device" />
+  <div
+    *ngFor="let device of devices.controls; let i = index"
+    [formGroup]="device"
+    class="w-full flex flex-row items-end justify-start gap-3 mb-3"
+  >
+    <div class="w-full flex flex-row justify-start items-start gap-3">
+      <div class="flex flex-col gap-2 w-1/2">
+        <label>Select the Monitoring Device</label>
+        <p-dropdown
+          [options]="[]"
+          formControlName="deviceName"
+          class="w-full h-[32px]"
+          placeholder="Monitoring Device"
+          [disabled]="device.get('isDisabled')?.value"
+          [options]="mockOptions"
+        ></p-dropdown>
+      </div>
+      <div class="flex flex-col gap-2 w-1/2">
+        <label>Enter Device Serial</label>
+        <input
+          type="text"
+          formControlName="serialId"
+          pInputText
+          class="w-full h-[32px]"
+          placeholder="Serial ID"
+          [disabled]="device.get('isDisabled')?.value"
+        />
+      </div>
     </div>
-    <div class="flex flex-col gap-2 w-1/2">
-      <label for="firstName">Enter Device Serial</label>
-      <input type="text" formControlName="serialId" pInputText class="w-full h-[32px]" placeholder="Serial ID" />
+    <div class="custom-btns flex flex-row gap-1 items-center justify-center p-1">
+      <p-button
+        *ngIf="i === devices.length - 1"
+        class="plus-icon"
+        icon="pi pi-plus"
+        [disabled]="isPlusButtonDisabled()"
+        (click)="addNewRow()"
+      ></p-button>
+      <p-button
+        *ngIf="i !== devices.length - 1"
+        class="delete-icon"
+        icon="pi pi-trash"
+        (click)="deleteRow(i)"
+      ></p-button>
     </div>
   </div>
 </div>

@@ -2,11 +2,29 @@
   border-radius: 6px;
 }
 
-:host ::ng-deep .p-dropdown {
-  width: 100% !important;
-  height: 32px;
-  border-radius: 6px;
-}
-:host ::ng-deep .p-placeholder {
-  margin: auto;
+:host ::ng-deep {
+  .p-dropdown {
+    width: 100% !important;
+    height: 32px;
+    border-radius: 6px;
+  }
+  .p-placeholder {
+    margin: auto;
+  }
+  .plus-icon {
+    .p-button {
+      background: #28c76f;
+      border: #28c76f;
+      height: 32px;
+      width: 32px;
+    }
+  }
+  .delete-icon {
+    .p-button {
+      background: #ff4c51;
+      border: #ff4c51;
+      height: 32px;
+      width: 32px;
+    }
+  }
 }
