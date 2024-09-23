@@ -18,22 +18,26 @@ export class AppTopBarComponent implements OnInit {
   @ViewChild("topbarmenubutton") topbarMenuButton!: ElementRef;
   @ViewChild("topbarmenu") menu!: ElementRef;
 
-  constructor(public layoutService: LayoutService , private store:Store , private router:Router) {}
+  constructor(
+    public layoutService: LayoutService,
+    private store: Store,
+    private router: Router,
+  ) {}
 
   ngOnInit() {
     this.items = [
       {
-        label: 'Profile',
-        icon: 'pi pi-user',
+        label: "Profile",
+        icon: "pi pi-user",
         // command: () => this.goToProfile(),
-        disabled: false, 
+        disabled: false,
       },
       {
-        label: 'Logout',
-        icon: 'pi pi-sign-out',
+        label: "Logout",
+        icon: "pi pi-sign-out",
         command: () => this.Logout(),
         disabled: false,
-      }
+      },
     ];
   }
 
@@ -46,8 +50,8 @@ export class AppTopBarComponent implements OnInit {
   }
 
   Logout() {
-    console.log('Logout');
+    console.log("Logout");
     this.store.dispatch(remove());
-    this.router.navigate(['/auth/login'])
+    this.router.navigate(["/login"]);
   }
 }

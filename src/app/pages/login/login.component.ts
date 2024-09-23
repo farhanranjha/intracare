@@ -1,12 +1,12 @@
 import { Component, inject, signal } from "@angular/core";
 import { Router } from "@angular/router";
-import { AuthService } from "src/app/auth.service";
+import { AuthService } from "src/app/services/auth/auth.service";
 import { LayoutService } from "src/app/layout/service/app.layout.service";
 import { Store } from "@ngrx/store";
 import { add } from "src/app/store/actions/user.action";
 import { selectAccessToken } from "src/app/store/selectors/user.selector";
-import { CustomJwtPayload } from "src/app/token-payload.model";
-import { toSignal } from "@angular/core/rxjs-interop"; // Import helper for signal conversion
+import { CustomJwtPayload } from "src/app/types/auth/token-payload.model";
+import { toSignal } from "@angular/core/rxjs-interop";
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
