@@ -1,18 +1,29 @@
 import { Component, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
-import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
+import { mockDevicesData, pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { TableComponent } from "../../components/table/table.component";
 import { DialogModule } from "primeng/dialog";
 import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
+import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.component";
+import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
 
 @Component({
   selector: "app-pending-enrollments",
   standalone: true,
-  imports: [ButtonModule, TableComponent, DialogModule, CommonModule, InputTextModule, DropdownModule],
+  imports: [
+    ButtonModule,
+    TableComponent,
+    DeviceTileComponent,
+    DialogModule,
+    CommonModule,
+    InputTextModule,
+    DropdownModule,
+    EditDeviceModalComponent,
+  ],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
 })
@@ -29,8 +40,9 @@ export class PendingEnrollmentsComponent {
 
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
-  visibleAddDevice: boolean = true;
+  visibleAddDevice: boolean = false;
   isEditMode = false;
+  devicesData = mockDevicesData;
 
   ngOnInit() {
     this.columns = [

@@ -1,0 +1,19 @@
+:host ::ng-deep {
+  .add-device-form {
+    .p-dropdown {
+      width: 250px !important;
+      height: 31px;
+      border-radius: 6px;
+    }
+    .p-inputtext {
+      width: 250px;
+      border-radius: 6px;
+    }
+  }
+}
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
