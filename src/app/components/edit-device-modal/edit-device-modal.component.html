@@ -1,0 +1,53 @@
+<p-dialog
+  header="Devices"
+  [modal]="true"
+  [(visible)]="visibleAddDevice"
+  [style]="{ width: '40rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [maximizable]="true"
+>
+  <div class="w-full flex flex-col items-start justify-start gap-3">
+    <div class="w-full flex flex-row items-start justify-start gap-2 p-3">
+      <div class="flex flex-col justify-start items-start w-full">
+        <ng-container *ngIf="isEditMode; else displayInfo">
+          <div class="flex flex-col gap-2 add-device-form">
+            <p-dropdown [options]="[]" placeholder="Device Type" />
+            <input pInputText type="text" placeholder="Serial Number" />
+          </div>
+        </ng-container>
+        <ng-template #displayInfo>
+          <div class="flex flex-row justify-start items-center gap-2">
+            <p class="font-bold m-0">Patient Name: <span class="font-normal">Farhan Ranjha</span></p>
+            <span class="py-1 px-2 rounded-2xl bg-primary text-xs font-bold">CCM</span>
+            <span class="py-1 px-2 rounded-2xl bg-primary text-xs font-bold">RPM</span>
+          </div>
+          <p class="font-bold m-0">Practice Name: <span class="font-normal">East Valley Family Physicians</span></p>
+          <p class="font-bold m-0">DOB: <span class="font-normal">21-09-2000</span></p>
+        </ng-template>
+      </div>
+      <i
+        *ngIf="!isEditMode"
+        class="pi pi-plus-circle"
+        style="color: #017bfe; font-size: 2rem; margin: auto 10px; cursor: pointer"
+        (click)="enableEditMode()"
+      ></i>
+      <div *ngIf="isEditMode" class="flex flex-col gap-[18px] w-[40%] justify-between h-full items-end">
+        <i
+          class="pi pi-undo"
+          style="font-size: 1.2rem; margin: auto 10px; cursor: pointer"
+          (click)="disableEditMode()"
+        ></i>
+        <p-button label="Submit" class="py-1 px-2 font-medium" />
+      </div>
+    </div>
+
+    <device-tile
+      class="w-full"
+      *ngFor="let device of devicesData"
+      [type]="device.type"
+      [serial]="device.serial"
+      [issueDate]="device.issueDate"
+      [active]="device.active"
+    ></device-tile>
+  </div>
+</p-dialog>

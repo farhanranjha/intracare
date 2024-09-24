@@ -1,5 +1,16 @@
-.custom-progress-bar{
-    ::ng-deep .p-progressbar-value {
-        background-color: #6366F1;
+.custom-progress-bar {
+  ::ng-deep .p-progressbar-value {
+    background-color: #6366f1;
+  }
+}
+
+:host ::ng-deep {
+  .table-icon {
+    .p-button {
+      background: #6366f1;
+      border: #6366f1;
+      height: 32px;
+      width: 32px;
     }
+  }
 }

@@ -553,3 +553,42 @@ export const readingNotAddressedRows = [
     status: false,
   },
 ];
+
+export const mockDevicesData = [
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: true,
+  },
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: false,
+  },
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: true,
+  },
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: true,
+  },
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: false,
+  },
+  {
+    type: "Blood Pressure Monitor",
+    issueDate: "20-12-2222",
+    serial: "124qiyeu49792",
+    active: false,
+  },
+];

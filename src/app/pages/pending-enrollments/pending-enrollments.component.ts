@@ -1,15 +1,28 @@
 import { Component, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
-import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
+import { mockDevicesData, pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { TableComponent } from "../../components/table/table.component";
-import { PatientEnrollmentEditModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-edit-modal/patient-enrollment-edit-modal.component";
-import { PatientEnrollmentUpdateModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-update-modal/patient-enrollment-update-modal.component";
+import { DialogModule } from "primeng/dialog";
+import { CommonModule } from "@angular/common";
+import { InputTextModule } from "primeng/inputtext";
+import { DropdownModule } from "primeng/dropdown";
+import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.component";
+import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
 
 @Component({
   selector: "app-pending-enrollments",
   standalone: true,
-  imports: [ButtonModule, TableComponent, PatientEnrollmentEditModalComponent, PatientEnrollmentUpdateModalComponent],
+  imports: [
+    ButtonModule,
+    TableComponent,
+    DeviceTileComponent,
+    DialogModule,
+    CommonModule,
+    InputTextModule,
+    DropdownModule,
+    EditDeviceModalComponent,
+  ],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
 })
@@ -23,11 +36,12 @@ export class PendingEnrollmentsComponent {
   @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
   @ViewChild("customFilter", { static: true }) customFilter: any;
-  @ViewChild(PatientEnrollmentEditModalComponent) editModalComponent!: PatientEnrollmentEditModalComponent;
-  @ViewChild(PatientEnrollmentUpdateModalComponent) updateModalComponent!: PatientEnrollmentUpdateModalComponent;
 
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
+  visibleAddDevice: boolean = false;
+  isEditMode = false;
+  devicesData = mockDevicesData;
 
   ngOnInit() {
     this.columns = [
@@ -63,18 +77,18 @@ export class PendingEnrollmentsComponent {
     ];
   }
 
-  openEditModal() {
-    if (this.editModalComponent) {
-      this.editModalComponent.openModal(); 
-    }
-  }
-  openUpdateModal() {
-    if (this.updateModalComponent) {
-      this.updateModalComponent.openModal(); 
-    }
-  }
-
   clear(table: any) {
     table.clear();
+  }
+
+  showDialog() {
+    this.visibleAddDevice = true;
+  }
+
+  enableEditMode() {
+    this.isEditMode = true;
+  }
+  disableEditMode() {
+    this.isEditMode = false;
   }
 }
