@@ -219,6 +219,7 @@ export const dashboardRows = [
 
 export const pendingEnrollmentsRows = [
   {
+    id:10002,
     date: "July 22, 2024",
     name: "Thomas Blackwood",
     dob: "10/16/1951",
@@ -230,6 +231,7 @@ export const pendingEnrollmentsRows = [
     consent: "Yes",
   },
   {
+    id:10003,
     date: "July 22, 2024",
     name: "James Huddleson",
     dob: "06/23/1980",
@@ -241,6 +243,7 @@ export const pendingEnrollmentsRows = [
     consent: "Yes",
   },
   {
+    id:10004,
     date: "July 22, 2024",
     name: "Jim Carter",
     dob: "02/26/1980",
@@ -252,6 +255,7 @@ export const pendingEnrollmentsRows = [
     consent: "Yes",
   },
   {
+    id:10005,
     date: "July 22, 2024",
     name: "Chris Hemsworth",
     dob: "12/03/1987",

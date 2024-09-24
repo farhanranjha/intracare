@@ -12,6 +12,7 @@ import { SliderModule } from "primeng/slider";
 import { Table, TableModule } from "primeng/table";
 import { TagModule } from "primeng/tag";
 import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
+import { Router } from "@angular/router";
 export interface ColumnConfig {
   name: string;
   field: string;
@@ -69,6 +70,12 @@ export class TableComponent {
   @Input() rowsPerPage: number;
   @Input() loading: boolean = false;
   @Input() onSearchChange?: () => void;
+
+  constructor(private router: Router) {}
+
+  goToPatientDetails(patientId: number) {
+    this.router.navigate([`/patient/${patientId}`]);
+  }
 
   searchValue: string | undefined;
   clear(table: any) {
