@@ -4,7 +4,6 @@ import { Table } from "primeng/table";
 import { mockDevicesData, pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { TableComponent } from "../../components/table/table.component";
 import { DialogModule } from "primeng/dialog";
-import { FormsModule } from "@angular/forms";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
