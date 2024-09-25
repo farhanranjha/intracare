@@ -9,7 +9,7 @@ import { PatientChartComponent } from "./patient-chart/patient-chart.component";
 @NgModule({
   imports: [
     RouterModule.forChild([
-      { path: "add-patient", component: AddPatientComponent },
+      { path: "patient", component: AddPatientComponent },
       { path: "pending-enrollments", component: PendingEnrollmentsComponent },
       { path: "pending-readings", component: PendingReadingsComponent },
       { path: "readings-not-addressed", component: ReadingsNotAddressedComponent },
