@@ -2,26 +2,26 @@ import { Component, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { mockDevicesData, pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
-import { TableComponent } from "../../components/table/table.component";
 import { DialogModule } from "primeng/dialog";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
 import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.component";
 import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
+import { TableComponent } from "src/app/components/table/table.component";
 
 @Component({
   selector: "app-pending-enrollments",
   standalone: true,
   imports: [
     ButtonModule,
-    TableComponent,
     DeviceTileComponent,
     DialogModule,
     CommonModule,
     InputTextModule,
     DropdownModule,
     EditDeviceModalComponent,
+    TableComponent,
   ],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",

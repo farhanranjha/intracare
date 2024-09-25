@@ -7,8 +7,8 @@ import { TabViewModule } from "primeng/tabview";
 import { PatientEnrollmentEditModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-edit-modal/patient-enrollment-edit-modal.component";
 import { PatientEnrollmentUpdateModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-update-modal/patient-enrollment-update-modal.component";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
-import { TableComponent } from "../../components/table/table.component";
 import { LayoutService } from "src/app/layout/service/app.layout.service";
+import { TableComponent } from "src/app/components/table/table.component";
 
 @Component({
   selector: "app-patient-chart",

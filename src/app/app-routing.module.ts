@@ -20,6 +20,10 @@ import { AccessComponent } from "./pages/access/access.component";
               loadChildren: () => import("./pages/dashboard/dashboard.module").then((m) => m.DashboardModule),
               canActivate: [AuthGuard],
             },
+            {
+              path: "patient",
+              loadChildren: () => import("./pages/patient/patient.module").then((m) => m.PatientModule),
+            },
           ],
         },
 
