@@ -1,27 +1,27 @@
-.cutom-header-padding{
-    ::ng-deep .p-datatable-header{
-        padding: 10px 0;
-    }
-    ::ng-deep .p-button-icon-only {
-        padding: 10px;
-        border: none;
-        background-color: rgba(255, 255, 255, 0.49);
-    }
-    ::ng-deep .p-button-icon-only:hover {
-        background-color: #1a82f2; 
-    }
-    
-    ::ng-deep .p-highlight.p-button-icon-only {
-        border: #007bff9a;
-        background-color: #007bff !important; 
-    }
-    
-    ::ng-deep .p-datepicker-trigger {
-        background-color: #007bff !important; 
-        height: 2.3rem;
-    }
-    ::ng-deep .p-inputtext .p-component {
-        height: 2.3rem;
-        width: 200px;
-    }
+.cutom-header-padding {
+  ::ng-deep .p-datatable-header {
+    padding: 10px 0;
+  }
+  ::ng-deep .p-button-icon-only {
+    padding: 10px;
+    border: none;
+    background-color: rgba(255, 255, 255, 0.49);
+  }
+  ::ng-deep .p-button-icon-only:hover {
+    background-color: #1a82f2;
+  }
+
+  ::ng-deep .p-highlight.p-button-icon-only {
+    border: #007bff9a;
+    background-color: #007bff !important;
+  }
+
+  ::ng-deep .p-datepicker-trigger {
+    background-color: #007bff !important;
+    height: 2.3rem;
+  }
+  ::ng-deep .p-inputtext .p-component {
+    height: 2.3rem;
+    width: 200px;
+  }
 }

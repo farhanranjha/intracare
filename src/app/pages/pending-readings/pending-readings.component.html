@@ -1,7 +1,14 @@
 <section class="w-full flex flex-col justify-start items-start gap-2 cutom-header-padding">
   <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
     <p-button label="Patient Pending Readings" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
-    <button pButton pRipple [routerLink]="['/add-patient']" routerLinkActive="router-link-active"  label="Enroll New Patient" class="p-3 font-medium"></button>
+    <button
+      pButton
+      pRipple
+      [routerLink]="['/add-patient']"
+      routerLinkActive="router-link-active"
+      label="Enroll New Patient"
+      class="p-3 font-medium"
+    ></button>
   </div>
 </section>
 <intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />

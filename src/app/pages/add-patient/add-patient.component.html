@@ -65,7 +65,7 @@
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
   [maximizable]="true"
 >
-<p-button label="Save" (click)="hideDialogAndNavigate()" />
+  <p-button label="Save" (click)="hideDialogAndNavigate()" />
   <div *ngIf="form">
     <div *ngFor="let group of formGroups">
       <h4>{{ group.title }}</h4>
