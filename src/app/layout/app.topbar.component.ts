@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+import { Store } from "@ngrx/store";
 import { MenuItem } from "primeng/api";
 import { LayoutService } from "./service/app.layout.service";
-import { Store } from "@ngrx/store";
 import { remove } from "../store/actions/user.action";
-import { Router } from "@angular/router";
 
 @Component({
   selector: "app-topbar",
@@ -35,7 +35,7 @@ export class AppTopBarComponent implements OnInit {
       {
         label: "Logout",
         icon: "pi pi-sign-out",
-        command: () => this.Logout(),
+        command: () => this.logout(),
         disabled: false,
       },
     ];
@@ -49,9 +49,8 @@ export class AppTopBarComponent implements OnInit {
     this.dropdownVisible = !this.dropdownVisible;
   }
 
-  Logout() {
-    console.log("Logout");
+  logout() {
     this.store.dispatch(remove());
-    this.router.navigate(["/login"]);
+    this.router.navigate(["/auth/login"]);
   }
 }

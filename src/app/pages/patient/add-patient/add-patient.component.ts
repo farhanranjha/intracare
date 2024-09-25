@@ -168,7 +168,7 @@ export class AddPatientComponent implements AfterViewInit {
 
   hideDialogAndNavigate() {
     this.visible = false;
-    this.router.navigate(["pending-enrollments"]);
+    this.router.navigate(["patient/pending-enrollments"]);
   }
 
   extractFields(group: any): any[] {

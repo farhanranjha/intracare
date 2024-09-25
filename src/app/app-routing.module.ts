@@ -27,7 +27,6 @@ import { NotfoundComponent } from "./pages/notfound/notfound.component";
         {
           path: "auth",
           loadChildren: () => import("./pages/auth/auth.module").then((m) => m.AuthModule),
-          canActivate: [AuthGuard],
         },
 
         { path: "notfound", component: NotfoundComponent },

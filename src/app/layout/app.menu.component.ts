@@ -26,7 +26,7 @@ export class AppMenuComponent implements OnInit {
               {
                 label: "Add Patient",
                 icon: "pi pi-fw pi-user",
-                routerLink: ["patient/add-patient"],
+                routerLink: ["patient/add"],
               },
               {
                 label: "Pending Enrollments",
