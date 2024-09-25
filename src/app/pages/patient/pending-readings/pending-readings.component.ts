@@ -2,8 +2,8 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { pendingReadingsRows } from "src/app/utils/constants/mock-data";
-import { ColumnConfig, TableComponent } from "../../components/table/table.component";
 import { RouterModule } from "@angular/router";
+import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
 
 @Component({
   selector: "app-pending-readings",
