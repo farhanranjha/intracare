@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { readingNotAddressedRows } from "src/app/utils/constants/mock-data";
-import { ColumnConfig, TableComponent } from "../../components/table/table.component";
+import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
 
 @Component({
   selector: "app-readings-not-addressed",

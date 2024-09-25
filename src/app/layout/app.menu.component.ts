@@ -26,22 +26,22 @@ export class AppMenuComponent implements OnInit {
               {
                 label: "Add Patient",
                 icon: "pi pi-fw pi-user",
-                routerLink: ["/add-patient"],
+                routerLink: ["patient/add"],
               },
               {
                 label: "Pending Enrollments",
                 icon: "pi pi-th-large",
-                routerLink: ["/pending-enrollments"],
+                routerLink: ["patient/pending-enrollments"],
               },
               {
                 label: "Patient Pending Readings",
                 icon: "pi pi-user-minus",
-                routerLink: ["/pending-readings"],
+                routerLink: ["patient/pending-readings"],
               },
               {
                 label: "Readings Not Addressed",
                 icon: "pi pi-book",
-                routerLink: ["/readings-not-addressed"],
+                routerLink: ["patient/readings-not-addressed"],
               },
             ],
           },
