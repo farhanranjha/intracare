@@ -17,8 +17,7 @@ import { AppTopBarComponent } from "./app.topbar.component";
 import { AppLayoutComponent } from "./app.layout.component";
 import { AppSidebarComponent } from "./app.sidebar.component";
 import { ButtonModule } from "primeng/button";
-import { MenuModule } from 'primeng/menu';
-
+import { MenuModule } from "primeng/menu";
 
 @NgModule({
   declarations: [

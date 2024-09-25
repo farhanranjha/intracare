@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PatientChartComponent } from './patient-chart.component';
+import { PatientChartComponent } from "./patient-chart.component";
 
-describe('PatientChartComponent', () => {
+describe("PatientChartComponent", () => {
   let component: PatientChartComponent;
   let fixture: ComponentFixture<PatientChartComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PatientChartComponent]
-    })
-    .compileComponents();
-    
+      imports: [PatientChartComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(PatientChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

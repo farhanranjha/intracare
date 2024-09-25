@@ -1,8 +1,8 @@
-import { JwtPayload } from 'jwt-decode';
+import { JwtPayload } from "jwt-decode";
 
 export interface CustomJwtPayload extends JwtPayload {
   acr?: string;
-  allowed_origins?: string[]; 
+  allowed_origins?: string[];
   azp?: string;
   email?: string;
   email_verified?: boolean;
