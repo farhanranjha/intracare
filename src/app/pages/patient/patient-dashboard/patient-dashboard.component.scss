@@ -1,0 +1,59 @@
+.switch-btn-left {
+  border-radius: 6px 0px 0px 6px !important;
+}
+.switch-btn-right {
+  border-radius: 0px 6px 6px 0px !important;
+}
+
+:host ::ng-deep {
+  .btns-group {
+    .p-button {
+      padding: 4px;
+      border-radius: 8px;
+    }
+    .p-button-icon {
+      color: #6b7280;
+    }
+    .btn-red {
+      .p-button-icon {
+        color: #b42318;
+      }
+    }
+    .btn-orange {
+      .p-button-icon {
+        color: #f5630f;
+      }
+    }
+  }
+  .p-tabview-nav,
+  .p-tabview-nav-link {
+    background: none;
+    border: 0;
+  }
+  .p-tabview-panels {
+    background: none;
+    padding: 0;
+  }
+  .p-tabview-title {
+    color: #6b7280;
+    font-size: 14px;
+  }
+  .p-highlight {
+    .p-tabview-title {
+      color: #6366f1;
+    }
+  }
+  .inner-tab-view {
+    margin-top: 10px;
+    .p-tabview-panels {
+      background: white;
+      padding: 12px;
+    }
+    .p-tabview-nav-content {
+      border-radius: 8px 8px 0px 0px;
+    }
+    .p-tabview-title {
+      padding: 5px;
+    }
+  }
+}
