@@ -1,4 +1,10 @@
-<ul class="layout-menu">
+<ul class="layout-menu py-10">
+  <div class="flex flex-row justify-between items-center mb-5 mt-2">
+    <img src="http://theintracare.com/wp-content/uploads/2022/08/logo.svg" alt="logo" class="w-32" />
+    <button class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
+      <i class="pi pi-arrow-left"></i>
+    </button>
+  </div>
   <ng-container *ngFor="let item of model; let i = index">
     <li app-menuitem *ngIf="!item.separator" [item]="item" [index]="i" [root]="true"></li>
     <li *ngIf="item.separator" class="menu-separator"></li>
