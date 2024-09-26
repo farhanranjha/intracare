@@ -29,7 +29,7 @@ export class LayoutService {
     menuMode: "overlay",
     colorScheme: "light",
     theme: "bootstrap4-light-blue",
-    scale: 12,
+    scale: 13,
   };
 
   config = signal<AppConfig>(this._config);
