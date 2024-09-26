@@ -4,7 +4,7 @@ import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
 import { TabViewModule } from "primeng/tabview";
-import { TableComponent } from "src/app/components/table/table.component";
+import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 
 @Component({
@@ -22,7 +22,7 @@ export class PatientDashboardComponent implements OnInit {
   @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
   activeTab: string = "RPM";
-  columns: any[] = [];
+  columns: ColumnConfig[] = [];
   patients: any[] = pendingEnrollmentsRows;
   ngOnInit(): void {
     this.columns = [
