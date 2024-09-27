@@ -1,4 +1,10 @@
-<intracare-table [columns]="columns" [rowData]="rowData" [rowsPerPage]="[10, 25, 50]" />
+<intracare-table
+  [onLazyLoad]="onLazyLoad"
+  [totalRecords]="totalRecords"
+  [columns]="columns"
+  [rowData]="rowData"
+  [rowsPerPage]="[25, 50, 100]"
+/>
 
 <ng-template #actionTemplate let-row>
   <button pButton type="button" label="Action" (click)="onActionClick(row)"></button>

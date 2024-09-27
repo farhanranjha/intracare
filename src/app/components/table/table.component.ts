@@ -13,6 +13,7 @@ import { Table, TableModule } from "primeng/table";
 import { TagModule } from "primeng/tag";
 import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
 import { Router } from "@angular/router";
+import { LazyLoadEvent } from "primeng/api";
 export interface ColumnConfig {
   name: string;
   field: string;
@@ -24,6 +25,7 @@ export interface ColumnConfig {
   isCustom?: boolean;
   template?: any;
   filterTemplate?: any;
+  sort?: boolean;
 }
 
 export interface FilterConfig {
@@ -67,17 +69,15 @@ export class TableComponent {
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
   @Input() filters: FilterConfig[] = [];
-  @Input() rowsPerPage: number;
+  @Input() rowsPerPage: number[] = [25, 50, 100];
   @Input() loading: boolean = false;
-  @Input() onSearchChange?: () => void;
+  @Input() totalRecords: number;
+  @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
+  @Input() showTopBar?: boolean = true;
+  searchValue: string | undefined;
 
   constructor(private router: Router) {}
 
-  goToPatientDetails(patientId: number) {
-    this.router.navigate([`/patient/${patientId}`]);
-  }
-
-  searchValue: string | undefined;
   clear(table: any) {
     table.clear();
     this.searchValue = "";
