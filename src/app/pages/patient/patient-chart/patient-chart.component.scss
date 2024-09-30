@@ -1,10 +1,61 @@
 ::ng-deep .p-progressbar-value {
-  background-color: #6366f1;
+  background-color: #6366F1;
 }
 ::ng-deep .p-tabview-nav .p-highlight .p-tabview-title {
-  color: #6366f1;
+  color: #6366F1; 
+}
+::ng-deep .p-tabview-title {
+  color: #8a8a8a; 
+}
+::ng-deep .p-tabview-panels {
+  padding: 1rem 0; 
+}
+.toggle {
+  position: relative;
+  display: block;
+  width: 40px; /* Reduced width */
+  height: 20px; /* Reduced height */
+  padding: 2px;
+  margin: auto;
+  border-radius: 50px;
+  cursor: pointer;
+  background: #ccc; 
+}
+.toggle-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+.toggle-label {
+  position: relative;
+  display: block;
+  height: 100%;
+  background: #ccc;
+  border-radius: 50px;
+  transition: background 0.3s ease;
+}
+.toggle-handle {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 16px; /* Reduced handle width */
+  height: 16px; /* Reduced handle height */
+  background: #fff;
+  border-radius: 50%;
+  transition: left 0.3s ease;
 }
 
+.toggle-input:checked ~ .toggle-label {
+  background: #6366F1; 
+}
+
+.toggle-input:checked ~ .toggle-handle {
+  left: 22px; 
+}
 ::ng-deep .p-tabview-title {
   color: #8a8a8a;
+}
+::ng-deep .p-tabview-panels {
+    padding: 1rem 0; 
 }
