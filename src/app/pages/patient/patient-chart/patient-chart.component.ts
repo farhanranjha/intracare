@@ -16,16 +16,23 @@ import { DropdownModule } from "primeng/dropdown";
 import { CalendarModule } from "primeng/calendar";
 import { CheckboxModule } from "primeng/checkbox";
 import { FormsModule } from "@angular/forms";
+import { CallLogsComponent } from "src/app/components/logs/call-logs/call-logs.component";
+import { TextLogsComponent } from "src/app/components/logs/text-logs/text-logs.component";
+import { TimerLogsComponent } from "src/app/components/logs/timer-logs/timer-logs.component";
+import { RadioButtonModule } from "primeng/radiobutton";
 
 
 @Component({
   selector: "app-patient-chart",
   standalone: true,
-  imports: [ButtonModule, DialogModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule, DropdownModule, FormsModule, CalendarModule, CheckboxModule],
+  imports: [ButtonModule, DialogModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule, DropdownModule, FormsModule, CalendarModule, CheckboxModule, CallLogsComponent, TextLogsComponent, TimerLogsComponent, RadioButtonModule],
   templateUrl: "./patient-chart.component.html",
   styleUrl: "./patient-chart.component.scss",
 })
 export class PatientChartComponent {
+  activeLogTab: string = '';
+  logFilter: string = 'patients';
+
   taskDescription: string = "";
   assignTo: string = "";
   dueDate: Date | undefined;
@@ -355,6 +362,12 @@ export class PatientChartComponent {
 
   setActiveRpmSubTab(index: number) {
     this.activeRpmSubTabIndex = index;
+    if(index === 4){
+      this.activeLogTab = 'callLogs';
+    }
+    else{
+      this.activeLogTab = '';
+    }
   }
 
   openEditModal() {
@@ -385,4 +398,36 @@ export class PatientChartComponent {
 
     this.activeBtn = tab;
   }
+
+
+  callLogsData = [
+    { dateTime: 'Sep 30, 2024', callFrom: 'Patient A', callTo: 'Provider A', phoneNumber: '1234567890', startTime: '10:00 AM', endTime: '10:30 AM', duration: '00:30', status: 'Completed' },
+    { dateTime: 'Oct 01, 2024', callFrom: 'Patient B', callTo: 'Dr. Smith', phoneNumber: '9876543210', startTime: '09:45 AM', endTime: '10:00 AM', duration: '00:15', status: 'Missed' },
+    { dateTime: 'Oct 02, 2024', callFrom: 'Patient C', callTo: 'Dr. Allen', phoneNumber: '5554443333', startTime: '01:00 PM', endTime: '01:20 PM', duration: '00:20', status: 'Completed' },
+    { dateTime: 'Oct 03, 2024', callFrom: 'Patient D', callTo: 'Provider B', phoneNumber: '3332221111', startTime: '11:30 AM', endTime: '11:50 AM', duration: '00:20', status: 'Completed' },
+    { dateTime: 'Oct 04, 2024', callFrom: 'Patient E', callTo: 'Dr. Wilson', phoneNumber: '4445556666', startTime: '02:00 PM', endTime: '02:45 PM', duration: '00:45', status: 'Completed' },
+  ];
+  
+  textLogsData = [
+    { dateTime: 'Sep 30, 2024', phoneNumber: '1234567890', message: 'Reminder: Blood Pressure Check', readingType: 'Blood Pressure', messageStatus: 'Sent', patientName: 'Patient A', providerName: 'Dr. John' },
+    { dateTime: 'Oct 01, 2024', phoneNumber: '9876543210', message: 'Medication Reminder', readingType: 'Heart Rate', messageStatus: 'Delivered', patientName: 'Patient B', providerName: 'Dr. Smith' },
+    { dateTime: 'Oct 02, 2024', phoneNumber: '5554443333', message: 'Appointment Reminder', readingType: 'Cholesterol', messageStatus: 'Sent', patientName: 'Patient C', providerName: 'Dr. Allen' },
+    { dateTime: 'Oct 03, 2024', phoneNumber: '3332221111', message: 'Weekly Health Update', readingType: 'Blood Sugar', messageStatus: 'Failed', patientName: 'Patient D', providerName: 'Dr. Clark' },
+    { dateTime: 'Oct 04, 2024', phoneNumber: '4445556666', message: 'Follow-up Reminder', readingType: 'Weight', messageStatus: 'Delivered', patientName: 'Patient E', providerName: 'Dr. Wilson' },
+  ];
+  
+
+  timerLogsData = [
+    { dateTime: 'Sep 30, 2024', takenBy: 'Ajmal Shami', startTime: '10:00AM', endTime: '10:30AM', duration: '00:30', billable: 'Yes', billingCategory: 'RPM', logType: 'Timer', patientName: 'Patient A', doctorName: 'Dr. John' },
+    { dateTime: 'Oct 01, 2024', takenBy: 'Training Provider 1', startTime: '08:00AM', endTime: '08:30AM', duration: '00:30', billable: 'No', billingCategory: 'CCM', logType: 'Timer', patientName: 'Patient B', doctorName: 'Dr. Smith' },
+    { dateTime: 'Oct 02, 2024', takenBy: 'Training Provider 2', startTime: '09:00AM', endTime: '09:45AM', duration: '00:45', billable: 'Yes', billingCategory: 'RPM', logType: 'Timer', patientName: 'Patient C', doctorName: 'Dr. Allen' },
+    { dateTime: 'Oct 03, 2024', takenBy: 'Training Provider 3', startTime: '10:15AM', endTime: '10:45AM', duration: '00:30', billable: 'No', billingCategory: 'CCM', logType: 'Timer', patientName: 'Patient D', doctorName: 'Dr. Clark' },
+    { dateTime: 'Oct 04, 2024', takenBy: 'Training Provider 4', startTime: '11:00AM', endTime: '11:30AM', duration: '00:30', billable: 'Yes', billingCategory: 'RPM', logType: 'Timer', patientName: 'Patient E', doctorName: 'Dr. Wilson' },
+  ];
+  
+
+  setActiveLogTab(tabName: string) {
+    this.activeLogTab = tabName;
+  }
+
 }
