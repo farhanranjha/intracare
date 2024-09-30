@@ -51,5 +51,11 @@
 }
 
 .toggle-input:checked ~ .toggle-handle {
-  left: 22px; /* Adjusted to fit smaller size */
+  left: 22px; 
+}
+::ng-deep .p-tabview-title {
+  color: #8a8a8a;
+}
+::ng-deep .p-tabview-panels {
+    padding: 1rem 0; 
 }

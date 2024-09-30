@@ -160,6 +160,9 @@ export class PatientChartComponent {
   alertsHeader: any[] = [];
   alerts: any[] = [];
 
+
+
+
   @ViewChild("dt1") dt1!: Table;
 
   @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
@@ -175,6 +178,7 @@ export class PatientChartComponent {
   @ViewChild(PatientEnrollmentUpdateModalComponent) updateModalComponent!: PatientEnrollmentUpdateModalComponent;
 
   constructor(public layoutService: LayoutService) {}
+
 
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
@@ -203,6 +207,8 @@ export class PatientChartComponent {
   }
 
   ngOnInit() {
+
+
     this.value = "Verbally agreed to text reminders and alerts related to the diagnosis";
 
       this.tasksHeader = [

@@ -221,35 +221,19 @@
     </div>
     <div class="col-span-2">
       <button
-      class="font-sans text-[14px] not-italic font-medium leading-[20px] mr-3"
-        [ngClass]="{ 'active-tab': activeTab === 'General' }"
-        [ngStyle]="{
-          padding: '10px 0px',
-          'background-color': activeTab === 'General' ? '#FFFFFF' : '#FFFFFF',
-          border: 'none',
-          'border-bottom': activeTab === 'General' ? '1.5px solid #6366F1' : 'none',
-          color: activeTab === 'General' ? '#6366F1' : '#667085',
-          'font-size': '14px',
-          'font-weight': activeTab === 'General' ? 'bold' : '500',
-          cursor: 'pointer',
-        }"
+      class="font-sans bg-[#FFFFFF] px-0 py-[10px] text-[14px] not-italic font-medium leading-[20px] cursor-pointer mr-3"
+        [ngClass]="{ 'border-x-0 border-t-0 border-b-[1.5px] border-b-[#6366F1] text-[#6366F1] font-bold': activeTab === 'General',
+          'border-none font-[500] text-[#667085]': activeTab !== 'General'
+         }"
         (click)="setActiveTab('General')"
       >
         General
       </button>
       <button
-      class="font-sans text-[14px] not-italic font-medium leading-[20px]"
-        [ngClass]="{ 'active-tab': activeTab === 'RPM Settings' }"
-        [ngStyle]="{
-          padding: '10px 0px',
-          'background-color': activeTab === 'RPM Settings' ? '#FFFFFF' : '#FFFFFF',
-          border: 'none',
-          'border-bottom': activeTab === 'RPM Settings' ? '1.5px solid #6366F1' : 'none',
-          color: activeTab === 'RPM Settings' ? '#6366F1' : '#667085',
-          'font-size': '14px',
-          'font-weight': activeTab === 'RPM Settings' ? 'bold' : '500',
-          cursor: 'pointer',
-        }"
+        class="font-sans bg-[#FFFFFF] px-0 py-[10px] text-[14px] not-italic font-medium leading-[20px] cursor-pointer"
+        [ngClass]="{ 'border-x-0 border-t-0 border-b-[1.5px] border-b-[#6366F1] text-[#6366F1] font-bold ': activeTab === 'RPM Settings',
+          'border-none font-[500] text-[#667085]': activeTab !== 'RPM Settings'
+         }"
         (click)="setActiveTab('RPM Settings')"
       >
         RPM Settings
