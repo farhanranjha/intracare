@@ -2,13 +2,15 @@
   #dt1
   [value]="rowData"
   dataKey="id"
-  [rows]="10"
-  [rowsPerPageOptions]="rowsPerPage"
-  [loading]="loading"
   [paginator]="true"
+  [rows]="25"
+  [rowsPerPageOptions]="rowsPerPage"
+  [totalRecords]="totalRecords"
+  [lazy]="true"
+  (onLazyLoad)="onLazyLoad($event)"
 >
-  <ng-template pTemplate="caption">
-    <div class="flex px-3">
+  <ng-template *ngIf="showTopBar" pTemplate="caption">
+    <div class="flex px-2">
       <p-button label="Clear" [outlined]="true" icon="pi pi-filter-slash" (onClick)="clear(dt1)" />
       <span class="p-input-icon-left ml-auto">
         <i class="pi pi-search"></i>
@@ -25,9 +27,17 @@
 
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let col of columns" [style.min-width]="col.minWidth || '5rem'" class="border-r-2">
+      <th
+        [pSortableColumn]="col.sort ? col.field : null"
+        *ngFor="let col of columns"
+        [style.min-width]="col.minWidth || '5rem'"
+        class="border-r-2"
+      >
         <div class="flex align-items-center">
           <p class="m-0">{{ col.name }}</p>
+          <ng-container *ngIf="col.sort">
+            <p-sortIcon [field]="col.field"></p-sortIcon>
+          </ng-container>
           <ng-container [ngSwitch]="col.filterType">
             <p-columnFilter *ngSwitchCase="'text'" [field]="col.field" display="menu" type="text"></p-columnFilter>
             <p-columnFilter *ngSwitchCase="'date'" [field]="col.field" display="menu" type="date"></p-columnFilter>
@@ -47,18 +57,17 @@
             <p-columnFilter
               *ngSwitchCase="'custom'"
               [field]="col.field"
-              matchMode="in"
               display="menu"
               [showMatchModes]="false"
               [showOperator]="false"
               [showAddButton]="false"
+              [showApplyButton]="false"
+              [showClearButton]="false"
+              [matchMode]="'equals'"
             >
-              <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <ng-template pTemplate="filter" let-filter="filterCallback">
                 <ng-container
-                  *ngTemplateOutlet="
-                    col.filterTemplate;
-                    context: { field: col.field, options: col.options, filterCallback: filterCallback }
-                  "
+                  *ngTemplateOutlet="col.filterTemplate; context: { handleFilterChange: filter }"
                 ></ng-container>
               </ng-template>
             </p-columnFilter>
@@ -69,7 +78,7 @@
   </ng-template>
 
   <ng-template pTemplate="body" let-row>
-    <tr (click)="goToPatientDetails(row.id)">
+    <tr>
       <td *ngFor="let col of columns">
         <ng-container *ngIf="col.isCustom; else defaultContent">
           <ng-container *ngTemplateOutlet="col.template; context: { $implicit: row }"></ng-container>
