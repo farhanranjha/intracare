@@ -9,7 +9,8 @@ import { LazyLoadEvent } from "primeng/api";
 })
 export class DashboardComponent implements OnInit {
   @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
-  @ViewChild("customFilter", { static: true }) customFilter: any;
+  @ViewChild("customFilterName", { static: true }) customFilterName: any;
+  @ViewChild("customFilterRepresentative", { static: true }) customFilterRepresentative: any;
   columns: ColumnConfig[] = [];
   rowData: DashboardRow[] = [];
   totalRecords: number = 0;
@@ -24,14 +25,23 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.fetchData();
     this.columns = [
-      { name: "Name", field: "name", filterType: "none", sort: true },
+      {
+        name: "Name",
+        field: "name",
+        filterType: "custom",
+        filterTemplate: this.customFilterName,
+        sort: true,
+        options: ["Name 1", "Name 2"],
+        selectedOptions: [],
+      },
       { name: "Country", field: "country.name", filterType: "text" },
       {
         name: "Representative",
         field: "representative.name",
         filterType: "custom",
-        filterTemplate: this.customFilter,
-        options: ["Ioni Bowcher", "Farhan"],
+        filterTemplate: this.customFilterRepresentative,
+        options: ["Representative 1", "Representative 2"],
+        selectedOptions: [],
       },
       { name: "Date", field: "date", filterType: "date" },
       { name: "Balance", field: "balance", filterType: "numeric" },

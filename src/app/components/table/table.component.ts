@@ -1,7 +1,7 @@
 import { style } from "@angular/animations";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
-import { Component, Input, ViewChild } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { DropdownModule } from "primeng/dropdown";
@@ -64,7 +64,7 @@ export interface FilterConfig {
     `,
   ],
 })
-export class TableComponent {
+export class TableComponent implements OnInit {
   @ViewChild("dt1") dt1!: Table;
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
@@ -77,7 +77,9 @@ export class TableComponent {
   searchValue: string | undefined;
 
   constructor(private router: Router) {}
-
+  ngOnInit(): void {
+    this.triggerLazyLoad();
+  }
   clear(table: any) {
     table.clear();
     this.searchValue = "";
@@ -85,19 +87,41 @@ export class TableComponent {
   getNestedValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
   }
-  onCheckboxChange(field: string, option: any, isChecked: boolean, filterCallback: Function) {
-    const column = this.columns.find((col) => col.field === field);
-    if (!column) return;
-    if (isChecked) {
-      if (!column.selectedOptions.includes(option)) {
-        column.selectedOptions.push(option);
-      }
-    } else {
-      const index = column.selectedOptions.indexOf(option);
-      if (index > -1) {
-        column.selectedOptions.splice(index, 1);
-      }
-    }
-    filterCallback(column.selectedOptions);
+  getSelectedValues() {
+    return this.columns
+      .map((col) => {
+        if (col.selectedOptions && col.selectedOptions.length > 0) {
+          return {
+            [col.field]: col.selectedOptions,
+          };
+        }
+        return null;
+      })
+      .filter((entry) => entry !== null);
+  }
+  triggerLazyLoad() {
+    const oldData = this.dt1.createLazyLoadMetadata();
+    const selectedFilters = this.getSelectedValues();
+
+    // console.log("se", selectedFilters);
+
+    const test = [
+      {
+        name: ["Name"],
+      },
+      {
+        "respresentative.name": ["Osama"],
+      },
+    ];
+
+    const event: LazyLoadEvent = {
+      ...oldData,
+      filters: { ...oldData.filters, ...{ ...test } },
+    };
+
+    this.onLazyLoad(event);
+  }
+  handleCustomFilterChange(selectedOptions: string[]) {
+    console.log("Selected options in generic table:", selectedOptions);
   }
 }

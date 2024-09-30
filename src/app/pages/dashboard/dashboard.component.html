@@ -9,6 +9,17 @@
 <ng-template #actionTemplate let-row>
   <button pButton type="button" label="Action" (click)="onActionClick(row)"></button>
 </ng-template>
-<ng-template #customFilter let-field="field" let-options="options" let-filterCallback="filterCallback">
-  <app-custom-filter [options]="options" (filterCallback)="onCheckboxChange($event)" />
+<ng-template #customFilterName let-handleFilterChange="handleFilterChange">
+  <app-custom-filter
+    [options]="columns[0].options"
+    [filterCallback]="handleFilterChange"
+    [(selectedOptions)]="columns[0].selectedOptions"
+  />
+</ng-template>
+<ng-template #customFilterRepresentative let-handleFilterChange="handleFilterChange">
+  <app-custom-filter
+    [filterCallback]="handleFilterChange"
+    [options]="columns[2].options"
+    [(selectedOptions)]="columns[2].selectedOptions"
+  />
 </ng-template>
