@@ -16,10 +16,10 @@
         label="RPM"
         class="p-3 font-medium rounded-lg"
         [ngClass]="{
-          'bg-[#6366F1] border-[#6366F1] text-white': activeTab === 'RPM',
-          'bg-gray-100 border-none text-gray-700': activeTab !== 'RPM',
+          'bg-[#6366F1] border-[#6366F1] text-white': activeRPMCCM === 'RPM',
+          'bg-gray-100 border-none text-gray-700': activeRPMCCM !== 'RPM',
         }"
-        (click)="setActiveTab('RPM')"
+        (click)="setRPMCCM('RPM')"
       ></button>
       <button
         pButton
@@ -27,10 +27,10 @@
         label="CCM"
         class="p-3 font-medium"
         [ngClass]="{
-          'bg-[#6366F1] border-[#6366F1] text-white': activeTab === 'CCM',
-          'bg-gray-100 border-none text-gray-700': activeTab !== 'CCM',
+          'bg-[#6366F1] border-[#6366F1] text-white': activeRPMCCM === 'CCM',
+          'bg-gray-100 border-none text-gray-700': activeRPMCCM !== 'CCM',
         }"
-        (click)="setActiveTab('CCM')"
+        (click)="setRPMCCM('CCM')"
       ></button>
     </div>
   </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="w-full">
           <h2 class="text-[#101828] font-sans text-[14px] not-italic font-medium leading-[20px]">
-            M "Minnie" Henderson Covington
+            {{patientName}}
           </h2>
           <div class="flex items-center gap-2 mt-2">
             <span class="badge bg-[#ECFDF3] text-[#027A48] py-1 px-2 rounded-full">English</span>
@@ -151,7 +151,7 @@
           label="Task"
           icon="pi pi-check-circle"
           class="p-button-outlined border-gray-500 text-black"
-          (click)="selectTab(2)"
+          (click)="openTaskModal()"
         ></button>
         <button
           pButton
@@ -466,69 +466,92 @@
         <div class="p-4">Custom Vital Alerts content goes here...</div>
       </div>
     </div>
-  </div>
-  
-
-  
+    
+    
+    
+    
     
 
-
+    
     <div *ngIf="activeTab === 'RPM Settings'">
-
+      
       <div class="p-tabView">
         <div class="tab-buttons mb-2">
-          <button
-            (click)="setActiveRpmSubTab(0)"
-            class="mr-3"
-            [ngClass]="{
-              'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 0,
-              'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 0
-            }"
-            [ngStyle]="{
-              'border': 'none',
-              'font-size': '14px',
-              cursor: 'pointer'
-            }"
-          >
-            Alerts
-          </button>
-          <button
-            class="mr-3"
-            (click)="setActiveRpmSubTab(1)"
-            [ngClass]="{
-              'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 1,
-              'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 1
-            }"
-            [ngStyle]="{
-              'border': 'none',
-              'font-size': '14px',
-              cursor: 'pointer'
-            }"
-          >
-            Vitals
-          </button>
-          <button
-          class="mr-3"
-            (click)="setActiveRpmSubTab(2)"
-            [ngClass]="{
-              'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 2,
-              'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 2
-            }"
-            [ngStyle]="{
-              'border': 'none',
-              'font-size': '14px',
-              cursor: 'pointer'
-            }"
-          >
-            Tasks
-          </button>
-        </div>
+    <button
+      class="mr-3"
+      (click)="setActiveRpmSubTab(0)"
+      [ngClass]="{
+        'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 0,
+        'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 0
+      }"
+      [ngStyle]="{
+        'border': 'none',
+        'font-size': '14px',
+        cursor: 'pointer'
+      }"
+    >
+      Biometrics
+    </button>
+
+    <button
+      (click)="setActiveRpmSubTab(1)"
+      class="mr-3"
+      [ngClass]="{
+        'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 1,
+        'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 1
+      }"
+      [ngStyle]="{
+        'border': 'none',
+        'font-size': '14px',
+        cursor: 'pointer'
+      }"
+    >
+      Alerts
+    </button>
+
+    <button
+      class="mr-3"
+      (click)="setActiveRpmSubTab(2)"
+      [ngClass]="{
+        'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 2,
+        'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 2
+      }"
+      [ngStyle]="{
+        'border': 'none',
+        'font-size': '14px',
+        cursor: 'pointer'
+      }"
+    >
+      Vitals
+    </button>
+
+    <button
+      class="mr-3"
+      (click)="setActiveRpmSubTab(3)"
+      [ngClass]="{
+        'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex === 3,
+        'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeRpmSubTabIndex !== 3
+      }"
+      [ngStyle]="{
+        'border': 'none',
+        'font-size': '14px',
+        cursor: 'pointer'
+      }"
+    >
+      Tasks
+    </button>
+  </div>
 
         <div class="my-4" style="border-top: 1px solid rgba(128, 128, 128, 0.225)"></div>
 
 
-        <div *ngIf="activeRpmSubTabIndex === 0">
-          <intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />
+        <div *ngIf="activeRpmSubTabIndex === 1">
+          <intracare-table [columns]="alertsHeader" [rowData]="alerts" [rowsPerPage]="[10, 25, 50]" />
+        </div>
+
+
+        <div *ngIf="activeRpmSubTabIndex === 3">
+          <intracare-table [columns]="tasksHeader" [rowData]="tasks" [rowsPerPage]="[10, 25, 50]" />
         </div>
         
         <div *ngIf="activeRpmSubTabIndex === 1">
@@ -540,46 +563,95 @@
         </div>
       </div>
     </div>
-  <!-- </div> -->
-  <ng-template #patientCardTemplate let-row>
-    <p class="font-bold">{{ row.name }}</p>
-    <p>DOB {{ row.dob }}</p>
-  </ng-template>
 
-  <ng-template #programTypeTemplate let-row>
-    <p class="font-bold">{{ row.programType }}</p>
+      </div>
+
+
+  <ng-template #priorityTemplate let-row>
+    <span 
+      class="px-6 py-1 rounded-full text-center" 
+      [ngClass]="{
+        'bg-green-200 text-green-600': row.priority === 'Low', 
+        'bg-orange-200 text-orange-600': row.priority === 'Medium', 
+        'bg-red-200 text-red-600': row.priority === 'High'
+      }">
+      {{ row.priority }}
+    </span>
   </ng-template>
+  
+  <ng-template #dueDatetimeTemplate let-row>
+    {{ row.dueDatetime | date: 'short' }}
+  </ng-template>
+  
   <ng-template #statusTemplate let-row>
-    <p class="bg-skyLight text-[#6366F1] text-center rounded-full inline-block w-auto px-2.5 py-1">
+    <span class="px-2 py-1 rounded-full text-center text-white" 
+    [ngClass]="{
+      'bg-green-500': row.status === 'Complete',
+      'bg-orange-500': row.status === 'Incomplete', 
+    } ">
       {{ row.status }}
-    </p>
-  </ng-template>
-
-  <ng-template #progressTemplate let-row>
-    <div class="flex flex-col">
-      <p>{{ row.progress }}%</p>
-      <p-progressBar
-        class="p-progressbar-value p-progressbar-value-animate progressbar text-skyLight"
-        [value]="row.progress"
-        [style]="{ height: '4px' }"
-        [showValue]="false"
-      ></p-progressBar>
-    </div>
-  </ng-template>
-
-  <ng-template #consentTemplate let-row>
-    <p class="bg-lime-50 text-lime-600 text-center px-[1px] rounded-lg">
-      {{ row.consent }}
-    </p>
-  </ng-template>
-  <ng-template #editUpdateTemplate let-row>
-    <i
-      (click)="openUpdateModal()"
-      class="cursor-pointer mr-2 text-[15px] text-[#667085] not-italic flex-shrink-0"
-      >Update</i
-    >
-    <i (click)="openEditModal()" class="cursor-pointer text-[15px] text-[#6366F1] not-italic flex-shrink-0"
-      >Edit</i
-    >
+    </span>
   </ng-template>
 </section>
+
+
+
+<p-dialog header="Add Task" [(visible)]="displayModal" [modal]="true" [closable]="true" [style]="{ width: '50vw' }">
+  <form class="space-y-6">
+    <!-- Task Description -->
+    <div class="flex flex-col">
+      <label for="taskDescription" class="font-semibold text-sm mb-1">Task Description *</label>
+      <textarea id="taskDescription" rows="3" class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" [(ngModel)]="taskDescription" name="taskDescription"></textarea>
+
+    </div>
+
+    <!-- Assign To, Due Date, and Due Time -->
+    <div class="grid grid-cols-3 gap-4">
+      <div class="flex flex-col">
+        <label for="assignTo" class="font-semibold text-sm mb-1">Assign To *</label>
+       <p-dropdown [(ngModel)]="assignTo" [options]="memberOptions" name="assignTo" class="w-full"></p-dropdown>
+
+      </div>
+      <div class="flex flex-col">
+        <label for="dueDate" class="font-semibold text-sm mb-1">Due Date *</label>
+        <input type="date" [(ngModel)]="dueDate" name="dueDate" class="p-2 border border-gray-300 rounded-md focus:outline-none" />
+      </div>
+      <div class="flex flex-col">
+        <label for="dueTime" class="font-semibold text-sm mb-1">Due Time *</label>
+        <p-dropdown [(ngModel)]="dueTime" [options]="timeOptions" name="dueTime" class="w-full"></p-dropdown>
+
+      </div>
+    </div>
+
+    <div class="flex items-center">
+      <label class="font-semibold text-sm mb-1 mr-4">Priority *</label>
+      <div class="flex space-x-2">
+        <button type="button" class="p-2 rounded-md" [ngClass]="{
+          'bg-yellow-500 border-yellow-300 text-white': selectedPriority === 'Low',
+          'bg-white text-black': selectedPriority !== 'Low',
+        }" (click)="selectPriority('Low')">Low</button>
+        <button type="button" class="p-2 rounded-md" [ngClass]="{
+          'bg-green-500 border-green-300 text-white': selectedPriority === 'Medium',
+          'bg-white text-black': selectedPriority !== 'Medium',
+        }" (click)="selectPriority('Medium')">Medium</button>
+        <button type="button" class="p-2 rounded-md" [ngClass]="{
+          'bg-red-500 border-red-300 text-white': selectedPriority === 'High',
+          'bg-white text-black': selectedPriority !== 'High',
+        }" (click)="selectPriority('High')">High</button>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+      <label class="font-semibold text-sm mb-1">Notification</label>
+      <div class="flex space-x-2">
+        <p-checkbox [(ngModel)]="notificationEmail" label="Notify via Email"></p-checkbox>
+        <p-checkbox [(ngModel)]="notificationText" label="Notify via Text"></p-checkbox>
+      </div>
+    </div>
+
+    <div class="flex justify-end space-x-4 pt-4">
+      <button pButton label="Cancel" icon="pi pi-times" class="p-button-text" (click)="cancel()"></button>
+      <button pButton label="OK" icon="pi pi-check" class="p-button-primary" (click)="createTask()"></button>
+    </div>
+  </form>
+</p-dialog>

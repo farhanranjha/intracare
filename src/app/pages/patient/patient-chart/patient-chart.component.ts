@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild } from "@angular/core";
+import { Component, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { ProgressBarModule } from "primeng/progressbar";
 import { TableModule, Table } from "primeng/table";
@@ -11,26 +11,154 @@ import { LayoutService } from "src/app/layout/service/app.layout.service";
 import { TabMenuModule } from 'primeng/tabmenu';
 import { ToggleButtonModule } from 'primeng/togglebutton';
 import { TableComponent } from "src/app/components/table/table.component";
+import { DialogModule } from "primeng/dialog";
+import { DropdownModule } from "primeng/dropdown";
+import { CalendarModule } from "primeng/calendar";
+import { CheckboxModule } from "primeng/checkbox";
+import { FormsModule } from "@angular/forms";
 
 
 @Component({
   selector: "app-patient-chart",
   standalone: true,
-  imports: [ButtonModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule],
+  imports: [ButtonModule, DialogModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule, DropdownModule, FormsModule, CalendarModule, CheckboxModule],
   templateUrl: "./patient-chart.component.html",
   styleUrl: "./patient-chart.component.scss",
 })
 export class PatientChartComponent {
+  taskDescription: string = "";
+  assignTo: string = "";
+  dueDate: Date | undefined;
+  dueTime: string | undefined;
+  selectedPriority: string = "";
+  notificationEmail: boolean = false;
+  notificationText: boolean = false;
+
+  tasks: any[] = [];
+
+  timeOptions = [
+    { label: '12:00 AM', value: '00:00' },
+    { label: '01:00 AM', value: '01:00' },
+    { label: '02:00 AM', value: '02:00' },
+    { label: '03:00 AM', value: '03:00' },
+    { label: '04:00 AM', value: '04:00' },
+    { label: '05:00 AM', value: '05:00' },
+    { label: '06:00 AM', value: '06:00' },
+    { label: '07:00 AM', value: '07:00' },
+    { label: '08:00 AM', value: '08:00' },
+    { label: '09:00 AM', value: '09:00' },
+    { label: '10:00 AM', value: '10:00' },
+    { label: '11:00 AM', value: '11:00' },
+    { label: '12:00 PM', value: '12:00' },
+    { label: '01:00 PM', value: '13:00' },
+    { label: '02:00 PM', value: '14:00' },
+    { label: '03:00 PM', value: '15:00' },
+    { label: '04:00 PM', value: '16:00' },
+    { label: '05:00 PM', value: '17:00' },
+    { label: '06:00 PM', value: '18:00' },
+    { label: '07:00 PM', value: '19:00' },
+    { label: '08:00 PM', value: '20:00' },
+    { label: '09:00 PM', value: '21:00' },
+    { label: '10:00 PM', value: '22:00' },
+    { label: '11:00 PM', value: '23:00' },
+  ];
+
+  memberOptions = [
+    { label: 'Kashif Rathore', value: 'Kashif Rathore' },
+    { label: 'Ajmal Shami (You)', value: 'Ajmal Shami' }
+  ];
+
+  selectPriority(priority: string) {
+    this.selectedPriority = priority;
+  }
+  
+  
+  createTask() {
+    if (!this.dueDate || !this.dueTime) {
+      console.error("Due Date and Due Time are required.");
+      return;
+    }
+
+    const dueDateTime = new Date(this.dueDate);
+    const [hours, minutes] = this.dueTime.split(':');
+    dueDateTime.setHours(+hours);
+    dueDateTime.setMinutes(+minutes);
+
+    const currentDateTime = new Date();
+
+    if (dueDateTime < currentDateTime) {
+      alert('Please provide a correct due date and time');
+      return;
+    }
+
+    const timestamp = Date.now();
+    const dateObj = new Date(timestamp);
+
+    const formattedDate = dateObj.toLocaleDateString('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric'
+    });
+
+    const formattedTime = dateObj.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true
+    });
+
+    const formattedDateTime = `${formattedDate}, ${formattedTime}`;
+
+    const newTask = {
+      createdAt: formattedDateTime,
+      description: this.taskDescription,
+      assignedTo: this.assignTo,
+      priority: this.selectedPriority,
+      dueDatetime: dueDateTime,
+      assignedBy: 'Ajmal Shami',
+      notifications: {
+        email: this.notificationEmail,
+        text: this.notificationText,
+      },
+      status: 'Incomplete',
+    };
+
+    this.tasks.push(newTask);
+    
+    console.log("Task added:", newTask);
+
+    this.resetForm();
+  }
+
+  resetForm() {
+    this.taskDescription = "";
+    this.assignTo = "";
+    this.dueDate = undefined;
+    this.dueTime = undefined;
+    this.selectedPriority = "";
+    this.notificationEmail = false;
+    this.notificationText = false;
+  }
+
   activeIndex: number = 0;
+  activeRPMCCM: string = ''
   activeTab: string = 'General'
   activeBtn: string = "none";
   activeGeneralSubTabIndex: number = 0;
-
+  displayModal: boolean = false;
+  patientName: string = 'M "Minnie" Henderson Covington'
+  openTaskModal() {
+    this.displayModal = true;
+  }
+  cancel() {
+    this.displayModal = false;
+  }
 
 
   activeRpmSubTabIndex: number = 0;
 
-
+  tasksHeader: any[] = [];
+  alertsHeader: any[] = [];
+  alerts: any[] = [];
 
   @ViewChild("dt1") dt1!: Table;
 
@@ -41,6 +169,8 @@ export class PatientChartComponent {
   @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
   @ViewChild("customFilter", { static: true }) customFilter: any;
+  @ViewChild('priorityTemplate', { static: true }) priorityTemplate!: TemplateRef<any>;
+  @ViewChild('dueDatetimeTemplate', { static: true }) dueDatetimeTemplate!: TemplateRef<any>;
   @ViewChild(PatientEnrollmentEditModalComponent) editModalComponent!: PatientEnrollmentEditModalComponent;
   @ViewChild(PatientEnrollmentUpdateModalComponent) updateModalComponent!: PatientEnrollmentUpdateModalComponent;
 
@@ -61,14 +191,11 @@ export class PatientChartComponent {
   editNotes() {
     this.isEditing = true;
     this.newValue = this.value;
-    console.log("Entering edit mode:", this.isEditing);
   }
 
   updateNotes() {
-    console.log("new value before update:", this.newValue);
     this.value = this.newValue;
     this.isEditing = false;
-    console.log("Updated notes:", this.value);
   }
 
   changeTheme() {
@@ -76,41 +203,87 @@ export class PatientChartComponent {
   }
 
   ngOnInit() {
-
-
     this.value = "Verbally agreed to text reminders and alerts related to the diagnosis";
-    this.columns = [
-      { name: "Date", field: "date", filterType: "date" },
-      {
-        name: "Patient Name",
-        field: "name",
-        filterType: "text",
-        isCustom: true,
-        template: this.patientCardTemplate,
-      },
-      { name: "Practice", field: "practice", filterType: "text" },
-      { name: "Device Type", field: "deviceType", filterType: "text" },
-      {
-        name: "Program Type",
-        field: "programType",
-        filterType: "custom",
-        isCustom: true,
-        template: this.programTypeTemplate,
-        filterTemplate: this.customFilter,
-        options: ["RPM", "CCM"],
-      },
-      { name: "Status", field: "status", filterType: "text", isCustom: true, template: this.statusTemplate },
-      { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },
-      { name: "Consent", field: "consent", filterType: "text", isCustom: true, template: this.consentTemplate },
-      {
-        name: "Edit / Update",
-        field: "",
-        isCustom: true,
-        template: this.editUpdateTemplate,
-        filterType: "none",
-      },
-    ];
-    
+
+      this.tasksHeader = [
+        { name: 'Created At', field: 'createdAt', filterType: 'date', sortable: true },
+        { name: 'Assigned To', field: 'assignedTo', filterType: 'text', sortable: true },
+        { name: 'Assigned By', field: 'assignedBy', filterType: 'text', sortable: true },
+        { name: 'Description', field: 'description', filterType: 'text', sortable: true },
+        { name: 'Priority', field: 'priority', filterType: 'text', isCustom: true, template: this.priorityTemplate },
+        { name: 'Due Datetime', field: 'dueDatetime', filterType: 'date', isCustom: true, template: this.dueDatetimeTemplate },
+        { name: 'Status', field: 'status', filterType: 'text', isCustom: true, template: this.statusTemplate }
+      ];
+  
+      this.tasks = [
+        {
+          createdAt: 'Sep 24, 2024, 5:45 PM',
+          assignedTo: 'Kashif Rather',
+          assignedBy: 'Ajmal Shami',
+          description: 'This is a test task',
+          priority: 'Low',
+          dueDatetime: 'Sep 30, 2024, 03:45 AM',
+          status: 'Incomplete'
+        },
+        {
+          createdAt: 'Sep 22, 2020, 5:45 PM',
+          assignedTo: 'Kashif Rather',
+          assignedBy: 'Ajmal Shami',
+          description: 'This is a test task2',
+          priority: 'Medium',
+          dueDatetime: 'Sep 30, 2024, 03:45 AM',
+          status: 'Complete'
+        },
+        {
+          createdAt: 'Jul 20, 2024, 10:30 PM',
+          assignedTo: 'Kashif Rather',
+          assignedBy: 'Ajmal Shami',
+          description: 'This is a test task3',
+          priority: 'High',
+          dueDatetime: 'Sep 30, 2024, 03:45 AM',
+          status: 'Complete'
+        }
+      ];
+  
+      this.alertsHeader = [
+        { name: 'Alert DateTime', field: 'alertDateTime', filterType: 'date' },
+        { name: 'Reading Type', field: 'readingType', filterType: 'text' },
+        { name: 'Alert Type', field: 'alertType', filterType: 'text' },
+        { name: 'Reading DateTime', field: 'readingDateTime', filterType: 'date' },
+        { name: 'Reading', field: 'reading', filterType: 'text' },
+        { name: 'Stage', field: 'stage', filterType: 'text' },
+        { name: 'Note', field: 'note', filterType: 'text' }
+      ];
+  
+      this.alerts = [
+        {
+          alertDateTime: '2024-09-26 10:00 AM',
+          readingType: 'Blood Pressure',
+          alertType: 'High',
+          readingDateTime: '2024-09-26 10:00 AM',
+          reading: '140/90',
+          stage: 'Normal',
+          note: 'Take medication'
+        },
+        {
+          alertDateTime: '2024-09-25 11:30 AM',
+          readingType: 'Heart Rate',
+          alertType: 'Normal',
+          readingDateTime: '2024-09-25 11:30 AM',
+          reading: '72 bpm',
+          stage: 'Below Normal',
+          note: 'No action required'
+        },
+        {
+          alertDateTime: '2024-09-24 9:15 AM',
+          readingType: 'Oxygen Saturation',
+          alertType: 'Low',
+          readingDateTime: '2024-09-24 9:15 AM',
+          reading: '89%',
+          stage: 'Cold',
+          note: 'Check breathing'
+        }
+      ];
   }
 
   profileSections = [
@@ -122,7 +295,6 @@ export class PatientChartComponent {
       { label: 'Consent', value: 'Hypertension' },
       { label: 'Billing Diagnosis', value: 'Hypertension' },
     ]},
-    // Contact Information Section
     { 
       title: 'Contact Information', 
       data: [
@@ -134,8 +306,6 @@ export class PatientChartComponent {
         { label: 'Language', value: 'English' },
       ] 
     },
-  
-    // Baseline Biometrics Section
     { 
       title: 'Baseline Biometrics', 
       data: [
@@ -147,8 +317,6 @@ export class PatientChartComponent {
         { label: 'Weight', value: 'bitemplenames@gmail.com' },
       ] 
     },
-  
-    // Baseline Details Section
     { 
       title: 'Baseline Details', 
       data: [
@@ -158,8 +326,6 @@ export class PatientChartComponent {
         { label: 'Registration Date', value: 'Oct 24, 2023' },
       ] 
     },
-  
-    // Patient Notification Control Section
     { 
       title: 'Patient Notification Control', 
       data: [
@@ -203,6 +369,9 @@ export class PatientChartComponent {
   setActiveTab(tab: string) {
     this.activeTab = tab;
     this.activeGeneralSubTabIndex = 0
+  }
+  setRPMCCM(tab: string) {
+    this.activeRPMCCM = tab;
   }
 
   setActiveBtn(tab: string) {
