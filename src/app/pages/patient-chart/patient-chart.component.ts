@@ -43,6 +43,8 @@ export class PatientChartComponent {
 
   constructor(public layoutService: LayoutService) {}
 
+  activeRPMCCM: string = ''
+
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
 
@@ -204,4 +206,8 @@ export class PatientChartComponent {
 
     this.activeBtn = tab;
   }
+  setRPMCCM(tab: string) {
+    this.activeRPMCCM = tab;
+  }
+  
 }

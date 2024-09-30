@@ -16,10 +16,10 @@
         label="RPM"
         class="p-3 font-medium rounded-lg"
         [ngClass]="{
-          'bg-[#6366F1] border-[#6366F1] text-white': activeTab === 'RPM',
-          'bg-gray-100 border-none text-gray-700': activeTab !== 'RPM',
+          'bg-[#6366F1] border-[#6366F1] text-white': activeRPMCCM === 'RPM',
+          'bg-gray-100 border-none text-gray-700': activeRPMCCM !== 'RPM',
         }"
-        (click)="setActiveTab('RPM')"
+        (click)="setRPMCCM('RPM')"
       ></button>
       <button
         pButton
@@ -27,10 +27,10 @@
         label="CCM"
         class="p-3 font-medium"
         [ngClass]="{
-          'bg-[#6366F1] border-[#6366F1] text-white': activeTab === 'CCM',
-          'bg-gray-100 border-none text-gray-700': activeTab !== 'CCM',
+          'bg-[#6366F1] border-[#6366F1] text-white': activeRPMCCM === 'CCM',
+          'bg-gray-100 border-none text-gray-700': activeRPMCCM !== 'CCM',
         }"
-        (click)="setActiveTab('CCM')"
+        (click)="setRPMCCM('CCM')"
       ></button>
     </div>
   </div>
