@@ -7,8 +7,10 @@
 </section>
 
 <ng-template #patientCardTemplate let-row>
-  <p class="font-bold">{{ row.name }}</p>
-  <p>DOB {{ row.dob }}</p>
+  <div class="flex flex-col gap-3">
+    <a [routerLink]="['/patient', row.id]" class="font-bold hover:cursor-pointer hover:underline">{{ row.name }}</a>
+    <p>DOB {{ row.dob }}</p>
+  </div>
 </ng-template>
 <ng-template #programTypeTemplate let-row>
   <p class="font-bold">{{ row.programType }}</p>
