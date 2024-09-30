@@ -8,19 +8,26 @@ import { PatientEnrollmentEditModalComponent } from "src/app/components/patient-
 import { PatientEnrollmentUpdateModalComponent } from "src/app/components/patient-enrollment-modal/patient-enrollment-update-modal/patient-enrollment-update-modal.component";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { LayoutService } from "src/app/layout/service/app.layout.service";
+import { TabMenuModule } from 'primeng/tabmenu';
 import { TableComponent } from "src/app/components/table/table.component";
 
 @Component({
   selector: "app-patient-chart",
   standalone: true,
-  imports: [ButtonModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent],
+  imports: [ButtonModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule],
   templateUrl: "./patient-chart.component.html",
   styleUrl: "./patient-chart.component.scss",
 })
 export class PatientChartComponent {
   activeIndex: number = 0;
-  activeTab: string = "RPM";
+  activeTab: string = 'General'
   activeBtn: string = "none";
+
+
+
+  activeRpmSubTabIndex: number = 0;
+
+
 
   @ViewChild("dt1") dt1!: Table;
 
@@ -36,12 +43,19 @@ export class PatientChartComponent {
 
   constructor(public layoutService: LayoutService) {}
 
+  activeRPMCCM: string = ''
+
   columns: any[] = [];
   patients: any[] = pendingEnrollmentsRows;
 
   value: string | undefined;
   isEditing: boolean = false;
   newValue: string = "";
+
+  
+  selectTab(index: number) {
+    this.activeIndex = index;
+  }
 
   editNotes() {
     this.isEditing = true;
@@ -61,6 +75,8 @@ export class PatientChartComponent {
   }
 
   ngOnInit() {
+
+
     this.value = "Verbally agreed to text reminders and alerts related to the diagnosis";
     this.columns = [
       { name: "Date", field: "date", filterType: "date" },
@@ -93,6 +109,81 @@ export class PatientChartComponent {
         filterType: "none",
       },
     ];
+    
+  }
+
+  profileSections = [
+    { title: 'Clinical Information', data: [
+      { label: 'EHR ID', value: '0175' },
+      { label: 'Allergies', value: '(214) 284-0175' },
+      { label: 'Diagnosis', value: '(214) 284-0175' },
+      { label: 'Clinic Notes', value: 'Hypertension' },
+      { label: 'Consent', value: 'Hypertension' },
+      { label: 'Billing Diagnosis', value: 'Hypertension' },
+    ]},
+    // Contact Information Section
+    { 
+      title: 'Contact Information', 
+      data: [
+        { label: 'Emergency Contact Name', value: '-' },
+        { label: 'Emergency Contact Number', value: '-' },
+        { label: 'Address', value: 'Hypertension' },
+        { label: 'ZIP Code', value: '76022' },
+        { label: 'Email', value: 'bitemplenames@gmail.com' },
+        { label: 'Language', value: 'English' },
+      ] 
+    },
+  
+    // Baseline Biometrics Section
+    { 
+      title: 'Baseline Biometrics', 
+      data: [
+        { label: 'Blood Pressure', value: '128/94 mmhg' },
+        { label: 'Blood Pressure Stage', value: 'Hypertension Stage 2', type: 'alert' }, // Add this for stage 2 alert
+        { label: 'Cholesterol', value: '-' },
+        { label: 'Height', value: 'Hypertension' },
+        { label: 'Blood Glucose', value: '76022' },
+        { label: 'Weight', value: 'bitemplenames@gmail.com' },
+      ] 
+    },
+  
+    // Baseline Details Section
+    { 
+      title: 'Baseline Details', 
+      data: [
+        { label: 'Pre-Registered By', value: 'Vicki Hagler' },
+        { label: 'Pre-Registered Date', value: 'Oct 18, 2023' },
+        { label: 'Registered By', value: 'Sachin Kumar' },
+        { label: 'Registration Date', value: 'Oct 24, 2023' },
+      ] 
+    },
+  
+    // Patient Notification Control Section
+    { 
+      title: 'Patient Notification Control', 
+      data: [
+        { label: 'Text/SMS', value: 'Opt-in for text/sms notifications', type: 'toggle' }, 
+        { label: 'Daily Reminder SMS', value: 'Opt-in to get Daily Reminder', type: 'toggle' },
+        { label: 'Daily Reminder Time', value: '12:00', type: 'time' },
+        { label: 'General/Holiday/Birthday/Newsletter', value: 'Opt-in to get a newsletter or other SMS', type: 'toggle' },
+        { label: 'Email', value: 'To get emails', type: 'toggle' },
+        { label: 'Birthday Email', value: 'Birthday Email', type: 'toggle' },
+      ] 
+    },
+  ];
+  
+
+
+  activeProfileItem = this.profileSections[0];
+
+
+  setActiveProfileItem(item: any) {    
+    this.activeProfileItem = item;
+  }
+
+
+  setActiveRpmSubTab(index: number) {
+    this.activeRpmSubTabIndex = index;
   }
 
   openEditModal() {
@@ -115,4 +206,8 @@ export class PatientChartComponent {
 
     this.activeBtn = tab;
   }
+  setRPMCCM(tab: string) {
+    this.activeRPMCCM = tab;
+  }
+  
 }

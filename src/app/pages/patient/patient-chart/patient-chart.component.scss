@@ -4,7 +4,9 @@
 ::ng-deep .p-tabview-nav .p-highlight .p-tabview-title {
   color: #6366f1;
 }
-
 ::ng-deep .p-tabview-title {
   color: #8a8a8a;
+}
+::ng-deep .p-tabview-panels {
+    padding: 1rem 0; 
 }
