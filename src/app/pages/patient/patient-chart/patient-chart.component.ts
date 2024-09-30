@@ -20,12 +20,13 @@ import { CallLogsComponent } from "src/app/components/logs/call-logs/call-logs.c
 import { TextLogsComponent } from "src/app/components/logs/text-logs/text-logs.component";
 import { TimerLogsComponent } from "src/app/components/logs/timer-logs/timer-logs.component";
 import { RadioButtonModule } from "primeng/radiobutton";
+import { PatientReportsComponent } from "src/app/components/Report/patient-reports/patient-reports.component";
 
 
 @Component({
   selector: "app-patient-chart",
   standalone: true,
-  imports: [ButtonModule, DialogModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule, DropdownModule, FormsModule, CalendarModule, CheckboxModule, CallLogsComponent, TextLogsComponent, TimerLogsComponent, RadioButtonModule],
+  imports: [ButtonModule, DialogModule, CommonModule, ProgressBarModule, TabViewModule, TableModule, TableComponent, TabMenuModule, ToggleButtonModule, DropdownModule, FormsModule, CalendarModule, CheckboxModule, CallLogsComponent, TextLogsComponent, TimerLogsComponent, RadioButtonModule, PatientReportsComponent],
   templateUrl: "./patient-chart.component.html",
   styleUrl: "./patient-chart.component.scss",
 })
