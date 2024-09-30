@@ -117,11 +117,13 @@
               <p>Jul 6, 2024</p>
               <p class="float-right bg-[#F2F4F7] py-1 px-2 rounded-full">RPM: 0 mins</p>
             </div>
-            <div class="flex flex-row gap-3 text-xl">
-              <span class="text-[#6366F1] bg-[#DCEFFF] h-max p-2 rounded-full py-1.5 px-4">00:57 </span>
-              <span class="text-[#B42318] h-max rounded-full">
-                <i class="pi pi-stop-circle text-3xl mt-1"></i>
-              </span>
+            <div class="flex flex-col gap-2 text-xl">
+              <div class="bg-[#FADDDB] rounded-2xl p-4 w-[200px] h-[150px] flex justify-center items-center">
+                <span class="text-[#B42318] font-bold text-4xl">00:57 </span>
+              </div>
+              <div class="border-[#FDA29B] border-2 px-4 py-2 flex justify-center items-center rounded-lg">
+                <span class="text-[#B42318]">Stop</span>
+              </div>
             </div>
           </div>
         </div>
@@ -562,7 +564,7 @@
         <div *ngIf="activeRpmSubTabIndex === 1">
           <intracare-table [columns]="alertsHeader" [rowData]="alerts" [rowsPerPage]="[10, 25, 50]" />
         </div>
-              
+
         <div *ngIf="activeRpmSubTabIndex === 2">
           <p>Tasks content goes here...</p>
         </div>
@@ -578,52 +580,75 @@
               pRipple
               label="Call Logs"
               class="p-1 mr-2 font-medium rounded-lg border-none"
-              [ngClass]="{ 'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab === 'callLogs', 'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab !== 'callLogs' }"
+              [ngClass]="{
+                'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab === 'callLogs',
+                'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab !== 'callLogs',
+              }"
               (click)="setActiveLogTab('callLogs')"
-            ><i class="pi pi-phone mr-2"></i></button>
+            >
+              <i class="pi pi-phone mr-2"></i>
+            </button>
             <button
               pButton
               pRipple
               label="Text Logs"
               class="p-1 mr-2 font-medium rounded-lg border-none"
-              [ngClass]="{ 'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab === 'textLogs', 'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab !== 'textLogs' }"
+              [ngClass]="{
+                'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab === 'textLogs',
+                'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab !== 'textLogs',
+              }"
               (click)="setActiveLogTab('textLogs')"
-            ><i class="pi pi-comment mr-2"></i></button>
+            >
+              <i class="pi pi-comment mr-2"></i>
+            </button>
             <button
               pButton
               pRipple
               label="Timer Logs"
               class="p-1 mr-2 font-medium rounded-lg border-none"
-              [ngClass]="{ 'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab === 'timerLogs', 'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]': activeLogTab !== 'timerLogs' }"
+              [ngClass]="{
+                'bg-[#DCEFFF] text-[#6366F1] rounded-[6px] px-3 py-2 font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab === 'timerLogs',
+                'text-[#757575] bg-transparent font-sans text-[14px] not-italic font-medium leading-[20px]':
+                  activeLogTab !== 'timerLogs',
+              }"
               (click)="setActiveLogTab('timerLogs')"
-            ><i class="pi pi-clock mr-2"></i></button>
+            >
+              <i class="pi pi-clock mr-2"></i>
+            </button>
           </div>
           <div class="my-4" style="border-top: 1px solid rgba(128, 128, 128, 0.225)"></div>
         </div>
       </div>
     </div>
-    
-    
+
     <div *ngIf="activeLogTab === 'callLogs'">
-      <div class=" mb-3">
+      <div class="mb-3">
         <p-radioButton name="group1" value="patients" [(ngModel)]="logFilter" label="Patients"></p-radioButton>
-        <p-radioButton name="group1" value="providers" [(ngModel)]="logFilter" label="Providers" class="ml-4"></p-radioButton>
+        <p-radioButton
+          name="group1"
+          value="providers"
+          [(ngModel)]="logFilter"
+          label="Providers"
+          class="ml-4"
+        ></p-radioButton>
       </div>
 
       <app-call-logs [callLogs]="callLogsData"></app-call-logs>
     </div>
-    
+
     <div *ngIf="activeLogTab === 'textLogs'">
       <app-text-logs [textLogs]="textLogsData"></app-text-logs>
     </div>
-    
+
     <div *ngIf="activeLogTab === 'timerLogs'">
       <app-timer-logs [timerLogs]="timerLogsData"></app-timer-logs>
     </div>
-    
   </div>
-
-
 
   <ng-template #priorityTemplate let-row>
     <span
