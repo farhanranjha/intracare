@@ -9,6 +9,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.component";
 import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
 import { TableComponent } from "src/app/components/table/table.component";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: "app-pending-enrollments",
@@ -22,6 +23,7 @@ import { TableComponent } from "src/app/components/table/table.component";
     DropdownModule,
     EditDeviceModalComponent,
     TableComponent,
+    RouterModule,
   ],
   templateUrl: "./pending-enrollments.component.html",
   styleUrl: "./pending-enrollments.component.scss",
