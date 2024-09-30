@@ -7,7 +7,7 @@
   [rowsPerPageOptions]="rowsPerPage"
   [totalRecords]="totalRecords"
   [lazy]="true"
-  (onLazyLoad)="triggerLazyLoad()"
+  (onLazyLoad)="onLazyLoad($event)"
 >
   <ng-template *ngIf="showTopBar" pTemplate="caption">
     <div class="flex px-2">
@@ -63,9 +63,9 @@
               [showOperator]="false"
               [showAddButton]="false"
             >
-              <ng-template pTemplate="filter">
+              <ng-template pTemplate="filter" let-filter="filterCallback">
                 <ng-container
-                  *ngTemplateOutlet="col.filterTemplate; context: { handleFilterChange: handleCustomFilterChange }"
+                  *ngTemplateOutlet="col.filterTemplate; context: { handleFilterChange: filter }"
                 ></ng-container>
               </ng-template>
             </p-columnFilter>

@@ -64,7 +64,7 @@ export interface FilterConfig {
     `,
   ],
 })
-export class TableComponent implements OnInit {
+export class TableComponent {
   @ViewChild("dt1") dt1!: Table;
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
@@ -77,51 +77,12 @@ export class TableComponent implements OnInit {
   searchValue: string | undefined;
 
   constructor(private router: Router) {}
-  ngOnInit(): void {
-    this.triggerLazyLoad();
-  }
+
   clear(table: any) {
     table.clear();
     this.searchValue = "";
   }
   getNestedValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
-  }
-  getSelectedValues() {
-    return this.columns
-      .map((col) => {
-        if (col.selectedOptions && col.selectedOptions.length > 0) {
-          return {
-            [col.field]: col.selectedOptions,
-          };
-        }
-        return null;
-      })
-      .filter((entry) => entry !== null);
-  }
-  triggerLazyLoad() {
-    const oldData = this.dt1.createLazyLoadMetadata();
-    const selectedFilters = this.getSelectedValues();
-
-    // console.log("se", selectedFilters);
-
-    const test = [
-      {
-        name: ["Name"],
-      },
-      {
-        "respresentative.name": ["Osama"],
-      },
-    ];
-
-    const event: LazyLoadEvent = {
-      ...oldData,
-      filters: { ...oldData.filters, ...{ ...test } },
-    };
-
-    this.onLazyLoad(event);
-  }
-  handleCustomFilterChange(selectedOptions: string[]) {
-    console.log("Selected options in generic table:", selectedOptions);
   }
 }
