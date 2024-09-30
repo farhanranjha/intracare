@@ -1,0 +1,79 @@
+<section class="w-full flex flex-col items-start justify-start gap-[14px]">
+  <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
+    <p-button label="Dashboard" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
+    <button pButton pRipple icon="pi pi-cloud-upload" label="Upload CSV" class="p-3 font-medium"></button>
+  </div>
+  <div class="w-full flex flex-row items-start justify-start gap-[14px] h-[calc(100vh-13.8rem)]">
+    <div class="w-1/5 h-full bg-white rounded-xl shadow-full p-[1.5rem] flex flex-col gap-2">
+      <p
+        *ngFor="let category of categories; let i = index"
+        (click)="scrollToComponent(i)"
+        class="cursor-pointer"
+        [class.text-primary]="selectedCategory === category"
+      >
+        {{ category }}
+      </p>
+    </div>
+    <div class="w-full bg-white rounded-md shadow-full h-full">
+      <div class="w-full h-[calc(100vh-19rem)] overflow-y-scroll py-3" #componentContainer (scroll)="onScroll()">
+        <div id="patientInformation">
+          <app-patient-information [patientInfoForm]="form.get('patientInfo')"></app-patient-information>
+        </div>
+        <div id="diagnosis">
+          <app-diagnosis
+            [patientInfoForm]="form.get('diagnosis')"
+            [name]="currentTopContainer === 'Diagnosis' ? name : null"
+          ></app-diagnosis>
+        </div>
+        <div id="attachDevice">
+          <app-attach-device
+            [patientInfoForm]="form.get('attachDevice')"
+            [name]="currentTopContainer === 'Attach a Device' ? name : null"
+          ></app-attach-device>
+        </div>
+        <div id="practiceInformation">
+          <app-practice-information
+            [patientInfoForm]="form.get('practiceInfo')"
+            [name]="currentTopContainer === 'Practice Information' ? name : null"
+          ></app-practice-information>
+        </div>
+        <div id="insuranceInfo">
+          <app-insurance-info
+            [patientInfoForm]="form.get('insuranceInfo')"
+            [name]="currentTopContainer === 'Primary Insurance Info' ? name : null"
+          ></app-insurance-info>
+        </div>
+      </div>
+      <div class="pb-4 pt-2 px-6 w-full flex flex-row justify-end items-center">
+        <button
+          [disabled]="form.invalid"
+          (click)="showDialog()"
+          pButton
+          pRipple
+          label="Submit"
+          class="py-3 px-5 font-medium"
+        ></button>
+      </div>
+    </div>
+  </div>
+</section>
+<p-dialog
+  header="Form Summary"
+  [modal]="true"
+  [(visible)]="visible"
+  [style]="{ width: '50rem' }"
+  [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  [maximizable]="true"
+>
+  <p-button label="Save" (click)="hideDialogAndNavigate()" />
+  <div *ngIf="form">
+    <div *ngFor="let group of formGroups">
+      <h4>{{ group.title }}</h4>
+      <ul>
+        <li *ngFor="let field of group.fields">
+          <strong>{{ field.label }}:</strong> {{ field.value || "N/A" }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</p-dialog>

@@ -1,5 +1,5 @@
 import fs from "fs";
-import {InfisicalSDK} from "@infisical/sdk"
+import { InfisicalSDK } from "@infisical/sdk";
 
 const client = new InfisicalSDK({
   siteUrl: process.env.INFISICAL_URL,

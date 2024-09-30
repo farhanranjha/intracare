@@ -1,0 +1,36 @@
+<section class="w-full flex flex-col justify-start items-start gap-2 cutom-header-padding">
+  <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
+    <p-button label="Patient Pending Readings" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
+    <button
+      pButton
+      pRipple
+      [routerLink]="['/add-patient']"
+      routerLinkActive="router-link-active"
+      label="Enroll New Patient"
+      class="p-3 font-medium"
+    ></button>
+  </div>
+</section>
+<intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />
+
+<ng-template #patientCardTemplate let-row>
+  <div class="flex items-center space-x-2 w-[180px]">
+    <img [src]="row.image" alt="Patient Image" class="w-2 rounded-full" />
+    <div class="flex flex-col">
+      <span class="font-bold">{{ row.name }}</span>
+      <span class="text-sm">{{ row.dob }}</span>
+      <a href="#" class="text-black"
+        >Patient ID: <span class="text-blue-500 hover:underline">{{ row.id }}</span></a
+      >
+    </div>
+  </div>
+</ng-template>
+<ng-template #programTypeTemplate let-row>
+  <p class="font-bold">{{ row.type }}</p>
+</ng-template>
+<ng-template #trackingTemplate let-row>
+  <span class="text-indigo-500 bg-lime-100 px-1 rounded-lg">{{ row.trackingStatus }}</span>
+</ng-template>
+<ng-template #shippingTemplate let-row
+  ><span [class]="row.shipped ? 'text-green-500' : 'text-red-500'">{{ row.shipped ? "Shipped" : "Not Shipped" }}</span>
+</ng-template>

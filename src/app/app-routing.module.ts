@@ -1,11 +1,8 @@
-import { RouterModule } from "@angular/router";
 import { NgModule } from "@angular/core";
-import { AppLayoutComponent } from "./layout/app.layout.component";
+import { RouterModule } from "@angular/router";
 import { AuthGuard } from "./guards/auth.guard";
+import { AppLayoutComponent } from "./layout/app.layout.component";
 import { NotfoundComponent } from "./pages/notfound/notfound.component";
-import { LoginComponent } from "./pages/login/login.component";
-import { ErrorComponent } from "./pages/error/error.component";
-import { AccessComponent } from "./pages/access/access.component";
 
 @NgModule({
   imports: [
@@ -20,12 +17,18 @@ import { AccessComponent } from "./pages/access/access.component";
               loadChildren: () => import("./pages/dashboard/dashboard.module").then((m) => m.DashboardModule),
               canActivate: [AuthGuard],
             },
+            {
+              path: "patient",
+              loadChildren: () => import("./pages/patient/patient.module").then((m) => m.PatientModule),
+              canActivate: [AuthGuard],
+            },
           ],
         },
+        {
+          path: "auth",
+          loadChildren: () => import("./pages/auth/auth.module").then((m) => m.AuthModule),
+        },
 
-        { path: "login", component: LoginComponent },
-        { path: "error", component: ErrorComponent },
-        { path: "access", component: AccessComponent },
         { path: "notfound", component: NotfoundComponent },
         { path: "**", redirectTo: "/notfound" },
       ],
