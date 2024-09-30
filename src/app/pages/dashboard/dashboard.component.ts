@@ -28,11 +28,8 @@ export class DashboardComponent implements OnInit {
       {
         name: "Name",
         field: "name",
-        filterType: "custom",
-        filterTemplate: this.customFilterName,
+        filterType: "none",
         sort: true,
-        options: ["Name 1", "Name 2"],
-        selectedOptions: [],
       },
       { name: "Country", field: "country.name", filterType: "text" },
       {
@@ -40,14 +37,19 @@ export class DashboardComponent implements OnInit {
         field: "representative.name",
         filterType: "custom",
         filterTemplate: this.customFilterRepresentative,
-        options: ["Representative 1", "Representative 2"],
-        selectedOptions: [],
+        options: [
+          { value: "Representative 1", label: "Representative 1", checked: false },
+          { value: "Representative 2", label: "Representative 2", checked: false },
+          { value: "Representative 3", label: "Representative 3", checked: false },
+          { value: "Representative 4", label: "Representative 4", checked: false },
+        ],
       },
       { name: "Date", field: "date", filterType: "date" },
       { name: "Balance", field: "balance", filterType: "numeric" },
       { name: "Actions", field: "", isCustom: true, template: this.actionTemplate, filterType: "none" },
     ];
   }
+
   onLazyLoad(event: LazyLoadEvent) {
     console.log("===event===> ", event);
   }

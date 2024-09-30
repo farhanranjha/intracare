@@ -10,16 +10,8 @@
   <button pButton type="button" label="Action" (click)="onActionClick(row)"></button>
 </ng-template>
 <ng-template #customFilterName let-handleFilterChange="handleFilterChange">
-  <app-custom-filter
-    [options]="columns[0].options"
-    [filterCallback]="handleFilterChange"
-    [(selectedOptions)]="columns[0].selectedOptions"
-  />
+  <app-custom-filter [options]="columns[0].options" [filterCallback]="handleFilterChange" />
 </ng-template>
 <ng-template #customFilterRepresentative let-handleFilterChange="handleFilterChange">
-  <app-custom-filter
-    [filterCallback]="handleFilterChange"
-    [options]="columns[2].options"
-    [(selectedOptions)]="columns[2].selectedOptions"
-  />
+  <app-custom-filter [filterCallback]="handleFilterChange" [(options)]="columns[2].options" />
 </ng-template>

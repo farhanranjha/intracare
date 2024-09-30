@@ -20,7 +20,7 @@ export interface ColumnConfig {
   filterType: string;
   filterKey?: string;
   [key: string]: any;
-  options?: string[];
+  options?: { value: string; label: string; checked: boolean }[];
   selectedOptions?: string[];
   isCustom?: boolean;
   template?: any;

@@ -57,11 +57,13 @@
             <p-columnFilter
               *ngSwitchCase="'custom'"
               [field]="col.field"
-              matchMode="in"
               display="menu"
               [showMatchModes]="false"
               [showOperator]="false"
               [showAddButton]="false"
+              [showApplyButton]="false"
+              [showClearButton]="false"
+              [matchMode]="'equals'"
             >
               <ng-template pTemplate="filter" let-filter="filterCallback">
                 <ng-container

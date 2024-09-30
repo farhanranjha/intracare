@@ -1,36 +1,35 @@
 import { CommonModule } from "@angular/common";
 import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { CheckboxModule } from "primeng/checkbox";
 
 @Component({
   selector: "app-custom-filter",
   standalone: true,
-  imports: [CheckboxModule, CommonModule],
+  imports: [CheckboxModule, CommonModule, FormsModule],
   templateUrl: "./custom-filter.component.html",
 })
-export class CustomFilterComponent implements OnInit {
-  @Input() options: string[] = [];
+export class CustomFilterComponent {
+  @Input() options: { value: string; label: string; checked: boolean }[] = [];
   @Input() filterCallback: (selectedOptions: string[]) => void;
-  @Output() selectedOptionsChange: EventEmitter<string[]> = new EventEmitter<string[]>();
-  @Input() selectedOptions: string[] = [];
 
-  selected: string[] = [];
+  selectedOptions: string[] = [];
 
-  ngOnInit(): void {
-    console.log("====selectedOptions in customFilter===> ", this.selectedOptions);
-  }
-  onCheckboxChange(option: string, isChecked: boolean): void {
+  onCheckboxChange(optionValue: { value: string; label: string; checked: boolean }, isChecked: boolean): void {
+    const option = this.options.find((opt) => opt.value === optionValue.value);
+    if (option) {
+      option.checked = isChecked;
+    }
     if (isChecked) {
-      if (!this.selectedOptions.includes(option)) {
-        this.selectedOptions.push(option);
+      if (!this.selectedOptions.includes(optionValue.value)) {
+        this.selectedOptions.push(optionValue.value);
       }
     } else {
-      const index = this.selectedOptions.indexOf(option);
+      const index = this.selectedOptions.indexOf(optionValue.value);
       if (index > -1) {
         this.selectedOptions.splice(index, 1);
       }
     }
-    this.selectedOptionsChange.emit(this.selectedOptions);
     if (this.filterCallback) {
       this.filterCallback(this.selectedOptions);
     }

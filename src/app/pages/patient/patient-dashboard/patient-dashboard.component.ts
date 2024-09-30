@@ -39,10 +39,9 @@ export class PatientDashboardComponent implements OnInit {
       {
         name: "Program Type",
         field: "programType",
-        filterType: "custom",
+        filterType: "none",
         isCustom: true,
         template: this.programTypeTemplate,
-        options: ["RPM", "CCM"],
       },
       { name: "Status", field: "status", filterType: "text", isCustom: true, template: this.statusTemplate },
       { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },
