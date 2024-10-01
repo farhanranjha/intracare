@@ -1,11 +1,10 @@
 <div class="flex flex-row my-2">
-  <p *ngFor="let route of routes">
-    <a
-      routerLinkActive="text-[#6366f1]"
-      [routerLinkActiveOptions]="{ exact: true }"
-      [routerLink]="route.value"
-      class="p-3 text-lg text-[#6b7280] font-semibold"
-      >{{ route.label }}</a
-    >
-  </p>
+  <a
+    *ngFor="let route of routes"
+    routerLinkActive="text-[#6366f1]"
+    [routerLinkActiveOptions]="{ exact: true }"
+    [routerLink]="route.value"
+    class="py-2 px-3 text-lg text-[#6b7280] font-semibold"
+    >{{ route.label }}</a
+  >
 </div>
