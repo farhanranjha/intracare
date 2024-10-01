@@ -1,22 +1,56 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { TableModule } from "primeng/table";
+import { TableComponent } from "../../table/table.component";
+import { DashboardRow } from "src/app/services/dashboard/dashboard.service";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
 
 @Component({
   selector: "app-text-logs",
   standalone: true,
-  imports: [TableModule, CommonModule, FormsModule],
+  imports: [TableModule, CommonModule, FormsModule, TableComponent],
   templateUrl: "./text-logs.component.html",
 })
-export class TextLogsComponent {
+export class TextLogsComponent implements OnInit {
   @Input() textLogs: any[] = [];
+  @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
+  columns: ColumnConfig[] = [];
+  rowData: DashboardRow[] = [];
+  totalRecords: number = 0;
+  page: number = 1;
+  pageSize: number = 10;
+  sortField: string = "id";
+  sortOrder: "asc" | "desc" = "asc";
+  searchTerm: string = "";
 
-  columns: any[] = [
-    { field: "dateTime", header: "Date & Time" },
-    { field: "phoneNumber", header: "Phone Number" },
-    { field: "message", header: "Message" },
-    { field: "readingType", header: "Reading Type" },
-    { field: "messageStatus", header: "Message Status" },
-  ];
+  ngOnInit() {
+    this.columns = [
+      {
+        field: "dateTime",
+        name: "Date & Time",
+        filterType: "",
+      },
+      {
+        field: "phoneNumber",
+        name: "Phone Number",
+        filterType: "",
+      },
+      {
+        field: "message",
+        name: "Message",
+        filterType: "",
+      },
+      {
+        field: "readingType",
+        name: "Reading Type",
+        filterType: "",
+      },
+      {
+        field: "messageStatus",
+        name: "Message Status",
+        filterType: "",
+      },
+    ];
+  }
 }
