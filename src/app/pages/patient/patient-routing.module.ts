@@ -1,3 +1,4 @@
+import { PatientDashboardModule } from "./patient-dashboard/patient-dashboard.module";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AddPatientComponent } from "./add-patient/add-patient.component";
@@ -14,8 +15,12 @@ import { PatientDashboardComponent } from "./patient-dashboard/patient-dashboard
       { path: "pending-enrollments", component: PendingEnrollmentsComponent },
       { path: "pending-readings", component: PendingReadingsComponent },
       { path: "readings-not-addressed", component: ReadingsNotAddressedComponent },
-      { path: ":id", component: PatientDashboardComponent },
-      { path: "ui/secondary", component: PatientChartComponent },
+      {
+        path: ":id",
+        loadChildren: () =>
+          import("./patient-dashboard/patient-dashboard.module").then((m) => m.PatientDashboardModule),
+      },
+      { path: "secondary", component: PatientChartComponent },
     ]),
   ],
   exports: [RouterModule],

@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
@@ -12,7 +13,7 @@ import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 @Component({
   selector: "app-patient-dashboard",
   standalone: true,
-  imports: [ButtonModule, CommonModule, DividerModule, ProgressBarModule, TabViewModule, TableComponent],
+  imports: [ButtonModule, CommonModule, DividerModule, ProgressBarModule, TabViewModule, TableComponent, RouterModule],
   templateUrl: "./patient-dashboard.component.html",
   styleUrl: "./patient-dashboard.component.scss",
 })
