@@ -1,16 +1,16 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
-import { ColumnConfig } from "../../components/table/table.component";
+import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { dashboardRows } from "src/app/utils/constants/mock-data";
 import { DashboardRow, DashboardService } from "src/app/services/dashboard/dashboard.service";
 import { LazyLoadEvent } from "primeng/api";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
 
 @Component({
   templateUrl: "./dashboard.component.html",
 })
 export class DashboardComponent implements OnInit {
-  @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
-  @ViewChild("customFilterName", { static: true }) customFilterName: any;
-  @ViewChild("customFilterRepresentative", { static: true }) customFilterRepresentative: any;
+  @ViewChild("actionTemplate", { static: true }) actionTemplate: TemplateRef<any>;
+  @ViewChild("customFilterName", { static: true }) customFilterName: TemplateRef<any>;
+  @ViewChild("customFilterRepresentative", { static: true }) customFilterRepresentative: TemplateRef<any>;
   columns: ColumnConfig[] = [];
   rowData: DashboardRow[] = [];
   totalRecords: number = 0;
@@ -51,7 +51,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onLazyLoad(event: LazyLoadEvent) {
-    console.log("===event===> ", event);
+    console.log("===LAZYLOADEVENT===> ", event);
   }
   fetchData() {
     this.dashboardService
@@ -60,32 +60,5 @@ export class DashboardComponent implements OnInit {
         this.rowData = data;
         this.totalRecords = total;
       });
-  }
-
-  onPageChange(event: any) {
-    this.page = event.page;
-    this.pageSize = event.pageSize;
-    this.fetchData();
-  }
-
-  onSortChange(field: string) {
-    if (this.sortField === field) {
-      this.sortOrder = this.sortOrder === "asc" ? "desc" : "asc";
-    } else {
-      this.sortField = field;
-      this.sortOrder = "asc";
-    }
-    this.fetchData();
-  }
-
-  onSearchChange(term: string) {
-    this.searchTerm = term;
-    this.fetchData();
-  }
-  onActionClick(row: any) {
-    console.log("Button clicked for row:", row);
-  }
-  onCheckboxChange(selectedOptions: string[]) {
-    console.log("Selected options: ", selectedOptions);
   }
 }

@@ -1,10 +1,12 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
 import { TabViewModule } from "primeng/tabview";
-import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
+import { TableComponent } from "src/app/components/table/table.component";
+import { IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 
 @Component({
@@ -15,15 +17,15 @@ import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
   styleUrl: "./patient-dashboard.component.scss",
 })
 export class PatientDashboardComponent implements OnInit {
-  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
-  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: any;
-  @ViewChild("statusTemplate", { static: true }) statusTemplate: any;
-  @ViewChild("progressTemplate", { static: true }) progressTemplate: any;
-  @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
-  @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
+  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
+  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: TemplateRef<any>;
+  @ViewChild("statusTemplate", { static: true }) statusTemplate: TemplateRef<any>;
+  @ViewChild("progressTemplate", { static: true }) progressTemplate: TemplateRef<any>;
+  @ViewChild("consentTemplate", { static: true }) consentTemplate: TemplateRef<any>;
+  @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: TemplateRef<any>;
   activeTab: string = "RPM";
   columns: ColumnConfig[] = [];
-  patients: any[] = pendingEnrollmentsRows;
+  patients: IPendingEnrollments[] = pendingEnrollmentsRows;
   ngOnInit(): void {
     this.columns = [
       { name: "Date", field: "date", filterType: "date" },

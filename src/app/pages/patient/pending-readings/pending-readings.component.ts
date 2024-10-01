@@ -1,9 +1,11 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { pendingReadingsRows } from "src/app/utils/constants/mock-data";
 import { RouterModule } from "@angular/router";
-import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
+import { TableComponent } from "src/app/components/table/table.component";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { IPendingReadings } from "src/app/types/mock-data/mock-data-types";
 
 @Component({
   selector: "app-pending-readings",
@@ -14,13 +16,13 @@ import { ColumnConfig, TableComponent } from "src/app/components/table/table.com
 })
 export class PendingReadingsComponent implements OnInit {
   @ViewChild("dt1") dt1!: Table;
-  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
-  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: any;
-  @ViewChild("trackingTemplate", { static: true }) trackingTemplate: any;
-  @ViewChild("shippingTemplate", { static: true }) shippingTemplate: any;
+  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
+  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: TemplateRef<any>;
+  @ViewChild("trackingTemplate", { static: true }) trackingTemplate: TemplateRef<any>;
+  @ViewChild("shippingTemplate", { static: true }) shippingTemplate: TemplateRef<any>;
 
   columns: ColumnConfig[] = [];
-  patients: any[] = pendingReadingsRows;
+  patients: IPendingReadings[] = pendingReadingsRows;
 
   ngOnInit() {
     this.columns = [

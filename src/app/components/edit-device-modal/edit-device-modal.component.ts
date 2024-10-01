@@ -6,6 +6,7 @@ import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
 import { mockDevicesData } from "src/app/utils/constants/mock-data";
 import { ButtonModule } from "primeng/button";
+import { IDeviceTypes } from "src/app/types/mock-data/mock-data-types";
 
 @Component({
   selector: "edit-device-modal",
@@ -16,7 +17,7 @@ import { ButtonModule } from "primeng/button";
 })
 export class EditDeviceModalComponent {
   @Input() visibleAddDevice: boolean = false;
-  @Input() devicesData: any[] = [];
+  @Input() devicesData: IDeviceTypes[] = [];
   isEditMode = false;
 
   enableEditMode() {

@@ -1,8 +1,10 @@
-import { Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { readingNotAddressedRows } from "src/app/utils/constants/mock-data";
-import { ColumnConfig, TableComponent } from "src/app/components/table/table.component";
+import { TableComponent } from "src/app/components/table/table.component";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { IReadingsNotAddressed } from "src/app/types/mock-data/mock-data-types";
 
 @Component({
   selector: "app-readings-not-addressed",
@@ -14,12 +16,12 @@ import { ColumnConfig, TableComponent } from "src/app/components/table/table.com
 export class ReadingsNotAddressedComponent implements OnInit {
   @ViewChild("dt1") dt1!: Table;
 
-  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
-  @ViewChild("stageTemplate", { static: true }) stageTemplate: any;
-  @ViewChild("statusTemplate", { static: true }) statusTemplate: any;
+  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
+  @ViewChild("stageTemplate", { static: true }) stageTemplate: TemplateRef<any>;
+  @ViewChild("statusTemplate", { static: true }) statusTemplate: TemplateRef<any>;
 
   columns: ColumnConfig[] = [];
-  patientss: any[] = readingNotAddressedRows;
+  patientss: IReadingsNotAddressed[] = readingNotAddressedRows;
 
   ngOnInit() {
     this.columns = [

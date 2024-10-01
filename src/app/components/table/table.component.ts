@@ -14,24 +14,8 @@ import { TagModule } from "primeng/tag";
 import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
 import { Router } from "@angular/router";
 import { LazyLoadEvent } from "primeng/api";
-export interface ColumnConfig {
-  name: string;
-  field: string;
-  filterType: string;
-  filterKey?: string;
-  [key: string]: any;
-  options?: { value: string; label: string; checked: boolean }[];
-  selectedOptions?: string[];
-  isCustom?: boolean;
-  template?: any;
-  filterTemplate?: any;
-  sort?: boolean;
-}
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
 
-export interface FilterConfig {
-  key: string;
-  template: any;
-}
 @Component({
   selector: "intracare-table",
   standalone: true,
@@ -68,7 +52,6 @@ export class TableComponent {
   @ViewChild("dt1") dt1!: Table;
   @Input() columns: ColumnConfig[] = [];
   @Input() rowData: any[] = [];
-  @Input() filters: FilterConfig[] = [];
   @Input() rowsPerPage: number[] = [25, 50, 100];
   @Input() loading: boolean = false;
   @Input() totalRecords: number;
