@@ -11,6 +11,8 @@ import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { HeaderComponent } from "./components/header/header.component";
 import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
+import { IKeyValue } from "src/app/types/common-types";
+import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 
 @Component({
   selector: "app-patient-dashboard",
@@ -25,6 +27,7 @@ import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-i
     RouterModule,
     HeaderComponent,
     PatientInfoTabComponent,
+    TabRouterComponent,
   ],
   templateUrl: "./patient-dashboard.component.html",
   styleUrl: "./patient-dashboard.component.scss",
@@ -70,4 +73,9 @@ export class PatientDashboardComponent implements OnInit {
       },
     ];
   }
+  routes: IKeyValue[] = [
+    { label: "General Settings", value: "general-settings" },
+    { label: "RPM", value: "rpm" },
+    { label: "CCM", value: "ccm" },
+  ];
 }
