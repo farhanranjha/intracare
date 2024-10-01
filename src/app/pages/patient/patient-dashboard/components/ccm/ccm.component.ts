@@ -1,9 +1,10 @@
 import { Component } from "@angular/core";
+import { RouterModule } from "@angular/router";
 
 @Component({
   selector: "app-ccm",
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: "./ccm.component.html",
   styleUrl: "./ccm.component.scss",
 })
