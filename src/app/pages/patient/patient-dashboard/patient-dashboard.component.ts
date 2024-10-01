@@ -10,6 +10,7 @@ import { IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
 import { HeaderComponent } from "./components/header/header.component";
+import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
 
 @Component({
   selector: "app-patient-dashboard",
@@ -23,6 +24,7 @@ import { HeaderComponent } from "./components/header/header.component";
     TableComponent,
     RouterModule,
     HeaderComponent,
+    PatientInfoTabComponent,
   ],
   templateUrl: "./patient-dashboard.component.html",
   styleUrl: "./patient-dashboard.component.scss",

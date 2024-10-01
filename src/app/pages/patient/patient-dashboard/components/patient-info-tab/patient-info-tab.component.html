@@ -1,1 +1,144 @@
-<p>patient-info-tab works!</p>
+<div class="w-[305px] flex flex-col gap-4">
+  <div class="p-4 bg-white rounded-lg shadow-md flex flex-col w-full gap-4">
+    <div class="flex flex-row gap-3">
+      <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Patient Image" class="!w-12 h-12 rounded-full" />
+      <div class="flex flex-col gap-2">
+        <p class="m-0 font-semibold">M Henderson Covington</p>
+        <div>
+          <span class="badge bg-[#ECFDF3] text-[#027A48] py-1 px-2 rounded-full">English</span>
+          <span class="badge bg-[#DCEFFF] text-[#6366F1] py-1 px-2 rounded-full">Female</span>
+          <span class="badge bg-[#FFFAEB] text-[#B54708] py-1 px-2 rounded-full">76 y/o</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row justify-between">
+        <div class="flex flex-row gap-2 items-center">
+          <img class="w-4 h-4" src="../../../assets/layout/styles/icons/call-outgoing.svg" />
+          <p class="m-0 text-sm">Mobile</p>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+          <p class="m-0 text-sm text-[#222]">(214) 284-0175</p>
+          <i class="pi pi-pencil text-[#6366F1] underline cursor-pointer"></i>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between">
+        <div class="flex flex-row gap-2 items-center">
+          <img class="w-4 h-4" src="../../../assets/layout/styles/icons/house.svg" />
+          <p class="m-0 text-sm">Home</p>
+        </div>
+        <div class="flex flex-row gap-2 items-center">
+          <p class="m-0 text-sm text-[#222]">(214) 284-0175</p>
+          <i class="pi pi-pencil text-[#6366F1] underline cursor-pointer"></i>
+        </div>
+      </div>
+      <div class="flex flex-row gap-2 items-center">
+        <img class="!w-4 h-4" src="../../../assets/layout/styles/icons/hospital.svg" />
+        <p class="m-0 text-sm">Alpha Medical Center</p>
+      </div>
+      <div class="flex flex-row gap-2 items-center">
+        <img class="!w-4 h-4" src="../../../assets/layout/styles/icons/profile-circle.svg" />
+        <p class="m-0 text-sm">Dr. Austin Ogwu</p>
+      </div>
+      <div class="flex justify-between items-center gap-2">
+        <div class="btns-group flex items-center gap-2">
+          <button
+            pButton
+            pRipple
+            label="Call"
+            icon="pi pi-phone"
+            class="p-button-outlined border-gray-500 text-[#444] text-sm"
+          ></button>
+          <button
+            pButton
+            pRipple
+            label="Video"
+            icon="pi pi-video"
+            class="p-button-outlined border-gray-500 text-[#444] text-sm"
+          ></button>
+        </div>
+        <p class="m-0 text-sm font-bold text-[#6366F1]">Patient Face Sheet</p>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 bg-white rounded-lg shadow-md flex flex-col w-full gap-4">
+    <div class="flex flex-col gap-2">
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Place</p>
+        <p class="m-0 text-sm text-[#222]">Dallas, Texas</p>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Diagnosis</p>
+        <p class="m-0 text-sm text-[#222]">HTN, Ventricular ectopic beat</p>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Care Type</p>
+        <p class="m-0 text-sm text-[#222]">RPM</p>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Program Type</p>
+        <p class="m-0 text-sm text-[#222]">Medicare</p>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">D.O.R</p>
+        <div class="flex flex-row items-center justify-center gap-2">
+          <p-progressBar
+            class="p-progressbar-value p-progressbar-value-animate progressbar text-skyLight"
+            [value]="46"
+            [style]="{ height: '0.5rem', width: '6rem' }"
+            [showValue]="false"
+          ></p-progressBar>
+          <p class="m-0 text-sm text-[#222]">46%</p>
+        </div>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Billing Cycle Start</p>
+        <p class="m-0 text-sm text-[#222]">July 6, 2024</p>
+      </div>
+      <div class="flex flex-row justify-between">
+        <p class="m-0 text-sm">Time Spent</p>
+        <span class="text-sm bg-gray-100 py-1 px-2 rounded-full">RPM: 0 mins</span>
+      </div>
+      <div class="flex flex-row justify-end items-center btns-group gap-2">
+        <div class="btn-red">
+          <button
+            pButton
+            pRipple
+            label="Discharge"
+            icon="pi pi-user-minus"
+            class="p-button-outlined border-[#FDA29B] text-[#B42318] text-sm"
+          ></button>
+        </div>
+        <div class="btn-orange">
+          <button
+            pButton
+            pRipple
+            label="Patient On Hold"
+            icon="pi pi-envelope"
+            class="p-button-outlined border-[#F99D67] text-[#F5630F] text-sm"
+          ></button>
+        </div>
+      </div>
+      <div class="flex flex-row justify-end items-center btns-group gap-2">
+        <button
+          pButton
+          pRipple
+          label="Task"
+          icon="pi pi-check-circle"
+          class="p-button-outlined border-gray-500 text-[#444] text-sm"
+        ></button>
+        <button
+          pButton
+          pRipple
+          label="Messages"
+          icon="pi pi-envelope"
+          class="p-button-outlined border-gray-500 text-[#444] text-sm"
+        ></button>
+      </div>
+    </div>
+  </div>
+  <div class="p-4 bg-white rounded-lg shadow-md flex flex-col w-full gap-4">
+    <p class="m-0 font-semibold">Pinned Notes</p>
+    <p class="m-0 text-sm">Verbally Agreed to Calls and Messages</p>
+  </div>
+</div>
