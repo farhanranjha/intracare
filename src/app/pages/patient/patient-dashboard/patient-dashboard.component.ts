@@ -9,11 +9,21 @@ import { TableComponent } from "src/app/components/table/table.component";
 import { IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
+import { HeaderComponent } from "./components/header/header.component";
 
 @Component({
   selector: "app-patient-dashboard",
   standalone: true,
-  imports: [ButtonModule, CommonModule, DividerModule, ProgressBarModule, TabViewModule, TableComponent, RouterModule],
+  imports: [
+    ButtonModule,
+    CommonModule,
+    DividerModule,
+    ProgressBarModule,
+    TabViewModule,
+    TableComponent,
+    RouterModule,
+    HeaderComponent,
+  ],
   templateUrl: "./patient-dashboard.component.html",
   styleUrl: "./patient-dashboard.component.scss",
 })
@@ -24,7 +34,7 @@ export class PatientDashboardComponent implements OnInit {
   @ViewChild("progressTemplate", { static: true }) progressTemplate: TemplateRef<any>;
   @ViewChild("consentTemplate", { static: true }) consentTemplate: TemplateRef<any>;
   @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: TemplateRef<any>;
-  activeTab: string = "RPM";
+
   columns: ColumnConfig[] = [];
   patients: IPendingEnrollments[] = pendingEnrollmentsRows;
   ngOnInit(): void {
@@ -57,8 +67,5 @@ export class PatientDashboardComponent implements OnInit {
         filterType: "none",
       },
     ];
-  }
-  setActiveTab(tab: string) {
-    this.activeTab = tab;
   }
 }
