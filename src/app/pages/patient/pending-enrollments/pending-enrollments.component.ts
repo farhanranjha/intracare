@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { Table } from "primeng/table";
 import { mockDevicesData, pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
@@ -10,6 +10,8 @@ import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.
 import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
 import { TableComponent } from "src/app/components/table/table.component";
 import { RouterModule } from "@angular/router";
+import { IDeviceTypes, IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
+import { ColumnConfig } from "src/app/types/table/generic-table-types";
 
 @Component({
   selector: "app-pending-enrollments",
@@ -31,19 +33,19 @@ import { RouterModule } from "@angular/router";
 export class PendingEnrollmentsComponent {
   @ViewChild("dt1") dt1!: Table;
 
-  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: any;
-  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: any;
-  @ViewChild("statusTemplate", { static: true }) statusTemplate: any;
-  @ViewChild("progressTemplate", { static: true }) progressTemplate: any;
-  @ViewChild("consentTemplate", { static: true }) consentTemplate: any;
-  @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: any;
-  @ViewChild("customFilter", { static: true }) customFilter: any;
+  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
+  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: TemplateRef<any>;
+  @ViewChild("statusTemplate", { static: true }) statusTemplate: TemplateRef<any>;
+  @ViewChild("progressTemplate", { static: true }) progressTemplate: TemplateRef<any>;
+  @ViewChild("consentTemplate", { static: true }) consentTemplate: TemplateRef<any>;
+  @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: TemplateRef<any>;
+  @ViewChild("customFilter", { static: true }) customFilter: TemplateRef<any>;
 
-  columns: any[] = [];
-  patients: any[] = pendingEnrollmentsRows;
+  columns: ColumnConfig[] = [];
+  patients: IPendingEnrollments[] = pendingEnrollmentsRows;
   visibleAddDevice: boolean = false;
   isEditMode = false;
-  devicesData = mockDevicesData;
+  devicesData: IDeviceTypes[] = mockDevicesData;
 
   ngOnInit() {
     this.columns = [
@@ -64,7 +66,10 @@ export class PendingEnrollmentsComponent {
         isCustom: true,
         template: this.programTypeTemplate,
         filterTemplate: this.customFilter,
-        options: ["RPM", "CCM"],
+        options: [
+          { label: "RPM", value: "RPM", checked: false },
+          { label: "CCM", value: "CCM", checked: false },
+        ],
       },
       { name: "Status", field: "status", filterType: "text", isCustom: true, template: this.statusTemplate },
       { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },

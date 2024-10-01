@@ -34,7 +34,7 @@ import { Router } from "@angular/router";
 export class AddPatientComponent implements AfterViewInit {
   form: FormGroup;
   visible: boolean = false;
-  formGroups: any[] = [];
+  formGroups: { title: string; fields: { label: string; value: string }[] }[] = [];
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -171,7 +171,7 @@ export class AddPatientComponent implements AfterViewInit {
     this.router.navigate(["patient/pending-enrollments"]);
   }
 
-  extractFields(group: any): any[] {
+  extractFields(group: Record<string, any>): { label: string; value: any }[] {
     return Object.keys(group).map((key) => ({ label: key, value: group[key] }));
   }
 }
