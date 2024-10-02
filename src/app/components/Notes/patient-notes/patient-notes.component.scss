@@ -1,0 +1,16 @@
+.notes-btn {
+    ::ng-deep .p-button {
+      border-radius: 50%;
+      border: 1px solid #6366f1;
+      color: white;
+      background-color: #6366f1;
+      height: 3.5rem;
+      width: 3.5rem;
+    }
+    ::ng-deep .p-element {
+      z-index: 1;
+    }
+    ::ng-deep .p-button-icon {
+      font-size: 1.5rem;
+    }
+}
