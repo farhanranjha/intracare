@@ -1,19 +1,13 @@
-<p-table [value]="timerLogs" [columns]="columns">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th *ngFor="let col of columns">{{ col.header }}</th>
-      <th>Actions</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns">{{ rowData[col.field] }}</td>
-      <td>
-        <p class="cursor-pointer" (click)="showNote(rowData)">View Note</p>
-      </td>
-    </tr>
-  </ng-template>
-</p-table>
+<intracare-table
+  [rowData]="timerLogs"
+  [columns]="columns"
+  [totalRecords]="timerLogs.length"
+  [rowsPerPage]="[25, 50, 100]"
+/>
+
+<ng-template #actionTemplate let-row>
+  <button pButton type="button" class="viewNoteBtn" label="View Note" (click)="showNote(rowData)"></button>
+</ng-template>
 
 <p-dialog header="View Note" [(visible)]="displayModal" [modal]="true" [style]="{ width: '50vw' }" [closable]="true">
   <div *ngIf="selectedNote">
