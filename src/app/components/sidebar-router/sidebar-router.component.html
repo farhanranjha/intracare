@@ -1,0 +1,10 @@
+<div class="w-[160px] h-[200px] flex flex-col gap-2 my-2">
+  <a
+    *ngFor="let route of routes"
+    (click)="setActive(route)"
+    [ngClass]="isActive(route) ? 'shadow text-[#6366F1] font-bold' : 'text-[#757575]'"
+    class="m-0 font-semibold py-2 px-3 rounded-md bg-white cursor-pointer"
+  >
+    {{ route.label }}
+  </a>
+</div>
