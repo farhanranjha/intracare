@@ -28,6 +28,7 @@ import { PatientDashboardComponent } from "./patient-dashboard.component";
             path: "general-settings",
             component: GeneralSettingsComponent,
             children: [
+              { path: "", redirectTo: "profile", pathMatch: "full" },
               { path: "profile", component: ProfileComponent },
               { path: "devices", component: DevicesComponent },
               { path: "custom-vital-alerts", component: CustomVitalAlertsComponent },
@@ -37,6 +38,7 @@ import { PatientDashboardComponent } from "./patient-dashboard.component";
             path: "rpm",
             component: RPMComponent,
             children: [
+              { path: "", redirectTo: "biometrics", pathMatch: "full" },
               { path: "biometrics", component: BiometricsComponent, data: { source: "rpm" } },
               { path: "alerts", component: AlertsComponent, data: { source: "rpm" } },
               { path: "vitals", component: VitalsComponent, data: { source: "rpm" } },
@@ -50,6 +52,7 @@ import { PatientDashboardComponent } from "./patient-dashboard.component";
             path: "ccm",
             component: CCMComponent,
             children: [
+              { path: "", redirectTo: "biometrics", pathMatch: "full" },
               { path: "biometrics", component: BiometricsComponent, data: { source: "ccm" } },
               { path: "alerts", component: AlertsComponent, data: { source: "ccm" } },
               { path: "vitals", component: VitalsComponent, data: { source: "ccm" } },
