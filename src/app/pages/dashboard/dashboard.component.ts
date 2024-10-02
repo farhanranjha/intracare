@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { Component, inject, OnInit, TemplateRef, ViewChild } from "@angular/core";
 import { dashboardRows } from "src/app/utils/constants/mock-data";
 import { DashboardRow, DashboardService } from "src/app/services/dashboard/dashboard.service";
 import { LazyLoadEvent } from "primeng/api";
@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   @ViewChild("customFilterName", { static: true }) customFilterName: TemplateRef<any>;
   @ViewChild("customFilterRepresentative", { static: true }) customFilterRepresentative: TemplateRef<any>;
   columns: ColumnConfig[] = [];
-  rowData: DashboardRow[] = [];
+  rowData: any = [];
   totalRecords: number = 0;
   page: number = 1;
   pageSize: number = 10;
@@ -20,45 +20,102 @@ export class DashboardComponent implements OnInit {
   sortOrder: "asc" | "desc" = "asc";
   searchTerm: string = "";
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(private authService: DashboardService) {}
 
   ngOnInit() {
-    this.fetchData();
     this.columns = [
       {
-        name: "Name",
-        field: "name",
-        filterType: "none",
+        name: "Request ID",
+        field: "sysRegistrationRequestId",
+        filterType: "numeric",
         sort: true,
       },
-      { name: "Country", field: "country.name", filterType: "text" },
       {
-        name: "Representative",
-        field: "representative.name",
-        filterType: "custom",
-        filterTemplate: this.customFilterRepresentative,
-        options: [
-          { value: "Representative 1", label: "Representative 1", checked: false },
-          { value: "Representative 2", label: "Representative 2", checked: false },
-          { value: "Representative 3", label: "Representative 3", checked: false },
-          { value: "Representative 4", label: "Representative 4", checked: false },
-        ],
+        name: "Update By",
+        field: "sysUpdateBy",
+        filterType: "numeric",
+        sort: true,
       },
-      { name: "Date", field: "date", filterType: "date" },
-      { name: "Balance", field: "balance", filterType: "numeric" },
-      { name: "Actions", field: "", isCustom: true, template: this.actionTemplate, filterType: "none" },
+      {
+        name: "Date",
+        field: "date",
+        filterType: "date",
+        sort: true,
+      },
+      {
+        name: "Patient Name",
+        field: "patientName",
+        filterType: "text",
+        sort: true,
+      },
+      {
+        name: "Patient DOB",
+        field: "patientDob",
+        filterType: "date",
+        sort: true,
+      },
+      {
+        name: "Cell Phone",
+        field: "cellPhoneNumber",
+        filterType: "text",
+        sort: false,
+      },
+      {
+        name: "Provider ID",
+        field: "sysRefProviderId",
+        filterType: "numeric",
+        sort: true,
+      },
+      {
+        name: "Device Type",
+        field: "deviceType.name",
+        filterType: "text",
+        sort: true,
+      },
+      {
+        name: "Request Status ID",
+        field: "lkpRequestStatusId",
+        filterType: "numeric",
+        sort: true,
+      },
+      {
+        name: "Clinic",
+        field: "practiceName.name",
+        filterType: "text",
+        sort: true,
+      },
+      {
+        name: "Consent",
+        field: "consent.name",
+        filterType: "text",
+        sort: false,
+      },
+      {
+        name: "Program Type",
+        field: "programType",
+        filterType: "text",
+        sort: false,
+      },
+      {
+        name: "Status",
+        field: "status",
+        filterType: "text",
+        sort: false,
+      },
+      {
+        name: "Actions",
+        field: "",
+        isCustom: true,
+        template: this.actionTemplate,
+        filterType: "none",
+      },
     ];
   }
 
   onLazyLoad(event: LazyLoadEvent) {
-    console.log("===LAZYLOADEVENT===> ", event);
-  }
-  fetchData() {
-    this.dashboardService
-      .getDashboardData(this.page, this.pageSize, this.sortField, this.sortOrder, this.searchTerm)
-      .subscribe(({ data, total }) => {
-        this.rowData = data;
-        this.totalRecords = total;
-      });
+    this.authService.getDashboardData(event).subscribe(({ data, total }) => {
+      this.rowData = data;
+      this.totalRecords = total;
+    });
   }
 }

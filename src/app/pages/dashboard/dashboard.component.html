@@ -1,9 +1,12 @@
+<!-- using onLazyLoad.bind(this) to explicitly bind context of this to lazyload func/ or we can use arrow function -->
+<!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_separate_this -->
 <intracare-table
-  [onLazyLoad]="onLazyLoad"
+  [onLazyLoad]="onLazyLoad.bind(this)"
   [totalRecords]="totalRecords"
   [columns]="columns"
   [rowData]="rowData"
   [rowsPerPage]="[25, 50, 100]"
+  [loading]="true"
 />
 
 <ng-template #actionTemplate let-row>
