@@ -56,7 +56,7 @@ export class TableComponent {
   @Input() loading: boolean = false;
   @Input() totalRecords: number;
   @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
-  @Input() showTopBar?: boolean = true;
+  @Input() showTopBar?: boolean = false;
   searchValue: string | undefined;
 
   constructor(private router: Router) {}
