@@ -3,6 +3,7 @@ import { dashboardRows } from "src/app/utils/constants/mock-data";
 import { DashboardRow, DashboardService } from "src/app/services/dashboard/dashboard.service";
 import { LazyLoadEvent } from "primeng/api";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { formatDate } from "@angular/common";
 
 @Component({
   templateUrl: "./dashboard.component.html",
@@ -25,28 +26,18 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
     this.columns = [
       {
-        name: "Request ID",
-        field: "sysRegistrationRequestId",
-        filterType: "numeric",
+        name: "Patient Name",
+        field: "patientName",
+        filterType: "text",
         sort: true,
-      },
-      {
-        name: "Update By",
-        field: "sysUpdateBy",
-        filterType: "numeric",
-        sort: true,
+        isFrozen: true,
       },
       {
         name: "Date",
         field: "date",
         filterType: "date",
         sort: true,
-      },
-      {
-        name: "Patient Name",
-        field: "patientName",
-        filterType: "text",
-        sort: true,
+        isFrozen: true,
       },
       {
         name: "Patient DOB",
@@ -59,6 +50,18 @@ export class DashboardComponent implements OnInit {
         field: "cellPhoneNumber",
         filterType: "text",
         sort: false,
+      },
+      {
+        name: "Request ID",
+        field: "sysRegistrationRequestId",
+        filterType: "numeric",
+        sort: true,
+      },
+      {
+        name: "Update By",
+        field: "sysUpdateBy",
+        filterType: "numeric",
+        sort: true,
       },
       {
         name: "Provider ID",
@@ -102,19 +105,23 @@ export class DashboardComponent implements OnInit {
         filterType: "text",
         sort: false,
       },
-      {
-        name: "Actions",
-        field: "",
-        isCustom: true,
-        template: this.actionTemplate,
-        filterType: "none",
-      },
     ];
   }
 
   onLazyLoad(event: LazyLoadEvent) {
     this.authService.getDashboardData(event).subscribe(({ data, total }) => {
-      this.rowData = data;
+      this.rowData = data.map((row) => {
+        return Object.keys(row).reduce((acc, key) => {
+          if (key === "date") {
+            acc[key] = formatDate(row[key], "MM/dd/yyyy", "en-US");
+          } else if (key === "patientDob") {
+            acc[key] = formatDate(row[key], "MM/dd/yyyy", "en-US");
+          } else {
+            acc[key] = row[key] === null || row[key] === undefined || row[key] === "" ? "--" : row[key];
+          }
+          return acc;
+        }, {});
+      });
       this.totalRecords = total;
     });
   }
