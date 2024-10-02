@@ -2,15 +2,16 @@ import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { callLogsData } from "src/app/utils/constants/mock-data";
 
 @Component({
-  selector: "app-call-logs",
+  selector: "call-logs",
   standalone: true,
   imports: [CommonModule, TableComponent],
   templateUrl: "./call-logs.component.html",
 })
 export class CallLogsComponent implements OnInit {
-  @Input() callLogs: any[] = [];
+  callLogs: any[] = callLogsData;
   @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
   columns: ColumnConfig[] = [];
 

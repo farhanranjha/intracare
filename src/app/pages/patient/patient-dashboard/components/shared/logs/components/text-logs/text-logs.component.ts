@@ -2,15 +2,16 @@ import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { textLogsData } from "src/app/utils/constants/mock-data";
 
 @Component({
-  selector: "app-text-logs",
+  selector: "text-logs",
   standalone: true,
   imports: [CommonModule, TableComponent],
   templateUrl: "./text-logs.component.html",
 })
 export class TextLogsComponent implements OnInit {
-  @Input() textLogs: any[] = [];
+  textLogs: any[] = textLogsData;
   @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
   columns: ColumnConfig[] = [];
 

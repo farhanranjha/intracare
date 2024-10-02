@@ -1,1 +1,14 @@
-<p>logs works! being called from {{ source }}</p>
+<div class="flex flex-row gap-4">
+  <sidebar-router [routes]="routes" (tabChanged)="onTabChange($event)" [currentlyActive]="activeTab"></sidebar-router>
+
+  <div class="w-full" [ngSwitch]="activeTab?.value">
+    <call-logs *ngSwitchCase="'call-logs'"></call-logs>
+    <text-logs *ngSwitchCase="'text-logs'"></text-logs>
+    <timer-logs *ngSwitchCase="'timer-logs'"></timer-logs>
+
+    <!-- Optional: Add a default case if none of the tabs are active -->
+    <div *ngSwitchDefault>
+      <p>Please select a tab to view logs.</p>
+    </div>
+  </div>
+</div>

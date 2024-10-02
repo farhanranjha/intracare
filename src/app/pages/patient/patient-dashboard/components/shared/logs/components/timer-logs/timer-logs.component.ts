@@ -6,15 +6,16 @@ import { DialogModule } from "primeng/dialog";
 import { TableComponent } from "src/app/components/table/table.component";
 import { DashboardRow } from "src/app/services/dashboard/dashboard.service";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { timerLogsData } from "src/app/utils/constants/mock-data";
 
 @Component({
-  selector: "app-timer-logs",
+  selector: "timer-logs",
   standalone: true,
   imports: [DialogModule, CommonModule, FormsModule, TableComponent, ButtonModule],
   templateUrl: "./timer-logs.component.html",
 })
 export class TimerLogsComponent implements OnInit {
-  @Input() timerLogs: any[] = [];
+  timerLogs: any[] = timerLogsData;
   displayModal: boolean = false;
   selectedNote: any = null;
   @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
