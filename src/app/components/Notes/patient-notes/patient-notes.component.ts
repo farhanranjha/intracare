@@ -7,7 +7,6 @@ import { DropdownModule } from "primeng/dropdown";
 import { SidebarModule } from "primeng/sidebar";
 import { TabViewModule } from "primeng/tabview";
 import { FormsModule } from "@angular/forms";
-import { trigger, state, style, animate, transition } from "@angular/animations";
 
 @Component({
   selector: "app-patient-notes",
@@ -24,26 +23,6 @@ import { trigger, state, style, animate, transition } from "@angular/animations"
   ],
   templateUrl: "./patient-notes.component.html",
   styleUrl: "./patient-notes.component.scss",
-  animations: [
-    trigger("inOutAnimation", [
-      state(
-        "open",
-        style({
-          width: "300px",
-          opacity: 1,
-        }),
-      ),
-      state(
-        "closed",
-        style({
-          width: "0",
-          opacity: 0,
-        }),
-      ),
-      transition("* => closed", [animate("1s")]),
-      transition("* => open", [animate("1s")]),
-    ]),
-  ],
 })
 export class PatientNotesComponent {
   selectedDropdownOption: string = "actions";
@@ -80,12 +59,14 @@ export class PatientNotesComponent {
     { label: "BP", value: "bp" },
   ];
 
+  // General notes for the "General" tab
   generalNotes = [
     { text: "Biometric review complete, continuing to monitor." },
     { text: "Engagement call with patient, requested daily blood pressure monitoring with BLOOD PRESSURE cuff." },
     { text: "Engagement call, left message for return call." },
   ];
 
+  // BP categories for the "BP" tab
   bpCategories = [
     {
       name: "CRITICAL READINGS",
@@ -119,17 +100,28 @@ export class PatientNotesComponent {
     },
   ];
 
+  // Toggle category expansion in BP tab
   toggleCategory(category: any) {
     category.expanded = !category.expanded;
   }
 
+  // Function to add note from General tab
   addToNote(note: any) {
     console.log("Add note:", note);
+    // Logic to add note to the main content
   }
 
   notes = [
-    { author: "Ajmal Shami", date: new Date("2024-09-24T18:03:00"), text: "Test by OS" },
-    { author: "Ajmal Shami", date: new Date("2024-09-24T01:53:00"), text: "hi" },
+    {
+      author: "Ajmal Shami",
+      date: new Date("2024-09-24T18:03:00"),
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin laoreet pulvinar. Mauris feugiat finibus nulla, et aliquam dolor viverra ac. Mauris dignissim nibh eleifend erat dictum scelerisque.",
+    },
+    {
+      author: "Ajmal Shami",
+      date: new Date("2024-09-24T01:53:00"),
+      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sollicitudin laoreet pulvinar.",
+    },
   ];
 
   toggleAddNote() {
@@ -144,17 +136,23 @@ export class PatientNotesComponent {
   submitNote() {
     if (this.newNote.text.trim()) {
       this.notes.push({
-        author: "Ajmal Shami",
+        author: "Ajmal Shami", // Example static author
         date: new Date(),
         text: this.newNote.text,
       });
       this.newNote.text = "";
       this.templateContent = "";
-      this.addingNote = false;
+      this.addingNote = false; // Return to viewing notes
     }
   }
 
+  // Placeholder for viewing all notes logic
+  viewAllNotes() {
+    console.log("Viewing all notes...");
+  }
+
   resetSidebar() {
+    // Reset all the relevant states to their initial values
     this.addingNote = false;
     this.isTemplateActive = false;
     this.selectedDropdownOption = "actions";

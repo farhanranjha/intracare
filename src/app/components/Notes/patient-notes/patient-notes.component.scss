@@ -4,8 +4,8 @@
       border: 1px solid #6366f1;
       color: white;
       background-color: #6366f1;
-      height: 3.5rem;
-      width: 3.5rem;
+      height: 4.5rem;
+      width: 4.5rem;
     }
     ::ng-deep .p-element {
       z-index: 1;
@@ -13,4 +13,10 @@
     ::ng-deep .p-button-icon {
       font-size: 1.5rem;
     }
-}
+  }
+  ::ng-deep .p-sidebar-header {
+    background-color: #F9F9F9;
+  }
+  ::ng-deep .p-sidebar-content {
+    background-color: #F9F9F9;
+  }
