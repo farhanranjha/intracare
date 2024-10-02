@@ -21,9 +21,21 @@ export class DashboardComponent implements OnInit {
   sortOrder: "asc" | "desc" = "asc";
   searchTerm: string = "";
 
+  practices: any;
+
   constructor(private authService: DashboardService) {}
 
   ngOnInit() {
+
+    // TODO: FIX this later
+    this.authService.getClinics().subscribe(({ data, total }) => {
+      this.practices = data.map((row) => {
+        return { value: row.id, label: row.name, checked: false }
+      });
+      this.totalRecords = total;
+    });
+
+
     this.columns = [
       {
         name: "Patient Name",
@@ -84,8 +96,15 @@ export class DashboardComponent implements OnInit {
       {
         name: "Clinic",
         field: "practiceName.name",
-        filterType: "text",
+        filterType: "custom",
         sort: true,
+        filterTemplate: this.customFilterRepresentative,
+        options: [
+          { value: "Representative 1", label: "Representative 1", checked: false },
+          { value: "Representative 2", label: "Representative 2", checked: false },
+          { value: "Representative 3", label: "Representative 3", checked: false },
+          { value: "Representative 4", label: "Representative 4", checked: false },
+        ],
       },
       {
         name: "Consent",

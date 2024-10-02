@@ -13,5 +13,5 @@
   <app-custom-filter [options]="columns[0].options" [filterCallback]="handleFilterChange" />
 </ng-template>
 <ng-template #customFilterRepresentative let-handleFilterChange="handleFilterChange">
-  <app-custom-filter [filterCallback]="handleFilterChange" [(options)]="columns[2].options" />
+  <app-custom-filter [filterCallback]="handleFilterChange" [(options)]="practices" />
 </ng-template>

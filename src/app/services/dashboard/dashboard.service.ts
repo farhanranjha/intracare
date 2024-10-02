@@ -72,4 +72,12 @@ export class DashboardService {
       }),
     );
   }
+
+  getClinics(): Observable<{ data; total: number }> {
+    return this.http.get<any>(`${this.issuerUri}/data/clinics`).pipe(
+      map((data) => {
+        return { data, total: 50 };
+      }),
+    );
+  }
 }
