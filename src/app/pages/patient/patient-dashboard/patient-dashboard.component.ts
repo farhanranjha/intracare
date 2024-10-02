@@ -9,56 +9,33 @@ import { TableComponent } from "src/app/components/table/table.component";
 import { IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
+import { HeaderComponent } from "./components/header/header.component";
+import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
+import { IKeyValue } from "src/app/types/common-types";
+import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 
 @Component({
   selector: "app-patient-dashboard",
   standalone: true,
-  imports: [ButtonModule, CommonModule, DividerModule, ProgressBarModule, TabViewModule, TableComponent, RouterModule],
+  imports: [
+    ButtonModule,
+    CommonModule,
+    DividerModule,
+    ProgressBarModule,
+    TabViewModule,
+    TableComponent,
+    RouterModule,
+    HeaderComponent,
+    PatientInfoTabComponent,
+    TabRouterComponent,
+  ],
   templateUrl: "./patient-dashboard.component.html",
   styleUrl: "./patient-dashboard.component.scss",
 })
-export class PatientDashboardComponent implements OnInit {
-  @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
-  @ViewChild("programTypeTemplate", { static: true }) programTypeTemplate: TemplateRef<any>;
-  @ViewChild("statusTemplate", { static: true }) statusTemplate: TemplateRef<any>;
-  @ViewChild("progressTemplate", { static: true }) progressTemplate: TemplateRef<any>;
-  @ViewChild("consentTemplate", { static: true }) consentTemplate: TemplateRef<any>;
-  @ViewChild("editUpdateTemplate", { static: true }) editUpdateTemplate: TemplateRef<any>;
-  activeTab: string = "RPM";
-  columns: ColumnConfig[] = [];
-  patients: IPendingEnrollments[] = pendingEnrollmentsRows;
-  ngOnInit(): void {
-    this.columns = [
-      { name: "Date", field: "date", filterType: "date" },
-      {
-        name: "Patient Name",
-        field: "name",
-        filterType: "text",
-        isCustom: true,
-        template: this.patientCardTemplate,
-      },
-      { name: "Practice", field: "practice", filterType: "text" },
-      { name: "Device Type", field: "deviceType", filterType: "text" },
-      {
-        name: "Program Type",
-        field: "programType",
-        filterType: "none",
-        isCustom: true,
-        template: this.programTypeTemplate,
-      },
-      { name: "Status", field: "status", filterType: "text", isCustom: true, template: this.statusTemplate },
-      { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },
-      { name: "Consent", field: "consent", filterType: "text", isCustom: true, template: this.consentTemplate },
-      {
-        name: "Edit / Update",
-        field: "",
-        isCustom: true,
-        template: this.editUpdateTemplate,
-        filterType: "none",
-      },
-    ];
-  }
-  setActiveTab(tab: string) {
-    this.activeTab = tab;
-  }
+export class PatientDashboardComponent {
+  routes: IKeyValue[] = [
+    { label: "General Settings", value: "general-settings" },
+    { label: "RPM", value: "rpm" },
+    { label: "CCM", value: "ccm" },
+  ];
 }

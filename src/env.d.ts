@@ -3,6 +3,7 @@ declare interface Env {
   NG_APP_KEYCLOAK_ISSUER_URI: string;
   NG_APP_KEYCLOAK_CLIENT_ID: string;
   NG_APP_KEYCLOAK_SCOPE: string;
+  NG_APP_KEYCLOAK_BASE_URL: string;
 }
 
 declare interface ImportMeta {
