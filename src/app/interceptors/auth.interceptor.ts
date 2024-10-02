@@ -13,10 +13,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return this.store.select(selectUser).pipe(
       take(1),
       exhaustMap((user) => {
-        console.log("===>", user);
-
         const authToken = user?.accessToken;
-
         const authReq = authToken
           ? req.clone({
               setHeaders: {
