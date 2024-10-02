@@ -10,4 +10,5 @@ export interface ColumnConfig {
   template?: TemplateRef<any>;
   filterTemplate?: TemplateRef<any>;
   sort?: boolean;
+  isFrozen?: boolean;
 }

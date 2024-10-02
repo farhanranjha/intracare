@@ -8,6 +8,7 @@
   [totalRecords]="totalRecords"
   [lazy]="true"
   (onLazyLoad)="onLazyLoad($event)"
+  [scrollable]="true"
 >
   <ng-template *ngIf="showTopBar" pTemplate="caption">
     <div class="flex px-2">
@@ -32,6 +33,8 @@
         *ngFor="let col of columns"
         [style.min-width]="col.minWidth || '5rem'"
         class="border-r-2"
+        pFrozenColumn
+        [frozen]="col.isFrozen"
       >
         <div class="flex align-items-center">
           <p class="m-0">{{ col.name }}</p>
@@ -79,7 +82,7 @@
 
   <ng-template pTemplate="body" let-row>
     <tr>
-      <td *ngFor="let col of columns">
+      <td *ngFor="let col of columns" pFrozenColumn [frozen]="col.isFrozen">
         <ng-container *ngIf="col.isCustom; else defaultContent">
           <ng-container *ngTemplateOutlet="col.template; context: { $implicit: row }"></ng-container>
         </ng-container>
