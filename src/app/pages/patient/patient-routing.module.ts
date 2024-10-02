@@ -20,7 +20,7 @@ import { PatientDashboardComponent } from "./patient-dashboard/patient-dashboard
         loadChildren: () =>
           import("./patient-dashboard/patient-dashboard.module").then((m) => m.PatientDashboardModule),
       },
-      { path: "secondary", component: PatientChartComponent },
+      { path: "ui/secondary", component: PatientChartComponent },
     ]),
   ],
   exports: [RouterModule],
