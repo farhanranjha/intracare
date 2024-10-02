@@ -1,12 +1,6 @@
-<p-table [value]="textLogs" [columns]="columns">
-  <ng-template pTemplate="header" let-columns>
-    <tr>
-      <th *ngFor="let col of columns">{{ col.header }}</th>
-    </tr>
-  </ng-template>
-  <ng-template pTemplate="body" let-rowData let-columns="columns">
-    <tr>
-      <td *ngFor="let col of columns">{{ rowData[col.field] }}</td>
-    </tr>
-  </ng-template>
-</p-table>
+<intracare-table
+  [rowData]="textLogs"
+  [columns]="columns"
+  [totalRecords]="textLogs.length"
+  [rowsPerPage]="[25, 50, 100]"
+/>
