@@ -1,4 +1,5 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-vitals",
@@ -7,4 +8,14 @@ import { Component } from "@angular/core";
   templateUrl: "./vitals.component.html",
   styleUrl: "./vitals.component.scss",
 })
-export class VitalsComponent {}
+export class VitalsComponent implements OnInit {
+  source: string;
+
+  constructor(private route: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.route.data.subscribe((data) => {
+      this.source = data["source"];
+    });
+  }
+}
