@@ -1,11 +1,5 @@
 <div class="flex flex-row gap-4">
-  <div class="w-[200px] h-[200px] flex flex-col gap-2">
-    <p class="m-0 font-semibold py-2 px-3 rounded-md bg-white shadow text-[#6366F1]">Clinical Information</p>
-    <p class="m-0 font-semibold text-[#757575] py-2 px-3">Contact Information</p>
-    <p class="m-0 font-semibold text-[#757575] py-2 px-3">Baseline Biometrics</p>
-    <p class="m-0 font-semibold text-[#757575] py-2 px-3">Baseline Details</p>
-    <p class="m-0 font-semibold text-[#757575] py-2 px-3">Patient Notification Control</p>
-  </div>
+  <sidebar-router [routes]="routes" (tabChanged)="onTabChange($event)" [currentlyActive]="activeTab"></sidebar-router>
   <div class="w-full bg-[#F9F9F9] rounded-md shadow-sm flex flex-col p-4 gap-4">
     <div class="flex flex-row gap-2 justify-end">
       <i class="pi pi-pencil text-[#6366F1] underline cursor-pointer"></i>

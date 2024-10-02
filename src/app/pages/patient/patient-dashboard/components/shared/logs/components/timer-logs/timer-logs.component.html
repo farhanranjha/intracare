@@ -1,0 +1,26 @@
+<intracare-table
+  [rowData]="timerLogs"
+  [columns]="columns"
+  [totalRecords]="timerLogs.length"
+  [rowsPerPage]="[25, 50, 100]"
+/>
+
+<ng-template #actionTemplate let-row>
+  <button pButton type="button" class="viewNoteBtn" label="View Note" (click)="showNote(rowData)"></button>
+</ng-template>
+
+<p-dialog header="View Note" [(visible)]="displayModal" [modal]="true" [style]="{ width: '50vw' }" [closable]="true">
+  <div *ngIf="selectedNote">
+    <div class="flex justify-between">
+      <div>
+        <strong>Date & Time :</strong> <span>{{ selectedNote.dateTime }}</span>
+      </div>
+      <div>
+        <strong>Taken By:</strong> <span>{{ selectedNote.takenBy }}</span>
+      </div>
+    </div>
+    <div class="mt-4">
+      <strong>Description:</strong> <span>{{ selectedNote.description || "Session Ended" }}</span>
+    </div>
+  </div>
+</p-dialog>
