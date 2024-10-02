@@ -1,0 +1,145 @@
+<p-sidebar
+  [(visible)]="sidebarVisible"
+  position="right"
+  [styleClass]="addingNote ? 'w-1/2' : 'w-1/5'"
+  (onHide)="resetSidebar()"
+>
+  <!-- [styleClass]="addingNote ? (isTemplateActive ? 'w-11/12' : 'w-1/2') : 'w-1/4'" -->
+
+  <div class="flex">
+    <div
+      class="pr-2 border-r border-gray-300"
+      [ngClass]="{ 'w-1/2': addingNote == true, 'w-full': addingNote == false }"
+    >
+      <div class="flex justify-between items-center mb-2">
+        <span class="font-sans text-[#060505] text-[16px] not-italic font-medium leading-[normal]">Notes</span>
+        <a class="cursor-pointer text-right text-[#6366f1]" (click)="toggleAddNote()" *ngIf="!addingNote"
+          >+ Add Notes</a
+        >
+      </div>
+
+      <div *ngFor="let note of notes" class="bg-white shadow-sm rounded-lg px-[10px] py-[16px] my-[18px]">
+        <div>
+          <p class="text-[#222] font-sans text-[12px] not-italic font-medium leading-[normal]">{{ note.text }}</p>
+        </div>
+        <p-divider layout="horizontal" />
+        <div class="flex fex-row justify-between gap-[12px]">
+          <p class="font-sans text-[#060505] text-[12px] not-italic font-medium leading-[normal] mb-0">
+            {{ note.author }}
+          </p>
+          <p class="text-[#666] font-sans text-[12px] not-italic font-normal leading-[normal] mb-0">
+            {{ note.date | date: "medium" }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <p-divider layout="vertical" class="h-[100vh]" *ngIf="addingNote" />
+    <div class="w-[60%] pl-2" *ngIf="addingNote">
+      <div class="flex justify-between items-center mb-4">
+        <span class="font-sans text-[#060505] text-[16px] not-italic font-medium leading-[normal]">Create Note</span>
+        <a class="cursor-pointer text-right text-[#6366f1]" (click)="toggleAddNote()" *ngIf="addingNote">- Remove</a>
+      </div>
+
+      <div class="bg-[#F9F9F9] rounded-lg mb-4">
+        <label for="note" class="block font-semibold mb-1 text-sm">Note</label>
+        <textarea
+          id="note"
+          placeholder="-"
+          [(ngModel)]="newNote.text"
+          rows="5"
+          class="w-full p-3 border border-gray-300 rounded-md bg-white mb-4"
+        ></textarea>
+
+        <label for="template" class="block font-semibold mb-1 text-sm">Template Content</label>
+        <textarea
+          id="template"
+          placeholder="-"
+          [(ngModel)]="templateContent"
+          rows="3"
+          class="w-full p-3 border border-gray-300 rounded-md bg-white mb-4"
+        ></textarea>
+
+        <div class="w-full flex justify-between gap-4">
+          <button
+            pButton
+            label="Add from template"
+            class="text-[#757575] bg-transparent flex px-5 py-2 justify-center items-center gap-2 rounded-md border border-[#757575]"
+            (click)="toggleTemplate()"
+          ></button>
+
+          <button
+            pButton
+            label="Submit"
+            class="w-2/5 bg-[#6366f1] border-none text-white flex px-5 py-2 justify-center items-center gap-2 rounded-md hover:bg-[#4f46e5]"
+            (click)="submitNote()"
+          ></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- <p-divider layout="vertical" class="h-[100vh]" *ngIf="isTemplateActive" />
+    <div class="w-3/4" *ngIf="isTemplateActive">
+      <div class="flex justify-between items-center mb-2">
+        <span class="font-bold">Add Notes From Templates</span>
+        <a class="cursor-pointer mb-2 text-right" (click)="toggleTemplate()" *ngIf="isTemplateActive"
+          >- Remove Template</a
+        >
+      </div>
+      <p-dropdown
+        [options]="dropdownOptions"
+        [(ngModel)]="selectedDropdownOption"
+        placeholder="Select a template"
+        optionLabel="label"
+      >
+      </p-dropdown>
+      <div *ngIf="selectedDropdownOption.value === 'actions'">
+        <ul class="list-none">
+          <li *ngFor="let action of actions">
+            <p-checkbox [(ngModel)]="action.selected" binary="true" label="{{ action.label }}"></p-checkbox>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="selectedDropdownOption.value === 'customTemplate'">
+        <textarea
+          placeholder="Enter custom template"
+          [(ngModel)]="customTemplateContent"
+          rows="5"
+          class="w-full p-2"
+        ></textarea>
+      </div>
+
+      <div *ngIf="selectedDropdownOption.value === 'general'">
+        <ul class="list-none">
+          <li class="w-full flex flex-row justify-between" *ngFor="let note of generalNotes">
+            <p>{{ note.text }}</p>
+            <a class="text-primary" (click)="addToNote(note)">Add</a>
+          </li>
+        </ul>
+      </div>
+
+      <div *ngIf="selectedDropdownOption.value === 'bp'">
+        <ul class="list-none">
+          <li *ngFor="let category of bpCategories">
+            <div (click)="toggleCategory(category)">
+              <strong>{{ category.name }}</strong>
+            </div>
+            <ul *ngIf="category.expanded">
+              <li *ngFor="let item of category.items">
+                {{ item }}
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>-->
+  </div>
+</p-sidebar>
+
+<p-button
+  (click)="sidebarVisible = true"
+  icon="pi pi-book"
+  class="notes-btn absolute bottom-4 right-4 border rounded-lg"
+  label=""
+></p-button>
