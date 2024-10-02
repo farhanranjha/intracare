@@ -20,6 +20,7 @@ import { PatientDashboardComponent } from "./patient-dashboard.component";
 @NgModule({
   imports: [
     RouterModule.forChild([
+      { path: "", redirectTo: "general-settings", pathMatch: "full" },
       {
         path: "",
         component: PatientDashboardComponent,
