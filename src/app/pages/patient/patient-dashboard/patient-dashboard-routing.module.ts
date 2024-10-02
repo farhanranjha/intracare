@@ -1,19 +1,21 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
-import { PatientDashboardComponent } from "./patient-dashboard.component";
+import { CCMComponent } from "./components/ccm/ccm.component";
+import { CareplansComponent } from "./components/ccm/components/careplans/careplans.component";
+import { ScreeningsComponent } from "./components/ccm/components/screenings/screenings.component";
+import { CustomVitalAlertsComponent } from "./components/general-settings/components/custom-vital-alerts/custom-vital-alerts.component";
+import { DevicesComponent } from "./components/general-settings/components/devices/devices.component";
+import { ProfileComponent } from "./components/general-settings/components/profile/profile.component";
 import { GeneralSettingsComponent } from "./components/general-settings/general-settings.component";
 import { RPMComponent } from "./components/rpm/rpm.component";
-import { CCMComponent } from "./components/ccm/ccm.component";
-import { ProfileComponent } from "./components/general-settings/components/profile/profile.component";
-import { DevicesComponent } from "./components/general-settings/components/devices/devices.component";
-import { CustomVitalAlertsComponent } from "./components/general-settings/components/custom-vital-alerts/custom-vital-alerts.component";
-import { BiometricsComponent } from "./components/rpm/components/biometrics/biometrics.component";
-import { VitalsComponent } from "./components/rpm/components/vitals/vitals.component";
-import { AlertsComponent } from "./components/rpm/components/alerts/alerts.component";
-import { TasksComponent } from "./components/rpm/components/tasks/tasks.component";
-import { NotesComponent } from "./components/notes/notes.component";
-import { LogsComponent } from "./components/rpm/components/logs/logs.component";
-import { ReportsComponent } from "./components/rpm/components/reports/reports.component";
+import { AlertsComponent } from "./components/shared/alerts/alerts.component";
+import { BiometricsComponent } from "./components/shared/biometrics/biometrics.component";
+import { LogsComponent } from "./components/shared/logs/logs.component";
+import { NotesComponent } from "./components/shared/notes/notes.component";
+import { ReportsComponent } from "./components/shared/reports/reports.component";
+import { TasksComponent } from "./components/shared/tasks/tasks.component";
+import { VitalsComponent } from "./components/shared/vitals/vitals.component";
+import { PatientDashboardComponent } from "./patient-dashboard.component";
 
 @NgModule({
   imports: [
@@ -41,10 +43,24 @@ import { ReportsComponent } from "./components/rpm/components/reports/reports.co
               { path: "tasks", component: TasksComponent },
               { path: "notes", component: NotesComponent },
               { path: "logs", component: LogsComponent },
-              { path: "reports", component: ReportsComponent },
+              { path: "report", component: ReportsComponent },
             ],
           },
-          { path: "ccm", component: CCMComponent },
+          {
+            path: "ccm",
+            component: CCMComponent,
+            children: [
+              { path: "biometrics", component: BiometricsComponent },
+              { path: "alerts", component: AlertsComponent },
+              { path: "vitals", component: VitalsComponent },
+              { path: "tasks", component: TasksComponent },
+              { path: "notes", component: NotesComponent },
+              { path: "logs", component: LogsComponent },
+              { path: "report", component: ReportsComponent },
+              { path: "screenings", component: ScreeningsComponent },
+              { path: "careplans", component: CareplansComponent },
+            ],
+          },
         ],
       },
     ]),
