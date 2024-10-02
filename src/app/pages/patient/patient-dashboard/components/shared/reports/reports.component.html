@@ -1,1 +1,36 @@
-<p>reports works! being called from {{ source }}</p>
+<div class="flex justify-between items-center">
+  <p-button class="text-lg font-medium rpmEngagementbtn mb-4">RPM Engagement</p-button>
+  <p-button icon="pi pi-download" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
+</div>
+
+<p-table [value]="reportData" [responsiveLayout]="'scroll'" class="bordered-table">
+  <ng-template pTemplate="header">
+    <tr>
+      <th rowspan="2">Month</th>
+      <th colspan="2" class="text-center">Average</th>
+      <th rowspan="2">Billing Cycle Start Date</th>
+      <th rowspan="2">99454</th>
+      <th rowspan="2">99457</th>
+      <th rowspan="2">99458</th>
+      <th rowspan="2">Successful Contact</th>
+    </tr>
+    <tr>
+      <th>BP</th>
+      <th>BG</th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-rowData>
+    <tr>
+      <td>{{ rowData.month }}</td>
+      <td>{{ rowData.avgBP }}</td>
+      <td>{{ rowData.avgBG }}</td>
+      <td>{{ rowData.billingCycleStart }}</td>
+      <td>{{ rowData.code99454 }}</td>
+      <td>{{ rowData.code99457 }}</td>
+      <td>{{ rowData.code99458 }}</td>
+      <td [ngClass]="rowData.successfulContact === 'Yes' ? 'text-green-500' : 'text-red-500'">
+        {{ rowData.successfulContact }}
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
