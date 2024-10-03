@@ -58,7 +58,12 @@ export class PendingEnrollmentsComponent {
         template: this.patientCardTemplate,
       },
       { name: "Practice", field: "practice", filterType: "text" },
-      { name: "Device Type", field: "deviceType", filterType: "text" },
+      {
+        name: "Device Type",
+        field: "deviceType",
+        filterType: "text",
+        valueFormatter: (val) => console.log("====PENDING==="),
+      },
       {
         name: "Program Type",
         field: "programType",

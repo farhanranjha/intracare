@@ -1,7 +1,8 @@
-import { style } from "@angular/animations";
 import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
+import { Router } from "@angular/router";
+import { LazyLoadEvent } from "primeng/api";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { DropdownModule } from "primeng/dropdown";
@@ -11,10 +12,8 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { SliderModule } from "primeng/slider";
 import { Table, TableModule } from "primeng/table";
 import { TagModule } from "primeng/tag";
-import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
-import { Router } from "@angular/router";
-import { LazyLoadEvent } from "primeng/api";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
 
 @Component({
   selector: "intracare-table",
@@ -58,14 +57,17 @@ export class TableComponent {
   @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
   @Input() showTopBar?: boolean = false;
   searchValue: string | undefined;
-
   constructor(private router: Router) {}
 
   clear(table: any) {
     table.clear();
     this.searchValue = "";
   }
-  getNestedValue(obj: any, path: string): any {
+  getValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+  }
+
+  test(p) {
+    console.log("p2", p);
   }
 }

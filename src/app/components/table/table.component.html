@@ -88,7 +88,7 @@
         </ng-container>
 
         <ng-template #defaultContent>
-          {{ getNestedValue(row, col.field) }}
+          {{ col?.valueFormatter?.(getValue(row, col.field)) ?? getValue(row, col.field) }}
         </ng-template>
       </td>
     </tr>

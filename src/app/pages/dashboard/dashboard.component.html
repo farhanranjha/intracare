@@ -9,10 +9,42 @@
   [rowsPerPage]="[25, 50, 100]"
   [loading]="true"
 />
-
-<ng-template #customFilterName let-handleFilterChange="handleFilterChange">
-  <app-custom-filter [options]="columns[0].options" [filterCallback]="handleFilterChange" />
+<ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
+  <app-custom-filter [options]="practices" [filterCallback]="handleFilterChange" />
 </ng-template>
-<ng-template #customFilterRepresentative let-handleFilterChange="handleFilterChange">
-  <app-custom-filter [filterCallback]="handleFilterChange" [(options)]="practices" />
+
+<ng-template #patientCardTemplate let-row>
+  <div class="flex flex-col gap-3">
+    <a [routerLink]="['/patient', row.id]" class="font-bold hover:cursor-pointer hover:underline">{{ row.name }}</a>
+    <!-- using angular's date pipe, we need to import CommonModule for it -->
+    <p>DOB {{ row.dob | date: "MM/dd/yyyy" }}</p>
+  </div>
+</ng-template>
+<ng-template #programTypeTemplate let-row>
+  <div class="flex gap-2">
+    <span *ngFor="let program of row.programType.split('/')">
+      <p class="bg-red-50 text-red-600 text-center px-2.5 py-1 rounded-full w-fit">{{ program.trim() }}</p>
+    </span>
+  </div>
+</ng-template>
+<ng-template #statusTemplate let-row>
+  <p class="bg-skyLight text-indigo-500 text-center rounded-full w-fit px-2.5 py-1">
+    {{ row.status }}
+  </p>
+</ng-template>
+<ng-template #progressTemplate let-row>
+  <div class="flex flex-col">
+    <p>{{ row.progress }}%</p>
+    <p-progressBar
+      class="p-progressbar-value p-progressbar-value-animate progressbar text-skyLight"
+      [value]="row.progress"
+      [style]="{ height: '4px' }"
+      [showValue]="false"
+    ></p-progressBar>
+  </div>
+</ng-template>
+<ng-template #consentTemplate let-row>
+  <p class="bg-lime-50 text-lime-600 text-center px-2.5 py-1 rounded-full w-fit">
+    {{ row.consent }}
+  </p>
 </ng-template>
