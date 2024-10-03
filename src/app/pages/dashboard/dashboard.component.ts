@@ -107,7 +107,7 @@ export class DashboardComponent implements OnInit {
         name: "Consent",
         field: "consent",
         filterType: "custom",
-        filterTemplate: this.statusFilter,
+        filterTemplate: this.consentFilter,
         isCustom: true,
         template: this.consentTemplate,
       },
