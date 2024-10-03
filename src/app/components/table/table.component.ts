@@ -56,6 +56,8 @@ export class TableComponent {
   @Input() totalRecords: number;
   @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
   @Input() showTopBar?: boolean = false;
+  @Input() scrollHeight?: string = "100%";
+
   searchValue: string | undefined;
   constructor(private router: Router) {}
 
@@ -65,9 +67,5 @@ export class TableComponent {
   }
   getValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
-  }
-
-  test(p) {
-    console.log("p2", p);
   }
 }

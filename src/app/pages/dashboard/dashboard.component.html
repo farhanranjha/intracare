@@ -8,9 +8,22 @@
   [rowData]="rowData"
   [rowsPerPage]="[25, 50, 100]"
   [loading]="true"
+  [scrollHeight]="'80vh'"
 />
 <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
-  <app-custom-filter [options]="practices" [filterCallback]="handleFilterChange" />
+  <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange" />
+</ng-template>
+<ng-template #programFilter let-handleFilterChange="handleFilterChange">
+  <app-custom-filter [options]="programOptions" [filterCallback]="handleFilterChange" />
+</ng-template>
+<ng-template #statusFilter let-handleFilterChange="handleFilterChange">
+  <app-custom-filter [options]="statusOptions" [filterCallback]="handleFilterChange" />
+</ng-template>
+<ng-template #deviceFilter let-handleFilterChange="handleFilterChange">
+  <app-custom-filter [options]="deviceOptions" [filterCallback]="handleFilterChange" />
+</ng-template>
+<ng-template #consentFilter let-handleFilterChange="handleFilterChange">
+  <app-custom-filter [options]="consentOptions" [filterCallback]="handleFilterChange" />
 </ng-template>
 
 <ng-template #patientCardTemplate let-row>

@@ -1,7 +1,9 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { LazyLoadEvent } from "primeng/api";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
+import { IKeyValue } from "src/app/types/common-types";
 
 export interface DashboardRow {
   id: number;
@@ -65,7 +67,7 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
   private issuerUri = import.meta.env.NG_APP_KEYCLOAK_BASE_URL;
 
-  getDashboardData(payload): Observable<{ data: IPatientFilterResponse[]; total: number }> {
+  getDashboardData(payload: LazyLoadEvent): Observable<{ data: IPatientFilterResponse[]; total: number }> {
     return this.http.post<any>(`${this.issuerUri}/data/filter`, payload).pipe(
       map((data) => {
         return { data: data.data, total: data.total_records };
@@ -73,11 +75,59 @@ export class DashboardService {
     );
   }
 
-  getClinics(): Observable<{ data; total: number }> {
+  getClinics(): Observable<{ data: IKeyValue[] }> {
     return this.http.get<any>(`${this.issuerUri}/data/clinics`).pipe(
-      map((data) => {
-        return { data, total: 50 };
-      }),
+      map((data) => ({
+        data: data.map((item) => ({
+          label: item.name,
+          value: item.id,
+          checked: false,
+        })),
+      })),
+    );
+  }
+  getStatuses(): Observable<{ data: IKeyValue[] }> {
+    return this.http.get<any>(`${this.issuerUri}/data/statuses`).pipe(
+      map((data) => ({
+        data: data.map((item) => ({
+          label: item.name,
+          value: item.id,
+          checked: false,
+        })),
+      })),
+    );
+  }
+  getProgramTypes(): Observable<{ data: IKeyValue[] }> {
+    return this.http.get<any>(`${this.issuerUri}/data/programTypes`).pipe(
+      map((data) => ({
+        data: data.map((item) => ({
+          label: item.name,
+          value: item.id,
+          checked: false,
+        })),
+      })),
+    );
+  }
+  getDeviceTypes(): Observable<{ data: IKeyValue[] }> {
+    return this.http.get<any>(`${this.issuerUri}/data/DeviceTypes`).pipe(
+      map((data) => ({
+        data: data.map((item) => ({
+          label: item.name,
+          value: item.id,
+          checked: false,
+        })),
+      })),
+    );
+  }
+  getConsentTypes(): Observable<{ data: IKeyValue[] }> {
+    return this.http.get<any>(`${this.issuerUri}/data/Consents`).pipe(
+      map((data) => ({
+        data: data.map((item) => ({
+          label: item.name,
+          value: item.id,
+          checked: false,
+        })),
+      })),
     );
   }
 }
