@@ -1,4 +1,12 @@
-import { Component, inject, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  inject,
+  OnInit,
+  TemplateRef,
+  ViewChild,
+} from "@angular/core";
 import { dashboardRows } from "src/app/utils/constants/mock-data";
 import { DashboardRow, DashboardService } from "src/app/services/dashboard/dashboard.service";
 import { LazyLoadEvent } from "primeng/api";
@@ -7,6 +15,7 @@ import { formatDate } from "@angular/common";
 
 @Component({
   templateUrl: "./dashboard.component.html",
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardComponent implements OnInit {
   @ViewChild("patientCardTemplate", { static: true }) patientCardTemplate: TemplateRef<any>;
@@ -22,7 +31,10 @@ export class DashboardComponent implements OnInit {
 
   practices: any;
 
-  constructor(private dashboardService: DashboardService) {}
+  constructor(
+    private dashboardService: DashboardService,
+    private cdRef: ChangeDetectorRef,
+  ) {}
 
   ngOnInit() {
     // TODO: FIX this later
@@ -75,6 +87,7 @@ export class DashboardComponent implements OnInit {
     this.dashboardService.getDashboardData(event).subscribe(({ data, total }) => {
       this.rowData = data;
       this.totalRecords = total;
+      this.cdRef.markForCheck();
     });
   }
 }

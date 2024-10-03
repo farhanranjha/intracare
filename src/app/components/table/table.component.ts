@@ -66,8 +66,4 @@ export class TableComponent {
   getValue(obj: any, path: string): any {
     return path.split(".").reduce((acc, part) => acc && acc[part], obj);
   }
-
-  test(p) {
-    console.log("p2", p);
-  }
 }
