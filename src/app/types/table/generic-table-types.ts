@@ -12,5 +12,5 @@ export interface ColumnConfig {
   sort?: boolean;
   isFrozen?: boolean;
   formatDate?: boolean;
-  valueFormatter?: (value: string) => void;
+  valueFormatter?: (value: string) => void | string;
 }
