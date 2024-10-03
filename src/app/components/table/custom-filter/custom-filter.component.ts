@@ -16,16 +16,16 @@ export class CustomFilterComponent {
   selectedOptions: string[] = [];
 
   onCheckboxChange(optionValue: { value: string; label: string; checked: boolean }, isChecked: boolean): void {
-    const option = this.options.find((opt) => opt.value === optionValue.value);
+    const option = this.options.find((opt) => opt.label === optionValue.label);
     if (option) {
       option.checked = isChecked;
     }
     if (isChecked) {
-      if (!this.selectedOptions.includes(optionValue.value)) {
-        this.selectedOptions.push(optionValue.value);
+      if (!this.selectedOptions.includes(optionValue.label)) {
+        this.selectedOptions.push(optionValue.label);
       }
     } else {
-      const index = this.selectedOptions.indexOf(optionValue.value);
+      const index = this.selectedOptions.indexOf(optionValue.label);
       if (index > -1) {
         this.selectedOptions.splice(index, 1);
       }
