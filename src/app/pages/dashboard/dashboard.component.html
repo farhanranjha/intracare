@@ -8,6 +8,7 @@
   [rowData]="rowData"
   [rowsPerPage]="[25, 50, 100]"
   [loading]="true"
+  [scrollHeight]="'80vh'"
 />
 <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
   <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange" />
