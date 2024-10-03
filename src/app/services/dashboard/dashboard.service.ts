@@ -33,9 +33,9 @@ interface IPatientFilterRequest {
 interface IPatientFilterResponse {
   sysRegistrationRequestId: number;
   sysUpdateBy: number;
-  date: string; // ISO date string
+  date: string;
   patientName: string;
-  patientDob: string; // ISO date string
+  patientDob: string;
   cellPhoneNumber: string | null;
   lkpCommunicationMethodId: number;
   sysRefProviderId: number;
@@ -65,10 +65,10 @@ export class DashboardService {
   constructor(private http: HttpClient) {}
   private issuerUri = import.meta.env.NG_APP_KEYCLOAK_BASE_URL;
 
-  getDashboardData(payload): Observable<{ data; total: number }> {
+  getDashboardData(payload): Observable<{ data: IPatientFilterResponse[]; total: number }> {
     return this.http.post<any>(`${this.issuerUri}/data/filter`, payload).pipe(
       map((data) => {
-        return { data, total: 50 };
+        return { data: data.data, total: data.total_records };
       }),
     );
   }

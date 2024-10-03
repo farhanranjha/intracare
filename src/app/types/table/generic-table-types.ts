@@ -11,4 +11,6 @@ export interface ColumnConfig {
   filterTemplate?: TemplateRef<any>;
   sort?: boolean;
   isFrozen?: boolean;
+  formatDate?: boolean;
+  valueFormatter?: (value: string) => void | string;
 }
