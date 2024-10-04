@@ -26,7 +26,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           return this.handle401Error(req, next);
         }
         const error = err.error?.message || err.statusText;
-        return throwError(() => new Error(error));
+        return throwError(() => err);
       }),
     );
   }
@@ -54,7 +54,7 @@ export class ErrorInterceptor implements HttpInterceptor {
 
           return throwError(() => new Error("Failed to refresh access token"));
         }),
-        catchError((error: HttpErrorResponse) => {
+        catchError((error: any) => {
           this.isRefreshing = false;
 
           if (error.status === 400) {
