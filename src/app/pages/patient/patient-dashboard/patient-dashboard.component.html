@@ -1,10 +1,27 @@
 <section class="w-full flex flex-col items-start justify-start">
-  <patient-dashboard-header class="w-full" />
-  <p-divider class="w-full" />
   <div class="w-full flex flex-row gap-3">
     <patient-dashboard-info />
     <div class="flex flex-col w-full justify-start items-start">
-      <tab-router [routes]="routes" class="w-full" />
+      <div class="flex flex-row justify-between w-full pt-0 pb-3">
+        <tab-router [routes]="routes" class="w-full" />
+        <div class="w-full flex flex-row gap-2 items-center justify-end">
+          <p class="m-0 font-sans text-[12px] not-italic font-normal leading-5 text-[#666]">Time Spent</p>
+          <span
+            class="text-medium bg-[#F2F4F7] text-[#344054] text-[12px] not-italic font-medium leading-[18px] py-1 px-2 rounded-full"
+            >RPM: 0 mins</span
+          >
+          <span
+            class="text-medium bg-[#F2F4F7] text-[#344054] text-[12px] not-italic font-medium leading-[18px] py-1 px-2 rounded-full"
+            >CCM: 0 mins</span
+          >
+          <div class="bg-[#FADDDB] h-12 text-xl rounded-2xl flex justify-center items-center">
+            <span class="text-[#B42318] font-bold px-[20px] py-[8px]">00:57 </span>
+          </div>
+          <div class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg">
+            <span class="text-[#B42318]">Stop</span>
+          </div>
+        </div>
+      </div>
       <div class="w-full">
         <router-outlet></router-outlet>
       </div>
