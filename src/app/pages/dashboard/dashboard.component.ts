@@ -72,12 +72,14 @@ export class DashboardComponent implements OnInit {
         isCustom: true,
         template: this.patientCardTemplate,
         isFrozen: true,
+        sort: true,
       },
       {
         name: "Practice",
         field: "practiceName",
         filterType: "custom",
         filterTemplate: this.practiceNameFilter,
+        sort: true,
       },
       { name: "Device Type", field: "deviceType", filterType: "custom", filterTemplate: this.deviceFilter },
       {
@@ -93,6 +95,7 @@ export class DashboardComponent implements OnInit {
         field: "date",
         filterType: "date",
         valueFormatter: this.formatToUSDate,
+        sort: true,
       },
       {
         name: "Status",
@@ -102,7 +105,13 @@ export class DashboardComponent implements OnInit {
         isCustom: true,
         template: this.statusTemplate,
       },
-      { name: "Progress", field: "progress", filterType: "numeric", isCustom: true, template: this.progressTemplate },
+      {
+        name: "Progress",
+        sort: true,
+        field: "progress",
+        isCustom: true,
+        template: this.progressTemplate,
+      },
       {
         name: "Consent",
         field: "consent",
