@@ -31,7 +31,7 @@ export class CustomFilterComponent {
       }
     }
     if (this.filterCallback) {
-      this.filterCallback(this.selectedOptions);
+      this.filterCallback(this.selectedOptions.length > 0 ? this.selectedOptions : null);
     }
   }
 }
