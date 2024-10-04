@@ -101,6 +101,7 @@
         pButton
         pRipple
         label="Task"
+        (click)="taskBarVisible = true"
         icon="pi pi-check-circle"
         class="p-button-outlined border-gray-500 text-[#444] text-sm"
       ></button>
@@ -115,3 +116,4 @@
   </div>
   <patient-dashboard-notes />
 </div>
+<task-sidebar [sidebarVisible]="taskBarVisible" />

@@ -1,18 +1,15 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit, TemplateRef, ViewChild } from "@angular/core";
+import { Component } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
 import { TabViewModule } from "primeng/tabview";
+import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 import { TableComponent } from "src/app/components/table/table.component";
-import { IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
-import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { pendingEnrollmentsRows } from "src/app/utils/constants/mock-data";
+import { IKeyValue } from "src/app/types/common-types";
 import { HeaderComponent } from "./components/header/header.component";
 import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
-import { IKeyValue } from "src/app/types/common-types";
-import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 
 @Component({
   selector: "app-patient-dashboard",
