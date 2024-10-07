@@ -58,34 +58,68 @@
     </div>
   </div>
 
-  <p-dialog header="Select Care Type" [(visible)]="displayModal" modal="true" width="300" [closable]="false">
-    <div class="flex mb-4">Please choose the care management type for this patient</div>
-    <div class="flex justify-content-start gap-2">
-      <button
-        pButton
-        pRipple
-        label="RPM"
-        (click)="selectMode('rpm')"
-        class="border-none text-[#6366F1] bg-[#DCEFFF] text-sm"
-      ></button>
-      <button
-        pButton
-        pRipple
-        label="CCM"
-        (click)="selectMode('ccm')"
-        class="border-none text-[#6366F1] bg-[#DCEFFF] text-sm"
-      ></button>
+  <p-dialog [(visible)]="displayModal" modal="true" width="300" class="care-type-modal" [closable]="false">
+    <ng-template pTemplate="header">
+      <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Select Care Type</p>
+    </ng-template>
+    <p-divider layout="horizontal" />
+    <div class="flex flex-col justify-center items-start gap-4">
+      <div class="text-[#666] font-sans text-[12px] not-italic font-normal leading-normal">
+        <p cla>Please choose the care management type for this patient</p>
+      </div>
+      <div class="flex justify-content-start gap-5">
+        <button
+          pButton
+          pRipple
+          label="RPM"
+          (click)="selectMode('rpm')"
+          class="flex px-16 py-2 justify-center items-center text-[#344054] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#D0D5DD] bg-white"
+        ></button>
+        <button
+          pButton
+          pRipple
+          label="CCM"
+          (click)="selectMode('ccm')"
+          class="flex px-16 py-2 justify-center items-center text-[14px] not-italic font-medium leading-5 rounded-[8px] text-[#344054] bg-white border border-solid border-[#D0D5DD]"
+        ></button>
+      </div>
     </div>
   </p-dialog>
 
-  <p-dialog header="Add Notes" [(visible)]="logTimeModal" modal="true" width="300">
-    <p>Would you like to log the time spent?</p>
-    <div class="flex justify-content-center gap-2">
-      <button (click)="handleLogTimeChoice(true)" class="p-button border-none text-[#6366F1] bg-[#DCEFFF] text-sm">
-        Log Time
+  <p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal">
+    <ng-template pTemplate="header">
+      <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Add Notes</p>
+      <p
+        class="text-[#344054] ml-[-175px] my-auto bg-[#F2F4F7] rounded-xl px-3 py-1 uppercase text-center text-[14px] not-italic font-medium leading-5"
+      >
+        {{ selectedMode }}
+      </p>
+    </ng-template>
+    <p-divider layout="horizontal" />
+    <div class="flex flex-col justify-center items-center">
+      <p class="text-[#666] w-full font-sans text-[12px] not-italic font-normal leading-normal">
+        Would you like to log the time spent?
+      </p>
+      <div
+        class="text-[#B42318] py-2 px-5 bg-[#FADDDB] rounded-2xl text-center font-sans text-[24px] not-italic font-semibold leading-normal"
+      >
+        {{ timerDisplay }}
+      </div>
+    </div>
+    <p-divider layout="horizontal" />
+
+    <div class="flex justify-center gap-4 mt-4">
+      <button
+        (click)="handleLogTimeChoice(false)"
+        class="flex px-[54px] py-[10px] justify-center items-center gap-[8px] text-[#DC2626] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#FADDDB] bg-white"
+      >
+        Don't Log
       </button>
-      <button (click)="handleLogTimeChoice(false)" class="p-button border-none text-red-400 bg-[#DCEFFF] text-sm">
-        Don't Log Time
+      <button
+        (click)="handleLogTimeChoice(true)"
+        class="flex px-[54px] py-[10px] justify-center items-center gap-[8px] text-[14px] not-italic font-medium leading-5 rounded-[8px] text-[#FFF] bg-[#6366F1] border-none"
+      >
+        Log Time
       </button>
     </div>
   </p-dialog>
