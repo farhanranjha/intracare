@@ -1,39 +1,61 @@
 <p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
-  <div class="flex flex-col justify-start items-start gap-4 w-full p-2">
-    <h3 class="font-semibold text-xl">Add Tasks</h3>
-    <div class="flex flex-col gap-2 w-full">
-      <label for="taskDescription">Task Description</label>
-      <textarea id="taskDescription" rows="8" cols="42" pInputTextarea class="w-full rounded-lg shadow-md border-none">
+  <ng-template pTemplate="header">
+    <h3 class="font-medium text-xl mb-0">Add Tasks</h3>
+  </ng-template>
+  <div class="flex flex-col justify-start items-start gap-3 w-full mt-2.5">
+    <div class="flex flex-col gap-1.5 w-full">
+      <label for="taskDescription" class="text-base font-medium text-gray-intra-700">Task Description</label>
+      <textarea id="taskDescription" rows="8" cols="42" pInputTextarea class="w-full rounded-lg border-[#D0D5DD]">
       </textarea>
     </div>
-    <div class="flex flex-col gap-2 dropdown-container w-full">
-      <label for="assignee">Assignee</label>
-      <p-dropdown [options]="[]" class="shadow-md" />
+    <div class="flex flex-col gap-1.5 dropdown-container w-full">
+      <label for="assignee" class="text-gray-intra-700 text-base font-medium">Assignee</label>
+      <p-dropdown
+        placeholder="Select Assignee"
+        styleClass="border-[#D0D5DD] w-full h-[40px] rounded-lg flex items-center"
+        [options]="[]"
+      />
     </div>
-    <div class="flex flex-col gap-2 w-full">
-      <label for="duetime">Due Date & Time</label>
-      <p-calendar class="border-none shadow-md" inputId="calendar-24h" [showTime]="true" [hourFormat]="24" />
+    <div class="flex flex-col gap-1.5 w-full">
+      <label for="duetime" class="text-gray-intra-700 text-base font-medium">Date & Time</label>
+      <p-calendar
+        placeholder="Select due date & time"
+        inputStyle="rounded-lg"
+        styleClass="border-[#D0D5DD] w-full h-[40px]"
+        inputId="calendar-24h"
+        [showTime]="true"
+        [hourFormat]="24"
+      />
     </div>
-    <div class="flex flex-col gap-2 w-full">
-      <label for="priority">Priority</label>
-      <div class="flex gap-2">
-        <span class="badge bg-[#DAFBE8] text-[#027A48] py-2 px-3 rounded-full">Low</span>
-        <span class="badge bg-[#F9F4E5] text-[#B54708] py-2 px-3 rounded-full">Medium</span>
-        <span class="badge bg-[#F8EDEC] text-[#B42318] py-2 px-3 rounded-full">High</span>
+
+    <div class="flex flex-col gap-1.5 w-full">
+      <label for="duetime" class="text-gray-intra-700 text-base font-medium">Notifications</label>
+      <div class="flex flex-row items-center gap-2.5 w-full">
+        <div class="flex flex-row items-center gap-2 py-3 w-1/2">
+          <p-checkbox inputId="ny" />
+          <label for="ny">Notify via Email</label>
+        </div>
+        <div class="flex flex-row items-center gap-2 py-3 w-1/2">
+          <p-checkbox styleClass="notification-checkbox" inputId="ny" />
+          <label for="ny">Notify via Text</label>
+        </div>
       </div>
     </div>
-    <div class="flex flex-row items-center justify-between w-full">
-      <div class="flex flex-row items-center gap-2 px-4 py-3 bg-white rounded-lg shadow-md">
-        <p-checkbox inputId="ny" />
-        <label for="ny">Notify via Email</label>
-      </div>
-      <div class="flex flex-row items-center gap-2 px-4 py-3 bg-white rounded-lg shadow-md">
-        <p-checkbox inputId="ny" />
-        <label for="ny">Notify via Text</label>
+
+    <div class="flex flex-col gap-1.5 w-full">
+      <label for="priority" class="text-gray-intra-700 text-base font-medium">Priority</label>
+      <div class="flex gap-10 justify-between w-full">
+        <p-button label="Low" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
+        <p-button label="Medium" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
+        <p-button label="High" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
       </div>
     </div>
+
   </div>
-  <div class="w-full flex items-center justify-center mt-3">
-    <button pButton pRipple label="Submit" class="py-3 px-5 font-medium rounded-lg"></button>
+
+  <p-divider />
+
+  <div class="w-full flex items-center justify-end mt-3">
+    <button pButton pRipple label="Submit" class="py-3 font-medium rounded-lg bg-[#6366F1] px-[54px]"></button>
   </div>
 </p-sidebar>
