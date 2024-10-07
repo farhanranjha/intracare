@@ -15,16 +15,78 @@
             >CCM: 0 mins</span
           >
           <div class="bg-[#FADDDB] h-12 text-xl rounded-2xl flex justify-center items-center">
-            <span class="text-[#B42318] font-bold px-[20px] py-[8px]">00:57 </span>
+            <span class="text-[#B42318] font-bold px-[20px] py-[8px]">{{ timerDisplay }}</span>
           </div>
-          <div class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg">
+
+          <button
+            *ngIf="!isRunning && !hasStarted"
+            (click)="startTimer()"
+            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+          >
+            <span class="text-[#B42318]">Start</span>
+          </button>
+
+          <button
+            *ngIf="isRunning"
+            (click)="pauseTimer()"
+            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+          >
+            <span class="text-[#B42318]">Pause</span>
+          </button>
+
+          <button
+            *ngIf="isRunning"
+            (click)="stopTimer()"
+            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+          >
             <span class="text-[#B42318]">Stop</span>
-          </div>
+          </button>
+
+          <button
+            *ngIf="!isRunning && hasStarted"
+            (click)="resumeTimer()"
+            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+          >
+            <span class="text-[#B42318]">Resume</span>
+          </button>
         </div>
       </div>
+
       <div class="w-full">
         <router-outlet></router-outlet>
       </div>
     </div>
   </div>
+
+  <p-dialog header="Select Care Type" [(visible)]="displayModal" modal="true" width="300" [closable]="false">
+    <div class="flex mb-4">Please choose the care management type for this patient</div>
+    <div class="flex justify-content-start gap-2">
+      <button
+        pButton
+        pRipple
+        label="RPM"
+        (click)="selectMode('rpm')"
+        class="border-none text-[#6366F1] bg-[#DCEFFF] text-sm"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="CCM"
+        (click)="selectMode('ccm')"
+        class="border-none text-[#6366F1] bg-[#DCEFFF] text-sm"
+      ></button>
+    </div>
+  </p-dialog>
+
+  <p-dialog header="Add Notes" [(visible)]="logTimeModal" modal="true" width="300">
+    <p>Would you like to log the time spent?</p>
+    <div class="flex justify-content-center gap-2">
+      <button (click)="handleLogTimeChoice(true)" class="p-button border-none text-[#6366F1] bg-[#DCEFFF] text-sm">
+        Log Time
+      </button>
+      <button (click)="handleLogTimeChoice(false)" class="p-button border-none text-red-400 bg-[#DCEFFF] text-sm">
+        Don't Log Time
+      </button>
+    </div>
+  </p-dialog>
 </section>
