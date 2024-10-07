@@ -6,10 +6,10 @@ import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { ProgressBarModule } from "primeng/progressbar";
 import { TabViewModule } from "primeng/tabview";
+import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 import { TableComponent } from "src/app/components/table/table.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
-import { TabRouterComponent } from "src/app/components/tab-router/tab-router.component";
 import { DialogModule } from "primeng/dialog";
 
 @Component({
