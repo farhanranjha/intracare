@@ -1,0 +1,20 @@
+:host ::ng-deep {
+  .dropdown-container {
+    .p-dropdown {
+      width: 100% !important;
+      height: 40px;
+      border-radius: 8px;
+      border: none;
+      margin: auto;
+    }
+  }
+  .p-calendar {
+    width: 100% !important;
+    height: 40px;
+    margin: auto;
+    .p-inputtext {
+      border-radius: 8px;
+      border: none;
+    }
+  }
+}
