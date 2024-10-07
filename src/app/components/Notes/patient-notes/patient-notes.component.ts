@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { DividerModule } from "primeng/divider";
@@ -7,6 +7,7 @@ import { DropdownModule } from "primeng/dropdown";
 import { SidebarModule } from "primeng/sidebar";
 import { TabViewModule } from "primeng/tabview";
 import { FormsModule } from "@angular/forms";
+import { SidebarService } from "src/app/services/sidebar/sidebar.service";
 
 @Component({
   selector: "app-patient-notes",
@@ -24,7 +25,7 @@ import { FormsModule } from "@angular/forms";
   templateUrl: "./patient-notes.component.html",
   styleUrl: "./patient-notes.component.scss",
 })
-export class PatientNotesComponent {
+export class PatientNotesComponent implements OnInit {
   selectedDropdownOption: string = "actions";
   sidebarVisible: boolean = false;
   addingNote: boolean = false;
@@ -35,6 +36,13 @@ export class PatientNotesComponent {
   customTemplateContent: string = "";
   generalContent: string = "";
   bpContent: string = "";
+
+  constructor(private sidebarService: SidebarService) {}
+  ngOnInit() {
+    this.sidebarService.sidebarVisible$.subscribe((isVisible) => {
+      this.sidebarVisible = isVisible;
+    });
+  }
 
   actions = [
     { label: "Successful interactive communication", selected: false },
@@ -59,14 +67,12 @@ export class PatientNotesComponent {
     { label: "BP", value: "bp" },
   ];
 
-  // General notes for the "General" tab
   generalNotes = [
     { text: "Biometric review complete, continuing to monitor." },
     { text: "Engagement call with patient, requested daily blood pressure monitoring with BLOOD PRESSURE cuff." },
     { text: "Engagement call, left message for return call." },
   ];
 
-  // BP categories for the "BP" tab
   bpCategories = [
     {
       name: "CRITICAL READINGS",
@@ -100,15 +106,12 @@ export class PatientNotesComponent {
     },
   ];
 
-  // Toggle category expansion in BP tab
   toggleCategory(category: any) {
     category.expanded = !category.expanded;
   }
 
-  // Function to add note from General tab
   addToNote(note: any) {
     console.log("Add note:", note);
-    // Logic to add note to the main content
   }
 
   notes = [
@@ -136,23 +139,22 @@ export class PatientNotesComponent {
   submitNote() {
     if (this.newNote.text.trim()) {
       this.notes.push({
-        author: "Ajmal Shami", // Example static author
+        author: "Ajmal Shami",
         date: new Date(),
         text: this.newNote.text,
       });
       this.newNote.text = "";
       this.templateContent = "";
-      this.addingNote = false; // Return to viewing notes
+      this.addingNote = false;
     }
   }
 
-  // Placeholder for viewing all notes logic
   viewAllNotes() {
     console.log("Viewing all notes...");
   }
 
   resetSidebar() {
-    // Reset all the relevant states to their initial values
+    this.sidebarService.setSidebarVisible(false);
     this.addingNote = false;
     this.isTemplateActive = false;
     this.selectedDropdownOption = "actions";
