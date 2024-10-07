@@ -22,6 +22,9 @@ module.exports = {
       colors: {
         primary: "#017BFE",
         skyLight: "#DCEFFF",
+        gray: {
+          'intra-700': "#344054"
+        }
       },
     },
   },
