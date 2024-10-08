@@ -2,11 +2,7 @@
   <sidebar-router [routes]="routes" (tabChanged)="onTabChange($event)" [currentlyActive]="activeTab"></sidebar-router>
 
   <div class="w-full" [ngSwitch]="activeTab?.value">
-    <app-patient-data *ngSwitchCase="'patient-data'"></app-patient-data>
-    <app-key-insight *ngSwitchCase="'key-insight'"></app-key-insight>
-
-    <div *ngSwitchDefault>
-      <p>Please select a tab to view data.</p>
-    </div>
+    <biometric-data *ngSwitchCase="'biometric-data'"></biometric-data>
+    <key-insight *ngSwitchCase="'key-insight'"></key-insight>
   </div>
 </div>
