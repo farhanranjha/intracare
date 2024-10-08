@@ -1,0 +1,12 @@
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
+  <ng-template pTemplate="header">
+    <h3 class="font-medium text-xl mb-0">Add Tasks</h3>
+  </ng-template>
+
+  <div class="flex flex-col w-full justify-center items-center">
+    <p-divider />
+    <textarea id="taskDescription" rows="8" cols="42" pInputTextarea class="w-full rounded-lg border-[#D0D5DD]">
+    </textarea>
+    <button pButton pRipple label="Submit" class="py-3 font-medium rounded-lg bg-[#6366F1] px-[54px]"></button>
+  </div>
+</p-sidebar>
