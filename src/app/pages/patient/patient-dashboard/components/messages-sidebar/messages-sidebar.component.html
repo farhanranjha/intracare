@@ -21,6 +21,7 @@
         placeholder="Type a message ..."
         id="taskDescription"
         rows="6"
+        [(ngModel)]="newMessage"
         cols="42"
         pInputTextarea
         class="w-full rounded-lg border-[#D0D5DD] p-3"
@@ -30,6 +31,7 @@
         pButton
         pRipple
         label="Send"
+        (click)="sendMessage()"
         class="my-3 py-3 font-medium rounded-lg bg-[#6366F1] px-[54px] w-full"
       ></button>
     </div>
