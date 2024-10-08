@@ -1,14 +1,23 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 p-4 bg-[#F9F9F9] mr-3 rounded-lg">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-4 bg-[#F9F9F9] mr-3 rounded-lg">
   <div
     *ngFor="let metric of mockData"
-    class="bg-white shadow rounded-lg w-[250px] h-[130px] flex justify-start items-center gap-4 p-5"
+    class="bg-white shadow rounded-lg w-[260px] h-[150px] flex justify-start items-start gap-4"
   >
-    <img [src]="metric.icon" alt="" class="!w-12 h-12" />
-    <div class="flex flex-col items-start justify-start gap-1">
-      <h3 class="m-0 text-lg">
-        {{ metric.value }}<span> {{ metric.metricUnit }}</span>
-      </h3>
-      <p class="m-0">{{ metric.metricName }}</p>
+    <div class="flex flex-col w-full justify-between items-start h-full">
+      <div class="flex justify-between items-start px-6 pt-5 pb-2">
+        <div class="flex flex-col items-start justify-start gap-2">
+          <p class="m-0 text-[#767676]">{{ metric.metricName }}</p>
+          <div class="flex flex-row items-end justify-start gap-[6px]">
+            <span class="m-0 text-2xl font-bold">{{ metric.value }}</span>
+            <span class="font-medium text-base text-[#6366F1]"> {{ metric.metricUnit }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="w-full">
+        <p-divider class="w-full" />
+        <p class="m-0 text-[#444] px-4 pb-3 text-sm">{{ metric.date }}</p>
+      </div>
     </div>
   </div>
 </div>
