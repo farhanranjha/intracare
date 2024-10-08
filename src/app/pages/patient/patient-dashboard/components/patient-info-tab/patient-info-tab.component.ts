@@ -4,11 +4,12 @@ import { ProgressBarModule } from "primeng/progressbar";
 import { NotesComponent } from "../notes/notes.component";
 import { DividerModule } from "primeng/divider";
 import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
+import { FileUploadModule } from "primeng/fileupload";
 
 @Component({
   selector: "patient-dashboard-info",
   standalone: true,
-  imports: [ProgressBarModule, ButtonModule, NotesComponent, DividerModule, TaskSidebarComponent],
+  imports: [ProgressBarModule, FileUploadModule, ButtonModule, NotesComponent, DividerModule, TaskSidebarComponent],
   templateUrl: "./patient-info-tab.component.html",
   styleUrl: "./patient-info-tab.component.scss",
 })

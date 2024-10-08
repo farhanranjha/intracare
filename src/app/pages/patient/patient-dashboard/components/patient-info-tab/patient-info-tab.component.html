@@ -5,13 +5,20 @@
         <p class="m-0 text-[#101828] font-sans text-[16px] not-italic font-medium leading-[20px]">
           M Henderson Covington
         </p>
-        <i class="pi pi-cloud-upload text-[#6366F1] text-3xl"></i>
+        <p-fileUpload
+          mode="basic"
+          chooseIcon="pi pi-cloud-upload text-3xl"
+          name="uploadfacesheet"
+          styleClass="p-0 bg-transparent border-0 text-[#6366f1]"
+          accept="image/*"
+          maxFileSize="1000000"
+        />
       </div>
       <div class="flex flex-row justify-between">
         <div class="flex gap-[6px] text-sm">
-          <span class="badge border text-[#444] py-[2px] px-2 rounded-full">English</span>
-          <span class="badge border text-[#444] py-[2px] px-2 rounded-full">Female</span>
-          <span class="badge border text-[#444] py-[2px] px-2 rounded-full">76 y/o</span>
+          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">English</span>
+          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">Female</span>
+          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">76 y/o</span>
         </div>
         <div class="flex gap-[6px]">
           <span class="badge bg-[#FEF2F2] text-[#DC2626] py-1 px-2 rounded-full">RPM</span>
