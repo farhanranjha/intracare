@@ -3,7 +3,7 @@ import { FormsModule } from "@angular/forms";
 import { ChartModule } from "primeng/chart";
 import { DropdownModule } from "primeng/dropdown";
 @Component({
-  selector: "app-key-insight",
+  selector: "key-insight",
   standalone: true,
   imports: [DropdownModule, ChartModule, FormsModule],
   templateUrl: "./key-insight.component.html",

@@ -42,7 +42,7 @@ export class PatientDashboardComponent implements OnInit {
   isRunning = false;
   hasStarted = false;
   selectedMode: "rpm" | "ccm" | null = null;
-  displayModal = true;
+  displayModal = false; //making it false for development purpose, it should be true
   logTimeModal = false;
   private pendingNavigation: string | null = null;
   private isNavigating = false;
