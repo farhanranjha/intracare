@@ -5,14 +5,16 @@
   (onHide)="resetSidebar()"
 >
   <!-- [styleClass]="addingNote ? (isTemplateActive ? 'w-11/12' : 'w-1/2') : 'w-1/4'" -->
+  <ng-template pTemplate="header">
+    <h3 class="font-medium text-xl mb-0">Notes</h3>
+  </ng-template>
 
   <div class="flex">
     <div
       class="pr-2 border-r border-gray-300"
       [ngClass]="{ 'w-1/2': addingNote == true, 'w-full': addingNote == false }"
     >
-      <div class="flex justify-between items-center mb-2">
-        <span class="font-sans text-[#060505] text-[16px] not-italic font-medium leading-5">Notes</span>
+      <div class="flex justify-start items-center mb-2">
         <a class="cursor-pointer text-right text-[#6366f1]" (click)="toggleAddNote()" *ngIf="!addingNote"
           >+ Add Notes</a
         >

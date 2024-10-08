@@ -86,7 +86,7 @@
     </div>
   </p-dialog>
 
-  <p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal">
+  <p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal" (onHide)="onDialogClose()">
     <ng-template pTemplate="header">
       <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Add Notes</p>
       <p
