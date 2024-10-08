@@ -5,7 +5,14 @@
         <p class="m-0 text-[#101828] font-sans text-[16px] not-italic font-medium leading-[20px]">
           M Henderson Covington
         </p>
-        <i class="pi pi-cloud-upload text-[#6366F1] text-3xl"></i>
+        <p-fileUpload
+          mode="basic"
+          chooseIcon="pi pi-cloud-upload"
+          name="uploadfacesheet"
+          accept="image/*"
+          maxFileSize="1000000"
+          class="upload-button"
+        />
       </div>
       <div class="flex flex-row justify-between">
         <div class="flex gap-[6px] text-sm">
