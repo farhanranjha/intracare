@@ -1,14 +1,13 @@
 import { Component } from "@angular/core";
 import { DividerModule } from "primeng/divider";
-import { TasksComponent } from "../tasks/tasks.component";
-import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
-import { PatientNotesComponent } from "src/app/components/Notes/patient-notes/patient-notes.component";
 import { SidebarService } from "src/app/services/sidebar/sidebar.service";
+import { NotesSidebarComponent } from "../notes-sidebar/notes-sidebar.component";
+import { TasksComponent } from "../tasks/tasks.component";
 
 @Component({
   selector: "patient-dashboard-notes",
   standalone: true,
-  imports: [DividerModule, TasksComponent, PatientNotesComponent],
+  imports: [DividerModule, TasksComponent, NotesSidebarComponent],
   templateUrl: "./notes.component.html",
   styleUrl: "./notes.component.scss",
 })

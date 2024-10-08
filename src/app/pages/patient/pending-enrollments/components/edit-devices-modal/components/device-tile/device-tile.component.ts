@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { Component, Input } from "@angular/core";
 
 @Component({
-  selector: "device-tile",
+  selector: "app-device-tile",
   standalone: true,
   imports: [CommonModule],
   templateUrl: "./device-tile.component.html",
