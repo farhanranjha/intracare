@@ -27,19 +27,30 @@ import { PatientHoldModalComponent } from "../hold-modal/patient-hold-modal/pati
 export class PatientInfoTabComponent {
   taskBarVisible: boolean = false;
 
-  showDischargeModal: boolean = false; // Discharge modal flag
-  showHoldModal: boolean = false; // Hold modal flag
+  showDischargeModal: boolean = false;
+  showHoldModal: boolean = false;
 
   openDischargeModal() {
     this.showDischargeModal = true;
   }
 
+  onDischargeClose() {
+    this.showDischargeModal = false;
+  }
+
+  onClose() {
+    this.showHoldModal = false;
+    console.log("closed", this.showHoldModal);
+  }
+
   openHoldModal() {
     this.showHoldModal = true;
+    console.log("open", this.showHoldModal);
   }
 
   closeHoldModal() {
     this.showHoldModal = false;
+    console.log("closeHoldModal", this.showHoldModal);
   }
 
   updateStatus() {

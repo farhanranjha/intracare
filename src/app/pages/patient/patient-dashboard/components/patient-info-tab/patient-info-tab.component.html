@@ -132,6 +132,10 @@
   [contentText]="'Are you sure, you want to update patient status?'"
   (yesCallback)="updateStatus()"
   (noCallback)="closeHoldModal()"
+  (onCloseback)="onClose()"
 ></app-patient-hold-modal>
 
-<app-patient-discharge-modal [(showModal)]="showDischargeModal"></app-patient-discharge-modal>
+<app-patient-discharge-modal
+  [(showModal)]="showDischargeModal"
+  (onCloseDischargeback)="onDischargeClose()"
+></app-patient-discharge-modal>

@@ -14,14 +14,19 @@ import { DividerModule } from "primeng/divider";
 export class PatientDischargeModalComponent {
   @Input() showModal: boolean = false;
 
+  @Output() onCloseDischargeback = new EventEmitter<void>();
+
   value: string = "State the reason of discharge";
 
-  openModal() {
+  onDischargeClose() {
+    this.onCloseDischargeback.emit();
     this.showModal = true;
   }
+
   discharge() {
     this.showModal = false;
   }
+
   cancel() {
     this.showModal = false;
   }

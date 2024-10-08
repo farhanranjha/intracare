@@ -1,4 +1,4 @@
-<p-dialog [(visible)]="showModal" [closable]="false" modal="true" [style]="{ width: '400px' }">
+<p-dialog [(visible)]="showModal" (onHide)="onDischargeClose()" modal="true" [style]="{ width: '400px' }">
   <ng-template pTemplate="header">
     <div>
       <h3 class="font-medium text-xl mb-0">Discharge Patient</h3>
@@ -37,7 +37,7 @@
       <button
         pButton
         pRipple
-        label="DisCharge"
+        label="Discharge"
         (click)="discharge()"
         class="flex justify-center py-2.5 items-center font-sans text-[14px] not-italic font-medium leading-5 rounded-[8px] text-white bg-[#6366F1] border border-solid border-[#6366F1]"
       ></button>
