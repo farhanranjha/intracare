@@ -1,16 +1,16 @@
 import { CommonModule } from "@angular/common";
-import { Component, OnInit } from "@angular/core";
+import { Component } from "@angular/core";
+import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { CheckboxModule } from "primeng/checkbox";
 import { DividerModule } from "primeng/divider";
 import { DropdownModule } from "primeng/dropdown";
 import { SidebarModule } from "primeng/sidebar";
 import { TabViewModule } from "primeng/tabview";
-import { FormsModule } from "@angular/forms";
 import { SidebarService } from "src/app/services/sidebar/sidebar.service";
 
 @Component({
-  selector: "app-patient-notes",
+  selector: "app-notes-sidebar",
   standalone: true,
   imports: [
     SidebarModule,
@@ -22,10 +22,10 @@ import { SidebarService } from "src/app/services/sidebar/sidebar.service";
     DropdownModule,
     FormsModule,
   ],
-  templateUrl: "./patient-notes.component.html",
-  styleUrl: "./patient-notes.component.scss",
+  templateUrl: "./notes-sidebar.component.html",
+  styleUrl: "./notes-sidebar.component.scss",
 })
-export class PatientNotesComponent implements OnInit {
+export class NotesSidebarComponent {
   selectedDropdownOption: string = "actions";
   sidebarVisible: boolean = false;
   addingNote: boolean = false;

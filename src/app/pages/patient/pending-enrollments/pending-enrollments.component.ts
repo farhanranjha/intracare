@@ -6,12 +6,12 @@ import { DialogModule } from "primeng/dialog";
 import { CommonModule } from "@angular/common";
 import { InputTextModule } from "primeng/inputtext";
 import { DropdownModule } from "primeng/dropdown";
-import { DeviceTileComponent } from "src/app/components/device-tile/device-tile.component";
-import { EditDeviceModalComponent } from "src/app/components/edit-device-modal/edit-device-modal.component";
 import { TableComponent } from "src/app/components/table/table.component";
 import { RouterModule } from "@angular/router";
 import { IDeviceTypes, IPendingEnrollments } from "src/app/types/mock-data/mock-data-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
+import { DeviceTileComponent } from "./components/edit-devices-modal/components/device-tile/device-tile.component";
+import { EditDevicesModalComponent } from "./components/edit-devices-modal/edit-devices-modal.component";
 
 @Component({
   selector: "app-pending-enrollments",
@@ -23,7 +23,7 @@ import { ColumnConfig } from "src/app/types/table/generic-table-types";
     CommonModule,
     InputTextModule,
     DropdownModule,
-    EditDeviceModalComponent,
+    EditDevicesModalComponent,
     TableComponent,
     RouterModule,
   ],
