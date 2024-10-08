@@ -24,5 +24,5 @@ import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.c
 })
 export class PatientInfoTabComponent {
   taskBarVisible: boolean = false;
-  msgBarVisible: boolean = true;
+  msgBarVisible: boolean = false;
 }
