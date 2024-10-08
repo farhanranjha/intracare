@@ -33,4 +33,10 @@ export class MessagesSidebarComponent {
       this.newMessage = "";
     }
   }
+  onKeyDown(event: KeyboardEvent) {
+    if ((event.ctrlKey || event.metaKey) && event.key === "Enter") {
+      event.preventDefault();
+      this.sendMessage();
+    }
+  }
 }
