@@ -1,0 +1,27 @@
+<p-dialog [(visible)]="displayModal" modal="true" width="300" class="care-type-modal" [closable]="false">
+  <ng-template pTemplate="header">
+    <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Select Care Type</p>
+  </ng-template>
+  <p-divider layout="horizontal" />
+  <div class="flex flex-col justify-center items-start gap-4">
+    <div class="text-[#666] font-sans text-[12px] not-italic font-normal leading-normal">
+      <p cla>Please choose the care management type for this patient</p>
+    </div>
+    <div class="flex justify-content-start gap-5">
+      <button
+        pButton
+        pRipple
+        label="RPM"
+        (click)="selectMode('rpm')"
+        class="flex px-16 py-2 justify-center items-center text-[#344054] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#D0D5DD] bg-white"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="CCM"
+        (click)="selectMode('ccm')"
+        class="flex px-16 py-2 justify-center items-center text-[14px] not-italic font-medium leading-5 rounded-[8px] text-[#344054] bg-white border border-solid border-[#D0D5DD]"
+      ></button>
+    </div>
+  </div>
+</p-dialog>

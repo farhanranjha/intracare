@@ -1,0 +1,90 @@
+import { Component } from "@angular/core";
+import { ActivatedRoute, NavigationStart, Router } from "@angular/router";
+import { DialogModule } from "primeng/dialog";
+import { DividerModule } from "primeng/divider";
+import { filter } from "rxjs";
+import { TimerService } from "src/app/services/timer/timer.service";
+
+@Component({
+  selector: "app-timer-log",
+  standalone: true,
+  imports: [DialogModule, DividerModule],
+  templateUrl: "./timer-log.component.html",
+  styleUrl: "./timer-log.component.scss",
+})
+export class TimerLogComponent {
+  selectedMode: "rpm" | "ccm" | null = null;
+  logTimeModal = false;
+  private pendingNavigation: string | null = null;
+  private isNavigating = false;
+  private patientId: string | null = null;
+  timerDisplay: string = "00:00";
+  hasStarted: boolean = false; // Add this property
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private timerService: TimerService,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.patientId = params.get("id");
+    });
+
+    this.timerService.selectedMode$.subscribe((mode) => {
+      this.selectedMode = mode; // Update selectedMode when changed
+    });
+
+    this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe((event: NavigationStart) => {
+      // Subscribe to hasStarted$ and use it to check if the timer has started
+      if (this.hasStarted && !this.isNavigating) {
+        if (this.patientId && this.doesUrlMatchPatientRoute(event.url)) {
+          this.isNavigating = false;
+        } else {
+          this.pendingNavigation = event.url;
+          this.isNavigating = true;
+          this.router.navigateByUrl(this.router.url);
+          this.logTimeModal = true;
+        }
+      }
+    });
+
+    // Subscribe to timerDisplay$ and update the timerDisplay
+    this.timerService.timerDisplay$.subscribe((display) => {
+      this.timerDisplay = display;
+    });
+
+    // Subscribe to hasStarted$ and update the hasStarted property
+    this.timerService.hasStarted$.subscribe((hasStarted) => {
+      this.hasStarted = hasStarted;
+    });
+  }
+
+  doesUrlMatchPatientRoute(url: string): boolean {
+    const patientRouteRegex = new RegExp(`/patient/${this.patientId}`);
+    return patientRouteRegex.test(url);
+  }
+
+  handleLogTimeChoice(logTime: boolean): void {
+    this.timerService.stopTimer();
+    if (logTime) {
+      this.navigateAfterLogging();
+    } else {
+      this.navigateAfterLogging();
+    }
+  }
+
+  onDialogClose() {
+    this.logTimeModal = false;
+    this.isNavigating = false;
+  }
+
+  navigateAfterLogging(): void {
+    if (this.pendingNavigation) {
+      this.router.navigate([this.pendingNavigation]);
+      this.pendingNavigation = null;
+    }
+    this.logTimeModal = false;
+  }
+}
