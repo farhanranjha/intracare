@@ -116,6 +116,7 @@
         pButton
         pRipple
         label="Messages"
+        (click)="msgBarVisible = true"
         icon="pi pi-envelope"
         class="p-button-outlined border-gray-500 text-[#444] text-sm"
       ></button>
@@ -124,6 +125,7 @@
   <patient-dashboard-notes />
 </div>
 <task-sidebar [sidebarVisible]="taskBarVisible" />
+<messages-sidebar [sidebarVisible]="msgBarVisible" />
 <patient-hold-modal
   [(showModal)]="showHoldModal"
   [headerText]="'Update Patient Status'"

@@ -7,6 +7,7 @@ import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
 import { FileUploadModule } from "primeng/fileupload";
 import { PatientDischargeModalComponent } from "../discharge-modal/patient-discharge-modal/patient-discharge-modal.component";
 import { PatientHoldModalComponent } from "../hold-modal/patient-hold-modal/patient-hold-modal.component";
+import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.component";
 
 @Component({
   selector: "patient-dashboard-info",
@@ -20,6 +21,7 @@ import { PatientHoldModalComponent } from "../hold-modal/patient-hold-modal/pati
     TaskSidebarComponent,
     PatientHoldModalComponent,
     PatientDischargeModalComponent,
+    MessagesSidebarComponent,
   ],
   templateUrl: "./patient-info-tab.component.html",
   styleUrl: "./patient-info-tab.component.scss",
@@ -29,6 +31,7 @@ export class PatientInfoTabComponent {
 
   showDischargeModal: boolean = false;
   showHoldModal: boolean = false;
+  msgBarVisible: boolean = false;
 
   openDischargeModal() {
     this.showDischargeModal = true;

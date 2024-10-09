@@ -42,7 +42,7 @@ export class PatientDashboardComponent implements OnInit {
   isRunning = false;
   hasStarted = false;
   selectedMode: "rpm" | "ccm" | null = null;
-  displayModal = true;
+  displayModal = true; //making it false for development purpose, it should be true
   logTimeModal = false;
   private pendingNavigation: string | null = null;
   private isNavigating = false;
@@ -56,7 +56,6 @@ export class PatientDashboardComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.patientId = params.get("id");
-      console.log("Patient ID:", this.patientId);
     });
 
     this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe((event: NavigationStart) => {
@@ -102,6 +101,7 @@ export class PatientDashboardComponent implements OnInit {
   }
 
   stopTimer(): void {
+    this.pendingNavigation = null;
     this.logTimeModal = true;
   }
 
@@ -141,10 +141,13 @@ export class PatientDashboardComponent implements OnInit {
     }
   }
 
+  onDialogClose() {
+    this.logTimeModal = false;
+    this.isNavigating = false;
+  }
+
   navigateAfterLogging(): void {
     if (this.pendingNavigation) {
-      console.log(this.pendingNavigation);
-
       this.router.navigate([this.pendingNavigation]);
       this.pendingNavigation = null;
     } else {
