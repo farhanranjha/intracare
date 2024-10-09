@@ -1,1 +1,3 @@
-<p>trends works!</p>
+<p-dropdown [options]="dropdownItems" [(ngModel)]="selectedItem" placeholder="Select Data" (onChange)="updateChart()">
+</p-dropdown>
+<p-chart type="line" [data]="chartData" [options]="chartOptions"> </p-chart>
