@@ -76,7 +76,6 @@ export class PatientDashboardComponent {
   }
 
   stopTimer(): void {
-    console.log("Stop button clicked");
     this.timerLog.handleStopButton();
   }
 

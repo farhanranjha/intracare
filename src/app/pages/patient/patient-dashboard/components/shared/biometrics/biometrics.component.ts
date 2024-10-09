@@ -31,6 +31,5 @@ export class BiometricsComponent implements OnInit {
 
   onTabChange(tab: IKeyValue) {
     this.activeTab = tab;
-    console.log("Active Tab:", this.activeTab);
   }
 }
