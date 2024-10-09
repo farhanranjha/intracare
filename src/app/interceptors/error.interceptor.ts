@@ -6,7 +6,7 @@ import { catchError, filter, switchMap, take } from "rxjs/operators";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { selectAccessToken } from "../store/selectors/user.selector";
 import { Router } from "@angular/router";
-import { remove, setAccessToken } from "../store/actions/user.action";
+import { remove, setAccessToken, setRefreshToken } from "../store/actions/user.action";
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
@@ -44,6 +44,7 @@ export class ErrorInterceptor implements HttpInterceptor {
           if (newAccessToken) {
             this.refreshTokenSubject.next(newAccessToken);
             this.store.dispatch(setAccessToken({ accessToken: newAccessToken }));
+            this.store.dispatch(setRefreshToken({ refreshToken: response?.refresh_token }));
             const newRequest = req.clone({
               setHeaders: {
                 Authorization: `Bearer ${newAccessToken}`,
