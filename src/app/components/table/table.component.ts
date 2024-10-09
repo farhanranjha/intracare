@@ -45,6 +45,7 @@ export class TableComponent {
   @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
   @Input() showTopBar?: boolean = false;
   @Input() scrollHeight?: string = "100%";
+  @Input() paginator?: boolean = true;
 
   searchValue: string | undefined;
   constructor(private router: Router) {}
