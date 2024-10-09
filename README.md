@@ -15,11 +15,12 @@ Run `ng build` to build the project. The build artifacts will be stored in the `
 
 ### Naming Conventions
 
-- **Classes**: Use `PascalCase` for class names (e.g., `UserProfileComponent`).
+- **Component Classes**: Use `PascalCase` for component class names (e.g., `UserProfileComponent`).
 - **Variables and Functions**: Use `camelCase` for variable and function names (e.g., `userName`, `fetchData`).
 - **Constants**: Use `UPPER_CASE_SNAKE` format for constants (e.g., `API_ENDPOINT`).
 - **Component Selectors**: Follow the `kebab-case` convention for component selectors (e.g., `patient-dashboard`). Use the `app-` prefix only for generic components.
 - **Branch Names**: Branch names should follow the format of the issue’s ticket number (e.g., `INTRA-54`). For non-ticketed changes, use the prefix `feature/`, `fix/`, or `hotfix/` (e.g., `feature/add-patient`, `hotfix/readme-update`).
+- **CSS Classes**: Use `kebab-case` for css class names (e.g., `paginator-styles`).
 
 ### Code Style
 
