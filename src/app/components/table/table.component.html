@@ -11,6 +11,7 @@
   (onLazyLoad)="onLazyLoad($event)"
   [scrollable]="true"
   [scrollHeight]="scrollHeight"
+  [style]="{ height: scrollHeight }"
   filterDelay="300"
 >
   <ng-template *ngIf="showTopBar" pTemplate="caption">
