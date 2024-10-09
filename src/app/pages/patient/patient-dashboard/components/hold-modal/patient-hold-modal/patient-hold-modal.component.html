@@ -1,0 +1,39 @@
+<p-dialog
+  [(visible)]="showModal"
+  (onHide)="onDialogClose()"
+  modal="true"
+  [style]="{ width: '350px' }"
+  [draggable]="false"
+>
+  <ng-template pTemplate="header">
+    <div>
+      <h3 class="font-medium text-xl mb-0">{{ headerText }}</h3>
+    </div>
+  </ng-template>
+
+  <p-divider layout="horizontal"></p-divider>
+
+  <div class="flex flex-col gap-4">
+    <div class="text-[#666] font-sans text-base not-italic font-normal leading-normal">
+      <p>{{ contentText }}</p>
+    </div>
+
+    <div class="flex justify-content-end gap-2">
+      <button
+        pButton
+        pRipple
+        label="No"
+        (click)="onNoClick()"
+        class="flex justify-center py-2.5 items-center text-[#757575] text-sm not-italic font-medium leading-5 rounded-lg border border-solid border-[#757575] bg-white"
+      ></button>
+
+      <button
+        pButton
+        pRipple
+        label="Yes"
+        (click)="onYesClick()"
+        class="flex justify-center py-2.5 items-center font-sans text-sm not-italic font-medium leading-5 rounded-lg text-white bg-[#6366F1] border border-solid border-[#6366F1]"
+      ></button>
+    </div>
+  </div>
+</p-dialog>

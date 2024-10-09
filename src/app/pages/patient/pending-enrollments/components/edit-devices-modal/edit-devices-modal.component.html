@@ -5,6 +5,7 @@
   [style]="{ width: '40rem' }"
   [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
   [maximizable]="true"
+  [draggable]="false"
 >
   <div class="w-full flex flex-col items-start justify-start gap-3">
     <div class="w-full flex flex-row items-start justify-start gap-2 p-3">
@@ -31,7 +32,7 @@
         style="color: #017bfe; font-size: 2rem; margin: auto 10px; cursor: pointer"
         (click)="enableEditMode()"
       ></i>
-      <div *ngIf="isEditMode" class="flex flex-col gap-[18px] w-[40%] justify-between h-full items-end">
+      <div *ngIf="isEditMode" class="flex flex-col gap-4 w-[40%] justify-between h-full items-end">
         <i
           class="pi pi-undo"
           style="font-size: 1.2rem; margin: auto 10px; cursor: pointer"

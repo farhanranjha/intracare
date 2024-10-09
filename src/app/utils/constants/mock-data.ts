@@ -808,3 +808,47 @@ export const timerLogsData = [
     doctorName: "Dr. Wilson",
   },
 ];
+export const biometricsMockData = [
+  {
+    metricName: "Blood Glucose",
+    value: "98",
+    metricUnit: "mg/dL",
+    date: "Oct 5, 2024 at 8:15:00 AM",
+  },
+  {
+    metricName: "Blood Pressure",
+    value: "120/80",
+    metricUnit: "mmHg",
+    date: "Oct 3, 2024 at 7:45:00 AM",
+  },
+  {
+    metricName: "Weight",
+    value: "165",
+    metricUnit: "lbs",
+    date: "Sep 29, 2024 at 9:30:00 AM",
+  },
+  {
+    metricName: "Oxygen Saturation",
+    value: "98",
+    metricUnit: "%",
+    date: "Oct 4, 2024 at 5:10:00 PM",
+  },
+  {
+    metricName: "Heart Rate",
+    value: "72",
+    metricUnit: "bpm",
+    date: "Oct 2, 2024 at 6:15:00 PM",
+  },
+  {
+    metricName: "Cholesterol",
+    value: "180",
+    metricUnit: "mg/dL",
+    date: "Sep 26, 2024 at 8:45:00 AM",
+  },
+  {
+    metricName: "Temperature",
+    value: "98.6",
+    metricUnit: "°F",
+    date: "Sep 28, 2024 at 4:20:00 PM",
+  },
+];
