@@ -37,6 +37,7 @@ export class DashboardComponent implements OnInit {
   columns: ColumnConfig[] = [];
   rowData: any = [];
   totalRecords: number = 0;
+  loading: boolean = false;
 
   practicesOptions: IKeyValue[];
   programOptions: IKeyValue[];
@@ -128,7 +129,9 @@ export class DashboardComponent implements OnInit {
   }
 
   onLazyLoad(event: LazyLoadEvent) {
+    this.loading = true;
     this.dashboardService.getDashboardData(event).subscribe(({ data, total }) => {
+      this.loading = false;
       this.rowData = data;
       this.totalRecords = total;
       this.cdRef.markForCheck();
