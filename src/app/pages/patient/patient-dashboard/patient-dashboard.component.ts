@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { Router, NavigationStart, RouterModule, ActivatedRoute } from "@angular/router";
-import { filter } from "rxjs";
+import { Component, ViewChild } from "@angular/core";
+import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
@@ -37,6 +36,7 @@ import { TimerService } from "src/app/services/timer/timer.service";
   styleUrl: "./patient-dashboard.component.scss",
 })
 export class PatientDashboardComponent {
+  @ViewChild(TimerLogComponent) timerLog!: TimerLogComponent;
   routes: { label: string; value: string }[] = [
     { label: "General Settings", value: "general-settings" },
     { label: "RPM", value: "rpm" },
@@ -46,6 +46,7 @@ export class PatientDashboardComponent {
   isRunning = false;
   hasStarted = false;
   timerDisplay = "00:00";
+  logTimeModal = false;
 
   constructor(private timerService: TimerService) {}
 
@@ -61,6 +62,9 @@ export class PatientDashboardComponent {
     this.timerService.hasStarted$.subscribe((hasStarted) => {
       this.hasStarted = hasStarted;
     });
+    this.timerService.logTimeModal$.subscribe((isVisible) => {
+      this.logTimeModal = isVisible;
+    });
   }
 
   startTimer(): void {
@@ -72,7 +76,8 @@ export class PatientDashboardComponent {
   }
 
   stopTimer(): void {
-    this.timerService.stopTimer();
+    console.log("Stop button clicked");
+    this.timerLog.handleStopButton();
   }
 
   resumeTimer(): void {

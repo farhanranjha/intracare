@@ -19,7 +19,7 @@ export class TimerLogComponent {
   private isNavigating = false;
   private patientId: string | null = null;
   timerDisplay: string = "00:00";
-  hasStarted: boolean = false; // Add this property
+  hasStarted: boolean = false;
 
   constructor(
     private router: Router,
@@ -33,11 +33,10 @@ export class TimerLogComponent {
     });
 
     this.timerService.selectedMode$.subscribe((mode) => {
-      this.selectedMode = mode; // Update selectedMode when changed
+      this.selectedMode = mode;
     });
 
     this.router.events.pipe(filter((event) => event instanceof NavigationStart)).subscribe((event: NavigationStart) => {
-      // Subscribe to hasStarted$ and use it to check if the timer has started
       if (this.hasStarted && !this.isNavigating) {
         if (this.patientId && this.doesUrlMatchPatientRoute(event.url)) {
           this.isNavigating = false;
@@ -50,12 +49,10 @@ export class TimerLogComponent {
       }
     });
 
-    // Subscribe to timerDisplay$ and update the timerDisplay
     this.timerService.timerDisplay$.subscribe((display) => {
       this.timerDisplay = display;
     });
 
-    // Subscribe to hasStarted$ and update the hasStarted property
     this.timerService.hasStarted$.subscribe((hasStarted) => {
       this.hasStarted = hasStarted;
     });
@@ -84,7 +81,15 @@ export class TimerLogComponent {
     if (this.pendingNavigation) {
       this.router.navigate([this.pendingNavigation]);
       this.pendingNavigation = null;
+    } else {
+      this.logTimeModal = false;
+      this.timerService.stopTimer();
     }
-    this.logTimeModal = false;
+  }
+
+  handleStopButton(): void {
+    this.timerService.openLogTimeModal();
+    this.logTimeModal = true;
+    this.pendingNavigation = null;
   }
 }

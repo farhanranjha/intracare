@@ -25,7 +25,7 @@ export class TimerService {
 
   selectMode(mode: "rpm" | "ccm"): void {
     this._selectedMode.next(mode);
-    this.startTimer(); // Start the timer when a mode is selected
+    this.startTimer();
   }
 
   startTimer(): void {
