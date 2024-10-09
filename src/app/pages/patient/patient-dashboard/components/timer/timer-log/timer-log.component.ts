@@ -6,7 +6,7 @@ import { filter } from "rxjs";
 import { TimerService } from "src/app/services/timer/timer.service";
 
 @Component({
-  selector: "app-timer-log",
+  selector: "timer-log",
   standalone: true,
   imports: [DialogModule, DividerModule],
   templateUrl: "./timer-log.component.html",

@@ -10,8 +10,8 @@ import { TableComponent } from "src/app/components/table/table.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { PatientInfoTabComponent } from "./components/patient-info-tab/patient-info-tab.component";
 import { DialogModule } from "primeng/dialog";
-import { CareTypeModalComponent } from "./components/shared/caretype/care-type-modal/care-type-modal.component";
-import { TimerLogComponent } from "./components/shared/timer/timer-log/timer-log.component";
+import { CareTypeModalComponent } from "./components/caretype/care-type-modal/care-type-modal.component";
+import { TimerLogComponent } from "./components/timer/timer-log/timer-log.component";
 import { TimerService } from "src/app/services/timer/timer.service";
 
 @Component({

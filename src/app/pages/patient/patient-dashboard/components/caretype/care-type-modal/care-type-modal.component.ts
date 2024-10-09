@@ -5,7 +5,7 @@ import { DividerModule } from "primeng/divider";
 import { TimerService } from "src/app/services/timer/timer.service";
 
 @Component({
-  selector: "app-care-type-modal",
+  selector: "care-type-modal",
   standalone: true,
   imports: [DialogModule, DividerModule, ButtonModule],
   templateUrl: "./care-type-modal.component.html",
