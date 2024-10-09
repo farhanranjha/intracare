@@ -7,3 +7,11 @@
 ::ng-deep .p-datatable-tbody > tr {
   background-color: #fff;
 }
+::ng-deep .p-datatable-loading-overlay {
+  background: transparent;
+}
+::ng-deep .p-datatable-loading-icon {
+  height: 36px;
+  width: 36px;
+  color: #6366f1;
+}
