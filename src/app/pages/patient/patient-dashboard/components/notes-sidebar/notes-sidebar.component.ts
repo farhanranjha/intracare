@@ -133,7 +133,6 @@ export class NotesSidebarComponent {
 
   toggleTemplate() {
     this.isTemplateActive = !this.isTemplateActive;
-    console.log(this, this.isTemplateActive);
   }
 
   submitNote() {

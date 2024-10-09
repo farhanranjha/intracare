@@ -22,6 +22,5 @@ export class ProfileComponent {
 
   onTabChange(tab: IKeyValue) {
     this.activeTab = tab;
-    console.log("Active Tab:", this.activeTab);
   }
 }
