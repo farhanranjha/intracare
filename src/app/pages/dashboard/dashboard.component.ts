@@ -129,7 +129,7 @@ export class DashboardComponent implements OnInit {
   }
 
   onLazyLoad(event: LazyLoadEvent) {
-    this.loading = true;
+    if (this.rowData.length == 0) this.loading = true;
     this.dashboardService.getDashboardData(event).subscribe(({ data, total }) => {
       this.loading = false;
       this.rowData = data;
