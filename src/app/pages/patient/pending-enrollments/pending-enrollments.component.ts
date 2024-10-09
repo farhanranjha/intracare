@@ -62,7 +62,6 @@ export class PendingEnrollmentsComponent {
         name: "Device Type",
         field: "deviceType",
         filterType: "text",
-        valueFormatter: (val) => console.log("====PENDING==="),
       },
       {
         name: "Program Type",

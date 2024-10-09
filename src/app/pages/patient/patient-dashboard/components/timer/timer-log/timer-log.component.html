@@ -1,0 +1,39 @@
+<p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal" (onHide)="onDialogClose()">
+  <ng-template pTemplate="header">
+    <div class="flex flex-row gap-3">
+      <p class="text-[#060505] my-auto font-sans text-xl not-italic font-medium leading-normal">Add Notes</p>
+      <p
+        class="text-[#344054] my-auto bg-[#F2F4F7] rounded-xl px-3 py-1 uppercase text-center text-lg not-italic font-medium leading-5"
+      >
+        {{ selectedMode }}
+      </p>
+    </div>
+  </ng-template>
+  <p-divider layout="horizontal" />
+  <div class="flex flex-col justify-center items-center">
+    <p class="text-[#666] w-full font-sans text-sm not-italic font-normal leading-normal">
+      Would you like to log the time spent?
+    </p>
+    <div
+      class="text-[#B42318] py-2 px-5 bg-[#FADDDB] rounded-2xl text-center font-sans text-[24px] not-italic font-semibold leading-normal"
+    >
+      {{ timerDisplay }}
+    </div>
+  </div>
+  <p-divider layout="horizontal" />
+
+  <div class="flex justify-center gap-4 mt-4">
+    <button
+      (click)="handleLogTimeChoice(false)"
+      class="flex px-14 py-2.5 justify-center items-center gap-2 text-[#DC2626] text-sm not-italic font-medium leading-5 rounded-lg border border-solid border-[#FADDDB] bg-white"
+    >
+      Don't Log
+    </button>
+    <button
+      (click)="handleLogTimeChoice(true)"
+      class="flex px-14 py-2.5 justify-center items-center gap-2 text-sm not-italic font-medium leading-5 rounded-lg text-[#FFF] bg-[#6366F1] border-none"
+    >
+      Log Time
+    </button>
+  </div>
+</p-dialog>
