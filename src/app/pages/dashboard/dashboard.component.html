@@ -35,12 +35,12 @@
 <ng-template #programTypeTemplate let-row>
   <div class="flex gap-2">
     <span *ngFor="let program of row.programType.split('/')">
-      <p class="bg-red-50 text-red-600 text-center px-2.5 py-1 rounded-full w-fit">{{ program.trim() }}</p>
+      <p class="bg-red-50 text-red-600 text-center px-2 py-1 rounded-full w-fit">{{ program.trim() }}</p>
     </span>
   </div>
 </ng-template>
 <ng-template #statusTemplate let-row>
-  <p class="bg-skyLight text-indigo-500 text-center rounded-full w-fit px-2.5 py-1">
+  <p class="bg-skyLight text-indigo-500 text-center rounded-full w-fit px-2 py-1">
     {{ row.status }}
   </p>
 </ng-template>
@@ -56,7 +56,7 @@
   </div>
 </ng-template>
 <ng-template #consentTemplate let-row>
-  <p class="bg-lime-50 text-lime-600 text-center px-2.5 py-1 rounded-full w-fit">
+  <p class="bg-lime-50 text-lime-600 text-center px-2 py-1 rounded-full w-fit">
     {{ row.consent }}
   </p>
 </ng-template>

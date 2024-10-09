@@ -1,10 +1,8 @@
 <div class="w-[335px] flex flex-col gap-2">
-  <div class="px-4 py-[10px] bg-white rounded-lg shadow-md flex flex-col w-full gap-4">
+  <div class="px-4 py-2.5 bg-white rounded-lg shadow-md flex flex-col w-full gap-4">
     <div class="flex flex-col gap-2">
       <div class="flex flex-row justify-between">
-        <p class="m-0 text-[#101828] font-sans text-[16px] not-italic font-medium leading-[20px]">
-          M Henderson Covington
-        </p>
+        <p class="m-0 text-[#101828] font-sans text-xl not-italic font-medium leading-6">M Henderson Covington</p>
         <p-fileUpload
           mode="basic"
           chooseIcon="pi pi-cloud-upload text-3xl"
@@ -15,12 +13,12 @@
         />
       </div>
       <div class="flex flex-row justify-between">
-        <div class="flex gap-[6px] text-sm">
-          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">English</span>
-          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">Female</span>
-          <span class="badge border-1 border-[#808080] text-[#444] py-[2px] px-2 rounded-full">76 y/o</span>
+        <div class="flex gap-1.5 text-sm">
+          <span class="badge border-1 border-[#808080] text-[#444] py-0.5 px-2 rounded-full">English</span>
+          <span class="badge border-1 border-[#808080] text-[#444] py-0.5 px-2 rounded-full">Female</span>
+          <span class="badge border-1 border-[#808080] text-[#444] py-0.5 px-2 rounded-full">76 y/o</span>
         </div>
-        <div class="flex gap-[6px]">
+        <div class="flex gap-1.5">
           <span class="badge bg-[#FEF2F2] text-[#DC2626] py-1 px-2 rounded-full">RPM</span>
           <span class="badge bg-[#FEF2F2] text-[#DC2626] py-1 px-2 rounded-full">CCM</span>
         </div>
@@ -94,6 +92,7 @@
         pButton
         pRipple
         label="Discharge"
+        (click)="openDischargeModal()"
         icon="pi pi-user-minus"
         class="p-button-outlined border-[#FDA29B] text-[#B42318] text-sm btn-red"
       ></button>
@@ -103,6 +102,7 @@
         label="Hold"
         icon="pi pi-clock"
         class="p-button-outlined border-[#F99D67] text-[#F5630F] text-sm btn-orange"
+        (click)="openHoldModal()"
       ></button>
       <button
         pButton
@@ -126,3 +126,16 @@
 </div>
 <task-sidebar [sidebarVisible]="taskBarVisible" />
 <messages-sidebar [sidebarVisible]="msgBarVisible" />
+<patient-hold-modal
+  [(showModal)]="showHoldModal"
+  [headerText]="'Update Patient Status'"
+  [contentText]="'Are you sure, you want to update patient status?'"
+  (yesCallback)="updateStatus()"
+  (noCallback)="closeHoldModal()"
+  (onCloseback)="onClose()"
+></patient-hold-modal>
+
+<patient-discharge-modal
+  [(showModal)]="showDischargeModal"
+  (onCloseDischargeback)="onDischargeClose()"
+></patient-discharge-modal>

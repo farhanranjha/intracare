@@ -11,7 +11,7 @@ import { KeyInsightComponent } from "./components/key-insight/key-insight.compon
   standalone: true,
   imports: [SidebarRouterComponent, BiometricDataComponent, KeyInsightComponent, CommonModule],
   templateUrl: "./biometrics.component.html",
-  styleUrls: ["./biometrics.component.scss"],
+  styleUrl: "./biometrics.component.scss",
 })
 export class BiometricsComponent implements OnInit {
   source: string;

@@ -14,22 +14,23 @@
       class="pr-2 border-r border-gray-300"
       [ngClass]="{ 'w-1/2': addingNote == true, 'w-full': addingNote == false }"
     >
-      <div class="flex justify-start items-center mb-2">
+      <div class="flex justify-between items-center mb-2">
+        <span class="font-sans text-[#060505] text-base not-italic font-medium leading-5">Notes</span>
         <a class="cursor-pointer text-right text-[#6366f1]" (click)="toggleAddNote()" *ngIf="!addingNote"
           >+ Add Notes</a
         >
       </div>
 
-      <div *ngFor="let note of notes" class="bg-white shadow-sm rounded-lg px-[10px] py-[16px] my-[18px]">
+      <div *ngFor="let note of notes" class="bg-white shadow-sm rounded-lg px-2.5 py-4 my-4">
         <div>
-          <p class="text-[#222] font-sans text-[12px] not-italic font-medium leading-5">{{ note.text }}</p>
+          <p class="text-[#222] font-sans text-xs not-italic font-medium leading-5">{{ note.text }}</p>
         </div>
         <p-divider layout="horizontal" />
-        <div class="flex fex-row justify-between gap-[12px]">
-          <p class="font-sans text-[#060505] text-[12px] not-italic font-medium leading-5 mb-0">
+        <div class="flex fex-row justify-between gap-3">
+          <p class="font-sans text-[#060505] text-xs not-italic font-medium leading-5 mb-0">
             {{ note.author }}
           </p>
-          <p class="text-[#666] font-sans text-[12px] not-italic font-normal leading-5 mb-0">
+          <p class="text-[#666] font-sans text-xs not-italic font-normal leading-5 mb-0">
             {{ note.date | date: "medium" }}
           </p>
         </div>
@@ -39,7 +40,7 @@
     <p-divider layout="vertical" class="h-[100vh]" *ngIf="addingNote" />
     <div class="w-[60%] pl-2" *ngIf="addingNote">
       <div class="flex justify-between items-center mb-4">
-        <span class="font-sans text-[#060505] text-[16px] not-italic font-medium leading-5">Create Note</span>
+        <span class="font-sans text-[#060505] text-base not-italic font-medium leading-5">Create Note</span>
         <a class="cursor-pointer text-right text-[#6366f1]" (click)="toggleAddNote()" *ngIf="addingNote">- Remove</a>
       </div>
 
