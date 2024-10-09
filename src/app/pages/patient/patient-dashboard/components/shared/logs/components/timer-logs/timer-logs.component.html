@@ -9,7 +9,14 @@
   <button pButton type="button" class="viewNoteBtn" label="View Note" (click)="showNote(rowData)"></button>
 </ng-template>
 
-<p-dialog header="View Note" [(visible)]="displayModal" [modal]="true" [style]="{ width: '50vw' }" [closable]="true">
+<p-dialog
+  header="View Note"
+  [(visible)]="displayModal"
+  [modal]="true"
+  [style]="{ width: '50vw' }"
+  [closable]="true"
+  [draggable]="false"
+>
   <div *ngIf="selectedNote">
     <div class="flex justify-between">
       <div>

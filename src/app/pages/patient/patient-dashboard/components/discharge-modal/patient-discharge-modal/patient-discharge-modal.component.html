@@ -1,4 +1,10 @@
-<p-dialog [(visible)]="showModal" (onHide)="onDischargeClose()" modal="true" [style]="{ width: '400px' }">
+<p-dialog
+  [(visible)]="showModal"
+  (onHide)="onDischargeClose()"
+  modal="true"
+  [style]="{ width: '400px' }"
+  [draggable]="false"
+>
   <ng-template pTemplate="header">
     <div>
       <h3 class="font-medium text-xl mb-0">Discharge Patient</h3>
@@ -11,15 +17,15 @@
     <div>
       <p>
         Patient's Name:
-        <span class="text-[#101828] font-sans text-[14px] not-italic font-medium leading-5">Handerson Covington</span>
+        <span class="text-[#101828] font-sans text-base not-italic font-medium leading-5">Handerson Covington</span>
       </p>
     </div>
     <div>
-      <h3 class="text-[#101828] text-[14px] not-italic font-medium leading-5">Reason of discharge</h3>
+      <h3 class="text-[#101828] text-base not-italic font-medium leading-5">Reason of discharge</h3>
       <textarea
         rows="5"
         cols="30"
-        class="w-full rounded-lg p-2 bg-[#FFF] text-[#666] font-sans text-[12px] not-italic font-normal leading-normal"
+        class="w-full rounded-lg p-2 bg-[#FFF] text-[#666] font-sans text-sm not-italic font-normal leading-normal"
         pInputTextarea
         [(ngModel)]="value"
       ></textarea>
@@ -30,16 +36,16 @@
         pButton
         pRipple
         label="Cancel"
-        (click)="cancel()"
-        class="flex justify-center py-2.5 items-center text-[#757575] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#757575] bg-white"
+        (click)="onCancel()"
+        class="flex justify-center py-2.5 items-center text-[#757575] text-base not-italic font-medium leading-5 rounded-lg border border-solid border-[#757575] bg-white"
       ></button>
 
       <button
         pButton
         pRipple
         label="Discharge"
-        (click)="discharge()"
-        class="flex justify-center py-2.5 items-center font-sans text-[14px] not-italic font-medium leading-5 rounded-[8px] text-white bg-[#6366F1] border border-solid border-[#6366F1]"
+        (click)="onDischarge()"
+        class="flex justify-center py-2.5 items-center font-sans text-base not-italic font-medium leading-5 rounded-lg text-white bg-[#6366F1] border border-solid border-[#6366F1]"
       ></button>
     </div>
   </div>

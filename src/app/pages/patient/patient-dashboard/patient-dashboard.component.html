@@ -5,23 +5,23 @@
       <div class="flex flex-row justify-between w-full pt-0 pb-3">
         <tab-router [routes]="routes" class="w-full" />
         <div class="w-full flex flex-row gap-2 items-center justify-end">
-          <p class="m-0 font-sans text-[12px] not-italic font-normal leading-5 text-[#666]">Time Spent</p>
+          <p class="m-0 font-sans text-sm not-italic font-normal leading-5 text-[#666]">Time Spent</p>
           <span
-            class="text-medium bg-[#F2F4F7] text-[#344054] text-[12px] not-italic font-medium leading-[18px] py-1 px-2 rounded-full"
+            class="text-medium bg-[#F2F4F7] text-[#344054] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
             >RPM: 0 mins</span
           >
           <span
-            class="text-medium bg-[#F2F4F7] text-[#344054] text-[12px] not-italic font-medium leading-[18px] py-1 px-2 rounded-full"
+            class="text-medium bg-[#F2F4F7] text-[#344054] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
             >CCM: 0 mins</span
           >
           <div class="bg-[#FADDDB] h-12 text-xl rounded-2xl flex justify-center items-center">
-            <span class="text-[#B42318] font-bold px-[20px] py-[8px]">{{ timerDisplay }}</span>
+            <span class="text-[#B42318] font-bold px-5 py-gap-2">{{ timerDisplay }}</span>
           </div>
 
           <button
             *ngIf="!isRunning && !hasStarted"
             (click)="startTimer()"
-            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
           >
             <span class="text-[#B42318]">Start</span>
           </button>
@@ -29,7 +29,7 @@
           <button
             *ngIf="isRunning"
             (click)="pauseTimer()"
-            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
           >
             <span class="text-[#B42318]">Pause</span>
           </button>
@@ -37,7 +37,7 @@
           <button
             *ngIf="isRunning"
             (click)="stopTimer()"
-            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
           >
             <span class="text-[#B42318]">Stop</span>
           </button>
@@ -45,7 +45,7 @@
           <button
             *ngIf="!isRunning && hasStarted"
             (click)="resumeTimer()"
-            class="border-[#FDA29B] border-1 px-[16px] py-[10px] flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
           >
             <span class="text-[#B42318]">Resume</span>
           </button>
@@ -58,13 +58,20 @@
     </div>
   </div>
 
-  <p-dialog [(visible)]="displayModal" modal="true" width="300" class="care-type-modal" [closable]="false">
+  <p-dialog
+    [(visible)]="displayModal"
+    modal="true"
+    width="300"
+    class="care-type-modal"
+    [closable]="false"
+    [draggable]="false"
+  >
     <ng-template pTemplate="header">
-      <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Select Care Type</p>
+      <p class="text-[#060505] my-auto font-sans text-base not-italic font-medium leading-normal">Select Care Type</p>
     </ng-template>
     <p-divider layout="horizontal" />
     <div class="flex flex-col justify-center items-start gap-4">
-      <div class="text-[#666] font-sans text-[12px] not-italic font-normal leading-normal">
+      <div class="text-[#666] font-sans text-base not-italic font-normal leading-normal">
         <p>Please choose the care management type for this patient</p>
       </div>
       <div class="flex justify-content-start gap-5">
@@ -73,35 +80,44 @@
           pRipple
           label="RPM"
           (click)="selectMode('rpm')"
-          class="flex px-16 py-2 justify-center items-center text-[#344054] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#D0D5DD] bg-white"
+          class="flex px-16 py-2.5 justify-center items-center text-[#344054] text-sm not-italic font-medium leading-5 rounded-lg border border-solid border-[#D0D5DD] bg-white"
         ></button>
         <button
           pButton
           pRipple
           label="CCM"
           (click)="selectMode('ccm')"
-          class="flex px-16 py-2 justify-center items-center text-[14px] not-italic font-medium leading-5 rounded-[8px] text-[#344054] bg-white border border-solid border-[#D0D5DD]"
+          class="flex px-16 py-2.5 justify-center items-center text-sm not-italic font-medium leading-5 rounded-lg text-[#344054] bg-white border border-solid border-[#D0D5DD]"
         ></button>
       </div>
     </div>
   </p-dialog>
 
-  <p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal">
+  <p-dialog
+    [(visible)]="logTimeModal"
+    modal="true"
+    styleClass="w-[28%] log-time-modal"
+    class=""
+    [draggable]="false"
+    [draggable]="false"
+  >
     <ng-template pTemplate="header">
-      <p class="text-[#060505] my-auto font-sans text-[16px] not-italic font-medium leading-normal">Add Notes</p>
-      <p
-        class="text-[#344054] ml-[-175px] my-auto bg-[#F2F4F7] rounded-xl px-3 py-1 uppercase text-center text-[14px] not-italic font-medium leading-5"
-      >
-        {{ selectedMode }}
-      </p>
+      <div class="flex flex-row justify-start gap-2">
+        <p class="text-[#060505] my-auto font-sans text-xl not-italic font-medium leading-normal">Add Notes</p>
+        <p
+          class="text-[#344054] my-auto bg-[#F2F4F7] rounded-xl px-3 py-1 uppercase text-center text-lg not-italic font-medium leading-5"
+        >
+          {{ selectedMode }}
+        </p>
+      </div>
     </ng-template>
     <p-divider layout="horizontal" />
     <div class="flex flex-col justify-center items-center">
-      <p class="text-[#666] w-full font-sans text-[12px] not-italic font-normal leading-normal">
+      <p class="text-[#666] w-full font-sans text-base not-italic font-normal leading-normal">
         Would you like to log the time spent?
       </p>
       <div
-        class="text-[#B42318] py-2 px-5 bg-[#FADDDB] rounded-2xl text-center font-sans text-[24px] not-italic font-semibold leading-normal"
+        class="text-[#B42318] py-2.5 px-5 bg-[#FADDDB] rounded-2xl text-center font-sans text-2xl not-italic font-semibold leading-normal"
       >
         {{ timerDisplay }}
       </div>
@@ -111,13 +127,13 @@
     <div class="flex justify-center gap-4 mt-4">
       <button
         (click)="handleLogTimeChoice(false)"
-        class="flex px-[54px] py-[10px] justify-center items-center gap-[8px] text-[#DC2626] text-[14px] not-italic font-medium leading-5 rounded-[8px] border border-solid border-[#FADDDB] bg-white"
+        class="flex px-14 py-3 justify-center items-center gap-2 text-[#DC2626] text-sm not-italic font-medium leading-5 rounded-lg border border-solid border-[#FADDDB] bg-white"
       >
         Don't Log
       </button>
       <button
         (click)="handleLogTimeChoice(true)"
-        class="flex px-[54px] py-[10px] justify-center items-center gap-[8px] text-[14px] not-italic font-medium leading-5 rounded-[8px] text-[#FFF] bg-[#6366F1] border-none"
+        class="flex px-14 py-3 justify-center items-center gap-2 text-sm not-italic font-medium leading-5 rounded-lg text-[#FFF] bg-[#6366F1] border-none"
       >
         Log Time
       </button>

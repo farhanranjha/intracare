@@ -11,7 +11,7 @@ import { IKeyValue } from "src/app/types/common-types";
   standalone: true,
   imports: [SidebarRouterComponent, PatientDataComponent, KeyInsightComponent, CommonModule],
   templateUrl: "./biometrics.component.html",
-  styleUrls: ["./biometrics.component.scss"],
+  styleUrl: "./biometrics.component.scss",
 })
 export class BiometricsComponent implements OnInit {
   source: string;

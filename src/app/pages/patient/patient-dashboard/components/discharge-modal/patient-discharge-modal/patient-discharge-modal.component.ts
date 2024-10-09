@@ -5,7 +5,7 @@ import { DialogModule } from "primeng/dialog";
 import { DividerModule } from "primeng/divider";
 
 @Component({
-  selector: "app-patient-discharge-modal",
+  selector: "patient-discharge-modal",
   standalone: true,
   imports: [DialogModule, DividerModule, ButtonModule, FormsModule],
   templateUrl: "./patient-discharge-modal.component.html",
@@ -23,11 +23,11 @@ export class PatientDischargeModalComponent {
     this.showModal = true;
   }
 
-  discharge() {
+  onDischarge() {
     this.showModal = false;
   }
 
-  cancel() {
+  onCancel() {
     this.showModal = false;
   }
 }

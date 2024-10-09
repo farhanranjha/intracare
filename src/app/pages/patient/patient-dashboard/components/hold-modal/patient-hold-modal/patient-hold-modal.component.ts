@@ -4,11 +4,11 @@ import { DialogModule } from "primeng/dialog";
 import { DividerModule } from "primeng/divider";
 
 @Component({
-  selector: "app-patient-hold-modal",
+  selector: "patient-hold-modal",
   standalone: true,
   imports: [DialogModule, DividerModule, ButtonModule],
   templateUrl: "./patient-hold-modal.component.html",
-  styleUrls: ["./patient-hold-modal.component.scss"],
+  styleUrl: "./patient-hold-modal.component.scss",
 })
 export class PatientHoldModalComponent {
   @Input() showModal: boolean = false;

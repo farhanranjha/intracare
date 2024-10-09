@@ -22,7 +22,7 @@ import { PatientHoldModalComponent } from "../hold-modal/patient-hold-modal/pati
     PatientDischargeModalComponent,
   ],
   templateUrl: "./patient-info-tab.component.html",
-  styleUrls: ["./patient-info-tab.component.scss"],
+  styleUrl: "./patient-info-tab.component.scss",
 })
 export class PatientInfoTabComponent {
   taskBarVisible: boolean = false;
