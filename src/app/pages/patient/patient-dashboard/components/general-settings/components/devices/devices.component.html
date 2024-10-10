@@ -81,13 +81,11 @@
       </div>
     </div>
 
-    <div class="flex items-center gap-2">
-      <p-checkbox
-        [(ngModel)]="shipDevice"
-        binary="true"
-        class="text-[#344054] font-sans text-base not-italic font-medium leading-5"
-        label="Do you want to ship the selected device?"
-      ></p-checkbox>
+    <div class="flex justify-between items-center gap-2">
+      <p class="m-0 text-[#344054] font-sans text-base not-italic font-medium leading-5">
+        Do you want to ship the selected device?
+      </p>
+      <p-checkbox [(ngModel)]="shipDevice" binary="true"></p-checkbox>
     </div>
 
     <div *ngIf="shipDevice" class="flex flex-col mt-1">
