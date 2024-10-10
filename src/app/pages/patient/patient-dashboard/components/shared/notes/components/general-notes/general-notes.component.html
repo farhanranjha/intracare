@@ -1,0 +1,24 @@
+<intracare-table
+  [rowData]="generalNotes"
+  [columns]="columns"
+  [totalRecords]="generalNotes.length"
+  [rowsPerPage]="[25, 50, 100]"
+></intracare-table>
+
+<ng-template #actionTemplate let-row>
+  <button
+    pButton
+    type="button"
+    [ngStyle]="{ background: 'transparent', border: 'none' }"
+    class="bg-none border-none text-[#6366F1]"
+    label="View"
+    (click)="showNote(row)"
+  ></button>
+</ng-template>
+
+<notes-sidebar
+  [(displayModal)]="displayModal"
+  [selectedNote]="selectedNote"
+  [showBp]="false"
+  [showBiometrics]="true"
+></notes-sidebar>
