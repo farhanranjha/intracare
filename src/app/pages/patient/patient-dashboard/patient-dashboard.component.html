@@ -21,7 +21,7 @@
           <button
             *ngIf="!isRunning && !hasStarted"
             (click)="startTimer()"
-            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg cursor-pointer"
           >
             <span class="text-[#B42318]">Start</span>
           </button>
@@ -29,25 +29,25 @@
           <button
             *ngIf="isRunning"
             (click)="pauseTimer()"
-            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
+            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg cursor-pointer"
           >
             <span class="text-[#B42318]">Pause</span>
           </button>
 
           <button
-            *ngIf="isRunning"
-            (click)="stopTimer()"
-            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
+            *ngIf="!isRunning && hasStarted"
+            (click)="resumeTimer()"
+            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg cursor-pointer"
           >
-            <span class="text-[#B42318]">Stop</span>
+            <span class="text-[#B42318]">Resume</span>
           </button>
 
           <button
-            *ngIf="!isRunning && hasStarted"
-            (click)="resumeTimer()"
-            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg"
+            *ngIf="hasStarted"
+            (click)="stopTimer()"
+            class="border-[#FDA29B] bg-white border-1 px-4 py-2.5 flex justify-center items-center rounded-lg cursor-pointer"
           >
-            <span class="text-[#B42318]">Resume</span>
+            <span class="text-[#B42318]">Stop</span>
           </button>
         </div>
       </div>
