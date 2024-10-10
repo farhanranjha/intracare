@@ -1,1 +1,28 @@
-<p>screenings works!</p>
+<p-accordion>
+  <div *ngFor="let category of schema; let i = index">
+    <p-accordionTab [header]="category.category">
+      <form [formGroup]="screeningForm.get('category_' + category.categoryId)">
+        <div *ngFor="let question of category.questions">
+          <div [formGroupName]="'question_' + question.questionId">
+            <label>{{ question.title }}</label>
+            <div *ngFor="let response of question.responses">
+              <!-- Checkbox Type -->
+              <ng-container *ngIf="response.type === 'checkbox'">
+                <div *ngFor="let option of response.option">
+                  <p-checkbox [label]="option" [value]="option" formControlName="checkbox"></p-checkbox>
+                </div>
+              </ng-container>
+
+              <!-- Text Input Type -->
+              <ng-container *ngIf="response.type === 'string'">
+                <input type="text" pInputText [placeholder]="response.placeholder" formControlName="comment" />
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </form>
+    </p-accordionTab>
+  </div>
+</p-accordion>
+
+<button pButton type="button" label="Submit" (click)="onSubmit()"></button>
