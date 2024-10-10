@@ -890,3 +890,174 @@ export const keyInsightsMockData = [
     keyInsightsValue: "+0.2°F",
   },
 ];
+export const screeningSchema = [
+  {
+    categoryId: 927480207,
+    category: "Medical Management",
+    questions: [
+      {
+        questionId: 7943483579,
+        title: "Is there anything you would like addressed on this call?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7948357429,
+        title:
+          "Has there been any changes in the patient's health condition, acute exacerbation, new diagnosis, ER visit, or hospitalization within the past year?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7943483579,
+        title: "When was the patient's last visit with a provider and what was the purpose of the visit?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7943483579,
+        title: "When is the next provider/specialist visit?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7943483579,
+        title: "When was the patient's last fall and what were the details surrounding the fall?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 921180207,
+    category: "Medication Adherence",
+    questions: [
+      {
+        questionId: 7943483579,
+        title:
+          "Does the assisted living facility staff bring medications to the patient or does someone else help the patient with this?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7948357429,
+        title:
+          "Is there anything keeping the patient from taking medications as prescribed by the doctor? (Financial, forgetfulness, etc.)",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7948357429,
+        title: "Does the patient know what they are taking their medications for?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7948357429,
+        title: "Are there any other concerns related to medications you would like to be addressed?",
+        required: true,
+        optionalCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+];
