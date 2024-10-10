@@ -853,6 +853,45 @@ export const biometricsMockData = [
   },
 ];
 
+export const keyInsightsMockData = [
+  {
+    biometricType: "Blood Glucose",
+    latestReading: "110 mg/dL",
+    keyInsights: "2 Week Moving Avg",
+    keyInsightsValue: "105 mg/dL",
+  },
+  {
+    biometricType: "Blood Pressure",
+    latestReading: "120/80 mmHg",
+    keyInsights: "Difference (Last 2)",
+    keyInsightsValue: "+5 mmHg",
+  },
+  {
+    biometricType: "Heartrate",
+    latestReading: "72 bpm",
+    keyInsights: "2 Week Moving Avg",
+    keyInsightsValue: "75 bpm",
+  },
+  {
+    biometricType: "Weight",
+    latestReading: "165 lbs",
+    keyInsights: "Difference (Last 2)",
+    keyInsightsValue: "-2 lbs",
+  },
+  {
+    biometricType: "Oxygen Saturation",
+    latestReading: "98%",
+    keyInsights: "2 Week Moving Avg",
+    keyInsightsValue: "97%",
+  },
+  {
+    biometricType: "Temperature",
+    latestReading: "98.6°F",
+    keyInsights: "Difference (Last 2)",
+    keyInsightsValue: "+0.2°F",
+  },
+];
+
 export const deafaultAllNotesMockData = [
   {
     id: 1,
