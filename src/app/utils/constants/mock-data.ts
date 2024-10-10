@@ -1220,3 +1220,35 @@ export const screeningSchema = [
     ],
   },
 ];
+export const screeningTableMockData = [
+  {
+    type: "Physical Exam",
+    takenBy: "Dr. John Doe",
+    date: "2023-09-15",
+    time: "09:30",
+  },
+  {
+    type: "Blood Test",
+    takenBy: "Nurse Jane Smith",
+    date: "2023-09-16",
+    time: "14:00",
+  },
+  {
+    type: "X-ray",
+    takenBy: "Technician Mike Johnson",
+    date: "2023-09-17",
+    time: "11:00",
+  },
+  {
+    type: "Consultation",
+    takenBy: "Dr. Alice Williams",
+    date: "2023-09-18",
+    time: "16:30",
+  },
+  {
+    type: "MRI",
+    takenBy: "Technician Sarah Lee",
+    date: "2023-09-19",
+    time: "10:15",
+  },
+];

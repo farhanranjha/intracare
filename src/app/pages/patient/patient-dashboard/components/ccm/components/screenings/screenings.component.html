@@ -1,3 +1,14 @@
+<div class="w-full add-btn flex justify-end mb-3">
+  <button pButton type="button" label="Add Screening" (click)="onAddScreening()"></button>
+</div>
+<intracare-table
+  [rowData]="screeningTableData"
+  [columns]="columns"
+  [totalRecords]="screeningTableData.length"
+  [rowsPerPage]="[25, 50, 100]"
+  [paginator]="false"
+/>
+
 <p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
   <ng-template pTemplate="header">
     <h3 class="font-medium text-xl mb-0">CCM Screenings</h3>
