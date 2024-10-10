@@ -1,1 +1,6 @@
-<p>custom-vital-alerts works!</p>
+<intracare-table
+  [rowData]="customVitalAlerts"
+  [columns]="customVitalAlertsColumns"
+  [totalRecords]="customVitalAlerts.length"
+  [rowsPerPage]="[25, 50, 100]"
+></intracare-table>

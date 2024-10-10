@@ -1085,3 +1085,21 @@ export const previouslyUsedDevicesMockData = [
     removedDate: "Sep 20, 2022",
   },
 ];
+
+export const customVitalAlertsMockData = [
+  {
+    title: "Heart Rate Alert",
+    vitalType: "Heart Rate",
+    condition: "> 120 bpm",
+  },
+  {
+    title: "Blood Pressure",
+    vitalType: "Blood Pressure",
+    condition: "Systolic > 140 mmHg",
+  },
+  {
+    title: "Oxygen Saturation",
+    vitalType: "SpO2",
+    condition: "< 92%",
+  },
+];
