@@ -1,4 +1,11 @@
-<p-dialog [(visible)]="logTimeModal" modal="true" width="400" class="log-time-modal" (onHide)="onDialogClose()">
+<p-dialog
+  [(visible)]="logTimeModal"
+  modal="true"
+  width="400"
+  class="log-time-modal"
+  (onHide)="onDialogClose()"
+  [draggable]="false"
+>
   <ng-template pTemplate="header">
     <div class="flex flex-row gap-3">
       <p class="text-[#060505] my-auto font-sans text-xl not-italic font-medium leading-normal">Add Notes</p>
