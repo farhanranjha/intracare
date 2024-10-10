@@ -12,11 +12,13 @@
               class="w-full flex flex-col justify-start items-start gap-2"
             >
               <ng-container *ngIf="question.isInlineCheckbox; else normalQuestion">
-                <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
-                <label class="font-medium text-base leading-5"
-                  >{{ question.title }}
-                  <span *ngIf="question.required" class="text-red-600">*</span>
-                </label>
+                <div class="w-full flex flex-row justify-start items-start gap-2">
+                  <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
+                  <label class="font-medium text-base leading-5"
+                    >{{ question.title }}
+                    <span *ngIf="question.required" class="text-red-600">*</span>
+                  </label>
+                </div>
               </ng-container>
               <ng-template #normalQuestion>
                 <label class="font-medium text-base leading-5"
