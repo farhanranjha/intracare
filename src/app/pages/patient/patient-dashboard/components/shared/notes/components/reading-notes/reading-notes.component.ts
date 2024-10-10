@@ -43,11 +43,8 @@ export class ReadingNotesComponent {
     ];
   }
   showNote(data: any) {
-    console.log(data); // Check if 'biometrics' data exists
     this.selectedNote = data;
 
-    console.log(this.displayModal);
     this.displayModal = true;
-    console.log(this.displayModal);
   }
 }

@@ -1,0 +1,22 @@
+.log-time-modal{
+    ::ng-deep .p-dialog-header{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    padding: 14px 14px 0 14px;
+    border-radius: 8px 8px 0 0;
+    }
+    
+    ::ng-deep .p-dialog-content{
+    padding: 0 14px 14px 14px;
+    border-radius: 0 0 8px 8px;
+    }
+
+}
+
+.dropdown{
+    ::ng-deep .p-dropdown{
+        border-radius: 8px;
+    }
+}
