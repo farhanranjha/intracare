@@ -892,11 +892,11 @@ export const keyInsightsMockData = [
 ];
 export const screeningSchema = [
   {
-    categoryId: 927480207,
+    categoryId: 1,
     category: "Medical Management",
     questions: [
       {
-        questionId: 7943483579,
+        questionId: 1,
         title: "Is there anything you would like addressed on this call?",
         required: true,
         isInlineCheckbox: false,
@@ -910,11 +910,11 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7948357429,
+        questionId: 2,
         title:
           "Has there been any changes in the patient's health condition, acute exacerbation, new diagnosis, ER visit, or hospitalization within the past year?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "checkbox",
@@ -932,10 +932,10 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7943483579,
+        questionId: 3,
         title: "When was the patient's last visit with a provider and what was the purpose of the visit?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "comment",
@@ -949,7 +949,7 @@ export const screeningSchema = [
         questionId: 7943483579,
         title: "When is the next provider/specialist visit?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "comment",
@@ -963,7 +963,7 @@ export const screeningSchema = [
         questionId: 7943483579,
         title: "When was the patient's last fall and what were the details surrounding the fall?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "comment",
@@ -976,15 +976,15 @@ export const screeningSchema = [
     ],
   },
   {
-    categoryId: 921180207,
+    categoryId: 2,
     category: "Medication Adherence",
     questions: [
       {
-        questionId: 7943483579,
+        questionId: 1,
         title:
           "Does the assisted living facility staff bring medications to the patient or does someone else help the patient with this?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "comment",
@@ -995,11 +995,11 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7948357429,
+        questionId: 2,
         title:
           "Is there anything keeping the patient from taking medications as prescribed by the doctor? (Financial, forgetfulness, etc.)",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "checkbox",
@@ -1017,10 +1017,10 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7948357429,
+        questionId: 3,
         title: "Does the patient know what they are taking their medications for?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "checkbox",
@@ -1038,10 +1038,10 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7948357429,
+        questionId: 4,
         title: "Are there any other concerns related to medications you would like to be addressed?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "checkbox",
@@ -1054,6 +1054,165 @@ export const screeningSchema = [
             name: "comment",
             type: "string",
             required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 921480207,
+    category: "Condition Management",
+    questions: [
+      {
+        questionId: 7943483510,
+        title: "What type of support does the patient require to manage their health/mental health conditions?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7943483511,
+        title:
+          "What are the patient's current services (HH, PT, sitter, etc.) and has there been a change in required services?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 7943483512,
+        title: "How often is the patient's (BP, BS, O2 Sat, Weight) monitored?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "text_input",
+            type: "string",
+            required: true,
+            placeholder: "BP, BS, O2 Sat, Weight",
+          },
+          {
+            name: "radio",
+            type: "radio",
+            required: true,
+            option: ["Daily", "Weekly", "Occasionally"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 3,
+    category: "Psychosocial",
+    questions: [
+      {
+        questionId: 1,
+        title: "What prompted the patient to move into assisted living?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 2,
+        title:
+          "Does the patient have long term care insurance or the financial ability to receive appropriate services for the duration of life?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 3,
+        title: "Does the patient have advanced directives in place and is there a designated POA?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 4,
+        title:
+          "What does the patient do independently and/or with assistance (bathe, feed, dress, etc.)? Independently",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "independently",
+            type: "string",
+            required: true,
+            placeholder: "Independently",
+          },
+          {
+            name: "with_assistance",
+            type: "string",
+            required: true,
+            placeholder: "With assistance",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 4,
+    category: "Health Literacy",
+    questions: [
+      {
+        questionId: 1,
+        title: "Who schedules provider appointments for the patient?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
             placeholder: "Comment",
           },
         ],
