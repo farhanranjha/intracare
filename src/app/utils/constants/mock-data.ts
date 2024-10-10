@@ -896,7 +896,7 @@ export const screeningSchema = [
     category: "Medical Management",
     questions: [
       {
-        questionId: 1,
+        questionId: 101,
         title: "Is there anything you would like addressed on this call?",
         required: true,
         isInlineCheckbox: false,
@@ -910,7 +910,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 2,
+        questionId: 102,
         title:
           "Has there been any changes in the patient's health condition, acute exacerbation, new diagnosis, ER visit, or hospitalization within the past year?",
         required: true,
@@ -932,7 +932,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 3,
+        questionId: 103,
         title: "When was the patient's last visit with a provider and what was the purpose of the visit?",
         required: true,
         isInlineCheckbox: false,
@@ -946,7 +946,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7943483579,
+        questionId: 104,
         title: "When is the next provider/specialist visit?",
         required: true,
         isInlineCheckbox: false,
@@ -960,7 +960,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7943483579,
+        questionId: 105,
         title: "When was the patient's last fall and what were the details surrounding the fall?",
         required: true,
         isInlineCheckbox: false,
@@ -980,7 +980,7 @@ export const screeningSchema = [
     category: "Medication Adherence",
     questions: [
       {
-        questionId: 1,
+        questionId: 201,
         title:
           "Does the assisted living facility staff bring medications to the patient or does someone else help the patient with this?",
         required: true,
@@ -995,7 +995,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 2,
+        questionId: 202,
         title:
           "Is there anything keeping the patient from taking medications as prescribed by the doctor? (Financial, forgetfulness, etc.)",
         required: true,
@@ -1017,7 +1017,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 3,
+        questionId: 203,
         title: "Does the patient know what they are taking their medications for?",
         required: true,
         isInlineCheckbox: false,
@@ -1038,7 +1038,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 4,
+        questionId: 204,
         title: "Are there any other concerns related to medications you would like to be addressed?",
         required: true,
         isInlineCheckbox: false,
@@ -1061,11 +1061,11 @@ export const screeningSchema = [
     ],
   },
   {
-    categoryId: 921480207,
+    categoryId: 3,
     category: "Condition Management",
     questions: [
       {
-        questionId: 7943483510,
+        questionId: 301,
         title: "What type of support does the patient require to manage their health/mental health conditions?",
         required: true,
         isInlineCheckbox: false,
@@ -1079,7 +1079,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7943483511,
+        questionId: 302,
         title:
           "What are the patient's current services (HH, PT, sitter, etc.) and has there been a change in required services?",
         required: true,
@@ -1101,7 +1101,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 7943483512,
+        questionId: 303,
         title: "How often is the patient's (BP, BS, O2 Sat, Weight) monitored?",
         required: true,
         isInlineCheckbox: false,
@@ -1130,11 +1130,11 @@ export const screeningSchema = [
     ],
   },
   {
-    categoryId: 3,
+    categoryId: 4,
     category: "Psychosocial",
     questions: [
       {
-        questionId: 1,
+        questionId: 401,
         title: "What prompted the patient to move into assisted living?",
         required: true,
         isInlineCheckbox: false,
@@ -1148,7 +1148,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 2,
+        questionId: 402,
         title:
           "Does the patient have long term care insurance or the financial ability to receive appropriate services for the duration of life?",
         required: true,
@@ -1163,7 +1163,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 3,
+        questionId: 403,
         title: "Does the patient have advanced directives in place and is there a designated POA?",
         required: true,
         isInlineCheckbox: false,
@@ -1177,7 +1177,7 @@ export const screeningSchema = [
         ],
       },
       {
-        questionId: 4,
+        questionId: 404,
         title:
           "What does the patient do independently and/or with assistance (bathe, feed, dress, etc.)? Independently",
         required: true,
@@ -1200,11 +1200,11 @@ export const screeningSchema = [
     ],
   },
   {
-    categoryId: 4,
+    categoryId: 5,
     category: "Health Literacy",
     questions: [
       {
-        questionId: 1,
+        questionId: 501,
         title: "Who schedules provider appointments for the patient?",
         required: true,
         isInlineCheckbox: false,
