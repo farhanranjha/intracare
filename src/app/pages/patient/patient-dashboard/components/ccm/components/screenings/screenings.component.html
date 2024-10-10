@@ -7,7 +7,8 @@
           <div [formGroupName]="'question_' + question.questionId">
             <!-- Inline Checkbox: Checkbox before question title when isInlineCheckbox is true -->
             <ng-container *ngIf="question.isInlineCheckbox; else normalQuestion">
-              <p-checkbox formControlName="inlineCheckbox"></p-checkbox>
+              <!-- Use formControlName to bind checkbox state -->
+              <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
               <label
                 >{{ question.title }}
                 <!-- Red dot if question is important (required flag in question) -->
@@ -37,7 +38,7 @@
                 <!-- Checkbox Type -->
                 <ng-container *ngIf="response.type === 'checkbox'">
                   <div *ngFor="let option of response.option">
-                    <p-checkbox [label]="option" formControlName="checkbox"></p-checkbox>
+                    <p-checkbox [label]="option" formControlName="checkbox" [binary]="true"></p-checkbox>
                   </div>
                 </ng-container>
 

@@ -29,7 +29,7 @@ export class ScreeningsComponent {
       const categoryGroup = this.fb.group({});
       category.questions.forEach((question) => {
         const questionGroup = this.fb.group({
-          inlineCheckbox: [false], // This will handle the inline checkbox
+          inlineCheckbox: [false], // Initialize with false (unchecked)
         });
 
         // Add form controls for responses
@@ -50,11 +50,12 @@ export class ScreeningsComponent {
     });
   }
 
-  onSubmit() {
-    console.log(this.screeningForm.value);
+  // Helper function to show or hide responses based on the checkbox state
+  showResponses(questionGroup: FormGroup): boolean {
+    return questionGroup.get("inlineCheckbox")?.value;
   }
 
-  showResponses(questionGroup: FormGroup) {
-    return questionGroup.get("inlineCheckbox")?.value;
+  onSubmit() {
+    console.log(this.screeningForm.value);
   }
 }
