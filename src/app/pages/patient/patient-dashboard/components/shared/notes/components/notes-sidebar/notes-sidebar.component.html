@@ -1,0 +1,68 @@
+<p-sidebar
+  [(visible)]="displayModal"
+  position="right"
+  styleClass="w-25rem"
+  class="notes-sidebar"
+  (onHide)="closeSidebar()"
+>
+  <ng-template pTemplate="header">
+    <h3 class="font-sans text-lg m-0 my-auto not-italic font-medium leading-normal">{{ selectedNote?.takenBy }}</h3>
+  </ng-template>
+  <p-divider layout="horizontal" />
+  <div
+    class="flex flex-col rounded-lg bg-[rgba(255,_255,_255,_0.02)] [box-shadow:0px_2px_11px_0px_rgba(0,_0,_0,_0.06)]"
+  >
+    <div class="flex w-[294px] px-2.5 pt-2.5 pb-4 flex-col justify-center items-start">
+      <h3 class="text-[#222] font-sans text-base not-italic font-medium leading-normal">
+        {{ selectedNote?.description }}
+      </h3>
+
+      <div *ngIf="showBiometrics" class="flex flex-col">
+        <div class="">
+          <h3 class="font-sans mx-0 my-2 text-[#060505] text-lg not-italic font-medium leading-5">Biometrics</h3>
+        </div>
+        <div class="">
+          <h3 class="font-sans mx-0 my-2 text-[#767676] text-sm not-italic font-normal">BG</h3>
+        </div>
+      </div>
+      <div *ngIf="showBp">
+        <div class="flex flex-row w-full justify-between items-start h-full">
+          <div class="flex justify-between items-start pt-2 pr-6 pb-0 pl-0">
+            <div class="flex flex-col items-start justify-start gap-2">
+              <p class="m-0 text-[#767676]">Blood Pressure</p>
+              <div class="flex flex-row items-end justify-start gap-2">
+                <span class="font-sans text-2xl not-italic font-semibold text-[#111927]">{{
+                  selectedNote?.biometrics?.bloodPressure
+                }}</span>
+                <span class="font-sans text-base my-auto not-italic font-medium text-[#6366F1]"> mmHg</span>
+              </div>
+            </div>
+          </div>
+          <div class="pt-3 flex flex-row">
+            <!-- <div class="rounded-full bg-[var(--Schemes-Error-Container,_#F9DEDC)]"> -->
+            <!-- <div class=""> -->
+            <img
+              src="../../../../../../../../../assets/layout/styles/icons/arrow-up.svg"
+              alt="arrow-up"
+              class="rounded-lg"
+              width="15px"
+              height="15px"
+            />
+            <!-- </div> -->
+            <!-- <div class="my-auto"> -->
+            <span class="text-[#B3261E] mb-2">Hyperglycemic</span>
+            <!-- </div> -->
+            <!-- </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <p-divider class="w-[95%] mx-auto" layout="horizontal" />
+    <div class="flex justify-between px-2 pb-3">
+      <span class="font-sans text-sm not-italic font-medium leading-normal text-[#060505]">{{
+        selectedNote?.takenBy
+      }}</span>
+      <span class="text-[#666] font-sans text-sm not-italic font-normal leading-5">{{ selectedNote?.date }}</span>
+    </div>
+  </div>
+</p-sidebar>

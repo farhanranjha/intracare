@@ -852,3 +852,101 @@ export const biometricsMockData = [
     date: "Sep 28, 2024 at 4:20:00 PM",
   },
 ];
+
+export const deafaultAllNotesMockData = [
+  {
+    id: 1,
+    date: "Sep 25, 2024, 10:34 AM",
+    takenBy: "Training Careteam28",
+    description: "Session Ended",
+  },
+  {
+    id: 2,
+    date: "Sep 23, 2024, 1:07 PM",
+    takenBy: "Training Careteam8",
+    description: "Session Ended",
+  },
+  {
+    id: 3,
+    date: "Sep 12, 2024, 2:53 PM",
+    takenBy: "Training Careteam1",
+    description: "Session Ended",
+  },
+];
+
+export const readingNotesMockData = [
+  {
+    id: 1,
+    date: "Aug 25, 2024, 10:34 AM",
+    takenBy: "Training Careteam28",
+    description:
+      "Spoke to the patient on call right now at 4:55 am and he is NOT experiencing headaches, blurry vision, palpitations, and mild/moderate abdominal pain. However, after taking his anti high BP meds as needed, the BP has not changed at all. He needs to be looked at at once for a dose adjustment/change of plan. Sent critical alert to physician.",
+    biometrics: {
+      bloodPressure: "60/120",
+    },
+  },
+  {
+    id: 2,
+    date: "Jul 23, 2024, 1:07 PM",
+    takenBy: "Training Careteam8",
+    description:
+      "Patient contacted, he had raised blood pressure due to a missed dose today, counseled the patient to take today's medication and will follow up in the next 30 minutes.",
+    biometrics: {
+      bloodPressure: "60/120",
+    },
+  },
+  {
+    id: 3,
+    date: "Mar 12, 2024, 2:53 PM",
+    takenBy: "Training Careteam1",
+    description:
+      "Patient contacted, he had raised blood pressure due to a missed dose today, counselled the patient to take his today's medication, and will follow up in next 30 minutes.",
+    biometrics: {
+      bloodPressure: "60/120",
+    },
+  },
+];
+
+export const timerNotesMockData = [
+  {
+    id: 1,
+    date: "Oct 07, 2024, 2:23 PM",
+    takenBy: "Training Careteam28",
+    description: "Session Ended",
+  },
+  {
+    id: 2,
+    date: "Sep 25, 2024, 4:21 PM",
+    takenBy: "Training Careteam8",
+    description: "Session Ended",
+  },
+  {
+    id: 3,
+    date: "Jan 12, 2024, 2:53 PM",
+    takenBy: "Training Careteam1",
+    description: "Session Ended",
+  },
+];
+
+export const generalNotesMockData = [
+  {
+    id: 1,
+    date: "Dec 16, 2023, 5:56 PM",
+    takenBy: "Training Careteam28",
+    description: "the patient had taken salty food and was advised rest and increase water intake",
+  },
+  {
+    id: 2,
+    date: "Sep 23, 2024, 1:07 PM",
+    takenBy: "Training Careteam8",
+    description:
+      "Engagement call with patient, requested daily blood pressure monitoring with the TupeloLife BLOOD PRESSURE cuff for provider trending and improved blood pressure control.",
+  },
+  {
+    id: 3,
+    date: "Dec 16, 2022, 6:18 PM",
+    takenBy: "Training Careteam1",
+    description:
+      "Engagement call with patient, requested daily blood pressure monitoring with the TupeloLife BLOOD PRESSURE cuff for provider trending and improved blood pressure control. Action/Intervention: null",
+  },
+];

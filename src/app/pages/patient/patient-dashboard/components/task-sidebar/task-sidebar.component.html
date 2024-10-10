@@ -1,4 +1,4 @@
-<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]" (onHide)="closeSideBar()">
   <ng-template pTemplate="header">
     <h3 class="font-medium text-xl mb-0">Add Tasks</h3>
   </ng-template>
@@ -45,12 +45,26 @@
     <div class="flex flex-col gap-1.5 w-full">
       <label for="priority" class="text-gray-intra-700 text-base font-medium">Priority</label>
       <div class="flex gap-10 justify-between w-full">
-        <p-button label="Low" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
-        <p-button label="Medium" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
-        <p-button label="High" severity="secondary" styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]" [outlined]="true" />
+        <p-button
+          label="Low"
+          severity="secondary"
+          styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]"
+          [outlined]="true"
+        />
+        <p-button
+          label="Medium"
+          severity="secondary"
+          styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]"
+          [outlined]="true"
+        />
+        <p-button
+          label="High"
+          severity="secondary"
+          styleClass="border-[#D0D5DD] text-black font-medium px-[24px] py-[10px]"
+          [outlined]="true"
+        />
       </div>
     </div>
-
   </div>
 
   <p-divider />
