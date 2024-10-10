@@ -5,8 +5,8 @@ import { NotesComponent } from "../notes/notes.component";
 import { DividerModule } from "primeng/divider";
 import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
 import { FileUploadModule } from "primeng/fileupload";
-import { PatientDischargeModalComponent } from "../discharge-modal/patient-discharge-modal/patient-discharge-modal.component";
-import { PatientHoldModalComponent } from "../hold-modal/patient-hold-modal/patient-hold-modal.component";
+import { PatientDischargeModalComponent } from "../patient-discharge-modal/patient-discharge-modal.component";
+import { PatientHoldModalComponent } from "../patient-hold-modal/patient-hold-modal.component";
 import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.component";
 
 @Component({
@@ -43,21 +43,25 @@ export class PatientInfoTabComponent {
 
   onClose() {
     this.showHoldModal = false;
-    console.log("closed", this.showHoldModal);
   }
 
   openHoldModal() {
     this.showHoldModal = true;
-    console.log("open", this.showHoldModal);
   }
 
   closeHoldModal() {
     this.showHoldModal = false;
-    console.log("closeHoldModal", this.showHoldModal);
   }
 
   updateStatus() {
     this.showHoldModal = false;
-    console.log("Patient status updated!");
+  }
+
+  openTaskSidebar() {
+    this.taskBarVisible = true;
+  }
+
+  onTaskSidebarClose(value: boolean) {
+    this.taskBarVisible = value;
   }
 }

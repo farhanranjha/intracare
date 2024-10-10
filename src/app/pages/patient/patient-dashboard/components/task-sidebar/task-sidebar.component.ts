@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { SidebarModule } from "primeng/sidebar";
 import { InputTextareaModule } from "primeng/inputtextarea";
 import { DropdownModule } from "primeng/dropdown";
@@ -10,10 +10,24 @@ import { DividerModule } from "primeng/divider";
 @Component({
   selector: "task-sidebar",
   standalone: true,
-  imports: [SidebarModule, InputTextareaModule, DropdownModule, CalendarModule, CheckboxModule, ButtonModule, DividerModule],
+  imports: [
+    SidebarModule,
+    InputTextareaModule,
+    DropdownModule,
+    CalendarModule,
+    CheckboxModule,
+    ButtonModule,
+    DividerModule,
+  ],
   templateUrl: "./task-sidebar.component.html",
   styleUrl: "./task-sidebar.component.scss",
 })
 export class TaskSidebarComponent {
   @Input() sidebarVisible: boolean = false;
+  @Output() sidebarVisibleChange = new EventEmitter<boolean>();
+
+  closeSideBar() {
+    this.sidebarVisible = false;
+    this.sidebarVisibleChange.emit(this.sidebarVisible);
+  }
 }

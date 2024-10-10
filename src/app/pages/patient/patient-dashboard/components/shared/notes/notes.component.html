@@ -1,1 +1,11 @@
-<p>notes works! being called from {{ source }}</p>
+<div class="flex flex-row gap-4">
+  <sidebar-router [routes]="routes" (tabChanged)="onTabChange($event)" [currentlyActive]="activeTab"></sidebar-router>
+
+  <div class="w-full" [ngSwitch]="activeTab?.value">
+    <general-notes *ngSwitchCase="'general-notes'"></general-notes>
+    <reading-notes *ngSwitchCase="'reading-notes'"></reading-notes>
+    <default-all *ngSwitchCase="'default-all'"></default-all>
+    <timer-notes *ngSwitchCase="'timer-notes'"></timer-notes>
+    <patient-onboarding *ngSwitchCase="'patient-onboarding'"></patient-onboarding>
+  </div>
+</div>

@@ -108,7 +108,7 @@
         pButton
         pRipple
         label="Task"
-        (click)="taskBarVisible = true"
+        (click)="openTaskSidebar()"
         icon="pi pi-check-circle"
         class="p-button-outlined border-gray-500 text-[#444] text-sm"
       ></button>
@@ -124,7 +124,7 @@
   </div>
   <patient-dashboard-notes />
 </div>
-<task-sidebar [sidebarVisible]="taskBarVisible" />
+<task-sidebar [(sidebarVisible)]="taskBarVisible" (sidebarVisibleChange)="onTaskSidebarClose($event)"> </task-sidebar>
 <messages-sidebar [sidebarVisible]="msgBarVisible" />
 <patient-hold-modal
   [(showModal)]="showHoldModal"

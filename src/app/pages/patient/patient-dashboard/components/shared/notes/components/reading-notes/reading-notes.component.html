@@ -1,7 +1,7 @@
 <intracare-table
-  [rowData]="alertsMockData"
+  [rowData]="readingNotes"
   [columns]="columns"
-  [totalRecords]="alertsMockData.length"
+  [totalRecords]="readingNotes.length"
   [rowsPerPage]="[25, 50, 100]"
 ></intracare-table>
 
@@ -19,6 +19,6 @@
 <detail-sidebar
   [(displayModal)]="displayModal"
   [selectedNote]="selectedNote"
-  [showBp]="false"
-  [showBiometrics]="false"
+  [showBp]="true"
+  [showBiometrics]="true"
 ></detail-sidebar>
