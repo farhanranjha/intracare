@@ -1,0 +1,18 @@
+::ng-deep .p-checkbox .p-checkbox-box {
+  width: 16px;
+  height: 16px;
+  margin: auto;
+  border: 1px solid #d0d5dd;
+}
+.dynamic-form {
+  ::ng-deep .p-button {
+    border: 1px solid #6366f1;
+    color: white;
+    background-color: #6366f1;
+    padding: 10px 24px;
+    width: 100%;
+  }
+}
+::ng-deep .p-inputtext {
+  width: 100%;
+}

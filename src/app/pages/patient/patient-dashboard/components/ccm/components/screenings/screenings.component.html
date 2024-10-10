@@ -1,59 +1,6 @@
-<p-accordion>
-  <div *ngFor="let category of schema; let i = index">
-    <p-accordionTab [header]="category.category">
-      <form [formGroup]="screeningForm.get('category_' + category.categoryId)">
-        <div *ngFor="let question of category.questions">
-          <div [formGroupName]="'question_' + question.questionId">
-            <ng-container *ngIf="question.isInlineCheckbox; else normalQuestion">
-              <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
-              <label
-                >{{ question.title }}
-                <span *ngIf="question.required" class="required-dot">*</span>
-              </label>
-            </ng-container>
-            <ng-template #normalQuestion>
-              <label
-                >{{ question.title }}
-                <span *ngIf="question.required" class="required-dot">*</span>
-              </label>
-            </ng-template>
-            <div
-              *ngIf="
-                !question.isInlineCheckbox ||
-                showResponses(
-                  screeningForm.get('category_' + category.categoryId)?.get('question_' + question.questionId)
-                )
-              "
-            >
-              <div *ngFor="let response of question.responses">
-                <ng-container *ngIf="response.type === 'checkbox'">
-                  <div *ngFor="let option of response.option">
-                    <p-checkbox
-                      formControlName="{{ option }}"
-                      [label]="option"
-                      [binary]="true"
-                      (onChange)="
-                        onCheckboxChange(
-                          $event,
-                          response,
-                          option,
-                          screeningForm.get('category_' + category.categoryId)?.get('question_' + question.questionId)
-                        )
-                      "
-                    >
-                    </p-checkbox>
-                  </div>
-                </ng-container>
-                <ng-container *ngIf="response.type === 'string'">
-                  <input type="text" pInputText [placeholder]="response.placeholder" formControlName="comment" />
-                </ng-container>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-    </p-accordionTab>
-  </div>
-</p-accordion>
-
-<button pButton type="button" label="Submit" (click)="onSubmit()"></button>
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
+  <ng-template pTemplate="header">
+    <h3 class="font-medium text-xl mb-0">Send Message</h3>
+  </ng-template>
+  <ccm-dynamic-form [schema]="screeningSchema" [onSubmitCallback]="handleFormSubmit"></ccm-dynamic-form>
+</p-sidebar>
