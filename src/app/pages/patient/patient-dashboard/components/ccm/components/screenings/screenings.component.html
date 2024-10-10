@@ -2,29 +2,21 @@
   <div *ngFor="let category of schema; let i = index">
     <p-accordionTab [header]="category.category">
       <form [formGroup]="screeningForm.get('category_' + category.categoryId)">
-        <!-- Loop through questions -->
         <div *ngFor="let question of category.questions">
           <div [formGroupName]="'question_' + question.questionId">
-            <!-- Inline Checkbox: Checkbox before question title when isInlineCheckbox is true -->
             <ng-container *ngIf="question.isInlineCheckbox; else normalQuestion">
               <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
               <label
                 >{{ question.title }}
-                <!-- Red dot if question is important (required flag in question) -->
                 <span *ngIf="question.required" class="required-dot">*</span>
               </label>
             </ng-container>
-
-            <!-- Normal question without inline checkbox -->
             <ng-template #normalQuestion>
               <label
                 >{{ question.title }}
-                <!-- Red dot if question is important (required flag in question) -->
                 <span *ngIf="question.required" class="required-dot">*</span>
               </label>
             </ng-template>
-
-            <!-- Responses are shown only if inlineCheckbox is true -->
             <div
               *ngIf="
                 !question.isInlineCheckbox ||
@@ -34,7 +26,6 @@
               "
             >
               <div *ngFor="let response of question.responses">
-                <!-- Checkbox Type -->
                 <ng-container *ngIf="response.type === 'checkbox'">
                   <div *ngFor="let option of response.option">
                     <p-checkbox
@@ -53,8 +44,6 @@
                     </p-checkbox>
                   </div>
                 </ng-container>
-
-                <!-- Text Input Type (with placeholder) -->
                 <ng-container *ngIf="response.type === 'string'">
                   <input type="text" pInputText [placeholder]="response.placeholder" formControlName="comment" />
                 </ng-container>

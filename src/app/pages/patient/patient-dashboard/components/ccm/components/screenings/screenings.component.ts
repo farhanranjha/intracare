@@ -29,13 +29,10 @@ export class ScreeningsComponent {
       const categoryGroup = this.fb.group({});
       category.questions.forEach((question) => {
         const questionGroup = this.fb.group({
-          inlineCheckbox: [false], // Initialize inlineCheckbox as false
+          inlineCheckbox: [false],
         });
-
-        // Handle responses, adding controls dynamically
         question.responses.forEach((response) => {
           if (response.type === "checkbox") {
-            // Create controls for each option in the checkbox group
             response.option.forEach((option) => {
               questionGroup.addControl(option, this.fb.control(false, response.required ? Validators.required : null));
             });
@@ -54,23 +51,17 @@ export class ScreeningsComponent {
     });
   }
 
-  // Toggle the selected checkbox based on allowMultipleSelections flag at the response level
   onCheckboxChange(event: any, response: any, selectedOption: string, questionGroup: FormGroup) {
     if (!response.allowMultipleSelections) {
-      // If multiple selections are not allowed, uncheck all other checkboxes
       response.option.forEach((option: string) => {
         if (option !== selectedOption) {
-          // Uncheck other checkboxes
           questionGroup.get(option)?.setValue(false);
         }
       });
-
-      // Explicitly set the selected option to true
       questionGroup.get(selectedOption)?.setValue(true);
     }
   }
 
-  // Helper function to show or hide responses based on the checkbox state
   showResponses(questionGroup: FormGroup): boolean {
     return questionGroup.get("inlineCheckbox")?.value;
   }
