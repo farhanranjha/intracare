@@ -11,6 +11,7 @@
     background-color: #6366f1;
     padding: 10px 24px;
     width: 100%;
+    border-radius: 4px;
   }
 }
 ::ng-deep .p-inputtext {
@@ -18,4 +19,5 @@
 }
 ::ng-deep .p-accordion-header-link {
   color: #6366f1;
+  background: white;
 }
