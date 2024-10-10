@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { Component, Input, OnInit, ViewChild } from "@angular/core";
 import { TableComponent } from "src/app/components/table/table.component";
+import { PatientDashboardTableHeightService } from "src/app/services/patient-dashboard-table-height/patient-dashboard-table-height.service";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { callLogsData } from "src/app/utils/constants/mock-data";
 
@@ -14,6 +15,10 @@ export class CallLogsComponent implements OnInit {
   callLogs: any[] = callLogsData;
   @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
   columns: ColumnConfig[] = [];
+
+  scrollHeight: string = '100%';
+
+  constructor(private heightService: PatientDashboardTableHeightService) {}
 
   ngOnInit() {
     this.columns = [
@@ -58,5 +63,9 @@ export class CallLogsComponent implements OnInit {
         filterType: "",
       },
     ];
+
+    this.heightService.scrollHeight$.subscribe((height: string) => {
+      this.scrollHeight = height;
+    });
   }
 }
