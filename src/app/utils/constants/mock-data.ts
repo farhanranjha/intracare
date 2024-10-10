@@ -1289,3 +1289,325 @@ export const carePlanMockData = [
     goalCompleted: "Yes",
   },
 ];
+export const careplanSchema = [
+  {
+    categoryId: 1,
+    category: "General",
+    questions: [
+      {
+        questionId: 101,
+        title: "Patient Goal",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 102,
+        title: "Custom Goal",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 103,
+        title:
+          "Patient will have an emergency plan in place, understands the importance of early intervention, and how to contact PCP.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 104,
+        title:
+          "Advance Care Planning: Discuss advance care planning with patients, including living wills, healthcare proxies, and end-of-life care preferences.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 105,
+        title:
+          "Caregivers Support: Provide support and resources for caregivers, helping them manage the demands of caring for a loved one.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 106,
+        title:
+          "Chronic Disease Self-Management: Educate patients on managing their chronic conditions through lifestyle changes.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 107,
+        title:
+          "Coordination of Care: Ensure coordinated care across different healthcare providers to avoid gaps or overlaps in treatment.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 2,
+    category: "Nutrition",
+    questions: [
+      {
+        questionId: 201,
+        title: "Dietary Assessment: Does the patient have any dietary restrictions?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write dietary restrictions",
+          },
+        ],
+      },
+      {
+        questionId: 202,
+        title: "Nutrition Goals: Set nutrition goals for the patient based on their current health.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write nutrition goals",
+          },
+        ],
+      },
+      {
+        questionId: 203,
+        title: "Consultation: Recommend consultation with a nutritionist or dietitian.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 3,
+    category: "Exercise",
+    questions: [
+      {
+        questionId: 301,
+        title: "Exercise Plan: Does the patient have a regular exercise routine?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write exercise routine details",
+          },
+        ],
+      },
+      {
+        questionId: 302,
+        title: "Exercise Goals: Set specific exercise goals for the patient.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write exercise goals",
+          },
+        ],
+      },
+      {
+        questionId: 303,
+        title: "Exercise Barriers: Identify any barriers preventing the patient from engaging in physical activity.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write barriers to exercise",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 4,
+    category: "Mental Health",
+    questions: [
+      {
+        questionId: 401,
+        title: "Mental Health Status: Assess the patient’s current mental health status.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write mental health status",
+          },
+        ],
+      },
+      {
+        questionId: 402,
+        title: "Counseling Services: Recommend counseling or therapy services.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write therapy recommendation",
+          },
+        ],
+      },
+      {
+        questionId: 403,
+        title: "Mental Health Goals: Set mental health improvement goals for the patient.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write mental health goals",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 5,
+    category: "Medication Adherence",
+    questions: [
+      {
+        questionId: 501,
+        title: "Medication Review: Review the patient's current medications for effectiveness and adherence.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write medication review",
+          },
+        ],
+      },
+      {
+        questionId: 502,
+        title: "Medication Adherence: Does the patient regularly take their prescribed medications?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write adherence details",
+          },
+        ],
+      },
+      {
+        questionId: 503,
+        title: "Side Effects: Assess any side effects from the current medication regimen.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write side effects details",
+          },
+        ],
+      },
+    ],
+  },
+];

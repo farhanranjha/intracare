@@ -7,7 +7,7 @@ import { SidebarRouterComponent } from "src/app/components/sidebar-router/sideba
 import { TableComponent } from "src/app/components/table/table.component";
 import { IKeyValue } from "src/app/types/common-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { carePlanMockData, screeningSchema } from "src/app/utils/constants/mock-data";
+import { carePlanMockData, careplanSchema } from "src/app/utils/constants/mock-data";
 import { DynamicFormComponent } from "../dynamic-form/dynamic-form.component";
 
 @Component({
@@ -28,7 +28,7 @@ export class CareplansComponent {
   carePlanTableData = carePlanMockData;
   columns: ColumnConfig[] = [];
   sidebarVisible: boolean = false;
-  screeningSchema = screeningSchema;
+  screeningSchema = careplanSchema;
 
   ngOnInit(): void {
     this.columns = [
