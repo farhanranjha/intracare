@@ -1,0 +1,17 @@
+::ng-deep .p-datatable-header {
+  padding: 10px 0;
+}
+::ng-deep .p-datatable-thead > tr > th {
+  background-color: #f9f9f9;
+}
+::ng-deep .p-datatable-tbody > tr {
+  background-color: #fff;
+}
+::ng-deep .p-datatable-loading-overlay {
+  background: transparent;
+}
+::ng-deep .p-datatable-loading-icon {
+  height: 36px;
+  width: 36px;
+  color: #6366f1;
+}

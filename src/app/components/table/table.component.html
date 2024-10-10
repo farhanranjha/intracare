@@ -2,14 +2,17 @@
   #dt1
   [value]="rowData"
   dataKey="id"
-  [paginator]="true"
+  [paginator]="!loading && paginator"
   [rows]="25"
+  [loading]="loading"
   [rowsPerPageOptions]="rowsPerPage"
   [totalRecords]="totalRecords"
   [lazy]="true"
   (onLazyLoad)="onLazyLoad($event)"
   [scrollable]="true"
   [scrollHeight]="scrollHeight"
+  [style]="{ height: scrollHeight }"
+  filterDelay="300"
 >
   <ng-template *ngIf="showTopBar" pTemplate="caption">
     <div class="flex px-2">
