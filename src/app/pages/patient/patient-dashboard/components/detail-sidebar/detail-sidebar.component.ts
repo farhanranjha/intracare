@@ -4,13 +4,13 @@ import { DividerModule } from "primeng/divider";
 import { SidebarModule } from "primeng/sidebar";
 
 @Component({
-  selector: "notes-sidebar",
+  selector: "detail-sidebar",
   standalone: true,
   imports: [DividerModule, SidebarModule, CommonModule],
-  templateUrl: "./notes-sidebar.component.html",
-  styleUrl: "./notes-sidebar.component.scss",
+  templateUrl: "./detail-sidebar.component.html",
+  styleUrl: "./detail-sidebar.component.scss",
 })
-export class NotesSidebarComponent {
+export class DetailSidebarComponent {
   @Input() displayModal: boolean = false;
   @Input() selectedNote: any = null;
   @Input() showBiometrics: boolean = true;

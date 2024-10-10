@@ -4,13 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { NotesSidebarComponent } from "../notes-sidebar/notes-sidebar.component";
 import { timerNotesMockData } from "src/app/utils/constants/mock-data";
+import { DetailSidebarComponent } from "../../../../detail-sidebar/detail-sidebar.component";
 
 @Component({
   selector: "timer-notes",
   standalone: true,
-  imports: [TableComponent, ButtonModule, NotesSidebarComponent, CommonModule, FormsModule],
+  imports: [TableComponent, ButtonModule, DetailSidebarComponent, CommonModule, FormsModule],
   templateUrl: "./timer-notes.component.html",
 })
 export class TimerNotesComponent {
