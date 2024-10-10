@@ -1,1 +1,23 @@
-<p>careplans works!</p>
+<div class="flex flex-row gap-4">
+  <sidebar-router [routes]="routes" (tabChanged)="onTabChange($event)" [currentlyActive]="activeTab"></sidebar-router>
+
+  <div class="w-full">
+    <div class="w-full add-btn flex justify-end mb-3">
+      <button pButton type="button" label="Add Careplan" (click)="onAddCarePlan()"></button>
+    </div>
+    <intracare-table
+      [rowData]="carePlanTableData"
+      [columns]="columns"
+      [totalRecords]="carePlanTableData.length"
+      [rowsPerPage]="[25, 50, 100]"
+      [paginator]="false"
+    />
+  </div>
+</div>
+
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
+  <ng-template pTemplate="header">
+    <h3 class="font-medium text-xl mb-0">CCM Screenings</h3>
+  </ng-template>
+  <ccm-dynamic-form [schema]="screeningSchema" [onSubmitCallback]="handleFormSubmit"></ccm-dynamic-form>
+</p-sidebar>

@@ -1252,3 +1252,40 @@ export const screeningTableMockData = [
     time: "10:15",
   },
 ];
+export const carePlanMockData = [
+  {
+    startDate: "2023-07-10",
+    diagnosis: "Hypertension",
+    goal: "Lower blood pressure",
+    reviewDate: "2023-10-10",
+    goalCompleted: "No",
+  },
+  {
+    startDate: "2023-05-15",
+    diagnosis: "Diabetes Type 2",
+    goal: "Maintain stable glucose levels",
+    reviewDate: "2023-09-15",
+    goalCompleted: "Yes",
+  },
+  {
+    startDate: "2023-03-01",
+    diagnosis: "Chronic Pain",
+    goal: "Reduce pain levels",
+    reviewDate: "2023-08-01",
+    goalCompleted: "In Progress",
+  },
+  {
+    startDate: "2023-06-20",
+    diagnosis: "Obesity",
+    goal: "Lose 10% body weight",
+    reviewDate: "2023-12-20",
+    goalCompleted: "No",
+  },
+  {
+    startDate: "2023-02-05",
+    diagnosis: "Asthma",
+    goal: "Improve lung function",
+    reviewDate: "2023-09-05",
+    goalCompleted: "Yes",
+  },
+];
