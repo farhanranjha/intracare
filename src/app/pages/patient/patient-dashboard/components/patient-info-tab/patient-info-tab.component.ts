@@ -43,31 +43,25 @@ export class PatientInfoTabComponent {
 
   onClose() {
     this.showHoldModal = false;
-    console.log("closed", this.showHoldModal);
   }
 
   openHoldModal() {
     this.showHoldModal = true;
-    console.log("open", this.showHoldModal);
   }
 
   closeHoldModal() {
     this.showHoldModal = false;
-    console.log("closeHoldModal", this.showHoldModal);
   }
 
   updateStatus() {
     this.showHoldModal = false;
-    console.log("Patient status updated!");
   }
 
   openTaskSidebar() {
-    console.log("Opening task sidebar");
     this.taskBarVisible = true;
   }
 
   onTaskSidebarClose(value: boolean) {
-    console.log("Task sidebar closed");
     this.taskBarVisible = value;
   }
 }

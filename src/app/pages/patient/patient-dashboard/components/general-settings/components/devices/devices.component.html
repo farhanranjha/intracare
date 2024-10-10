@@ -1,1 +1,134 @@
-<p>devices works!</p>
+<div class="">
+  <div class="flex justify-between items-center mb-3">
+    <h3 class="m-0 text-[#6b7280] font-semibold">Active Device</h3>
+    <button
+      pButton
+      type="button"
+      class="bg-[#6366F1] border-[#6366F1] text-[#FFFFFF]"
+      label="Add Device"
+      (click)="addDevice()"
+    ></button>
+  </div>
+  <intracare-table [rowData]="activeDevices" [columns]="activeDeviceColumns" [paginator]="false"></intracare-table>
+</div>
+
+<ng-template #actionTemplate let-row>
+  <button
+    pButton
+    type="button"
+    [ngStyle]="{ background: 'transparent', border: 'none' }"
+    class="bg-none border-none text-red-500"
+    label="Remove"
+    (click)="openHoldModal()"
+  ></button>
+</ng-template>
+
+<div class="previous-devices-section mt-4">
+  <div class="flex justify-between items-center mb-3">
+    <h3 class="m-0 text-[#6b7280] font-semibold">Previously Used Devices</h3>
+  </div>
+  <intracare-table
+    [rowData]="previouslyUsedDevices"
+    [columns]="previouslyUsedDeviceColumns"
+    [paginator]="false"
+  ></intracare-table>
+</div>
+
+<p-dialog
+  [(visible)]="displayModal"
+  modal="true"
+  [style]="{ width: '30rem' }"
+  class="log-time-modal"
+  [draggable]="false"
+>
+  <ng-template pTemplate="header">
+    <div class="flex items-center">
+      <h2 class="text-xl font-medium text-[#060505] m-0">Add Device</h2>
+    </div>
+  </ng-template>
+
+  <p-divider layout="horizontal" />
+
+  <div class="flex flex-col gap-4">
+    <div class="flex flex-row gap-3">
+      <div class="flex flex-col">
+        <label for="deviceType" class="text-[#344054] mb-1 ml-1.5 font-sans text-sm not-italic font-medium leading-3"
+          >Device Type</label
+        >
+        <p-dropdown
+          id="deviceType"
+          [options]="deviceTypes"
+          [(ngModel)]="selectedDeviceType"
+          optionLabel="name"
+          placeholder="Select Device Type"
+          class="dropdown"
+          appendTo="body"
+        ></p-dropdown>
+      </div>
+
+      <div class="flex flex-col">
+        <label for="deviceSerial" class="text-[#344054] mb-1 ml-1.5 font-sans text-sm not-italic font-medium leading-3"
+          >Device Serial</label
+        >
+        <input
+          id="deviceSerial"
+          pInputText
+          type="text"
+          placeholder="Enter Device Serial"
+          [(ngModel)]="deviceSerial"
+          class="p-inputtext w-full p-2 border rounded-lg"
+        />
+      </div>
+    </div>
+
+    <div class="flex items-center gap-2">
+      <p-checkbox
+        [(ngModel)]="shipDevice"
+        binary="true"
+        class="text-[#344054] font-sans text-base not-italic font-medium leading-5"
+        label="Do you want to ship the selected device?"
+      ></p-checkbox>
+    </div>
+
+    <div *ngIf="shipDevice" class="flex flex-col mt-1">
+      <label for="trackingNumber" class="font-sans mb-2 text-base not-italic font-medium leading-3 text-[#344054]"
+        >Device Tracking Number</label
+      >
+      <input
+        id="trackingNumber"
+        pInputText
+        type="text"
+        placeholder="Enter USPS Tracking Number"
+        [(ngModel)]="trackingNumber"
+        class="p-inputtext w-full p-2 border rounded-lg"
+      />
+    </div>
+    <div class="flex justify-end gap-3">
+      <button
+        type="button"
+        style="border: 1px solid gray"
+        class="flex px-4 py-2 justify-center items-center gap-2 font-sans text-sm not-italic font-medium leading-5 text-[#757575] rounded-lg bg-white"
+        (click)="cancel()"
+      >
+        Cancel
+      </button>
+      <button
+        type="button"
+        style="border: 1px solid #6366f1"
+        class="flex px-4 py-2 justify-center items-center gap-2 font-sans text-sm not-italic font-medium leading-5 text-white bg-[#6366F1] rounded-lg"
+        (click)="submit()"
+      >
+        Submit
+      </button>
+    </div>
+  </div>
+</p-dialog>
+
+<patient-hold-modal
+  [(showModal)]="showHoldModal"
+  [headerText]="'Remove Patient Device'"
+  [contentText]="'Are you sure, you want to remove patient device?'"
+  (yesCallback)="updateStatus()"
+  (noCallback)="closeHoldModal()"
+  (onCloseback)="onClose()"
+></patient-hold-modal>

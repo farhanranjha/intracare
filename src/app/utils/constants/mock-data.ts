@@ -1041,3 +1041,47 @@ export const alertsMockData = [
     description: "Patient was advised to rest and monitor.",
   },
 ];
+
+export const activeDeviceMockData = [
+  {
+    id: 1,
+    deviceType: "TupeloLife Blood Pressure",
+    serialNumber: "863859040792744",
+    dateAdded: "Oct 24, 2023",
+    battery: "100%",
+    signal: "19.4%",
+    lastTransmission: "Jun 27, 2024 09:49:00 PM",
+    lastSeen: "Jun 27, 2024 09:55:54 PM",
+    connectivityInfo: "Connectivity Info",
+    remove: "Remove",
+  },
+  {
+    id: 2,
+    deviceType: "TupeloLife Blood Pressure",
+    serialNumber: "863859040792744",
+    dateAdded: "Oct 24, 2023",
+    battery: "100%",
+    signal: "19.4%",
+    lastTransmission: "Jun 27, 2024 09:49:00 PM",
+    lastSeen: "Jun 27, 2024 09:55:54 PM",
+    connectivityInfo: "Connectivity Info",
+    remove: "Remove",
+  },
+];
+
+export const previouslyUsedDevicesMockData = [
+  {
+    deviceType: "Fitbit Heart Monitor",
+    serialNumber: "564839302194122",
+    dateAdded: "Mar 15, 2022",
+    lastTransmission: "May 03, 2023 10:15:20 AM",
+    removedDate: "May 10, 2023",
+  },
+  {
+    deviceType: "Omron Blood Pressure Monitor",
+    serialNumber: "384729194837563",
+    dateAdded: "Jul 02, 2021",
+    lastTransmission: "Sep 15, 2022 02:50:13 PM",
+    removedDate: "Sep 20, 2022",
+  },
+];
