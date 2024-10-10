@@ -4,13 +4,13 @@ import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { NotesSidebarComponent } from "../notes-sidebar/notes-sidebar.component";
 import { readingNotesMockData } from "src/app/utils/constants/mock-data";
+import { DetailSidebarComponent } from "../../../../detail-sidebar/detail-sidebar.component";
 
 @Component({
   selector: "reading-notes",
   standalone: true,
-  imports: [TableComponent, ButtonModule, CommonModule, FormsModule, NotesSidebarComponent],
+  imports: [TableComponent, ButtonModule, CommonModule, FormsModule, DetailSidebarComponent],
   templateUrl: "./reading-notes.component.html",
 })
 export class ReadingNotesComponent {

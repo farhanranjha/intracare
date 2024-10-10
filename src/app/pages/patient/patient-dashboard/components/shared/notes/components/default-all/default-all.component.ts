@@ -1,16 +1,16 @@
 import { Component, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
 import { TableComponent } from "src/app/components/table/table.component";
-import { NotesSidebarComponent } from "../notes-sidebar/notes-sidebar.component";
 import { CommonModule } from "@angular/common";
 import { FormsModule } from "@angular/forms";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { deafaultAllNotesMockData } from "src/app/utils/constants/mock-data";
+import { DetailSidebarComponent } from "../../../../detail-sidebar/detail-sidebar.component";
 
 @Component({
   selector: "default-all",
   standalone: true,
-  imports: [TableComponent, ButtonModule, NotesSidebarComponent, CommonModule, FormsModule],
+  imports: [TableComponent, ButtonModule, DetailSidebarComponent, CommonModule, FormsModule],
   templateUrl: "./default-all.component.html",
 })
 export class DefaultAllComponent {
