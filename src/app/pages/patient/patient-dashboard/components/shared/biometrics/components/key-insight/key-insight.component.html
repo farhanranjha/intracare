@@ -1,3 +1,7 @@
-<p-dropdown [options]="dropdownItems" [(ngModel)]="selectedItem" placeholder="Select Data" (onChange)="updateChart()">
-</p-dropdown>
-<p-chart type="line" [data]="chartData" [options]="chartOptions"> </p-chart>
+<intracare-table
+  [rowData]="keyInsightsMockData"
+  [columns]="columns"
+  [totalRecords]="keyInsightsMockData.length"
+  [rowsPerPage]="[25, 50, 100]"
+  [paginator]="false"
+/>

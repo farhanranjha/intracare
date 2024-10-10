@@ -33,19 +33,7 @@ import { CustomFilterComponent } from "./custom-filter/custom-filter.component";
     CustomFilterComponent,
   ],
   templateUrl: "./table.component.html",
-  styles: [
-    `
-      ::ng-deep .p-datatable-header {
-        padding: 10px 0;
-      }
-      ::ng-deep .p-datatable-thead > tr > th {
-        background-color: #f9f9f9;
-      }
-      ::ng-deep .p-datatable-tbody > tr {
-        background-color: #fff;
-      }
-    `,
-  ],
+  styleUrl: "./table.component.scss",
 })
 export class TableComponent {
   @ViewChild("dt1") dt1!: Table;
@@ -57,6 +45,7 @@ export class TableComponent {
   @Input() onLazyLoad?: (event: LazyLoadEvent) => void;
   @Input() showTopBar?: boolean = false;
   @Input() scrollHeight?: string = "100%";
+  @Input() paginator?: boolean = true;
 
   searchValue: string | undefined;
   constructor(private router: Router) {}
