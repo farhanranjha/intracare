@@ -899,7 +899,7 @@ export const screeningSchema = [
         questionId: 7943483579,
         title: "Is there anything you would like addressed on this call?",
         required: true,
-        optionalCheckbox: false,
+        isInlineCheckbox: false,
         responses: [
           {
             name: "comment",
