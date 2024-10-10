@@ -1,0 +1,78 @@
+<section class="dynamic-form w-full h-[calc(100vh-130px)] overflow-y-auto">
+  <p-accordion>
+    <div *ngFor="let category of schema; let i = index">
+      <p-accordionTab [header]="category.category" class="w-full">
+        <form
+          [formGroup]="screeningForm.get('category_' + category.categoryId)"
+          class="w-full flex flex-col justify-start items-start gap-4"
+        >
+          <div *ngFor="let question of category.questions" class="w-full">
+            <div
+              [formGroupName]="'question_' + question.questionId"
+              class="w-full flex flex-col justify-start items-start gap-2"
+            >
+              <ng-container *ngIf="question.isInlineCheckbox; else normalQuestion">
+                <div class="w-full flex flex-row justify-start items-start gap-2">
+                  <p-checkbox formControlName="inlineCheckbox" [binary]="true"></p-checkbox>
+                  <label class="font-medium text-base leading-5"
+                    >{{ question.title }}
+                    <span *ngIf="question.required" class="text-red-600">*</span>
+                  </label>
+                </div>
+              </ng-container>
+              <ng-template #normalQuestion>
+                <label class="font-medium text-base leading-5"
+                  >{{ question.title }}
+                  <span *ngIf="question.required" class="text-red-600">*</span>
+                </label>
+              </ng-template>
+              <div
+                class="flex flex-col justify-start items-start gap-2 w-full"
+                *ngIf="
+                  !question.isInlineCheckbox ||
+                  showResponses(
+                    screeningForm.get('category_' + category.categoryId)?.get('question_' + question.questionId)
+                  )
+                "
+              >
+                <div *ngFor="let response of question.responses" class="w-full">
+                  <ng-container *ngIf="response.type === 'checkbox'">
+                    <div class="flex flex-row justify-start items-center gap-2">
+                      <p-checkbox
+                        *ngFor="let option of response.option"
+                        formControlName="{{ option }}"
+                        [label]="option"
+                        [binary]="true"
+                        (onChange)="
+                          onCheckboxChange(
+                            $event,
+                            response,
+                            option,
+                            screeningForm.get('category_' + category.categoryId)?.get('question_' + question.questionId)
+                          )
+                        "
+                      ></p-checkbox>
+                    </div>
+                  </ng-container>
+                  <ng-container *ngIf="response.type === 'string'">
+                    <textarea
+                      type="text"
+                      pInputTextarea
+                      [placeholder]="response.placeholder"
+                      formControlName="{{ response.name }}"
+                      rows="3"
+                      class="w-full p-2 border border-gray-300 rounded-md bg-white"
+                    ></textarea>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </p-accordionTab>
+    </div>
+  </p-accordion>
+</section>
+<div class="w-full flex justify-center items-center my-3 dynamic-form">
+  <button pButton type="button" label="Submit" (click)="onSubmit()"></button>
+</div>

@@ -12,7 +12,7 @@ import { TimerService } from "src/app/services/timer/timer.service";
   styleUrl: "./care-type-modal.component.scss",
 })
 export class CareTypeModalComponent {
-  displayModal = true;
+  displayModal = true; //true for prod
   selectedMode: "rpm" | "ccm" | null = null;
 
   constructor(private timerService: TimerService) {}

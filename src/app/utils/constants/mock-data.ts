@@ -891,7 +891,727 @@ export const keyInsightsMockData = [
     keyInsightsValue: "+0.2°F",
   },
 ];
-
+export const screeningSchema = [
+  {
+    categoryId: 1,
+    category: "Medical Management",
+    questions: [
+      {
+        questionId: 101,
+        title: "Is there anything you would like addressed on this call?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 102,
+        title:
+          "Has there been any changes in the patient's health condition, acute exacerbation, new diagnosis, ER visit, or hospitalization within the past year?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 103,
+        title: "When was the patient's last visit with a provider and what was the purpose of the visit?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 104,
+        title: "When is the next provider/specialist visit?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 105,
+        title: "When was the patient's last fall and what were the details surrounding the fall?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 2,
+    category: "Medication Adherence",
+    questions: [
+      {
+        questionId: 201,
+        title:
+          "Does the assisted living facility staff bring medications to the patient or does someone else help the patient with this?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 202,
+        title:
+          "Is there anything keeping the patient from taking medications as prescribed by the doctor? (Financial, forgetfulness, etc.)",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 203,
+        title: "Does the patient know what they are taking their medications for?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 204,
+        title: "Are there any other concerns related to medications you would like to be addressed?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 3,
+    category: "Condition Management",
+    questions: [
+      {
+        questionId: 301,
+        title: "What type of support does the patient require to manage their health/mental health conditions?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 302,
+        title:
+          "What are the patient's current services (HH, PT, sitter, etc.) and has there been a change in required services?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "checkbox",
+            type: "checkbox",
+            required: true,
+            option: ["Yes", "No"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 303,
+        title: "How often is the patient's (BP, BS, O2 Sat, Weight) monitored?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "text_input",
+            type: "string",
+            required: true,
+            placeholder: "BP, BS, O2 Sat, Weight",
+          },
+          {
+            name: "radio",
+            type: "radio",
+            required: true,
+            option: ["Daily", "Weekly", "Occasionally"],
+            allowMultipleSelections: false,
+          },
+          {
+            name: "comment",
+            type: "string",
+            required: false,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 4,
+    category: "Psychosocial",
+    questions: [
+      {
+        questionId: 401,
+        title: "What prompted the patient to move into assisted living?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 402,
+        title:
+          "Does the patient have long term care insurance or the financial ability to receive appropriate services for the duration of life?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 403,
+        title: "Does the patient have advanced directives in place and is there a designated POA?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+      {
+        questionId: 404,
+        title:
+          "What does the patient do independently and/or with assistance (bathe, feed, dress, etc.)? Independently",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "independently",
+            type: "string",
+            required: true,
+            placeholder: "Independently",
+          },
+          {
+            name: "with_assistance",
+            type: "string",
+            required: true,
+            placeholder: "With assistance",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 5,
+    category: "Health Literacy",
+    questions: [
+      {
+        questionId: 501,
+        title: "Who schedules provider appointments for the patient?",
+        required: true,
+        isInlineCheckbox: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Comment",
+          },
+        ],
+      },
+    ],
+  },
+];
+export const screeningTableMockData = [
+  {
+    type: "Physical Exam",
+    takenBy: "Dr. John Doe",
+    date: "2023-09-15",
+    time: "09:30",
+  },
+  {
+    type: "Blood Test",
+    takenBy: "Nurse Jane Smith",
+    date: "2023-09-16",
+    time: "14:00",
+  },
+  {
+    type: "X-ray",
+    takenBy: "Technician Mike Johnson",
+    date: "2023-09-17",
+    time: "11:00",
+  },
+  {
+    type: "Consultation",
+    takenBy: "Dr. Alice Williams",
+    date: "2023-09-18",
+    time: "16:30",
+  },
+  {
+    type: "MRI",
+    takenBy: "Technician Sarah Lee",
+    date: "2023-09-19",
+    time: "10:15",
+  },
+];
+export const carePlanMockData = [
+  {
+    startDate: "2023-07-10",
+    diagnosis: "Hypertension",
+    goal: "Lower blood pressure",
+    reviewDate: "2023-10-10",
+    goalCompleted: "No",
+  },
+  {
+    startDate: "2023-05-15",
+    diagnosis: "Diabetes Type 2",
+    goal: "Maintain stable glucose levels",
+    reviewDate: "2023-09-15",
+    goalCompleted: "Yes",
+  },
+  {
+    startDate: "2023-03-01",
+    diagnosis: "Chronic Pain",
+    goal: "Reduce pain levels",
+    reviewDate: "2023-08-01",
+    goalCompleted: "In Progress",
+  },
+  {
+    startDate: "2023-06-20",
+    diagnosis: "Obesity",
+    goal: "Lose 10% body weight",
+    reviewDate: "2023-12-20",
+    goalCompleted: "No",
+  },
+  {
+    startDate: "2023-02-05",
+    diagnosis: "Asthma",
+    goal: "Improve lung function",
+    reviewDate: "2023-09-05",
+    goalCompleted: "Yes",
+  },
+];
+export const careplanSchema = [
+  {
+    categoryId: 1,
+    category: "General",
+    questions: [
+      {
+        questionId: 101,
+        title: "Patient Goal",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 102,
+        title: "Custom Goal",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 103,
+        title:
+          "Patient will have an emergency plan in place, understands the importance of early intervention, and how to contact PCP.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 104,
+        title:
+          "Advance Care Planning: Discuss advance care planning with patients, including living wills, healthcare proxies, and end-of-life care preferences.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 105,
+        title:
+          "Caregivers Support: Provide support and resources for caregivers, helping them manage the demands of caring for a loved one.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 106,
+        title:
+          "Chronic Disease Self-Management: Educate patients on managing their chronic conditions through lifestyle changes.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+      {
+        questionId: 107,
+        title:
+          "Coordination of Care: Ensure coordinated care across different healthcare providers to avoid gaps or overlaps in treatment.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 2,
+    category: "Nutrition",
+    questions: [
+      {
+        questionId: 201,
+        title: "Dietary Assessment: Does the patient have any dietary restrictions?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write dietary restrictions",
+          },
+        ],
+      },
+      {
+        questionId: 202,
+        title: "Nutrition Goals: Set nutrition goals for the patient based on their current health.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write nutrition goals",
+          },
+        ],
+      },
+      {
+        questionId: 203,
+        title: "Consultation: Recommend consultation with a nutritionist or dietitian.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write something",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 3,
+    category: "Exercise",
+    questions: [
+      {
+        questionId: 301,
+        title: "Exercise Plan: Does the patient have a regular exercise routine?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write exercise routine details",
+          },
+        ],
+      },
+      {
+        questionId: 302,
+        title: "Exercise Goals: Set specific exercise goals for the patient.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write exercise goals",
+          },
+        ],
+      },
+      {
+        questionId: 303,
+        title: "Exercise Barriers: Identify any barriers preventing the patient from engaging in physical activity.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write barriers to exercise",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 4,
+    category: "Mental Health",
+    questions: [
+      {
+        questionId: 401,
+        title: "Mental Health Status: Assess the patient’s current mental health status.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write mental health status",
+          },
+        ],
+      },
+      {
+        questionId: 402,
+        title: "Counseling Services: Recommend counseling or therapy services.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write therapy recommendation",
+          },
+        ],
+      },
+      {
+        questionId: 403,
+        title: "Mental Health Goals: Set mental health improvement goals for the patient.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write mental health goals",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    categoryId: 5,
+    category: "Medication Adherence",
+    questions: [
+      {
+        questionId: 501,
+        title: "Medication Review: Review the patient's current medications for effectiveness and adherence.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write medication review",
+          },
+        ],
+      },
+      {
+        questionId: 502,
+        title: "Medication Adherence: Does the patient regularly take their prescribed medications?",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write adherence details",
+          },
+        ],
+      },
+      {
+        questionId: 503,
+        title: "Side Effects: Assess any side effects from the current medication regimen.",
+        type: "checkbox",
+        isInlineCheckbox: true,
+        required: false,
+        responses: [
+          {
+            name: "comment",
+            type: "string",
+            required: true,
+            placeholder: "Write side effects details",
+          },
+        ],
+      },
+    ],
+  },
+];
 export const deafaultAllNotesMockData = [
   {
     id: 1,
