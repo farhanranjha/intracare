@@ -5,11 +5,12 @@ import { SidebarRouterComponent } from "src/app/components/sidebar-router/sideba
 import { IKeyValue } from "src/app/types/common-types";
 import { BiometricDataComponent } from "./components/biometric-data/biometric-data.component";
 import { KeyInsightComponent } from "./components/key-insight/key-insight.component";
+import { TrendsComponent } from "./components/trends/trends.component";
 
 @Component({
   selector: "app-biometrics",
   standalone: true,
-  imports: [SidebarRouterComponent, BiometricDataComponent, KeyInsightComponent, CommonModule],
+  imports: [SidebarRouterComponent, BiometricDataComponent, KeyInsightComponent, CommonModule, TrendsComponent],
   templateUrl: "./biometrics.component.html",
   styleUrl: "./biometrics.component.scss",
 })
@@ -18,6 +19,7 @@ export class BiometricsComponent implements OnInit {
   routes: IKeyValue[] = [
     { label: "Biometrics Data", value: "biometric-data" },
     { label: "Key Insights", value: "key-insight" },
+    { label: "Current Trends", value: "trends" },
   ];
   activeTab: IKeyValue = this.routes[0];
 
