@@ -10,8 +10,11 @@
 }
 .rpmEngagementbtn {
   ::ng-deep .p-button {
-    background-color: transparent;
-    border: 1px solid rgba(128, 128, 128, 0.873);
-    color: black;
+    color: #444;
+font-style: normal;
+line-height: 16px;
+border-radius: 8px;
+border: 1px solid #CCC;
+background: var(--Background, #FFF);
   }
 }
