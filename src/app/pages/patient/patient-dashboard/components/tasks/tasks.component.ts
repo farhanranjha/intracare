@@ -28,7 +28,6 @@ export class TasksComponent {
     });
     this.timerService.selectedMode$.subscribe((mode) => {
       this.selectedMode = mode;
-      console.log(this.selectedMode);
     });
   }
 
@@ -47,10 +46,6 @@ export class TasksComponent {
     return this.isExpanded ? text : text.slice(0, 100) + "...";
   }
   taskBarVisible: boolean = false;
-
-  gotToNotesSection() {
-    this.router.navigateByUrl("/patient/1/rpm/tasks");
-  }
 
   openTaskSidebar() {
     this.taskBarVisible = true;

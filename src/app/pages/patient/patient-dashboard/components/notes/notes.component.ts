@@ -36,7 +36,6 @@ export class NotesComponent {
     });
     this.timerService.selectedMode$.subscribe((mode) => {
       this.selectedMode = mode;
-      console.log(this.selectedMode);
     });
   }
   goToNotesSection() {
