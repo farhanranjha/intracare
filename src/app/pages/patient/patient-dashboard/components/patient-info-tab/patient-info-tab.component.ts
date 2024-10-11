@@ -3,7 +3,6 @@ import { ButtonModule } from "primeng/button";
 import { ProgressBarModule } from "primeng/progressbar";
 import { NotesComponent } from "../notes/notes.component";
 import { DividerModule } from "primeng/divider";
-import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
 import { FileUploadModule } from "primeng/fileupload";
 import { PatientDischargeModalComponent } from "../patient-discharge-modal/patient-discharge-modal.component";
 import { PatientHoldModalComponent } from "../patient-hold-modal/patient-hold-modal.component";
@@ -18,7 +17,7 @@ import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.c
     ButtonModule,
     NotesComponent,
     DividerModule,
-    TaskSidebarComponent,
+
     PatientHoldModalComponent,
     PatientDischargeModalComponent,
     MessagesSidebarComponent,
@@ -27,7 +26,6 @@ import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.c
   styleUrl: "./patient-info-tab.component.scss",
 })
 export class PatientInfoTabComponent {
-  taskBarVisible: boolean = false;
   messageBarVisible: boolean = false;
 
   showDischargeModal: boolean = false;
@@ -57,15 +55,6 @@ export class PatientInfoTabComponent {
   updateStatus() {
     this.showHoldModal = false;
   }
-
-  openTaskSidebar() {
-    this.taskBarVisible = true;
-  }
-
-  onTaskSidebarClose(value: boolean) {
-    this.taskBarVisible = value;
-  }
-
   openMessageSidebar() {
     this.messageBarVisible = true;
   }

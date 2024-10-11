@@ -22,14 +22,14 @@
 
       <div *ngFor="let note of notes" class="bg-white shadow-sm rounded-lg px-2.5 pt-3 pb-2 my-4">
         <div>
-          <p class="text-[#222] font-sans text-sm not-italic font-medium leading-normal">{{ note.text }}</p>
+          <p class="text-[#222] font-sans text-base not-italic font-medium leading-normal">{{ note.text }}</p>
         </div>
         <p-divider layout="horizontal" />
         <div class="flex fex-row justify-between gap-3">
-          <p class="font-sans text-[#060505] text-xs not-italic font-medium leading-5 mb-0">
+          <p class="font-sans text-[#060505] text-sm not-italic font-medium leading-5 mb-0">
             {{ note.author }}
           </p>
-          <p class="text-[#666] font-sans text-xs not-italic font-normal leading-5 mb-0">
+          <p class="text-[#666] font-sans text-sm not-italic font-normal leading-5 mb-0">
             {{ note.date | date: "medium" }}
           </p>
         </div>

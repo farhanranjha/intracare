@@ -1,7 +1,22 @@
 <div class="bg-white rounded-lg shadow-md mt-2 px-2 py-2">
   <div class="flex flex-row justify-between px-2">
     <p class="text-[#060505] font-sans text-lg not-italic font-medium leading-5">Tasks</p>
-    <p class="font-sans text-base not-italic font-medium leading-5 text-[#6366F1]">View All</p>
+    <div class="flex flex-row btns-group gap-2 mb-2">
+      <button
+        pButton
+        pRipple
+        label="Add"
+        (click)="openTaskSidebar()"
+        class="p-button-outlined border-gray-500 text-sm text-[#444] font-sans not-italic font-medium leading-5"
+      ></button>
+      <button
+        pButton
+        pRipple
+        label="View All"
+        (click)="goToTasksSection()"
+        class="font-sans not-italic font-medium text-sm leading-5 text-indigo-500 border-indigo-500 bg-transparent"
+      ></button>
+    </div>
   </div>
   <div class="text-[#222] font-sans text-sm not-italic leading-5 px-2">
     {{ getTruncatedText(noteContent) }}
@@ -15,3 +30,5 @@
     <span class="text-[#666] font-sans text-sm not-italic font-normal leading-5">Sep 24, 2024 at 6:03:00 PM</span>
   </div>
 </div>
+
+<task-sidebar [(sidebarVisible)]="taskBarVisible" (sidebarVisibleChange)="onTaskSidebarClose($event)"> </task-sidebar>

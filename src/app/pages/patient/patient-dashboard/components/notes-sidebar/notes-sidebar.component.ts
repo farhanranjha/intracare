@@ -148,10 +148,6 @@ export class NotesSidebarComponent {
     }
   }
 
-  viewAllNotes() {
-    console.log("Viewing all notes...");
-  }
-
   resetSidebar() {
     this.sidebarService.setSidebarVisible(false);
     this.addingNote = false;

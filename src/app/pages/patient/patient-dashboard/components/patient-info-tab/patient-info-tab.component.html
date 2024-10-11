@@ -87,7 +87,7 @@
       </div>
     </div>
 
-    <div class="btns-group flex items-center gap-2">
+    <div class="btns-group flex items-center gap-2.5">
       <button
         pButton
         pRipple
@@ -99,18 +99,10 @@
       <button
         pButton
         pRipple
-        label="Hold"
+        label="Hold Patient"
         icon="pi pi-clock"
         class="p-button-outlined border-[#F99D67] text-[#F5630F] text-sm btn-orange"
         (click)="openHoldModal()"
-      ></button>
-      <button
-        pButton
-        pRipple
-        label="Task"
-        (click)="openTaskSidebar()"
-        icon="pi pi-check-circle"
-        class="p-button-outlined border-gray-500 text-[#444] text-sm"
       ></button>
       <button
         pButton
@@ -124,7 +116,6 @@
   </div>
   <patient-dashboard-notes />
 </div>
-<task-sidebar [(sidebarVisible)]="taskBarVisible" (sidebarVisibleChange)="onTaskSidebarClose($event)"> </task-sidebar>
 <messages-sidebar [sidebarVisible]="messageBarVisible" (messagebarVisibleChange)="onMessageSidebarClose($event)" />
 <patient-hold-modal
   [(showModal)]="showHoldModal"

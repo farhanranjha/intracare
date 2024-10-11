@@ -1,14 +1,24 @@
-<div class="flex flex-col h-96 overflow-y-scroll">
+<div class="flex flex-col h-[calc(40vh-25px)] overflow-y-scroll">
   <div class="bg-white rounded-lg shadow-md flex flex-col w-full gap-2">
     <div class="bg-white rounded-lg px-2 py-2">
       <div class="flex flex-row justify-between px-2">
         <p class="text-[#060505] font-sans text-lg not-italic font-medium leading-5">Notes</p>
-        <p
-          class="font-sans not-italic font-medium leading-5 text-[#6366F1] mt-1 cursor-pointer"
-          (click)="viewAllNotes()"
-        >
-          View All
-        </p>
+        <div class="flex flex-row btns-group gap-2 mb-2">
+          <button
+            pButton
+            pRipple
+            label="Add"
+            (click)="viewAllNotes()"
+            class="p-button-outlined border-gray-500 text-sm text-[#444] font-sans not-italic font-medium leading-5"
+          ></button>
+          <button
+            pButton
+            pRipple
+            label="View All"
+            (click)="goToNotesSection()"
+            class="font-sans not-italic font-medium text-sm leading-5 text-indigo-500 border-indigo-500 bg-transparent"
+          ></button>
+        </div>
       </div>
       <div class="flex items-center w-full">
         <p
