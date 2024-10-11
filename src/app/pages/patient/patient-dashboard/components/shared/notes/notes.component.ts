@@ -26,10 +26,10 @@ import { PatientOnboardingComponent } from "./components/patient-onboarding/pati
 export class NotesComponent implements OnInit {
   source: string;
   routes: IKeyValue[] = [
+    { label: "Default / All", value: "default-all" },
     { label: "General Notes", value: "general-notes" },
     { label: "Reading Notes", value: "reading-notes" },
     { label: "Timer Notes", value: "timer-notes" },
-    { label: "Default / All", value: "default-all" },
     { label: "Patient Onboarding", value: "patient-onboarding" },
   ];
   activeTab: IKeyValue = this.routes[0];
