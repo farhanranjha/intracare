@@ -3,10 +3,12 @@
     <p class="text-[#060505] font-sans text-lg not-italic font-medium leading-5">Tasks</p>
     <p class="font-sans text-base not-italic font-medium leading-5 text-[#6366F1]">View All</p>
   </div>
-  <p class="text-[#222] font-sans text-sm not-italic leading-5 px-2">
-    Lorem ipsum dolor sit amet, consectetur Duis sollicitudin adipiscing elit. Duis sollicitudin laoreet pulvinar....
-    <a href="#" class="text-[#6366F1]">Expand</a>
-  </p>
+  <div class="text-[#222] font-sans text-sm not-italic leading-5 px-2">
+    {{ getTruncatedText(noteContent) }}
+    <span class="text-[#6366F1] cursor-pointer" (click)="toggleExpand()">
+      {{ isExpanded ? "Collapse" : "Expand" }}
+    </span>
+  </div>
   <p-divider class="w-full" />
   <div class="flex justify-between px-2 mt-[-4px]">
     <span class="font-sans text-sm not-italic font-medium leading-5 text-[#060505]">Ajmal Shami</span>
