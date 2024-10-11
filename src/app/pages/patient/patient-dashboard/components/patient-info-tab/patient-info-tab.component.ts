@@ -28,6 +28,7 @@ import { MessagesSidebarComponent } from "../messages-sidebar/messages-sidebar.c
 })
 export class PatientInfoTabComponent {
   taskBarVisible: boolean = false;
+  messageBarVisible: boolean = false;
 
   showDischargeModal: boolean = false;
   showHoldModal: boolean = false;
@@ -63,5 +64,13 @@ export class PatientInfoTabComponent {
 
   onTaskSidebarClose(value: boolean) {
     this.taskBarVisible = value;
+  }
+
+  openMessageSidebar() {
+    this.messageBarVisible = true;
+  }
+
+  onMessageSidebarClose(value: boolean) {
+    this.messageBarVisible = value;
   }
 }
