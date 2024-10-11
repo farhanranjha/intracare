@@ -15,19 +15,19 @@
 
   <div class="flex flex-col gap-4">
     <div>
-      <p>
+      <p class="text-[#666] font-sans text-sm not-italic font-normal leading-normal">
         Patient's Name:
         <span class="text-[#101828] font-sans text-base not-italic font-medium leading-5">Handerson Covington</span>
       </p>
     </div>
     <div>
-      <h3 class="text-[#101828] text-base not-italic font-medium leading-5">Reason of discharge</h3>
+      <h3 class="text-[#666] text-base not-italic font-medium leading-5">Reason of discharge</h3>
       <textarea
         rows="5"
         cols="30"
         class="w-full rounded-lg p-2 bg-[#FFF] text-[#666] font-sans text-sm not-italic font-normal leading-normal"
         pInputTextarea
-        [(ngModel)]="value"
+        placeholder="State the reason of discharge"
       ></textarea>
     </div>
 

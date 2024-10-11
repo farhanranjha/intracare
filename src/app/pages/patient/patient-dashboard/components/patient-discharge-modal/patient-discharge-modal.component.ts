@@ -16,8 +16,6 @@ export class PatientDischargeModalComponent {
 
   @Output() onCloseDischargeback = new EventEmitter<void>();
 
-  value: string = "State the reason of discharge";
-
   onDischargeClose() {
     this.onCloseDischargeback.emit();
     this.showModal = true;
