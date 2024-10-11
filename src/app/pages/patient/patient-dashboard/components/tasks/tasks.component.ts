@@ -1,8 +1,9 @@
 import { Component } from "@angular/core";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
 import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
+import { TimerService } from "src/app/services/timer/timer.service";
 
 @Component({
   selector: "app-tasks",
@@ -12,7 +13,28 @@ import { TaskSidebarComponent } from "../task-sidebar/task-sidebar.component";
   styleUrl: "./tasks.component.scss",
 })
 export class TasksComponent {
-  constructor(private router: Router) {}
+  selectedMode: "rpm" | "ccm" | null = null;
+  patientId: string | null = null;
+
+  constructor(
+    private router: Router,
+    private timerService: TimerService,
+    private route: ActivatedRoute,
+  ) {}
+
+  ngOnInit(): void {
+    this.route.paramMap.subscribe((params) => {
+      this.patientId = params.get("id");
+    });
+    this.timerService.selectedMode$.subscribe((mode) => {
+      this.selectedMode = mode;
+      console.log(this.selectedMode);
+    });
+  }
+
+  goToTasksSection() {
+    this.router.navigateByUrl(`/patient/${this.patientId}/${this.selectedMode}/tasks`);
+  }
   isExpanded: boolean = false;
   noteContent: string =
     "Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet.Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet.Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet.Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet.Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet Lorem ipsum dolor sit , consectetur Duis sollicitudin sollicitudin laoreet pulvinar sollicitudin laoreet hah eet";
@@ -27,8 +49,7 @@ export class TasksComponent {
   taskBarVisible: boolean = false;
 
   gotToNotesSection() {
-    // this.router.navigate(["/patient/1/rpm/notes"]);
-    this.router.navigateByUrl("/patient/1/rpm/notes");
+    this.router.navigateByUrl("/patient/1/rpm/tasks");
   }
 
   openTaskSidebar() {
