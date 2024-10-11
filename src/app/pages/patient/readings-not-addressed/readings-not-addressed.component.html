@@ -1,8 +1,4 @@
 <section class="w-full flex flex-col justify-start items-start gap-2">
-  <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
-    <p-button label="Readings Not Addressed" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium"></p-button>
-  </div>
-
   <div class="w-full rounded-xl mt-4 cutom-header-padding">
     <intracare-table [columns]="columns" [rowData]="patientss" [rowsPerPage]="[10, 25, 50]" />
   </div>

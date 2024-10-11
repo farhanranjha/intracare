@@ -1,9 +1,5 @@
 <section class="w-full flex flex-col items-start justify-start gap-[14px]">
-  <div class="page-header h-[42px] flex flex-row justify-between items-center w-full">
-    <p-button label="Dashboard" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
-    <button pButton pRipple icon="pi pi-cloud-upload" label="Upload CSV" class="p-3 font-medium"></button>
-  </div>
-  <div class="w-full flex flex-row items-start justify-start gap-[14px] h-[calc(100vh-13.8rem)]">
+  <div class="w-full flex flex-row items-start justify-start gap-[14px] h-[calc(100vh-100px)]">
     <div class="w-1/5 h-full bg-white rounded-xl shadow-full p-[1.5rem] flex flex-col gap-2">
       <p
         *ngFor="let category of categories; let i = index"
@@ -15,7 +11,7 @@
       </p>
     </div>
     <div class="w-full bg-white rounded-md shadow-full h-full">
-      <div class="w-full h-[calc(100vh-19rem)] overflow-y-scroll py-3" #componentContainer (scroll)="onScroll()">
+      <div class="w-full h-[calc(100vh-170px)] overflow-y-scroll py-3" #componentContainer (scroll)="onScroll()">
         <div id="patientInformation">
           <app-patient-information [patientInfoForm]="form.get('patientInfo')"></app-patient-information>
         </div>
