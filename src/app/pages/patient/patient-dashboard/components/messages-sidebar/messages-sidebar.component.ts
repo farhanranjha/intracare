@@ -1,5 +1,5 @@
 import { CommonModule } from "@angular/common";
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
 import { DividerModule } from "primeng/divider";
@@ -16,7 +16,12 @@ import { SidebarModule } from "primeng/sidebar";
 export class MessagesSidebarComponent {
   @Input() sidebarVisible: boolean = false;
   newMessage: string = "";
+  @Output() messagebarVisibleChange = new EventEmitter<boolean>();
 
+  closeSideBar() {
+    this.sidebarVisible = false;
+    this.messagebarVisibleChange.emit(this.sidebarVisible);
+  }
   mockMsgs = [
     {
       message: "Can you send me the final version of the document before the deadline tomorrow?",

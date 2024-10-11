@@ -1,4 +1,4 @@
-<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]">
+<p-sidebar [(visible)]="sidebarVisible" position="right" styleClass="w-[368px] bg-[#F9F9F9]" (onHide)="closeSideBar()">
   <ng-template pTemplate="header">
     <h3 class="font-medium text-xl mb-0">Send Message</h3>
   </ng-template>
