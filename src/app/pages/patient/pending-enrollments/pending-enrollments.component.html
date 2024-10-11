@@ -1,6 +1,8 @@
 <section>
-  <div class="w-full h-[42px] flex flex-row justify-between items-center">
-    <p-button label="Pending Enrollments" icon="pi pi-arrow-left" [text]="true" class="p-3 font-medium" />
+  <div
+    class="flex justify-center items-center !w-16 !h-16 text-center rounded-full text-white font-bold text-4xl bg-[#6366f1] absolute bottom-5 right-5"
+  >
+    <span class="!mt-[-2px]">+</span>
   </div>
 
   <intracare-table [columns]="columns" [rowData]="patients" [rowsPerPage]="[10, 25, 50]" />
