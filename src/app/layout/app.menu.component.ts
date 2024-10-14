@@ -59,7 +59,7 @@ export class AppMenuComponent implements OnInit {
               },
               {
                 label: "Non Adherence Report",
-                icon: "pi pi-exclamation-triangle",
+                icon: "pi pi-fw pi-folder",
                 routerLink: ["/reports/non-adherence"],
               },
             ],
