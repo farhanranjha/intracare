@@ -41,3 +41,15 @@ export interface IReadingsNotAddressed {
   stage: string;
   status: boolean;
 }
+
+export interface IAdmissionReport {
+  id: number;
+  name: string;
+  enrollmentDate: string;
+  practiceName: string;
+  deviceType: string;
+  lastTransmission: string;
+  deviceSerialNumber: string;
+  registeredBy: string;
+  image: string;
+}

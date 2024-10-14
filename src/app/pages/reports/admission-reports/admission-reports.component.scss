@@ -1,0 +1,21 @@
+.btn {
+    ::ng-deep .p-button {
+      background-color: transparent;
+      border: none;
+      color: black;
+    }
+    ::ng-deep .p-button-icon {
+      font-size: 20px;
+    }
+  }
+  .rpmEngagementbtn {
+    ::ng-deep .p-button {
+        color: #444;
+        font-style: normal;
+        line-height: 16px;
+        border-radius: 8px;
+        border: 1px solid #CCC;
+        background: var(--Background, #FFF);
+    }
+  }
+  

@@ -46,6 +46,21 @@ export class AppMenuComponent implements OnInit {
           },
         ],
       },
+      {
+        items: [
+          {
+            label: "Reporting",
+            icon: "pi pi-fw pi-chart-bar",
+            items: [
+              {
+                label: "Admissions Report",
+                icon: "pi pi-fw pi-folder",
+                routerLink: ["/reports/admission-report"],
+              },
+            ],
+          },
+        ],
+      },
     ];
   }
 }
