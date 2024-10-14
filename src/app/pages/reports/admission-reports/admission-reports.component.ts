@@ -1,5 +1,6 @@
 import { ChangeDetectorRef, Component, TemplateRef, ViewChild } from "@angular/core";
 import { ButtonModule } from "primeng/button";
+import { CustomFilterComponent } from "src/app/components/table/custom-filter/custom-filter.component";
 import { TableComponent } from "src/app/components/table/table.component";
 import { IKeyValue } from "src/app/types/common-types";
 import { IAdmissionReport } from "src/app/types/mock-data/mock-data-types";
@@ -9,7 +10,7 @@ import { admissionReports } from "src/app/utils/constants/mock-data";
 @Component({
   selector: "app-admission-reports",
   standalone: true,
-  imports: [ButtonModule, TableComponent],
+  imports: [ButtonModule, TableComponent, CustomFilterComponent],
   templateUrl: "./admission-reports.component.html",
   styleUrls: ["./admission-reports.component.scss"],
 })
