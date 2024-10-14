@@ -48,7 +48,16 @@ export class AppMiniSidebarComponent implements OnInit {
           {
             label: "Readings Not Addressed",
             icon: "pi pi-book",
-            routerLink: ["patient/readings-not-addressed"],
+            routerLink: ["reports/readings-not-addressed"],
+          },
+        ],
+      },
+      {
+        items: [
+          {
+            label: "Non Adherence Report",
+            icon: "pi pi-exclamation-triangle",
+            routerLink: ["reports/non-adherence"],
           },
         ],
       },
