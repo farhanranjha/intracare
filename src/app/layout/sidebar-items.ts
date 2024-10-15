@@ -1,4 +1,15 @@
-export const sidebarItems = [
+type ISidebarItem = {
+  label: string;
+  icon: string;
+  routerLink?: string[];
+  items?: ISidebarItem[];
+};
+
+export type ISidebarItems = {
+  items: ISidebarItem[];
+};
+
+export const sidebarItems: ISidebarItems[] = [
   {
     items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", routerLink: [""] }],
   },

@@ -1,7 +1,7 @@
 import { OnInit } from "@angular/core";
 import { Component } from "@angular/core";
 import { LayoutService } from "./service/app.layout.service";
-import { sidebarItems } from "./sidebar-items";
+import { ISidebarItems, sidebarItems } from "./sidebar-items";
 
 @Component({
   selector: "app-mini-sidebar",
@@ -28,7 +28,7 @@ export class AppMiniSidebarComponent {
     return result;
   }
 
-  model: any[] = this.flattenMenu(sidebarItems);
+  model: ISidebarItems[] = this.flattenMenu(sidebarItems);
 
   constructor(public layoutService: LayoutService) {}
 }
