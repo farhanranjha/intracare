@@ -79,6 +79,17 @@ export const sidebarItems: ISidebarItems[] = [
                   },
                 ],
               },
+              {
+                label: "Medicaid",
+                icon: "pi pi-shield",
+                items: [
+                  {
+                    label: "RPM",
+                    icon: "pi pi-briefcase",
+                    routerLink: ["/reports/medicaid-billing"],
+                  },
+                ],
+              },
             ],
           },
         ],

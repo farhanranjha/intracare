@@ -1,32 +1,32 @@
 import { Component, TemplateRef, ViewChild } from "@angular/core";
-import { BillingReportComponent } from "../../billing-reports-filter/billing-reports-filter.component";
+import { BillingReportComponent } from "../billing-reports-filter/billing-reports-filter.component";
 import { CustomFilterComponent } from "src/app/components/table/custom-filter/custom-filter.component";
 import { ButtonModule } from "primeng/button";
 import { FormsModule } from "@angular/forms";
 import { DropdownModule } from "primeng/dropdown";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { ccmMockBillingData } from "src/app/utils/constants/mock-data";
+import { medicaidRomMockBillingData } from "src/app/utils/constants/mock-data";
 import { IKeyValue } from "src/app/types/common-types";
 
 @Component({
-  selector: "ccm-billing-report",
+  selector: "medicaid-billing-report",
   standalone: true,
   imports: [TableComponent, DropdownModule, FormsModule, ButtonModule, CustomFilterComponent, BillingReportComponent],
-  templateUrl: "./ccm-billing-report.component.html",
-  styleUrl: "./ccm-billing-report.component.scss",
+  templateUrl: "./medicaid-billing-report.component.html",
+  styleUrl: "./medicaid-billing-report.component.scss",
 })
-export class CcmBillingReportComponent {
+export class MedicaidBillingReportComponent {
   @ViewChild("practiceNameFilter", { static: true }) practiceNameFilter!: TemplateRef<any>;
 
   columns: ColumnConfig[] = [];
-  ccmBillingReports = ccmMockBillingData;
-  filteredReports = [...this.ccmBillingReports];
+  medicaidBillingReports = medicaidRomMockBillingData;
+  filteredReports = [...this.medicaidBillingReports];
 
   practicesOptions: IKeyValue[] = [{ label: "Training Organization 1", value: "Training Organization 1" }];
 
   cptCodes = [
-    { name: "99490 & 99439,99487 & 99489", value: "99490 & 99439,99487 & 99489" },
+    { name: "S9110 Modifiers", value: "S9110 Modifiers" },
     { name: "99453", value: "99453" },
   ];
 
@@ -55,8 +55,8 @@ export class CcmBillingReportComponent {
         filterType: "none",
       },
       {
-        name: "Billable Codes",
-        field: "billableCodes",
+        name: "Modifiers",
+        field: "modifiers",
         filterType: "none",
       },
       {
@@ -75,8 +75,8 @@ export class CcmBillingReportComponent {
   onFilterSelection(event: any) {
     const { selectedDateRange, selectedCptCode } = event;
 
-    const filteredByCpt = this.ccmBillingReports.filter((report) => {
-      return selectedCptCode ? report.billableCodes === selectedCptCode.value : true;
+    const filteredByCpt = this.medicaidBillingReports.filter((report) => {
+      return selectedCptCode ? report.modifiers === selectedCptCode.value : true;
     });
 
     if (selectedDateRange && selectedDateRange.length === 2) {
