@@ -41,7 +41,6 @@ export class AdmissionReportsComponent {
       {
         name: "Enrollment Date",
         field: "enrollmentDate",
-        filterType: "none",
       },
       {
         name: "Practice",
@@ -53,22 +52,18 @@ export class AdmissionReportsComponent {
       {
         name: "Device Type",
         field: "deviceType",
-        filterType: "none",
       },
       {
         name: "Last Transmission",
         field: "lastTransmission",
-        filterType: "none",
       },
       {
         name: "Device Serial Number",
         field: "deviceSerialNumber",
-        filterType: "none",
       },
       {
         name: "Registered By",
         field: "registeredBy",
-        filterType: "none",
       },
     ];
   }
