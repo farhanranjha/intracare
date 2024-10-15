@@ -55,6 +55,15 @@ export class AppMiniSidebarComponent implements OnInit {
       {
         items: [
           {
+            label: "Admissions Report",
+            icon: "pi pi-fw pi-folder",
+            routerLink: ["/reports/admission-report"],
+          },
+        ],
+      },
+      {
+        items: [
+          {
             label: "Non Adherence Report",
             icon: "pi pi-exclamation-triangle",
             routerLink: ["reports/non-adherence"],
