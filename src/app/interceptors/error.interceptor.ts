@@ -20,13 +20,9 @@ export class ErrorInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    if (req?.body?.refresh_token) {
-      return next.handle(req);
-    }
-
     return next.handle(req).pipe(
       catchError((err: HttpErrorResponse) => {
-        if (err.status === 401) {
+        if (err.status === 401 && !req.body.refresh_token) {
           return this.handle401Error(req, next);
         }
         const error = err.error?.message || err.statusText;
@@ -49,14 +45,13 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.refreshTokenSubject.next(newAccessToken);
             this.store.dispatch(setAccessToken({ accessToken: newAccessToken }));
             this.store.dispatch(setRefreshToken({ refreshToken: response?.refresh_token }));
-            return next.handle(this.addToken(req, newAccessToken));
+            return next.handle(this.addTokenToRequest(req, newAccessToken));
           }
 
           return throwError(() => new Error("Failed to refresh access token"));
         }),
         catchError((error: any) => {
           this.isRefreshing = false;
-
           if (error.status === 400) {
             this.handleRefreshTokenError();
           }
@@ -69,21 +64,21 @@ export class ErrorInterceptor implements HttpInterceptor {
         filter((token) => token != null),
         take(1),
         switchMap((newAccessToken: string | null) => {
-          return next.handle(this.addToken(req, newAccessToken));
+          if (newAccessToken) {
+            return next.handle(this.addTokenToRequest(req, newAccessToken));
+          }
+          return throwError(() => new Error("Failed to retry request after refresh"));
         }),
       );
     }
   }
 
-  private addToken(req: HttpRequest<any>, token: string | null): HttpRequest<any> {
-    if (token) {
-      return req.clone({
-        setHeaders: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-    }
-    return req;
+  private addTokenToRequest(req: HttpRequest<any>, token: string): HttpRequest<any> {
+    return req.clone({
+      setHeaders: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
   }
 
   private handleRefreshTokenError(): void {
