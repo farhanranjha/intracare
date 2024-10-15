@@ -1,4 +1,4 @@
-<div class="flex flex-row justify-start mx-0 my-2 gap-x-60">
+<div class="flex flex-row justify-start mx-0 my-2 gap-x-6">
   <div class="flex flex-col">
     <label for="timeFrame" class="text-base text-[#6366F1] font-medium">Time Frame:</label>
     <p-calendar
@@ -7,7 +7,6 @@
       dateFormat="yy-mm-dd"
       [showClear]="true"
       placeholder="Start date - End date"
-      inputId="timeFrame"
       [style]="{ width: '15rem' }"
       (ngModelChange)="onSelectionChange()"
     ></p-calendar>
@@ -20,9 +19,9 @@
       [(ngModel)]="selectedCptCode"
       optionLabel="name"
       [showClear]="true"
-      inputId="cptCodes"
+      placeholder="Select CPT Code"
       [style]="{ width: '25rem' }"
-      (ngModelChange)="onSelectionChange()"
+      (onChange)="onSelectionChange()"
     ></p-dropdown>
   </div>
 </div>
