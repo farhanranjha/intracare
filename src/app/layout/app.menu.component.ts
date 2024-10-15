@@ -58,6 +58,23 @@ export class AppMenuComponent implements OnInit {
                 routerLink: ["/reports/admission-report"],
               },
               {
+                label: "Billing Reports",
+                icon: "pi pi-money-bill",
+                items: [
+                  {
+                    label: "Medicare",
+                    icon: "pi pi-shield",
+                    items: [
+                      {
+                        label: "RPM",
+                        icon: "pi pi-mobile",
+                        routerLink: ["/reports/rpm-billing"],
+                      },
+                    ],
+                  },
+                ],
+              },
+              {
                 label: "Non Adherence Report",
                 icon: "pi pi-exclamation-triangle",
                 routerLink: ["/reports/non-adherence"],

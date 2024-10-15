@@ -4,7 +4,7 @@ import { CalendarModule } from "primeng/calendar";
 import { FormsModule } from "@angular/forms";
 
 @Component({
-  selector: "billing-report",
+  selector: "billing-report-filter",
   standalone: true,
   imports: [DropdownModule, CalendarModule, FormsModule],
   templateUrl: "./billing-reports-filter.component.html",
@@ -21,9 +21,5 @@ export class BillingReportComponent {
       selectedDateRange: this.dateRange,
       selectedCptCode: this.selectedCptCode,
     });
-  }
-
-  constructor() {
-    this.selectedCptCode = this.cptCodes[0];
   }
 }

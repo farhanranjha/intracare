@@ -7,7 +7,6 @@
       dateFormat="yy-mm-dd"
       [showClear]="true"
       placeholder="Start date - End date"
-      inputId="timeFrame"
       [style]="{ width: '15rem' }"
       (ngModelChange)="onSelectionChange()"
     ></p-calendar>
@@ -20,9 +19,9 @@
       [(ngModel)]="selectedCptCode"
       optionLabel="name"
       [showClear]="true"
-      inputId="cptCodes"
+      placeholder="Select CPT Code"
       [style]="{ width: '25rem' }"
-      (ngModelChange)="onSelectionChange()"
+      (onChange)="onSelectionChange()"
     ></p-dropdown>
   </div>
 </div>
