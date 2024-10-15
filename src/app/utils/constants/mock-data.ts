@@ -1883,3 +1883,51 @@ export const nonAdherenceReports = [
     lastReading: "Oct 14, 2024 01:20 PM",
   },
 ];
+
+export const rpmMockBillingData = [
+  {
+    practiceName: "Training Organization 1",
+    lastName: "Doe",
+    firstName: "John",
+    dob: "1980-05-12",
+    billableCodes: "99457 & 99458",
+    icdCode: "E11.9",
+    serviceDate: "2024-06-08",
+  },
+  {
+    practiceName: "Training Organization 1",
+    lastName: "Smith",
+    firstName: "Jane",
+    dob: "1975-07-21",
+    billableCodes: "99453 & 99454",
+    icdCode: "I10",
+    serviceDate: "2024-10-12",
+  },
+  {
+    practiceName: "Training Organization 1",
+    lastName: "Brown",
+    firstName: "Michael",
+    dob: "1990-11-04",
+    billableCodes: "99457 & 99458",
+    icdCode: "J45.909",
+    serviceDate: "2024-09-13",
+  },
+  {
+    practiceName: "Training Organization 1",
+    lastName: "Johnson",
+    firstName: "Emily",
+    dob: "1965-03-22",
+    billableCodes: "99453 & 99454",
+    icdCode: "E11.65",
+    serviceDate: "2024-10-14",
+  },
+  {
+    practiceName: "Training Organization 2",
+    lastName: "Davis",
+    firstName: "Chris",
+    dob: "1985-12-15",
+    billableCodes: "99457 & 99458",
+    icdCode: "I25.10",
+    serviceDate: "2024-10-15",
+  },
+];

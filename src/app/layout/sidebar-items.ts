@@ -59,6 +59,23 @@ export const sidebarItems: ISidebarItems[] = [
             icon: "pi pi-exclamation-triangle",
             routerLink: ["/reports/non-adherence"],
           },
+          {
+            label: "Billing Reports",
+            icon: "pi pi-money-bill",
+            items: [
+              {
+                label: "Medicare",
+                icon: "pi pi-shield",
+                items: [
+                  {
+                    label: "RPM",
+                    icon: "pi pi-mobile",
+                    routerLink: ["/reports/rpm-billing"],
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
