@@ -1,0 +1,28 @@
+<div class="flex flex-row justify-start mx-0 my-2 gap-x-60">
+  <div class="flex flex-col">
+    <label for="timeFrame" class="text-base text-[#6366F1] font-medium">Time Frame:</label>
+    <p-calendar
+      [(ngModel)]="dateRange"
+      selectionMode="range"
+      dateFormat="yy-mm-dd"
+      [showClear]="true"
+      placeholder="Start date - End date"
+      inputId="timeFrame"
+      [style]="{ width: '15rem' }"
+      (ngModelChange)="onSelectionChange()"
+    ></p-calendar>
+  </div>
+
+  <div class="flex flex-col">
+    <label for="cptCodes" class="text-base text-[#6366F1] font-medium">CPT Codes type:</label>
+    <p-dropdown
+      [options]="cptCodes"
+      [(ngModel)]="selectedCptCode"
+      optionLabel="name"
+      [showClear]="true"
+      inputId="cptCodes"
+      [style]="{ width: '25rem' }"
+      (ngModelChange)="onSelectionChange()"
+    ></p-dropdown>
+  </div>
+</div>
