@@ -1,9 +1,15 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { AdmissionReportsComponent } from "./admission-reports/admission-reports.component";
+import { NonAdherenceComponent } from "./non-adherence/non-adherence.component";
 
 @NgModule({
-  imports: [RouterModule.forChild([{ path: "admission-report", component: AdmissionReportsComponent }])],
+  imports: [
+    RouterModule.forChild([
+      { path: "admission-report", component: AdmissionReportsComponent },
+      { path: "non-adherence", component: NonAdherenceComponent },
+    ]),
+  ],
   exports: [RouterModule],
 })
 export class ReportsRoutingModule {}

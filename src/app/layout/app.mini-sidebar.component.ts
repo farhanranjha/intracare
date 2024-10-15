@@ -61,6 +61,15 @@ export class AppMiniSidebarComponent implements OnInit {
           },
         ],
       },
+      {
+        items: [
+          {
+            label: "Non Adherence Report",
+            icon: "pi pi-exclamation-triangle",
+            routerLink: ["reports/non-adherence"],
+          },
+        ],
+      },
     ];
   }
 }
