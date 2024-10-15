@@ -52,6 +52,15 @@ export class AppMiniSidebarComponent implements OnInit {
           },
         ],
       },
+      {
+        items: [
+          {
+            label: "Admissions Report",
+            icon: "pi pi-fw pi-folder",
+            routerLink: ["/reports/admission-report"],
+          },
+        ],
+      },
     ];
   }
 }

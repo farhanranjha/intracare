@@ -22,6 +22,11 @@ import { NotfoundComponent } from "./pages/notfound/notfound.component";
               loadChildren: () => import("./pages/patient/patient.module").then((m) => m.PatientModule),
               canActivate: [AuthGuard],
             },
+            {
+              path: "reports",
+              loadChildren: () => import("./pages/reports/reports.module").then((m) => m.ReportsModule),
+              canActivate: [AuthGuard],
+            },
           ],
         },
         {

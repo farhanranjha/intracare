@@ -1823,3 +1823,28 @@ export const customVitalAlertsMockData = [
     condition: "< 92%",
   },
 ];
+
+export const admissionReports = [
+  {
+    id: 435,
+    name: "The Flash",
+    enrollmentDate: "Apr 18, 2024",
+    practiceName: "Training Organization 1",
+    deviceType: "BP",
+    lastTransmission: "Jun 13, 2024",
+    deviceSerialNumber: "	863859040792744",
+    registeredBy: "Ajmal Shami",
+    image: "https://randomuser.me/api/portraits/women/75.jpg",
+  },
+  {
+    id: 434,
+    name: "Barry Allen",
+    enrollmentDate: "Apr 18, 2024",
+    practiceName: "Training Organization 2",
+    deviceType: "BG",
+    lastTransmission: "Dec 13, 2023",
+    deviceSerialNumber: "860623063228314",
+    registeredBy: "Kashif Rather",
+    image: "https://randomuser.me/api/portraits/men/75.jpg",
+  },
+];

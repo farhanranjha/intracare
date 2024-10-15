@@ -1,0 +1,26 @@
+<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2">
+  <div class="w-full flex justify-between items-center">
+    <h3 class="m-0 my-auto text-[#6366F1] font-medium font-sans">Admission Report</h3>
+    <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
+  </div>
+  <div class="w-full mt-1">
+    <intracare-table [columns]="columns" [rowData]="reports" [rowsPerPage]="[10, 25, 50]" />
+
+    <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+
+    <ng-template #patientCardTemplate let-row>
+      <div class="flex items-center space-x-2 w-[180px]">
+        <img [src]="row.image" alt="Patient Image" class="w-2 rounded-full" />
+        <div class="flex flex-col">
+          <span class="font-bold">{{ row.name }}</span>
+          <span class="text-sm">{{ row.dob }}</span>
+          <a href="#" class="text-black"
+            >Patient ID: <span class="text-blue-500 hover:underline">{{ row.id }}</span></a
+          >
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</section>
