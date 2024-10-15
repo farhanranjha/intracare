@@ -1,75 +1,34 @@
 import { OnInit } from "@angular/core";
 import { Component } from "@angular/core";
 import { LayoutService } from "./service/app.layout.service";
+import { sidebarItems } from "./sidebar-items";
 
 @Component({
   selector: "app-mini-sidebar",
   templateUrl: "./app.mini-sidebar.component.html",
 })
-export class AppMiniSidebarComponent implements OnInit {
-  model: any[] = [];
+export class AppMiniSidebarComponent {
+  flattenMenu(menu) {
+    const result = [];
+
+    function flatten(items) {
+      items.forEach((item) => {
+        if (item.items) {
+          flatten(item.items);
+        } else {
+          result.push({ items: [item] });
+        }
+      });
+    }
+
+    menu.forEach((section) => {
+      flatten(section.items);
+    });
+
+    return result;
+  }
+
+  model: any[] = this.flattenMenu(sidebarItems);
 
   constructor(public layoutService: LayoutService) {}
-
-  ngOnInit() {
-    this.model = [
-      {
-        items: [{ label: "Dashboard", icon: "pi pi-fw pi-home", routerLink: [""] }],
-      },
-      {
-        items: [
-          {
-            label: "Add Patient",
-            icon: "pi pi-fw pi-user",
-            routerLink: ["patient/add"],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: "Pending Enrollments",
-            icon: "pi pi-th-large",
-            routerLink: ["patient/pending-enrollments"],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: "Patient Pending Readings",
-            icon: "pi pi-user-minus",
-            routerLink: ["patient/pending-readings"],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: "Readings Not Addressed",
-            icon: "pi pi-book",
-            routerLink: ["patient/readings-not-addressed"],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: "Admissions Report",
-            icon: "pi pi-fw pi-folder",
-            routerLink: ["/reports/admission-report"],
-          },
-        ],
-      },
-      {
-        items: [
-          {
-            label: "Non Adherence Report",
-            icon: "pi pi-exclamation-triangle",
-            routerLink: ["reports/non-adherence"],
-          },
-        ],
-      },
-    ];
-  }
 }
