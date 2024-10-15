@@ -1,161 +1,27 @@
 import { CommonModule } from "@angular/common";
-import { Component, ViewChild } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { ButtonModule } from "primeng/button";
-import { CheckboxModule } from "primeng/checkbox";
-import { DialogModule } from "primeng/dialog";
-import { DividerModule } from "primeng/divider";
-import { DropdownModule } from "primeng/dropdown";
-import { TableComponent } from "src/app/components/table/table.component";
-import { ColumnConfig } from "src/app/types/table/generic-table-types";
-import { activeDeviceMockData, previouslyUsedDevicesMockData } from "src/app/utils/constants/mock-data";
-import { PatientHoldModalComponent } from "../../../patient-hold-modal/patient-hold-modal.component";
+import { Component } from "@angular/core";
+import { SidebarRouterComponent } from "src/app/components/sidebar-router/sidebar-router.component";
+import { IKeyValue } from "src/app/types/common-types";
+import { ActiveDevicesComponent } from "./components/active-devices/active-devices.component";
+import { UsedDevicesComponent } from "./components/used-devices/used-devices.component";
+import { AddDeviceComponent } from "./components/add-device/add-device.component";
 
 @Component({
   selector: "app-devices",
   standalone: true,
-  imports: [
-    TableComponent,
-    ButtonModule,
-    CommonModule,
-    FormsModule,
-    DialogModule,
-    DividerModule,
-    DropdownModule,
-    CheckboxModule,
-    PatientHoldModalComponent,
-  ],
+  imports: [SidebarRouterComponent, CommonModule, ActiveDevicesComponent, UsedDevicesComponent, AddDeviceComponent],
   templateUrl: "./devices.component.html",
   styleUrl: "./devices.component.scss",
 })
 export class DevicesComponent {
-  displayModal: boolean = false;
-
-  showHoldModal: boolean = false;
-
-  selectedDeviceType: any = null;
-  deviceSerial: string = "";
-  shipDevice: boolean = false;
-  deviceTypes = [
-    { name: "Blood Pressure Monitor" },
-    { name: "Heart Rate Monitor" },
-    { name: "Glucose Meter" },
-    { name: "Pulse Oximeter" },
-    { name: "Smartwatch" },
+  routes: IKeyValue[] = [
+    { label: "Active Devices", value: "active" },
+    { label: "Used Devices", value: "used" },
+    { label: "Add Device", value: "add" },
   ];
+  activeTab: IKeyValue = this.routes[0];
 
-  activeDevices: any[] = activeDeviceMockData;
-  previouslyUsedDevices: any[] = previouslyUsedDevicesMockData;
-
-  @ViewChild("actionTemplate", { static: true }) actionTemplate: any;
-  activeDeviceColumns: ColumnConfig[] = [];
-  previouslyUsedDeviceColumns: ColumnConfig[] = [];
-
-  ngOnInit() {
-    this.activeDeviceColumns = [
-      {
-        name: "Device Type",
-        field: "deviceType",
-        filterType: "",
-      },
-      {
-        name: "Serial Number",
-        field: "serialNumber",
-        filterType: "",
-      },
-      {
-        name: "Date Added",
-        field: "dateAdded",
-        filterType: "",
-      },
-      {
-        name: "Battery",
-        field: "battery",
-        filterType: "",
-      },
-      {
-        name: "Signal",
-        field: "signal",
-        filterType: "",
-      },
-      {
-        name: "Last Transmission",
-        field: "lastTransmission",
-        filterType: "",
-      },
-      {
-        name: "Last Seen",
-        field: "lastSeen",
-        filterType: "",
-      },
-      { name: "Remove Device", field: "actions", isCustom: true, template: this.actionTemplate, filterType: "none" },
-    ];
-    this.previouslyUsedDeviceColumns = [
-      {
-        name: "Device Type",
-        field: "deviceType",
-        filterType: "",
-      },
-      {
-        name: "Serial Number",
-        field: "serialNumber",
-        filterType: "",
-      },
-      {
-        name: "Date Added",
-        field: "dateAdded",
-        filterType: "",
-      },
-      {
-        name: "Last Transmission",
-        field: "lastTransmission",
-        filterType: "",
-      },
-      {
-        name: "Removed Date",
-        field: "removedDate",
-        filterType: "",
-      },
-    ];
-  }
-
-  addDevice() {
-    this.displayModal = true;
-  }
-
-  submit() {
-    this.displayModal = false;
-  }
-
-  cancel() {
-    this.displayModal = false;
-  }
-
-  onClose() {
-    this.showHoldModal = false;
-  }
-
-  openHoldModal() {
-    this.showHoldModal = true;
-  }
-
-  closeHoldModal() {
-    this.showHoldModal = false;
-  }
-
-  updateStatus() {
-    this.showHoldModal = false;
-  }
-
-  removeDevice(id: string) {
-    alert(id);
-  }
-
-  shippedDevice(ship: boolean) {
-    if (ship) {
-      this.shipDevice = false;
-    } else {
-      this.shipDevice = true;
-    }
+  onTabChange(tab: IKeyValue) {
+    this.activeTab = tab;
   }
 }

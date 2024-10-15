@@ -1,0 +1,5 @@
+<intracare-table [rowData]="activeDevices" [columns]="activeDeviceColumns" [paginator]="false"></intracare-table>
+
+<ng-template #actionTemplate let-row>
+  <button pButton type="button" class="bg-transparent border-none text-red-500" label="Remove"></button>
+</ng-template>
