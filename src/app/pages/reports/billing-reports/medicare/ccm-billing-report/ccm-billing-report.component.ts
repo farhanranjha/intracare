@@ -26,7 +26,7 @@ export class CcmBillingReportComponent {
   practicesOptions: IKeyValue[] = [{ label: "Training Organization 1", value: "Training Organization 1" }];
 
   cptCodes = [
-    { name: "S9110 Modifiers", value: "S9110 Modifiers" },
+    { name: "99490 & 99439,99487 & 99489", value: "99490 & 99439,99487 & 99489" },
     { name: "99453", value: "99453" },
   ];
 
@@ -55,8 +55,8 @@ export class CcmBillingReportComponent {
         filterType: "none",
       },
       {
-        name: "Modifiers",
-        field: "modifiers",
+        name: "Billable Codes",
+        field: "billableCodes",
         filterType: "none",
       },
       {
@@ -76,7 +76,7 @@ export class CcmBillingReportComponent {
     const { selectedDateRange, selectedCptCode } = event;
 
     const filteredByCpt = this.ccmBillingReports.filter((report) => {
-      return selectedCptCode ? report.modifiers === selectedCptCode.value : true;
+      return selectedCptCode ? report.billableCodes === selectedCptCode.value : true;
     });
 
     if (selectedDateRange && selectedDateRange.length === 2) {
