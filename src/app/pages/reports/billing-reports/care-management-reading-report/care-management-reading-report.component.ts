@@ -10,7 +10,7 @@ import { IReadingCompliance } from "src/app/types/mock-data/mock-data-types";
 import { TooltipModule } from "primeng/tooltip";
 
 @Component({
-  selector: "app-care-management-reading-report",
+  selector: "care-management-reading-report",
   standalone: true,
   imports: [TableComponent, ButtonModule, CustomFilterComponent, CommonModule, TooltipModule],
   templateUrl: "./care-management-reading-report.component.html",
@@ -46,7 +46,6 @@ export class CareManagementReadingReportComponent {
   ];
 
   ngOnInit() {
-    console.log(this.readingsComplianceReports);
     this.columns = [
       {
         name: "Name",
