@@ -1,4 +1,4 @@
-.btn {
+  .btn {
     ::ng-deep .p-button {
       background-color: transparent;
       border: none;
@@ -7,6 +7,12 @@
     ::ng-deep .p-button-icon {
       font-size: 20px;
     }
-
   }
-  
+
+  .filterBtn{
+  ::ng-deep .p-button {
+      color: #6366F1;
+      background-color: transparent;
+      border: 1px solid #6366F1;
+    }
+  }
