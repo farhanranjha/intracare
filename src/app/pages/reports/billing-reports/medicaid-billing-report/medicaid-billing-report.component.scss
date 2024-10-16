@@ -1,0 +1,12 @@
+.btn {
+    ::ng-deep .p-button {
+      background-color: transparent;
+      border: none;
+      color: black;
+    }
+    ::ng-deep .p-button-icon {
+      font-size: 20px;
+    }
+
+  }
+  

@@ -72,6 +72,22 @@ export const sidebarItems: ISidebarItems[] = [
                     icon: "pi pi-mobile",
                     routerLink: ["/reports/rpm-billing"],
                   },
+                  {
+                    label: "CCM",
+                    icon: "pi pi-heart",
+                    routerLink: ["/reports/ccm-billing"],
+                  },
+                ],
+              },
+              {
+                label: "Medicaid",
+                icon: "pi pi-shield",
+                items: [
+                  {
+                    label: "RPM",
+                    icon: "pi pi-briefcase",
+                    routerLink: ["/reports/medicaid-billing"],
+                  },
                 ],
               },
             ],
