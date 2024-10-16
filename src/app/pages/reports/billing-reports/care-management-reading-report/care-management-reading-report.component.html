@@ -28,7 +28,7 @@
     <ng-template #patientCardTemplate let-row>
       <div class="flex items-center space-x-2 w-[140px]">
         <img [src]="row.image" alt="Patient Image" class="w-2 rounded-full" />
-        <div class="flex flex-col">
+        <div class="flex flex-col gap-1">
           <span class="font-bold">{{ row.patientName }}</span>
           <a href="#" class="text-black"
             >Patient ID: <span class="text-blue-500 hover:underline">{{ row.id }}</span></a
