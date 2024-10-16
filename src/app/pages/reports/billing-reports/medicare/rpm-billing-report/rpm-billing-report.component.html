@@ -1,6 +1,8 @@
-<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2">
+<section
+  class="rounded-md w-full m-1 shadow-md bg-white p-2 flex flex-col justify-start items-start gap-2 h-[calc(100vh-100px)]"
+>
   <div class="w-full flex justify-between items-center">
-    <h3 class="m-0 my-auto text-[#6366F1] font-medium font-sans">RPM Billing</h3>
+    <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl px-2">RPM Billing</h3>
     <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
   </div>
   <billing-report-filter [cptCodes]="cptCodes" (filterSelection)="onFilterSelection($event)"></billing-report-filter>
