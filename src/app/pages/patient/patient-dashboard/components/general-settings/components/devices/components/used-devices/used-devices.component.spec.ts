@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DeviceTileComponent } from './device-tile.component';
+import { UsedDevicesComponent } from './used-devices.component';
 
-describe('DeviceTileComponent', () => {
-  let component: DeviceTileComponent;
-  let fixture: ComponentFixture<DeviceTileComponent>;
+describe('UsedDevicesComponent', () => {
+  let component: UsedDevicesComponent;
+  let fixture: ComponentFixture<UsedDevicesComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DeviceTileComponent]
+      imports: [UsedDevicesComponent]
     })
     .compileComponents();
     
-    fixture = TestBed.createComponent(DeviceTileComponent);
+    fixture = TestBed.createComponent(UsedDevicesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
