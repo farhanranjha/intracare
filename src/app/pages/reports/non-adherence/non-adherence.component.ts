@@ -71,20 +71,5 @@ export class NonAdherenceComponent {
         filterTemplate: this.lastReadingFilter,
       },
     ];
-
-    // this.filterByDuration();
   }
-
-  // filterByDuration() {
-  //   const today = new Date();
-
-  //   const cutoffDate = new Date(today);
-  //   cutoffDate.setDate(today.getDate() - this.selectedDuration);
-
-  //   this.filteredReports = this.reports.filter((report) => {
-  //     const lastReadingDate = new Date(report.lastReading);
-
-  //     return lastReadingDate <= cutoffDate;
-  //   });
-  // }
 }
