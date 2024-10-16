@@ -1,0 +1,67 @@
+<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2 rounded-lg">
+  <div class="w-full flex justify-between items-center">
+    <h3 class="m-0 my-auto text-[#6366F1] font-medium font-sans">Performance Score Card</h3>
+    <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
+  </div>
+  <div class="w-full mt-1">
+    <div class="flex flex-row gap-y-4 gap-x-3 items-center justify-end">
+      <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Select Year"></p-dropdown>
+      <p-dropdown [options]="practices" [(ngModel)]="selectedPractice" placeholder="Select Practice"></p-dropdown>
+      <p-dropdown [options]="months" [(ngModel)]="selectedMonth" placeholder="Select Month"></p-dropdown>
+      <p-button label="Filter" (onClick)="filterPerformanceData()"></p-button>
+    </div>
+  </div>
+
+  <div class="w-full mt-2">
+    <table class="table-auto w-full border border-gray-300">
+      <thead>
+        <tr class="bg-gray-100">
+          <th class="border px-4 py-2">Practice</th>
+          <th class="border px-4 py-2" colspan="2">Week 1 (Referrals)</th>
+          <th class="border px-4 py-2">Week 1 (Admitted)</th>
+          <th class="border px-4 py-2">Week 2 (Referrals)</th>
+          <th class="border px-4 py-2">Week 2 (Admitted)</th>
+          <th class="border px-4 py-2">Week 3 (Referrals)</th>
+          <th class="border px-4 py-2">Week 3 (Admitted)</th>
+          <th class="border px-4 py-2">Week 4 (Referrals)</th>
+          <th class="border px-4 py-2">Week 4 (Admitted)</th>
+          <th class="border px-4 py-2">Monthly Total (Referrals)</th>
+          <th class="border px-4 py-2">Monthly Total (Admitted)</th>
+          <th class="border px-4 py-2">Conversion Rate</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let practice of performanceData">
+          <td class="border px-4 py-2">{{ practice.practice }}</td>
+          <td class="border px-4 py-2">{{ practice.week1.referrals }}</td>
+          <td class="border px-4 py-2">{{ practice.week1.admitted }}</td>
+          <td class="border px-4 py-2">{{ practice.week2.referrals }}</td>
+          <td class="border px-4 py-2">{{ practice.week2.admitted }}</td>
+          <td class="border px-4 py-2">{{ practice.week3.referrals }}</td>
+          <td class="border px-4 py-2">{{ practice.week3.admitted }}</td>
+          <td class="border px-4 py-2">{{ practice.week4.referrals }}</td>
+          <td class="border px-4 py-2">{{ practice.week4.admitted }}</td>
+          <td class="border px-4 py-2">{{ practice.monthlyTotal.referrals }}</td>
+          <td class="border px-4 py-2">{{ practice.monthlyTotal.admitted }}</td>
+          <td class="border px-4 py-2">{{ practice.conversionRate }}</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <!-- <tr class="font-bold">
+              <td class="border px-4 py-2">{{ totalPerformance.practice }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week1.referrals }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week1.admitted }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week2.referrals }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week2.admitted }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week3.referrals }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week3.admitted }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week4.referrals }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.week4.admitted }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.monthlyTotal.referrals }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.monthlyTotal.admitted }}</td>
+              <td class="border px-4 py-2">{{ totalPerformance.conversionRate }}</td>
+            </tr> -->
+      </tfoot>
+    </table>
+  </div>
+</section>

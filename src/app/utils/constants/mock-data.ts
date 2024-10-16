@@ -2027,3 +2027,104 @@ export const medicaidRomMockBillingData = [
     serviceDate: "2024-10-15",
   },
 ];
+
+export const performanceScoreCardData = [
+  {
+    practice: "Training Organization 1",
+    week1: {
+      referrals: 3,
+      admitted: 1,
+    },
+    week2: {
+      referrals: 5,
+      admitted: 2,
+    },
+    week3: {
+      referrals: 4,
+      admitted: 2,
+    },
+    week4: {
+      referrals: 6,
+      admitted: 3,
+    },
+    monthlyTotal: {
+      referrals: 18,
+      admitted: 8,
+    },
+    conversionRate: "44%",
+  },
+  {
+    practice: "Training Organization 2",
+    week1: {
+      referrals: 2,
+      admitted: 0,
+    },
+    week2: {
+      referrals: 3,
+      admitted: 1,
+    },
+    week3: {
+      referrals: 4,
+      admitted: 2,
+    },
+    week4: {
+      referrals: 5,
+      admitted: 2,
+    },
+    monthlyTotal: {
+      referrals: 14,
+      admitted: 5,
+    },
+    conversionRate: "36%",
+  },
+  {
+    practice: "Training Organization 3",
+    week1: {
+      referrals: 1,
+      admitted: 0,
+    },
+    week2: {
+      referrals: 2,
+      admitted: 0,
+    },
+    week3: {
+      referrals: 3,
+      admitted: 1,
+    },
+    week4: {
+      referrals: 3,
+      admitted: 1,
+    },
+    monthlyTotal: {
+      referrals: 9,
+      admitted: 2,
+    },
+    conversionRate: "22%",
+  },
+];
+
+// // Total row data (aggregate for all organizations)
+// export const totalPerformanceScoreCard = {
+//   practice: "Total",
+//   week1: {
+//     referrals: 6,
+//     admitted: 1,
+//   },
+//   week2: {
+//     referrals: 10,
+//     admitted: 3,
+//   },
+//   week3: {
+//     referrals: 11,
+//     admitted: 5,
+//   },
+//   week4: {
+//     referrals: 14,
+//     admitted: 6,
+//   },
+//   monthlyTotal: {
+//     referrals: 41,
+//     admitted: 15,
+//   },
+//   conversionRate: "37%",
+// };

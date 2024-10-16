@@ -92,6 +92,11 @@ export const sidebarItems: ISidebarItems[] = [
               },
             ],
           },
+          {
+            label: "Performance Score Card",
+            icon: "pi pi-id-card",
+            routerLink: ["/reports/performance-score-card"],
+          },
         ],
       },
     ],
