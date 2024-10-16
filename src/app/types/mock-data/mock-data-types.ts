@@ -53,3 +53,18 @@ export interface IAdmissionReport {
   registeredBy: string;
   image: string;
 }
+
+export interface IReadingCompliance {
+  id: number;
+  image: string;
+  patientName: string;
+  practiceName: string;
+  startDate: string;
+  weeklyTarget: string;
+  dor: number;
+  dorNeeded: number;
+  potentialReadingDays: number;
+  timeSpent: string;
+  previousMonthsBillingStatus: { month: string; billable: boolean }[];
+  currentBillingStatus: string;
+}

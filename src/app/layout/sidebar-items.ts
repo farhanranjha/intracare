@@ -92,6 +92,23 @@ export const sidebarItems: ISidebarItems[] = [
               },
             ],
           },
+          {
+            label: "Care Management",
+            icon: "pi pi-money-bill",
+            items: [
+              {
+                label: "RPM",
+                icon: "pi pi-mobile",
+                items: [
+                  {
+                    label: "Readings",
+                    icon: "pi pi-table",
+                    routerLink: ["/reports/readings-compliance"],
+                  },
+                ],
+              },
+            ],
+          },
         ],
       },
     ],
