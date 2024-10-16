@@ -16,3 +16,9 @@
       border: 1px solid #6366F1;
     }
   }
+
+  .multiselect{
+  ::ng-deep .p-multiselect {
+      width: 300px;
+    }
+  }
