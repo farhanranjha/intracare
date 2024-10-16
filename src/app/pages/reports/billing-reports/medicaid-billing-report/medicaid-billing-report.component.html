@@ -3,11 +3,13 @@
     <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl px-2">Medicaid RPM Billing</h3>
     <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
   </div>
-  <billing-report-filter [cptCodes]="cptCodes" (filterSelection)="onFilterSelection($event)"></billing-report-filter>
   <div class="w-full mt-1">
-    <intracare-table [columns]="columns" [rowData]="filteredReports" [rowsPerPage]="[10, 25, 50]" />
+    <intracare-table [columns]="columns" [rowData]="medicaidBillingReports" [rowsPerPage]="[10, 25, 50]" />
     <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
       <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+    <ng-template #modifierCodesFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="modifierCodesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
     </ng-template>
   </div>
 </section>

@@ -3,19 +3,13 @@
     <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl px-2">Non-Adherence Report</h3>
     <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
   </div>
-  <div class="mx-0 my-2">
-    <p-dropdown
-      [options]="durations"
-      [(ngModel)]="selectedDuration"
-      [showClear]="true"
-      placeholder="Select a Duration"
-      (onChange)="filterByDuration()"
-    ></p-dropdown>
-  </div>
   <div class="w-full mt-1">
-    <intracare-table [columns]="columns" [rowData]="filteredReports" [rowsPerPage]="[10, 25, 50]" />
+    <intracare-table [columns]="columns" [rowData]="nonAdherenceReportsData" [rowsPerPage]="[10, 25, 50]" />
     <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
       <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+    <ng-template #lastReadingFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="lastReadingOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
     </ng-template>
   </div>
 </section>
