@@ -2107,3 +2107,30 @@ export const readingsComplianceData = [
     currentBillingStatus: "Non-Billable",
   },
 ];
+
+export const performanceScoreCardData = [
+  {
+    practice: "Training Organization 1",
+    week1: {
+      referrals: 3,
+      admitted: 1,
+    },
+    week2: {
+      referrals: 5,
+      admitted: 2,
+    },
+    week3: {
+      referrals: 4,
+      admitted: 2,
+    },
+    week4: {
+      referrals: 6,
+      admitted: 3,
+    },
+    monthlyTotal: {
+      referrals: 18,
+      admitted: 8,
+    },
+    conversionRate: "44%",
+  },
+];
