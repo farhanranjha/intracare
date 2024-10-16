@@ -1,7 +1,5 @@
 import { Component, TemplateRef, ViewChild } from "@angular/core";
-import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
-import { DropdownModule } from "primeng/dropdown";
 import { CustomFilterComponent } from "src/app/components/table/custom-filter/custom-filter.component";
 import { TableComponent } from "src/app/components/table/table.component";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
@@ -14,15 +12,7 @@ import { TooltipModule } from "primeng/tooltip";
 @Component({
   selector: "app-care-management-reading-report",
   standalone: true,
-  imports: [
-    TableComponent,
-    DropdownModule,
-    FormsModule,
-    ButtonModule,
-    CustomFilterComponent,
-    CommonModule,
-    TooltipModule,
-  ],
+  imports: [TableComponent, ButtonModule, CustomFilterComponent, CommonModule, TooltipModule],
   templateUrl: "./care-management-reading-report.component.html",
   styleUrl: "./care-management-reading-report.component.scss",
 })
