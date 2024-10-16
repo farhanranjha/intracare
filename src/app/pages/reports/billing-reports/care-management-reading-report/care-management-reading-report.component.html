@@ -1,0 +1,101 @@
+<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2 rounded-lg">
+  <div class="w-full flex justify-between items-center gap-3">
+    <h3 class="m-0 w-3/4 my-auto text-[#6366F1] font-medium font-sans">
+      Readings Compliance Report as of {{ currentDate }}
+    </h3>
+    <!-- <div class="flex gap-4">
+      <div class="flex items-center space-x-2">
+        <span>
+          <i class="pi pi-calendar-plus" style="color: #4fd1c5; font-size: 1.5rem"></i>
+        </span>
+        <div class="flex items-center">
+          <h4 class="m-0 text-[#6366F1]">{{ billableCount }} <span>Billable</span></h4>
+        </div>
+      </div>
+
+      <div class="status-item flex items-center space-x-2">
+        <span>
+          <i class="pi pi-check-square" style="color: #649eea; font-size: 1.5rem"></i>
+        </span>
+        <div class="flex items-center">
+          <h4 class="m-0 text-[#6366F1]">{{ onTargetCount }} <span>On Target</span></h4>
+        </div>
+      </div>
+
+      <div class="status-item flex items-center space-x-2">
+        <span>
+          <i class="pi pi-tag" style="color: #ecc94b; font-size: 1.5rem"></i>
+        </span>
+        <div class="flex items-center">
+          <h4 class="m-0 text-[#6366F1]">{{ offTargetCount }} <span>Off Target</span></h4>
+        </div>
+      </div>
+
+      <div class="status-item flex items-center space-x-2">
+        <span>
+          <i class="pi pi-file-excel" style="color: #f56565; font-size: 1.5rem"></i>
+        </span>
+        <div class="flex items-center">
+          <h4 class="m-0 text-[#6366F1]">{{ nonBillableCount }} <span>Non-Billable</span></h4>
+        </div>
+      </div>
+    </div> -->
+    <div class="w-full flex flex-row gap-y-4 gap-x-3 items-center justify-end">
+      <span
+        class="whitespace-nowrap text-medium bg-[#E6F8EF] text-[#027847] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
+        >Billable: {{ billableCount }}</span
+      >
+      <span
+        class="whitespace-nowrap text-medium bg-[#FEF3F2] text-[#B42318] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
+        >Non-Billable: {{ nonBillableCount }}</span
+      >
+      <span
+        class="whitespace-nowrap text-medium bg-[#DCEFFF] text-[#6366F1] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
+        >On Target: {{ onTargetCount }}</span
+      >
+      <span
+        class="whitespace-nowrap text-medium bg-[#FEEBE1] text-[#F5630F] text-base not-italic font-medium leading-4 py-1 px-2 rounded-full"
+        >Off Target: {{ offTargetCount }}</span
+      >
+    </div>
+    <p-button icon="pi pi-download text-[#6366F1]" class="p-button-rounded btn p-button-text p-button-lg"></p-button>
+  </div>
+  <div class="w-full mt-2">
+    <intracare-table [columns]="columns" [rowData]="readingsComplianceReports" [rowsPerPage]="[10, 25, 50]" />
+    <ng-template #patientCardTemplate let-row>
+      <div class="flex items-center space-x-2 w-[140px]">
+        <img [src]="row.image" alt="Patient Image" class="w-2 rounded-full" />
+        <div class="flex flex-col">
+          <span class="font-bold">{{ row.patientName }}</span>
+          <a href="#" class="text-black"
+            >Patient ID: <span class="text-blue-500 hover:underline">{{ row.id }}</span></a
+          >
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+    <ng-template class="btn" #previousMonthsBillingTemplate let-row>
+      <ng-container *ngFor="let status of row?.previousMonthsBillingStatus">
+        <!-- <div class="btn"> -->
+        <span [pTooltip]="status?.month" tooltipPosition="top" style="margin-right: 5px">
+          <div class="btn" *ngIf="status?.billable; else elseBlock">
+            <i class="pi pi-check" style="color: green"></i>
+          </div>
+          <ng-template #elseBlock>
+            <i class="pi pi-times" style="color: red"></i>
+          </ng-template>
+        </span>
+        <!-- </div> -->
+      </ng-container>
+    </ng-template>
+    <ng-template #currentBillingFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="currentBillingOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+    <ng-template #weeklyTargetFilter let-handleFilterChange="handleFilterChange">
+      <app-custom-filter [options]="weeklyTargetOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+    </ng-template>
+  </div>
+</section>
