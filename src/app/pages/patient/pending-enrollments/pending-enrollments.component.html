@@ -1,14 +1,22 @@
 <!-- using onLazyLoad.bind(this) to explicitly bind context of this to lazyload func/ or we can use arrow function -->
 <!-- https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions#No_separate_this -->
-<intracare-table
-  [onLazyLoad]="onLazyLoad.bind(this)"
-  [totalRecords]="totalRecords"
-  [columns]="columns"
-  [rowData]="rowData"
-  [rowsPerPage]="[25, 50, 100]"
-  [loading]="loading"
-  [scrollHeight]="'80vh'"
-/>
+<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2 h-[calc(100vh-100px)]">
+  <div class="w-full flex justify-between items-center">
+    <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl">Pending Enrollments</h3>
+  </div>
+  <div class="w-full mt-1">
+    <intracare-table
+      [onLazyLoad]="onLazyLoad.bind(this)"
+      [totalRecords]="totalRecords"
+      [columns]="columns"
+      [rowData]="rowData"
+      [rowsPerPage]="[25, 50, 100]"
+      [loading]="loading"
+      [scrollHeight]="'73vh'"
+    />
+  </div>
+</section>
+
 <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
   <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange" />
 </ng-template>
