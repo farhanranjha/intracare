@@ -1,0 +1,79 @@
+<section class="w-full m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2 rounded-lg">
+  <div class="w-full flex justify-between items-center">
+    <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl px-2">Referrel Score Card</h3>
+    <div class="flex flex-row gap-2 items-center">
+      <div class="flex flex-row gap-y-4 gap-x-3 items-center justify-end">
+        <div class="flex flex-col gap-2">
+          <label for="timeFrame" class="text-base font-medium">Date Range:</label>
+          <p-calendar
+            [(ngModel)]="dateRange"
+            selectionMode="range"
+            dateFormat="yy-mm-dd"
+            [showClear]="true"
+            inputId="timeFrame"
+            class="w-full"
+          ></p-calendar>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="timeFrame" class="text-base font-medium">Select Provider:</label>
+          <p-dropdown [options]="provider" [(ngModel)]="selectedprovider" placeholder="Select Provider"></p-dropdown>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="timeFrame" class="text-base font-medium">Select Practice:</label>
+          <p-dropdown [options]="practices" [(ngModel)]="selectedPractice" placeholder="Select Practice"></p-dropdown>
+        </div>
+        <p-button
+          class="text-[#6366F1] items-center filterBtn self-end"
+          label="Filter"
+          (onClick)="filterPerformanceData()"
+        ></p-button>
+        <p-button
+          *ngIf="showClearButton"
+          class="text-[#6366F1] filterBtn self-end"
+          label="Clear"
+          (onClick)="clearFiltersToDefault()"
+        ></p-button>
+      </div>
+      <p-button
+        icon="pi pi-download text-[#6366F1]"
+        class="p-button-rounded btn p-button-text p-button-lg self-end"
+      ></p-button>
+    </div>
+  </div>
+  <div class="w-full mt-1"></div>
+
+  <div class="w-full mt-2">
+    <p-table [value]="referralsScoreData" [responsiveLayout]="'scroll'" class="bordered-table">
+      <ng-template pTemplate="header">
+        <tr>
+          <th rowspan="2">Practice</th>
+          <th rowspan="2">Provider</th>
+          <th colspan="3" class="text-center">Referrals</th>
+          <th colspan="3" class="text-center">Active</th>
+          <th rowspan="2" class="text-center">Discharged</th>
+        </tr>
+        <tr>
+          <th class="text-center">RPM</th>
+          <th class="text-center">CCM</th>
+          <th class="text-center">RPM , CCM</th>
+          <th class="text-center">RPM</th>
+          <th class="text-center">CCM</th>
+          <th class="text-center">RPM , CCM</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-rowData>
+        <tr>
+          <td>{{ rowData.practice }}</td>
+          <td>{{ rowData.provider }}</td>
+          <td class="text-center">{{ rowData.referrals.RPM }}</td>
+          <td class="text-center">{{ rowData.referrals.CCM }}</td>
+          <td class="text-center">{{ rowData.referrals.RPMCCM }}</td>
+          <td class="text-center">{{ rowData.active.RPM }}</td>
+          <td class="text-center">{{ rowData.active.CCM }}</td>
+          <td class="text-center">{{ rowData.active.RPMCCM }}</td>
+          <td class="text-center">{{ rowData.discharged }}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</section>

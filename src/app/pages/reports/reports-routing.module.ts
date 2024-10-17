@@ -7,6 +7,7 @@ import { CareManagementReadingReportComponent } from "./billing-reports/care-man
 import { CcmBillingReportComponent } from "./billing-reports/medicare/ccm-billing-report/ccm-billing-report.component";
 import { MedicaidBillingReportComponent } from "./billing-reports/medicaid-billing-report/medicaid-billing-report.component";
 import { PerformanceScoreCardComponent } from "./billing-reports/performance-score-card/performance-score-card.component";
+import { ReferralsScoreCardComponent } from "./billing-reports/referrals-score-card/referrals-score-card.component";
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { PerformanceScoreCardComponent } from "./billing-reports/performance-sco
       { path: "medicaid-billing", component: MedicaidBillingReportComponent },
       { path: "readings-compliance", component: CareManagementReadingReportComponent },
       { path: "performance-score-card", component: PerformanceScoreCardComponent },
+      { path: "referrals-score-card", component: ReferralsScoreCardComponent },
     ]),
   ],
   exports: [RouterModule],

@@ -1,4 +1,4 @@
-import { formatDate } from "@angular/common";
+import { CommonModule, formatDate } from "@angular/common";
 import { Component } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { ButtonModule } from "primeng/button";
@@ -10,7 +10,7 @@ import { performanceScoreCardData } from "src/app/utils/constants/mock-data";
 @Component({
   selector: "performance-score-card",
   standalone: true,
-  imports: [ButtonModule, DropdownModule, FormsModule, TableModule, MultiSelectModule],
+  imports: [ButtonModule, DropdownModule, FormsModule, TableModule, MultiSelectModule, CommonModule],
   templateUrl: "./performance-score-card.component.html",
   styleUrl: "./performance-score-card.component.scss",
 })
@@ -19,17 +19,7 @@ export class PerformanceScoreCardComponent {
   filteredPerformanceData = performanceScoreCardData;
 
   currentMonth: string = formatDate(new Date(), "MMMM", "en");
-
-  totalReferralsWeek1 = 0;
-  totalAdmittedWeek1 = 0;
-  totalReferralsWeek2 = 0;
-  totalAdmittedWeek2 = 0;
-  totalReferralsWeek3 = 0;
-  totalAdmittedWeek3 = 0;
-  totalReferralsWeek4 = 0;
-  totalAdmittedWeek4 = 0;
-  totalMonthlyReferrals = 0;
-  totalMonthlyAdmitted = 0;
+  currentYear: string = formatDate(new Date(), "YYYY", "en");
 
   years = [
     { label: "2024", value: "2024" },
@@ -58,40 +48,24 @@ export class PerformanceScoreCardComponent {
   selectedPractice = "Training Organization 1";
   selectedMonths: string[] = [this.currentMonth];
 
-  ngOnInit() {
-    this.filterPerformanceData();
-    this.calculateTotals();
-  }
+  showClearButton: boolean = false;
 
   filterPerformanceData() {
-    this.filteredPerformanceData = [...this.performanceData];
-
-    if (this.selectedPractice) {
-      this.filteredPerformanceData = this.filteredPerformanceData.filter(
-        (data) => data.practice === this.selectedPractice,
-      );
+    if (
+      this.selectedYear !== this.currentYear ||
+      this.selectedPractice !== this.practices[0].value ||
+      JSON.stringify(this.selectedMonths) !== JSON.stringify([this.currentMonth])
+    ) {
+      this.showClearButton = true;
+    } else {
+      this.showClearButton = false;
     }
-
-    this.calculateTotals();
   }
 
-  calculateTotals() {
-    this.totalReferralsWeek1 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week1.referrals, 0);
-    this.totalAdmittedWeek1 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week1.admitted, 0);
-
-    this.totalReferralsWeek2 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week2.referrals, 0);
-    this.totalAdmittedWeek2 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week2.admitted, 0);
-
-    this.totalReferralsWeek3 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week3.referrals, 0);
-    this.totalAdmittedWeek3 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week3.admitted, 0);
-
-    this.totalReferralsWeek4 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week4.referrals, 0);
-    this.totalAdmittedWeek4 = this.filteredPerformanceData.reduce((acc, data) => acc + data.week4.admitted, 0);
-
-    this.totalMonthlyReferrals = this.filteredPerformanceData.reduce(
-      (acc, data) => acc + data.monthlyTotal.referrals,
-      0,
-    );
-    this.totalMonthlyAdmitted = this.filteredPerformanceData.reduce((acc, data) => acc + data.monthlyTotal.admitted, 0);
+  clearFiltersToDefault() {
+    this.selectedYear = this.currentYear;
+    this.selectedPractice = this.practices[0].value;
+    this.selectedMonths = [this.currentMonth];
+    this.showClearButton = false;
   }
 }
