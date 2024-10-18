@@ -1,0 +1,46 @@
+<section class="w-full h-[70vh] m-2 shadow-md bg-white p-3 flex flex-col justify-start items-start gap-2 rounded-lg">
+  <div class="w-full flex justify-between items-center">
+    <h3 class="m-0 my-auto text-[#6366F1] font-semibold text-2xl px-2">Provider Score Card</h3>
+    <div class="flex flex-row gap-2 items-center">
+      <div class="flex flex-row gap-y-4 gap-x-3 items-center justify-end">
+        <div class="flex flex-col gap-2">
+          <label for="year" class="text-base font-medium">Select Year:</label>
+          <p-dropdown id="year" [options]="years" [(ngModel)]="selectedYear" placeholder="Select Year"></p-dropdown>
+        </div>
+        <div class="flex flex-col gap-2">
+          <label for="practice" class="text-base font-medium">Select Practice:</label>
+          <p-dropdown
+            id="practice"
+            [options]="practices"
+            [(ngModel)]="selectedPractice"
+            placeholder="Select Practice"
+          ></p-dropdown>
+        </div>
+        <p-button
+          class="text-[#6366F1] filterBtn self-end"
+          label="Filter"
+          (onClick)="filterPerformanceData()"
+        ></p-button>
+        <p-button
+          *ngIf="showClearButton"
+          class="text-[#6366F1] filterBtn self-end"
+          label="Clear"
+          (onClick)="clearFiltersToDefault()"
+        ></p-button>
+      </div>
+      <p-button
+        icon="pi pi-download text-[#6366F1]"
+        class="p-button-rounded btn p-button-text p-button-lg self-end"
+      ></p-button>
+    </div>
+  </div>
+  <div class="w-full mt-1"></div>
+  <div class="w-full mt-2">
+    <intracare-table
+      [columns]="columns"
+      [rowData]="filteredProviderData"
+      [rowsPerPage]="[10, 25, 50]"
+      [scrollHeight]="scrollHeight"
+    />
+  </div>
+</section>
