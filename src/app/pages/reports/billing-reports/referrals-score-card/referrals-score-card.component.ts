@@ -8,7 +8,7 @@ import { TableModule } from "primeng/table";
 import { referralsScoreCardData } from "src/app/utils/constants/mock-data";
 
 @Component({
-  selector: "app-referrals-score-card",
+  selector: "referrals-score-card",
   standalone: true,
   imports: [ButtonModule, DropdownModule, FormsModule, TableModule, CalendarModule, CommonModule],
   templateUrl: "./referrals-score-card.component.html",
