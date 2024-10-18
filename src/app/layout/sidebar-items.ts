@@ -120,7 +120,7 @@ export const sidebarItems: ISidebarItems[] = [
             routerLink: ["/reports/referrals-score-card"],
           },
           {
-            label: "Referral Score Card",
+            label: "Provider Score Card",
             icon: "pi pi-money-bill",
             routerLink: ["/reports/provider-score-card"],
           },
