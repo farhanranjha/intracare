@@ -20,7 +20,6 @@ import { ScoreCardComponent } from "./score-card/score-card.component";
     RouterModule.forChild([
       { path: "admission-report", component: AdmissionReportsComponent },
       { path: "non-adherence", component: NonAdherenceComponent },
-
       {
         path: "score-card",
         component: ScoreCardComponent,

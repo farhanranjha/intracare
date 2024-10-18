@@ -67,34 +67,12 @@ export const sidebarItems: ISidebarItems[] = [
           {
             label: "Care Management",
             icon: "pi pi-money-bill",
-            items: [
-              {
-                label: "RPM",
-                icon: "pi pi-mobile",
-                items: [
-                  {
-                    label: "Readings",
-                    icon: "pi pi-table",
-                    routerLink: ["/reports/readings-compliance"],
-                  },
-                ],
-              },
-            ],
+            routerLink: ["/reports/care-management"],
           },
           {
-            label: "Performance Score Card",
+            label: "Score Card",
             icon: "pi pi-id-card",
-            routerLink: ["/reports/performance-score-card"],
-          },
-          {
-            label: "Referral Score Card",
-            icon: "pi pi-link",
-            routerLink: ["/reports/referrals-score-card"],
-          },
-          {
-            label: "Provider Score Card",
-            icon: "pi pi-money-bill",
-            routerLink: ["/reports/provider-score-card"],
+            routerLink: ["/reports/score-card"],
           },
         ],
       },
