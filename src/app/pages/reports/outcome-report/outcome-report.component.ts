@@ -67,8 +67,6 @@ export class OutcomeReportComponent {
   originalData: number[] = [4, 3, 2, 1];
 
   ngOnInit() {
-    const documentStyle = getComputedStyle(document.documentElement);
-
     this.data = {
       labels: ["HEDIS", "Critical", "Rising Risk", "High Risk"],
       datasets: [
