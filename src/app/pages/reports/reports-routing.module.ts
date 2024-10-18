@@ -13,6 +13,7 @@ import { BillingReportsComponent } from "./billing-reports/billing-reports.compo
 import { MedicareComponent } from "./billing-reports/components/medicare/medicare.component";
 import { MedicaidComponent } from "./billing-reports/components/medicaid/medicaid.component";
 import { CareManagementComponent } from "./care-management/care-management.component";
+import { ScoreCardComponent } from "./score-card/score-card.component";
 
 @NgModule({
   imports: [
@@ -20,9 +21,16 @@ import { CareManagementComponent } from "./care-management/care-management.compo
       { path: "admission-report", component: AdmissionReportsComponent },
       { path: "non-adherence", component: NonAdherenceComponent },
 
-      { path: "performance-score-card", component: PerformanceScoreCardComponent },
-      { path: "referrals-score-card", component: ReferralsScoreCardComponent },
-      { path: "provider-score-card", component: ProviderScoreCardComponent },
+      {
+        path: "score-card",
+        component: ScoreCardComponent,
+        children: [
+          { path: "", redirectTo: "performance", pathMatch: "full" },
+          { path: "performance", component: PerformanceScoreCardComponent },
+          { path: "referrals", component: ReferralsScoreCardComponent },
+          { path: "provider", component: ProviderScoreCardComponent },
+        ],
+      },
       {
         path: "care-management",
         component: CareManagementComponent,
