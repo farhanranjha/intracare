@@ -2312,3 +2312,222 @@ export const referralsScoreCardData = [
     discharged: 0,
   },
 ];
+
+export const providerScoreData = {
+  2024: [
+    {
+      category: "Enrolled Patient",
+      goal: 100,
+      sept: 6,
+      oct: 6,
+    },
+    {
+      category: "New Referrals",
+      goal: 0,
+      sept: 0,
+      oct: 0,
+    },
+    {
+      category: "New referrals successfully engaged",
+      goal: 0,
+      sept: 0,
+      oct: 0,
+    },
+    {
+      category: "Discharged Patient",
+      goal: 0,
+      sept: 0,
+      oct: 0,
+    },
+    {
+      category: "BP Enrolled Patient",
+      goal: 100,
+      sept: 3,
+      oct: 3,
+    },
+    {
+      category: "BP Readings (16 monthly)",
+      goal: 95.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BP HEDIS",
+      goal: 80.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BP Rising Risk",
+      goal: 80.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BP High Risk",
+      goal: 80.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BP Critical",
+      goal: 0,
+      sept: 0,
+      oct: 0,
+    },
+    {
+      category: "BG Enrolled Patient",
+      goal: 100,
+      sept: 1,
+      oct: 1,
+    },
+    {
+      category: "BG Readings (16 monthly)",
+      goal: 95.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BG HEDIS",
+      goal: 80.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BG Rising Risk",
+      goal: 80.0,
+      sept: "0%",
+      oct: "0%",
+    },
+    {
+      category: "BG Critical",
+      goal: 0,
+      sept: 0,
+      oct: 0,
+    },
+  ],
+  2023: [
+    {
+      category: "Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "New Referrals",
+      goal: 0,
+    },
+    {
+      category: "New referrals successfully engaged",
+      goal: 0,
+    },
+    {
+      category: "Discharged Patient",
+      goal: 0,
+    },
+    {
+      category: "BP Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "BP Readings (16 monthly)",
+      goal: 95.0,
+    },
+    {
+      category: "BP HEDIS",
+      goal: 80.0,
+    },
+    {
+      category: "BP Rising Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BP High Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BP Critical",
+      goal: 0,
+    },
+    {
+      category: "BG Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "BG Readings (16 monthly)",
+      goal: 95.0,
+    },
+    {
+      category: "BG HEDIS",
+      goal: 80.0,
+    },
+    {
+      category: "BG Rising Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BG Critical",
+      goal: 0,
+    },
+  ],
+  2022: [
+    {
+      category: "Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "New Referrals",
+      goal: 0,
+    },
+    {
+      category: "New referrals successfully engaged",
+      goal: 0,
+    },
+    {
+      category: "Discharged Patient",
+      goal: 0,
+    },
+    {
+      category: "BP Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "BP Readings (16 monthly)",
+      goal: 95.0,
+    },
+    {
+      category: "BP HEDIS",
+      goal: 80.0,
+    },
+    {
+      category: "BP Rising Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BP High Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BP Critical",
+      goal: 0,
+    },
+    {
+      category: "BG Enrolled Patient",
+      goal: 100,
+    },
+    {
+      category: "BG Readings (16 monthly)",
+      goal: 95.0,
+    },
+    {
+      category: "BG HEDIS",
+      goal: 80.0,
+    },
+    {
+      category: "BG Rising Risk",
+      goal: 80.0,
+    },
+    {
+      category: "BG Critical",
+      goal: 0,
+    },
+  ],
+};
