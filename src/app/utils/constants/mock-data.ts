@@ -2133,6 +2133,29 @@ export const performanceScoreCardData = [
     },
     conversionRate: "44%",
   },
+  {
+    practice: "Total",
+    week1: {
+      referrals: 3,
+      admitted: 1,
+    },
+    week2: {
+      referrals: 5,
+      admitted: 2,
+    },
+    week3: {
+      referrals: 4,
+      admitted: 2,
+    },
+    week4: {
+      referrals: 6,
+      admitted: 3,
+    },
+    monthlyTotal: {
+      referrals: 18,
+      admitted: 8,
+    },
+  },
 ];
 export const dashboardMockData = [
   {
@@ -2254,5 +2277,38 @@ export const dashboardMockData = [
     spo2: "98%",
     temperature: "98.5°F",
     status: "active",
+  },
+];
+
+export const referralsScoreCardData = [
+  {
+    practice: "Training Organization 1",
+    provider: "Provider A",
+    referrals: {
+      RPM: 5,
+      CCM: 3,
+      RPMCCM: 2,
+    },
+    active: {
+      RPM: 4,
+      CCM: 2,
+      RPMCCM: 1,
+    },
+    discharged: 0,
+  },
+  {
+    practice: "Total",
+    provider: "Provider A",
+    referrals: {
+      RPM: 5,
+      CCM: 3,
+      RPMCCM: 2,
+    },
+    active: {
+      RPM: 4,
+      CCM: 2,
+      RPMCCM: 1,
+    },
+    discharged: 0,
   },
 ];
