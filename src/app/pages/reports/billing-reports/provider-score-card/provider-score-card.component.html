@@ -4,11 +4,11 @@
     <div class="flex flex-row gap-2 items-center">
       <div class="flex flex-row gap-y-4 gap-x-3 items-center justify-end">
         <div class="flex flex-col gap-2">
-          <label for="timeFrame" class="text-base font-medium">Select Year:</label>
+          <label for="year" class="text-base font-medium">Select Year:</label>
           <p-dropdown [options]="years" [(ngModel)]="selectedYear" placeholder="Select Year"></p-dropdown>
         </div>
         <div class="flex flex-col gap-2">
-          <label for="timeFrame" class="text-base font-medium">Select Practice:</label>
+          <label for="practice" class="text-base font-medium">Select Practice:</label>
           <p-dropdown [options]="practices" [(ngModel)]="selectedPractice" placeholder="Select Practice"></p-dropdown>
         </div>
         <p-button

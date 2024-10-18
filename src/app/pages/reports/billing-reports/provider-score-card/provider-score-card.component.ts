@@ -11,7 +11,7 @@ import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { providerScoreData } from "src/app/utils/constants/mock-data";
 
 @Component({
-  selector: "app-provider-score-card",
+  selector: "provider-score-card",
   standalone: true,
   imports: [ButtonModule, DropdownModule, FormsModule, TableModule, MultiSelectModule, CommonModule, TableComponent],
   templateUrl: "./provider-score-card.component.html",
