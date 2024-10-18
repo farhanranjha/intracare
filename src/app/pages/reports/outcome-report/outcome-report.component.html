@@ -4,8 +4,9 @@
     <div class="flex flex-row gap-2 items-center">
       <div class="flex flex-row gap-y-4 gap-x-3 items-center justify-end">
         <div class="flex flex-col gap-2">
-          <label for="timeFrame" class="text-base font-medium">Outcome Report Type:</label>
+          <label for="outcomeReportType" class="text-base font-medium">Outcome Report Type:</label>
           <p-multiSelect
+            id="outcomeReportType"
             [options]="outcomeReportType"
             [(ngModel)]="selectedOutcomeReportType"
             placeholder="Select Outcome Report Type"
@@ -14,8 +15,9 @@
           ></p-multiSelect>
         </div>
         <div class="flex flex-col gap-2">
-          <label for="timeFrame" class="text-base font-medium">Reading Type:</label>
+          <label for="readingType" class="text-base font-medium">Reading Type:</label>
           <p-dropdown
+            id="readingType"
             [options]="readingType"
             [(ngModel)]="selectedReadingType"
             placeholder="Select Reading Type"
@@ -88,12 +90,10 @@
       <div class="space-y-2">
         <div class="p-4 bg-[#fae2e0] rounded-lg">
           <div class="flex flex-row gap-1">
-            <!-- <img src="../../../../../assets/layout/styles/icons/circle-critical.svg" /> -->
             <span class="text-[#F04438] font-bold text-3xl mt-[-2px]">&#x2022;</span>
             <p class="text-[#B42318] font-semibold flex items-center">hypertensive crisis or hypotensive</p>
           </div>
           <div class="flex flex-row gap-1">
-            <!-- <img src="../../../../../assets/layout/styles/icons/circle-critical.svg" /> -->
             <span class="text-[#F04438] font-bold text-3xl mt-[-2px]">&#x2022;</span>
             <p class="text-[#B42318] font-semibold flex items-center">
               systolic reading < 90 mmHg AND/OR diastolic reading < 60

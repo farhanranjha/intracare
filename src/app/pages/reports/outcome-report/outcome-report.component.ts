@@ -74,24 +74,9 @@ export class OutcomeReportComponent {
       datasets: [
         {
           data: [4, 3, 2, 1],
-          backgroundColor: [
-            documentStyle.getPropertyValue("--green-500"),
-            documentStyle.getPropertyValue("--yellow-500"),
-            documentStyle.getPropertyValue("--orange-500"),
-            documentStyle.getPropertyValue("--red-500"),
-          ],
-          color: [
-            documentStyle.getPropertyValue("--green-100"),
-            documentStyle.getPropertyValue("--yellow-100"),
-            documentStyle.getPropertyValue("--orange-100"),
-            documentStyle.getPropertyValue("--red-100"),
-          ],
-          hoverBackgroundColor: [
-            documentStyle.getPropertyValue("--green-400"),
-            documentStyle.getPropertyValue("--yellow-400"),
-            documentStyle.getPropertyValue("--orange-400"),
-            documentStyle.getPropertyValue("--red-400"),
-          ],
+          backgroundColor: ["#12B76A", "#F79009", "#F04438", "#F63D68"],
+          color: ["#E6FCEF", "#FEF0C7", "#FFE1D3", "#FEE4E2"],
+          hoverBackgroundColor: ["#32D583", "#FAB038", "#F66358", "#F63D68"],
           visibility: [true, true, true, true],
         },
       ],
