@@ -2531,3 +2531,114 @@ export const providerScoreData = {
     },
   ],
 };
+
+export const outcomeReportData = [
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+  {
+    patientName: "Thomas Blackwood",
+    id: 424,
+    practiceName: "Training Organization 1",
+    dob: "July 22, 2024",
+    dateRange: {
+      start: new Date("Sep 1, 2002"),
+      end: new Date("Oct 17, 2024"),
+    },
+    average: "107/76",
+    highToLowReadings: "155/97 to 70/52",
+  },
+];

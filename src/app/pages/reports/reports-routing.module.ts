@@ -14,12 +14,14 @@ import { MedicareComponent } from "./billing-reports/components/medicare/medicar
 import { MedicaidComponent } from "./billing-reports/components/medicaid/medicaid.component";
 import { CareManagementComponent } from "./care-management/care-management.component";
 import { ScoreCardComponent } from "./score-card/score-card.component";
+import { OutcomeReportComponent } from "./outcome-report/outcome-report.component";
 
 @NgModule({
   imports: [
     RouterModule.forChild([
       { path: "admission-report", component: AdmissionReportsComponent },
       { path: "non-adherence", component: NonAdherenceComponent },
+      { path: "outcome-report", component: OutcomeReportComponent },
       {
         path: "score-card",
         component: ScoreCardComponent,
