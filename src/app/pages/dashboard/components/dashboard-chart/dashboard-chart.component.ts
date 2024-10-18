@@ -40,7 +40,7 @@ export class DashboardChartComponent {
     this.options = {
       maintainAspectRatio: false,
       aspectRatio: 1.0,
-
+      cornerRadius: "20px",
       scales: {
         x: {
           ticks: {
@@ -55,7 +55,7 @@ export class DashboardChartComponent {
             color: textColorSecondary,
           },
           grid: {
-            color: surfaceBorder,
+            color: "#e5e7eb",
           },
         },
       },
