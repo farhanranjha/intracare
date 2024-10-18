@@ -62,35 +62,7 @@ export const sidebarItems: ISidebarItems[] = [
           {
             label: "Billing Reports",
             icon: "pi pi-money-bill",
-            items: [
-              {
-                label: "Medicare",
-                icon: "pi pi-shield",
-                items: [
-                  {
-                    label: "RPM",
-                    icon: "pi pi-mobile",
-                    routerLink: ["/reports/rpm-billing"],
-                  },
-                  {
-                    label: "CCM",
-                    icon: "pi pi-heart",
-                    routerLink: ["/reports/ccm-billing"],
-                  },
-                ],
-              },
-              {
-                label: "Medicaid",
-                icon: "pi pi-shield",
-                items: [
-                  {
-                    label: "RPM",
-                    icon: "pi pi-briefcase",
-                    routerLink: ["/reports/medicaid-billing"],
-                  },
-                ],
-              },
-            ],
+            routerLink: ["/reports/billing-reports"],
           },
           {
             label: "Care Management",
