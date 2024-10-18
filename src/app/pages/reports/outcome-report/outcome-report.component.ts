@@ -9,9 +9,10 @@ import { MultiSelectModule } from "primeng/multiselect";
 import { TableModule } from "primeng/table";
 import { CustomFilterComponent } from "src/app/components/table/custom-filter/custom-filter.component";
 import { TableComponent } from "src/app/components/table/table.component";
+import { ChartData, ChartOptions } from "src/app/types/chart/chart-types";
 import { ColumnConfig } from "src/app/types/table/generic-table-types";
 import { outcomeReportData } from "src/app/utils/constants/mock-data";
-
+import { Chart } from "chart.js";
 @Component({
   selector: "outcome-report",
   standalone: true,
@@ -58,9 +59,9 @@ export class OutcomeReportComponent {
 
   showClearButton: boolean = false;
 
-  data: any;
+  data: ChartData;
 
-  options: any;
+  options: ChartOptions;
 
   @ViewChild("chart") chart: any;
 
