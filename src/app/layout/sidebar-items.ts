@@ -74,6 +74,11 @@ export const sidebarItems: ISidebarItems[] = [
             icon: "pi pi-id-card",
             routerLink: ["/reports/score-card"],
           },
+          {
+            label: "Outcome Report",
+            icon: "pi pi-th-large",
+            routerLink: ["/reports/outcome-report"],
+          },
         ],
       },
     ],
