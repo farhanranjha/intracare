@@ -1,0 +1,9 @@
+<div class="w-full mt-1">
+  <intracare-table [columns]="columns" [rowData]="rpmBillingReports" [rowsPerPage]="[10, 25, 50]" />
+  <ng-template #practiceNameFilter let-handleFilterChange="handleFilterChange">
+    <app-custom-filter [options]="practicesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+  </ng-template>
+  <ng-template #billableCodesFilter let-handleFilterChange="handleFilterChange">
+    <app-custom-filter [options]="billableCodesOptions" [filterCallback]="handleFilterChange"></app-custom-filter>
+  </ng-template>
+</div>

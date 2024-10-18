@@ -62,67 +62,17 @@ export const sidebarItems: ISidebarItems[] = [
           {
             label: "Billing Reports",
             icon: "pi pi-money-bill",
-            items: [
-              {
-                label: "Medicare",
-                icon: "pi pi-shield",
-                items: [
-                  {
-                    label: "RPM",
-                    icon: "pi pi-mobile",
-                    routerLink: ["/reports/rpm-billing"],
-                  },
-                  {
-                    label: "CCM",
-                    icon: "pi pi-heart",
-                    routerLink: ["/reports/ccm-billing"],
-                  },
-                ],
-              },
-              {
-                label: "Medicaid",
-                icon: "pi pi-shield",
-                items: [
-                  {
-                    label: "RPM",
-                    icon: "pi pi-briefcase",
-                    routerLink: ["/reports/medicaid-billing"],
-                  },
-                ],
-              },
-            ],
+            routerLink: ["/reports/billing-reports"],
           },
           {
             label: "Care Management",
             icon: "pi pi-money-bill",
-            items: [
-              {
-                label: "RPM",
-                icon: "pi pi-mobile",
-                items: [
-                  {
-                    label: "Readings",
-                    icon: "pi pi-table",
-                    routerLink: ["/reports/readings-compliance"],
-                  },
-                ],
-              },
-            ],
+            routerLink: ["/reports/care-management"],
           },
           {
-            label: "Performance Score Card",
+            label: "Score Card",
             icon: "pi pi-id-card",
-            routerLink: ["/reports/performance-score-card"],
-          },
-          {
-            label: "Referral Score Card",
-            icon: "pi pi-link",
-            routerLink: ["/reports/referrals-score-card"],
-          },
-          {
-            label: "Provider Score Card",
-            icon: "pi pi-money-bill",
-            routerLink: ["/reports/provider-score-card"],
+            routerLink: ["/reports/score-card"],
           },
         ],
       },
